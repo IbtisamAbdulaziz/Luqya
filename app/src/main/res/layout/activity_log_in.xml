@@ -16,17 +16,17 @@
             android:id="@+id/link_to_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="10dp"
             android:text="Don`t have an account yet ? "
             android:gravity="center"
-            android:textSize="15dip"
+            android:textSize="15sp"
             android:textColor="@color/black"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textview_signup"
-            android:layout_marginTop="10dip"
-            android:textSize="15dip"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
             android:textColor="@color/button_text"
             android:text="Sign up Now"/>
 
@@ -35,7 +35,7 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dip"
+        android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/email"
         android:text=" Email or Username"
         android:textColor="@color/black"
@@ -44,8 +44,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edittext_email_login"
-        android:layout_marginTop="5dip"
-        android:layout_marginBottom="20dip"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
         android:singleLine="true"/>
     <!--  Password Label -->
     <TextView
@@ -56,10 +56,10 @@
         android:textColor="@color/black"
         android:textStyle="bold" />
     <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/edittext_password_login"
-        android:layout_marginTop="5dip"
+        android:layout_marginTop="5dp"
         android:singleLine="true"
         android:password="true"/>
     <!-- Login button -->
@@ -67,14 +67,14 @@
         android:id="@+id/button_login"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dip"
+        android:layout_marginTop="10dp"
         android:background="@color/button_background"
         android:text="Login"
         android:textColor="@color/black"
         android:onClick="LogIn"/>
     <!-- Link to Registration Screen -->
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:id="@+id/textview_forget_pass"
         android:textColor="@color/button_text"

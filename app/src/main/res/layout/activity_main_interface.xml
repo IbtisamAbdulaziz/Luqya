@@ -34,7 +34,8 @@
             android:background="@color/button_background"
             android:text="System Administrator"
             android:textColor="@color/black"
-            android:textSize="10sp" />
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/Cultural_Initiative_Founder"
@@ -44,7 +45,8 @@
             android:background="@color/button_background"
             android:text="Cultural Initiative Founder"
             android:textColor="@color/black"
-            android:textSize="10sp"/>
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -64,7 +66,8 @@
             android:gravity="center_vertical"
             android:text="Cultural Event Seeker"
             android:textColor="@color/black"
-            android:textSize="10sp"/>
+            android:textSize="10sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
