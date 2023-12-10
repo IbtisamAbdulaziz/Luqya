@@ -28,21 +28,23 @@
 
         <Button
             android:id="@+id/System_Administrator"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="8dp"
             android:background="@color/button_background"
             android:text="System Administrator"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/Cultural_Initiative_Founder"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginRight="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="8dp"
             android:background="@color/button_background"
             android:text="Cultural Initiative Founder"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="10sp"/>
 
     </LinearLayout>
 
@@ -52,6 +54,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/Cultural_Event_Seeker"
             android:layout_width="wrap_content"
@@ -60,7 +63,8 @@
             android:background="@color/button_background"
             android:gravity="center_vertical"
             android:text="Cultural Event Seeker"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="10sp"/>
 
     </LinearLayout>
 
@@ -73,9 +77,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
+            android:layout_marginTop="10dp"
             android:text="Continue"
-            android:textSize="15dip"
+            android:textSize="15sp"
             android:textColor="@color/black"/>
 
         <TextView
@@ -85,7 +89,7 @@
             android:layout_marginTop="10dip"
             android:text=" as guest"
             android:textColor="@color/button_text"
-            android:textSize="15dip"/>
+            android:textSize="15sp"/>
 
     </LinearLayout>
 </LinearLayout>
