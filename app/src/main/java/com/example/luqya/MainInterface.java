@@ -2,6 +2,7 @@ package com.example.luqya;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,13 +10,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.luqya.cultural_initiative_founder.LogIn;
+
 public class MainInterface extends AppCompatActivity {
     SharedPreferences settings;
     TextView textview_guest;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_interface);
+
 
         Button System_Administrator = findViewById(R.id.System_Administrator);
         Button Cultural_Initiative_Founder = findViewById(R.id.Cultural_Initiative_Founder);
@@ -38,7 +43,6 @@ public class MainInterface extends AppCompatActivity {
                 startActivity(Initiative_Founder);
             }
         });
-
         Cultural_Event_Seeker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,15 +65,15 @@ public class MainInterface extends AppCompatActivity {
             finish();
         }
 
-        textview_guest =findViewById(R.id.textview_guest);
+        textview_guest = findViewById(R.id.textview_guest);
         textview_guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent Signup = new Intent(LogIn.this,SignUp.class);
-            startActivity(Signup);
+
+                Intent Signup = new Intent();
+                startActivity(Signup);
             }
         });
+
     }
 }
-
-

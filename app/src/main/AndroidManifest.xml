@@ -10,7 +10,11 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Luqya"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:roundIcon="@drawable/logo">
+        <activity
+            android:name=".MainInterface"
+            android:exported="false" />
         <activity
             android:name=".cultural_initiative_founder.LogIn"
             android:exported="false" />

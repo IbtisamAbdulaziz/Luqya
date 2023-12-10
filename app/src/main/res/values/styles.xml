@@ -1,0 +1,12 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="backgroundColor">#FFDCCCB8</item>
+    </style>
+
+    <style name="button_background" >
+        <item name="backgroundColor">#AE9571</item>
+    </style>
+
+</resources>
