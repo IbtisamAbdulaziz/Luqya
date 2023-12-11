@@ -3,8 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="app_background">#FFDCCCB8</color>
-    <color name="button_background">#AE9571</color>
+    <color name="app_background">#B3EBD2B2</color>
+    <color name="button_background">#A87934</color>
     <color name="button_text">#FFA88511</color>
 
 </resources>

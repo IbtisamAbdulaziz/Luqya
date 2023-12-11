@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.luqya.cultural_initiative_founder.LogIn;
+import com.example.luqya.system_administrator.Login_administrator;
 
 public class MainInterface extends AppCompatActivity {
     SharedPreferences settings;
@@ -30,7 +30,7 @@ public class MainInterface extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent Administrator = new Intent(MainInterface.this,LogIn.class);
+                Intent Administrator = new Intent(MainInterface.this, Login_administrator.class);
                 startActivity(Administrator);
             }
         });
@@ -70,7 +70,7 @@ public class MainInterface extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent Signup = new Intent();
+                Intent Signup = new Intent(MainInterface.this,Events.class);
                 startActivity(Signup);
             }
         });
