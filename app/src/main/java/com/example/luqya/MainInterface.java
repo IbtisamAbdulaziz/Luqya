@@ -29,7 +29,7 @@ public class MainInterface extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent Administrator = new Intent(MainInterface.this, Login_administrator.class);
+                Intent Administrator = new Intent(MainInterface.this, LogIn.class);
                 startActivity(Administrator);
             }
         });
@@ -68,9 +68,8 @@ public class MainInterface extends AppCompatActivity {
         textview_guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Intent Signup = new Intent(MainInterface.this,Events.class);
-                //startActivity(Signup);
+                Intent i = new Intent(MainInterface.this,Events.class);
+                startActivity(i);
             }
             
         });
