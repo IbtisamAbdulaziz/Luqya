@@ -140,9 +140,7 @@
         android:layout_gravity="right"
         android:text="Forget your password?"
         android:onClick="forget_password" />
-            <TextureView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
