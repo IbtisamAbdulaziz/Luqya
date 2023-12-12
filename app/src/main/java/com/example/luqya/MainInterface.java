@@ -74,6 +74,6 @@ public class MainInterface extends AppCompatActivity {
                 startActivity(Signup);
             }
         });
-
     }
+
 }

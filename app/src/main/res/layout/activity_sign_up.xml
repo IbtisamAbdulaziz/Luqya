@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/button_background"
+    android:background="#AE9571"
     tools:context=".cultural_events_seeker.SignUp">
 
   <androidx.constraintlayout.widget.Guideline
@@ -60,7 +60,7 @@
       android:id="@+id/cardView"
       android:layout_width="match_parent"
       android:layout_height="0dp"
-      android:backgroundTint="@color/app_background"
+      android:backgroundTint="@color/white"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
