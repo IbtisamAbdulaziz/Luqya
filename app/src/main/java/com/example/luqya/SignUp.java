@@ -1,4 +1,4 @@
-package com.example.luqya.cultural_events_seeker;
+package com.example.luqya;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;

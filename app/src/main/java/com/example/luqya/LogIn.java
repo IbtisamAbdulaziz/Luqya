@@ -9,9 +9,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.luqya.R;
-import com.example.luqya.cultural_events_seeker.SignUp;
-
 public class LogIn extends AppCompatActivity {
 
     EditText editText_email,editText_pass;

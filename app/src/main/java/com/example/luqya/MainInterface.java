@@ -10,8 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.luqya.system_administrator.Login_administrator;
-
 public class MainInterface extends AppCompatActivity {
     SharedPreferences settings;
     TextView textview_guest;
@@ -21,6 +19,7 @@ public class MainInterface extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_interface);
 
+        getSupportActionBar().setTitle("لُقيا");
 
         Button System_Administrator = findViewById(R.id.System_Administrator);
         Button Cultural_Initiative_Founder = findViewById(R.id.Cultural_Initiative_Founder);
@@ -70,9 +69,10 @@ public class MainInterface extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent Signup = new Intent(MainInterface.this,Events.class);
-                startActivity(Signup);
+                //Intent Signup = new Intent(MainInterface.this,Events.class);
+                //startActivity(Signup);
             }
+            
         });
 
     }

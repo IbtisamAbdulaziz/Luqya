@@ -1,16 +1,12 @@
-package com.example.luqya.system_administrator;
+package com.example.luqya;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.luqya.LogIn;
-import com.example.luqya.R;
 
 public class Login_administrator extends AppCompatActivity {
 

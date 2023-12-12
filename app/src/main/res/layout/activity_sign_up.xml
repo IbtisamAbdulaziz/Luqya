@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/button_background"
-    tools:context=".cultural_events_seeker.SignUp">
+    tools:context=".SignUp">
 
   <androidx.constraintlayout.widget.Guideline
       android:id="@+id/guideline"
