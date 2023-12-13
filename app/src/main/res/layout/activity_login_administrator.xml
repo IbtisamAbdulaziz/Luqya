@@ -16,9 +16,10 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
-        android:layout_width="91dp"
-        android:layout_height="71dp"
+        android:layout_width="57dp"
+        android:layout_height="55dp"
         android:clickable="true"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/arrow_back"
         app:backgroundTint="#F1EAEA"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -26,8 +27,7 @@
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="ContentDescription"
-        android:contentDescription="@string/app_name"/>
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textView2"
