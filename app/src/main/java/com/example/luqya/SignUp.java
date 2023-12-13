@@ -1,8 +1,8 @@
 package com.example.luqya;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
-import com.example.luqya.R;
 
 public class SignUp extends AppCompatActivity {
 
