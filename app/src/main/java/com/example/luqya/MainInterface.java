@@ -29,7 +29,7 @@ public class MainInterface extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent Administrator = new Intent(MainInterface.this, LogIn.class);
+                Intent Administrator = new Intent(MainInterface.this, LogIn_old.class);
                 startActivity(Administrator);
             }
         });
@@ -38,7 +38,7 @@ public class MainInterface extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent Initiative_Founder = new Intent(MainInterface.this,LogIn.class);
+                Intent Initiative_Founder = new Intent(MainInterface.this, LogIn_old.class);
                 startActivity(Initiative_Founder);
             }
         });
@@ -46,7 +46,7 @@ public class MainInterface extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent Event_Seeker =new Intent(MainInterface.this,LogIn.class);
+                Intent Event_Seeker =new Intent(MainInterface.this, LogIn_old.class);
                 startActivity(Event_Seeker);
             }
         });
@@ -59,7 +59,7 @@ public class MainInterface extends AppCompatActivity {
         // if he/she has loged in before just move to the main page
 
         if (check) {
-            Intent i = new Intent(MainInterface.this, LogIn.class);
+            Intent i = new Intent(MainInterface.this, LogIn_old.class);
             startActivity(i);
             finish();
         }

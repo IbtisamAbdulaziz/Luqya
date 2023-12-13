@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#AE9571"
-    tools:context=".LogIn"
+    tools:context=".LogIn_old"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.Guideline
