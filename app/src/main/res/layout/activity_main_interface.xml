@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginRight="8dp"
-            android:background="@color/button_background"
+            android:background="#A87934"
             android:text="System Administrator"
             android:textColor="@color/black"
             android:textSize="10sp"
