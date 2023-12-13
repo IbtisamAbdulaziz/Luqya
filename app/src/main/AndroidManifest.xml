@@ -1,4 +1,4 @@
-<<<<<<< Original<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><manifest xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools">
 
 <application
@@ -12,16 +12,16 @@ xmlns:tools="http://schemas.android.com/tools">
     android:theme="@style/Theme.Luqya"
     tools:targetApi="31">
     <activity
-        android:name=".system_administrator.Login_administrator"
+        android:name=".Login_administrator"
+        android:exported="false" />
+    <activity
+        android:name=".InitiativeProfile"
+        android:exported="false" />
+    <activity
+        android:name=".LogIn_old"
         android:exported="false" />
     <activity
         android:name=".MainInterface"
-        android:exported="false" />
-    <activity
-        android:name=".LogIn"
-        android:exported="false" />
-    <activity
-        android:name=".system_administrator.Login_administrator"
         android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -29,16 +29,11 @@ xmlns:tools="http://schemas.android.com/tools">
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
-</application>
 
-</manifest>=======
-
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-<application>
     <activity
         android:name="com.example.luqya.SignUp"
         android:exported="false"
-
         />
+
 </application>
-</manifest>>>>>>>> Added
+</manifest>
