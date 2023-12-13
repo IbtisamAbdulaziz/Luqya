@@ -30,7 +30,7 @@ public class LogIn_old extends AppCompatActivity {
         textView_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent Signup = new Intent(LogIn_old.this, SignUp.class);
+                    Intent Signup = new Intent(LogIn_old.this, SignUp_old.class);
                     startActivity(Signup);
             }
         });
