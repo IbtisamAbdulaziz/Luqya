@@ -80,7 +80,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
-                    android:text="Full Name"
+                    android:text="Full Name*"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -91,12 +91,30 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="20dp"
                     android:hint="Ail Saad"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:inputType="textPersonName"/>
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="User Type"
+                    android:text="Date of Birth(dd/mm/yyyy)"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edittext_age"
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:hint="Enter your date of birth (dd/mm/yyyy)"
+                    android:singleLine="true"
+                    android:inputType="date"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="User Type*"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"/>
@@ -131,20 +149,20 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:drawableLeft="@drawable/email"
-                    android:text=" Email"
+                    android:text="  Email*"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edittext_email"
                     android:layout_width="fill_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="20dp"
-                    android:hint="aaa@......"
-                    android:singleLine="true" />
+                    android:hint="email@domain.com"
+                    android:singleLine="true"
+                    android:inputType="textEmailAddress"/>
 
                 <!--  Phone Label -->
                 <TextView
@@ -152,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:drawableLeft="@drawable/baseline_phone_24"
-                    android:text="Phone"
+                    android:text="Phone*"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -162,23 +180,24 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:phoneNumber="true"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:hint="+9665012345678"/>
 
                 <!--  Username Label -->
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Username"
+                    android:text="Username*"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edittext_username"
                     android:layout_width="fill_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="10dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="10dp"
                     android:singleLine="true" />
 
 
@@ -187,7 +206,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/lock"
-                    android:text="Password"
+                    android:text="Password*"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -197,34 +216,38 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:password="true"
-                    android:singleLine="true" />
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:hint="Enter your password"/>
 
                 <!--  Location Label -->
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/add_location"
-                    android:text="Password"
+                    android:drawableLeft="@drawable/lock"
+                    android:text="Confirm Password*"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editText_location"
+                    android:id="@+id/editText_passowrd2"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:password="true"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:inputType="textPassword"
+                    android:hint="Re-Enter your password"/>
 
                 <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/editText_location"
-                    android:layout_centerHorizontal="true"
                     android:gravity="center_horizontal"
                     android:weightSum="100">
 
                     <!-- Cansel button -->
+
                     <Button
                         android:id="@+id/button_cansel"
                         android:layout_width="wrap_content"
