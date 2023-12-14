@@ -3,11 +3,14 @@ package com.example.luqya;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class SignUp extends AppCompatActivity {
 
@@ -45,6 +48,36 @@ public class SignUp extends AppCompatActivity {
                 int selectedUserTypeId = userTypeRadioGroup.getCheckedRadioButtonId();
                 userType = findViewById(selectedUserTypeId);
 
+                String textFullName = editTextFullName.getText().toString();
+                String textDoB = editTextDateOfBirth.getText().toString();
+                String textEmail = editTextEmail.getText().toString();
+                String textPhone = editTextPhone.getText().toString();
+                String textUserName = editTextUsername.getText().toString();
+                String textPassowrd = editTextPassword.getText().toString();
+                String textPassword2 = editTextPassword2.getText().toString();
+                String textUserType;
+
+                if (TextUtils.isEmpty(textFullName)){
+                    Toast.makeText(SignUp.this, "Please enter your full name", Toast.LENGTH_LONG).show();
+                    editTextFullName.setError("Full Name is required");
+                    editTextFullName.requestFocus();
+
+                } else if (TextUtils.isEmpty(textEmail)) {
+                    Toast.makeText(SignUp.this, "Please enter your email", Toast.LENGTH_LONG).show();
+                    editTextEmail.setError("Email is required");
+                    editTextEmail.requestFocus();
+
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(textEmail).matches()) {
+                    Toast.makeText(SignUp.this, "Please enter a valid email address", Toast.LENGTH_LONG).show();
+                    editTextEmail.setError("Valid email is required");
+                    editTextEmail.requestFocus();
+
+                } else if (userTypeRadioGroup.getCheckedRadioButtonId() == -1 ) {
+                    Toast.makeText(SignUp.this, "Please select a user type", Toast.LENGTH_LONG).show();
+                    userType.setError("User type is required");
+                    userType.requestFocus();
+
+                }
 
             }
         });
