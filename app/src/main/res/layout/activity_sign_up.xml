@@ -196,7 +196,7 @@
                     android:id="@+id/edittext_username"
                     android:layout_width="fill_parent"
                     android:layout_height="10dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
                     android:singleLine="true" />
 
@@ -273,7 +273,8 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </ScrollView>
 
+        </ScrollView>
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
