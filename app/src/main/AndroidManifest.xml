@@ -22,13 +22,13 @@
             android:name=".Login_administrator"
             android:exported="false" />
         <activity
-            android:name=".Login_administrator_old"
+            android:name=".AddEvent"
             android:exported="false" />
         <activity
             android:name=".InitiativeProfile"
             android:exported="false" />
         <activity
-            android:name=".LogIn_old"
+            android:name=".LogIn"
             android:exported="false" />
         <activity
             android:name=".MainInterface"
@@ -40,7 +40,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignUp_old"
+            android:name=".Events"
             android:exported="false" />
     </application>
 
