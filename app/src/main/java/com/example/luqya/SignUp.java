@@ -77,8 +77,46 @@ public class SignUp extends AppCompatActivity {
                     userType.setError("User type is required");
                     userType.requestFocus();
 
-                }
+                } else if (TextUtils.isEmpty(textUserName)) {
+                    Toast.makeText(SignUp.this, "Please enter a username", Toast.LENGTH_LONG).show();
+                    editTextPhone.setError("Username is required");
+                    editTextPhone.requestFocus();
 
+                } else if (TextUtils.isEmpty(textPhone)) {
+                    Toast.makeText(SignUp.this, "Please enter your phone number", Toast.LENGTH_LONG).show();
+                    editTextPhone.setError("Phone number is required");
+                    editTextPhone.requestFocus();
+
+                } else if (textPhone.length()!= 13 ) {
+                    Toast.makeText(SignUp.this, "Please enter a valid phone number", Toast.LENGTH_LONG).show();
+                    editTextPhone.setError("Phone number should be 13 digits (+966)");
+                    editTextPhone.requestFocus();
+
+                } else if (TextUtils.isEmpty(textPassowrd)) {
+                    Toast.makeText(SignUp.this, "Please enter a password", Toast.LENGTH_LONG).show();
+                    editTextPassword.setError("Password is required");
+                    editTextPassword.requestFocus();
+
+                } else if (textPassowrd.length() < 8) {
+                    Toast.makeText(SignUp.this, "Please enter a valid password", Toast.LENGTH_LONG).show();
+                    editTextPassword.setError("Password too weak");
+                    editTextPassword.requestFocus();
+
+                } else if (TextUtils.isEmpty(textPassword2)) {
+                    Toast.makeText(SignUp.this, "Please confirm your password", Toast.LENGTH_LONG).show();
+                    editTextPassword2.setError("Password confirmation is required");
+                    editTextPassword2.requestFocus();
+
+                } else if (!textPassowrd.equals(textPassword2)) {
+                    Toast.makeText(SignUp.this, "Please enter the same password", Toast.LENGTH_LONG).show();
+                    editTextPassword2.setError("Password confirmation is required");
+                    editTextPassword2.requestFocus();
+                    editTextPassword.clearComposingText();
+                    editTextPassword2.clearComposingText();
+                } else {
+
+                    textUserType = userType.getText().toString();
+                }
             }
         });
 
