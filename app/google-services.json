@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "54670613116",
+    "project_id": "luqya-7e6ab",
+    "storage_bucket": "luqya-7e6ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54670613116:android:7948f992cf7a73a588c7f9",
+        "android_client_info": {
+          "package_name": "com.example.luqya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByD8kh0X7FXqEVBmiz1yu_wpYeBdWxXT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

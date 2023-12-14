@@ -1,7 +1,9 @@
 package com.example.luqya;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -11,6 +13,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignUp extends AppCompatActivity {
 
@@ -116,9 +124,32 @@ public class SignUp extends AppCompatActivity {
                 } else {
 
                     textUserType = userType.getText().toString();
+                    registerUser(textFullName, textDoB, textEmail, textPhone, textUserName, textPassowrd, textUserType);
                 }
             }
         });
 
     }
+
+    private void registerUser(String textFullName, String textDoB, String textEmail, String textPhone, String textUserName, String textPassowrd, String textUserType) {
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.createUserWithEmailAndPassword(textEmail, textPassowrd).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(SignUp.this, "User Registered successfully", Toast.LENGTH_LONG).show();
+                    FirebaseUser firebaseUser = auth.getCurrentUser();
+
+                    firebaseUser.sendEmailVerification();
+
+                    Intent intent = new Intent(SignUp.this,LogIn.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+    }
+
 }
