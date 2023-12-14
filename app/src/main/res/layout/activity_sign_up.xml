@@ -87,11 +87,45 @@
                 <EditText
                     android:id="@+id/edittext_name"
                     android:layout_width="fill_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="60dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="20dp"
                     android:hint="Ail Saad"
                     android:singleLine="true" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="User Type"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
+
+                <RadioGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/radio_group"
+                    android:layout_marginBottom="20dp">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radio_events_seeker"
+                        android:text="Events Seeker"
+                        android:layout_marginRight="20dp">
+
+                    </RadioButton>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radio_initiative_founder"
+                        android:text="Initiative Founder">
+
+                    </RadioButton>
+
+                </RadioGroup>
 
                 <!--  Email Label -->
                 <TextView
