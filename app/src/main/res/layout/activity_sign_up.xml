@@ -91,8 +91,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="20dp"
                     android:hint="Ail Saad"
-                    android:singleLine="true"
-                    android:inputType="textPersonName"/>
+                    android:inputType="textPersonName"
+                    android:singleLine="true" />
 
                 <TextView
                     android:layout_width="fill_parent"
@@ -108,37 +108,37 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="20dp"
                     android:hint="Enter your date of birth (dd/mm/yyyy)"
-                    android:singleLine="true"
-                    android:inputType="date"/>
+                    android:inputType="date"
+                    android:singleLine="true" />
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:text="User Type*"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="10dp"/>
+                    android:textStyle="bold" />
 
                 <RadioGroup
+                    android:id="@+id/radio_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/radio_group"
-                    android:layout_marginBottom="20dp">
+                    android:layout_marginBottom="20dp"
+                    android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/radio_events_seeker"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/radio_events_seeker"
-                        android:text="Events Seeker"
-                        android:layout_marginRight="20dp">
+                        android:layout_marginRight="20dp"
+                        android:text="Events Seeker">
 
                     </RadioButton>
 
                     <RadioButton
+                        android:id="@+id/radio_initiative_founder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/radio_initiative_founder"
                         android:text="Initiative Founder">
 
                     </RadioButton>
@@ -161,8 +161,8 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="20dp"
                     android:hint="email@domain.com"
-                    android:singleLine="true"
-                    android:inputType="textEmailAddress"/>
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true" />
 
                 <!--  Phone Label -->
                 <TextView
@@ -179,9 +179,9 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
+                    android:hint="+9665012345678"
                     android:phoneNumber="true"
-                    android:singleLine="true"
-                    android:hint="+9665012345678"/>
+                    android:singleLine="true" />
 
                 <!--  Username Label -->
                 <TextView
@@ -190,15 +190,17 @@
                     android:layout_marginTop="10dp"
                     android:text="Username*"
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
 
                 <EditText
                     android:id="@+id/edittext_username"
                     android:layout_width="fill_parent"
-                    android:layout_height="10dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:singleLine="true" />
+                    android:layout_marginBottom="20dp"
+                    android:singleLine="true"
+                    android:hint="enter your user name"/>
 
 
                 <!--  Password Label -->
@@ -215,10 +217,10 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:password="true"
+                    android:hint="Enter your password"
                     android:inputType="textPassword"
-                    android:singleLine="true"
-                    android:hint="Enter your password"/>
+                    android:password="true"
+                    android:singleLine="true" />
 
                 <!--  Location Label -->
                 <TextView
@@ -234,16 +236,16 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:password="true"
-                    android:singleLine="true"
+                    android:hint="Re-Enter your password"
                     android:inputType="textPassword"
-                    android:hint="Re-Enter your password"/>
+                    android:password="true"
+                    android:singleLine="true" />
 
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
+                    android:orientation="horizontal"
                     android:weightSum="100">
 
                     <!-- Cansel button -->
