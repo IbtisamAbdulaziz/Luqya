@@ -56,6 +56,7 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:srcCompat="@drawable/photo_camera" />
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -66,217 +67,233 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
 
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!--  Name Label -->
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="Full Name*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edittext_name"
-                    android:layout_width="fill_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="20dp"
-                    android:hint="Ail Saad"
-                    android:inputType="textPersonName"
-                    android:singleLine="true" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Date of Birth(dd/mm/yyyy)"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edittext_age"
-                    android:layout_width="fill_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="20dp"
-                    android:hint="Enter your date of birth (dd/mm/yyyy)"
-                    android:inputType="date"
-                    android:singleLine="true" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="User Type*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <RadioGroup
-                    android:id="@+id/radio_group"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/radio_events_seeker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:text="Events Seeker">
-
-                    </RadioButton>
-
-                    <RadioButton
-                        android:id="@+id/radio_initiative_founder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Initiative Founder">
-
-                    </RadioButton>
-
-                </RadioGroup>
-
-                <!--  Email Label -->
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/email"
-                    android:text="  Email*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edittext_email"
-                    android:layout_width="fill_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="20dp"
-                    android:hint="email@domain.com"
-                    android:inputType="textEmailAddress"
-                    android:singleLine="true" />
-
-                <!--  Phone Label -->
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:drawableLeft="@drawable/baseline_phone_24"
-                    android:text="Phone*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editText_phone"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:hint="+9665012345678"
-                    android:phoneNumber="true"
-                    android:singleLine="true" />
-
-                <!--  Username Label -->
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Username*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="10dp"/>
-
-                <EditText
-                    android:id="@+id/edittext_username"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:singleLine="true"
-                    android:hint="enter your user name"/>
-
-
-                <!--  Password Label -->
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/lock"
-                    android:text="Password*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editText_password"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:hint="Enter your password"
-                    android:inputType="textPassword"
-                    android:password="true"
-                    android:singleLine="true" />
-
-                <!--  Location Label -->
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/lock"
-                    android:text="Confirm Password*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editText_passowrd2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:hint="Re-Enter your password"
-                    android:inputType="textPassword"
-                    android:password="true"
-                    android:singleLine="true" />
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:weightSum="100">
+                    android:orientation="vertical">
 
-                    <!-- Cansel button -->
+                    <!--  Name Label -->
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:text="Full Name*"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/button_cansel"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edittext_name"
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:hint="Ail Saad"
+                        android:inputType="textPersonName"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Date of Birth(dd/mm/yyyy)"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edittext_age"
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:hint="Enter your date of birth (dd/mm/yyyy)"
+                        android:inputType="date"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="User Type*"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radio_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radio_events_seeker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:text="Events Seeker">
+
+                        </RadioButton>
+
+                        <RadioButton
+                            android:id="@+id/radio_initiative_founder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Initiative Founder">
+
+                        </RadioButton>
+
+                    </RadioGroup>
+
+                    <!--  Email Label -->
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/email"
+                        android:text="  Email*"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/edittext_email"
+                        android:layout_width="fill_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:hint="email@domain.com"
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true" />
+
+                    <!--  Phone Label -->
+                    <TextView
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:background="@color/button_background"
-                        android:text="Cansel"
-                        android:textColor="@color/black" />
+                        android:drawableLeft="@drawable/baseline_phone_24"
+                        android:text="Phone*"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
 
-                    <!-- Save button -->
-                    <Button
-                        android:id="@+id/button_save"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/editText_phone"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="+9665012345678"
+                        android:phoneNumber="true"
+                        android:singleLine="true" />
+
+                    <!--  Username Label -->
+                    <TextView
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_toRightOf="@+id/button_cansel"
-                        android:background="@color/button_background"
-                        android:text="Save"
-                        android:textColor="@color/black" />
+                        android:text="Username*"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp"/>
+
+                    <EditText
+                        android:id="@+id/edittext_username"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:singleLine="true"
+                        android:hint="enter your user name"/>
+
+
+                    <!--  Password Label -->
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/lock"
+                        android:text="Password*"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editText_password"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="Enter your password"
+                        android:inputType="textPassword"
+                        android:password="true"
+                        android:singleLine="true" />
+
+                    <!--  Location Label -->
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/lock"
+                        android:text="Confirm Password*"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editText_passowrd2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:hint="Re-Enter your password"
+                        android:inputType="textPassword"
+                        android:password="true"
+                        android:singleLine="true" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+                        <!-- Cansel button -->
+
+                        <Button
+                            android:id="@+id/button_cansel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:background="@color/button_background"
+                            android:text="Cansel"
+                            android:textColor="@color/black" />
+
+                        <!-- Save button -->
+                        <Button
+                            android:id="@+id/button_save"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toRightOf="@+id/button_cansel"
+                            android:background="@color/button_background"
+                            android:text="Save"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </ScrollView>
 
-        </ScrollView>
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:elevation="10dp"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

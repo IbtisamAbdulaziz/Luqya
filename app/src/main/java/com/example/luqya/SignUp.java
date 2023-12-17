@@ -11,6 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -23,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -33,6 +35,7 @@ public class SignUp extends AppCompatActivity {
 
     private RadioGroup userTypeRadioGroup;
     private RadioButton userType;
+    private ProgressBar progressBar;
     private static final String TAG= "SignUp";
 
     @Override
@@ -42,6 +45,8 @@ public class SignUp extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Signing Up");
 
+
+        progressBar = findViewById(R.id.progressBar);
         editTextFullName = findViewById(R.id.edittext_name);
         editTextDateOfBirth = findViewById(R.id.edittext_age);
         editTextEmail = findViewById(R.id.edittext_email);
@@ -94,8 +99,8 @@ public class SignUp extends AppCompatActivity {
 
                 } else if (TextUtils.isEmpty(textUserName)) {
                     Toast.makeText(SignUp.this, "Please enter a username", Toast.LENGTH_LONG).show();
-                    editTextPhone.setError("Username is required");
-                    editTextPhone.requestFocus();
+                    editTextUsername.setError("Username is required");
+                    editTextUsername.requestFocus();
 
                 } else if (TextUtils.isEmpty(textPhone)) {
                     Toast.makeText(SignUp.this, "Please enter your phone number", Toast.LENGTH_LONG).show();
@@ -132,6 +137,7 @@ public class SignUp extends AppCompatActivity {
 
                     textUserType = userType.getText().toString();
                     registerUser(textFullName, textDoB, textEmail, textPhone, textUserName, textPassowrd, textUserType);
+                    progressBar.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -144,10 +150,13 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Toast.makeText(SignUp.this, "User Registered successfully", Toast.LENGTH_LONG).show();
+
                     FirebaseUser firebaseUser = auth.getCurrentUser();
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textDoB, textUserName, textUserType, textPhone);
+                    UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
+                    firebaseUser.updateProfile(profileChangeRequest);
+
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDoB, textUserName, textUserType, textPhone);
 
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
 
@@ -159,6 +168,7 @@ public class SignUp extends AppCompatActivity {
 
                                 firebaseUser.sendEmailVerification();
                                 Toast.makeText(SignUp.this, "User Registered Successfully. Please verify your email", Toast.LENGTH_LONG).show();
+                                progressBar.setVisibility(View.GONE);
 
                                 Intent intent = new Intent(SignUp.this,LogIn.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -169,12 +179,8 @@ public class SignUp extends AppCompatActivity {
                             } else {
 
                                 Toast.makeText(SignUp.this, "User Registered Failed. Please try again", Toast.LENGTH_LONG).show();
-
-
+                                progressBar.setVisibility(View.GONE);
                             }
-
-
-
                         }
                     });
 
