@@ -23,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp extends AppCompatActivity {
 
@@ -145,13 +147,37 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "User Registered successfully", Toast.LENGTH_LONG).show();
                     FirebaseUser firebaseUser = auth.getCurrentUser();
 
-                    firebaseUser.sendEmailVerification();
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textDoB, textUserName, textUserType, textPhone);
 
-                    Intent intent = new Intent(SignUp.this,LogIn.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
 
-                    startActivity(intent);
-                    finish();
+                    referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+
+                            if(task.isSuccessful()){
+
+                                firebaseUser.sendEmailVerification();
+                                Toast.makeText(SignUp.this, "User Registered Successfully. Please verify your email", Toast.LENGTH_LONG).show();
+
+                                Intent intent = new Intent(SignUp.this,LogIn.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                startActivity(intent);
+                                finish();
+
+                            } else {
+
+                                Toast.makeText(SignUp.this, "User Registered Failed. Please try again", Toast.LENGTH_LONG).show();
+
+
+                            }
+
+
+
+                        }
+                    });
+
                 } else {
                     try {
                         throw task.getException();
