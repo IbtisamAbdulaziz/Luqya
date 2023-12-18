@@ -7,6 +7,8 @@
     android:background="@color/button_background"
     tools:context=".SignUp">
 
+
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
@@ -112,8 +114,9 @@
                         android:layout_height="60dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
-                        android:hint="Enter your date of birth (dd/mm/yyyy)"
+                        android:hint="Select your date of birth"
                         android:inputType="date"
+                        android:focusable="false"
                         android:singleLine="true" />
 
                     <TextView

@@ -3,6 +3,7 @@ package com.example.luqya;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
@@ -28,6 +30,10 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.Calendar;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class SignUp extends AppCompatActivity {
 
     private EditText editTextFullName, editTextDateOfBirth, editTextEmail,
@@ -37,6 +43,7 @@ public class SignUp extends AppCompatActivity {
     private RadioButton userType;
     private ProgressBar progressBar;
     private static final String TAG= "SignUp";
+    private  DatePickerDialog picker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +65,25 @@ public class SignUp extends AppCompatActivity {
         userTypeRadioGroup = findViewById(R.id.radio_group);
         userTypeRadioGroup.clearCheck();
 
+        editTextDateOfBirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                picker = new DatePickerDialog(SignUp.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+
+                        editTextDateOfBirth.setText(dayOfMonth+ "/" + (month+1) + "/" + year);
+                    }
+                } , year, month, day);
+                picker.show();
+            }
+        });
+
         Button saveBtn = findViewById(R.id.button_save);
         Button cancelBtn = findViewById(R.id.button_cansel);
 
@@ -76,6 +102,11 @@ public class SignUp extends AppCompatActivity {
                 String textPassowrd = editTextPassword.getText().toString();
                 String textPassword2 = editTextPassword2.getText().toString();
                 String textUserType;
+
+                String mobileRegex = "[+][0-9]{12}";
+                Matcher mobileMatcher;
+                Pattern mobilePattern = Pattern.compile(mobileRegex);
+                mobileMatcher = mobilePattern.matcher(textPhone);
 
                 if (TextUtils.isEmpty(textFullName)){
                     Toast.makeText(SignUp.this, "Please enter your full name", Toast.LENGTH_LONG).show();
@@ -112,7 +143,13 @@ public class SignUp extends AppCompatActivity {
                     editTextPhone.setError("Phone number should be 13 digits (+966)");
                     editTextPhone.requestFocus();
 
-                } else if (TextUtils.isEmpty(textPassowrd)) {
+                } else if (!mobileMatcher.find()) {
+                    Toast.makeText(SignUp.this, "Please enter a valid phone number", Toast.LENGTH_LONG).show();
+                    editTextPhone.setError("Phone number should be 13 digits Starting with (+966)");
+                    editTextPhone.requestFocus();
+
+
+            } else if (TextUtils.isEmpty(textPassowrd)) {
                     Toast.makeText(SignUp.this, "Please enter a password", Toast.LENGTH_LONG).show();
                     editTextPassword.setError("Password is required");
                     editTextPassword.requestFocus();
@@ -142,7 +179,17 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignUp.this, LogIn.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
 
     private void registerUser(String textFullName, String textDoB, String textEmail, String textPhone, String textUserName, String textPassowrd, String textUserType) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
