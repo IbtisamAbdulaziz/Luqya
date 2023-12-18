@@ -43,6 +43,7 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="132dp" />
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -100,8 +101,20 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="20dp"
                 android:hint="aaa@......"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:inputType="textEmailAddress"/>
             <!--  Password Label -->
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_marginLeft="160dp"
+                android:layout_marginRight="160dp"
+                android:elevation="10dp"
+                android:visibility="gone"
+                android:id="@+id/progressBarLogin"/>
+
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -119,7 +132,8 @@
                 android:hint="123456Aa"
                 android:password="true"
                 android:singleLine="true"
-                tools:ignore="ExtraText" />
+                tools:ignore="ExtraText"
+                android:inputType="textPassword"/>
             <!-- Login button -->
             <Button
                 android:id="@+id/button_login"
@@ -139,7 +153,6 @@
                 android:onClick="forget_password"
                 android:text="Forget your password?"
                 android:textColor="@color/button_text" />
-
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
