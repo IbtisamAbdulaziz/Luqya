@@ -29,8 +29,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -193,13 +197,13 @@ public class SignUp extends AppCompatActivity {
 
     private void registerUser(String textFullName, String textDoB, String textEmail, String textPhone, String textUserName, String textPassowrd, String textUserType) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         auth.createUserWithEmailAndPassword(textEmail, textPassowrd).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
 
                     FirebaseUser firebaseUser = auth.getCurrentUser();
-
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
 
@@ -215,6 +219,16 @@ public class SignUp extends AppCompatActivity {
 
                                 firebaseUser.sendEmailVerification();
                                 Toast.makeText(SignUp.this, "User Registered Successfully. Please verify your email", Toast.LENGTH_LONG).show();
+                                DocumentReference df = fStore.collection("Users").document(firebaseUser.getUid());
+                                Map<String,Object> userInfo = new HashMap<>();
+                                userInfo.put("FullName",textFullName);
+                                userInfo.put("UserEmail", textEmail);
+                                userInfo.put("PhoneNumber", textPhone);
+
+                                userInfo.put("isUser","1");
+
+                                df.set(userInfo);
+
                                 progressBar.setVisibility(View.GONE);
 
                                 Intent intent = new Intent(SignUp.this,LogIn.class);
