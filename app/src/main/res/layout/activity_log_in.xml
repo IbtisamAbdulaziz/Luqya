@@ -94,6 +94,8 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
+            <!--  Password Label -->
+
             <EditText
                 android:id="@+id/edittext_email_login"
                 android:layout_width="fill_parent"
@@ -101,9 +103,8 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="20dp"
                 android:hint="aaa@......"
-                android:singleLine="true"
-                android:inputType="textEmailAddress"/>
-            <!--  Password Label -->
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
 
             <ProgressBar
                 android:layout_width="wrap_content"
@@ -137,15 +138,14 @@
 
                 <EditText
                     android:id="@+id/edittext_password_login"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_width="352dp"
+                    android:layout_height="82dp"
                     android:layout_marginTop="5dp"
                     android:hint="123456Aa"
+                    android:inputType="textPassword"
                     android:password="true"
                     android:singleLine="true"
-                    tools:ignore="ExtraText"
-                    android:inputType="textPassword"/>
-
+                    tools:ignore="ExtraText" />
 
 
             </LinearLayout>

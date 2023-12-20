@@ -40,6 +40,7 @@ public class MainInterface extends AppCompatActivity {
 
                 Intent Initiative_Founder = new Intent(MainInterface.this, LogIn.class);
                 startActivity(Initiative_Founder);
+
             }
         });
         Cultural_Event_Seeker.setOnClickListener(new View.OnClickListener() {
