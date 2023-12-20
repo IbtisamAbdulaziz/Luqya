@@ -124,16 +124,34 @@
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/edittext_password_login"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="5dp"
-                android:hint="123456Aa"
-                android:password="true"
-                android:singleLine="true"
-                tools:ignore="ExtraText"
-                android:inputType="textPassword"/>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="32dp"
+                    android:id="@+id/show_hide_pwd"
+                    android:layout_marginTop="30dp"/>
+
+                <EditText
+                    android:id="@+id/edittext_password_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="5dp"
+                    android:hint="123456Aa"
+                    android:password="true"
+                    android:singleLine="true"
+                    tools:ignore="ExtraText"
+                    android:inputType="textPassword"/>
+
+
+
+            </LinearLayout>
+
+
+
             <!-- Login button -->
             <Button
                 android:id="@+id/button_login"
