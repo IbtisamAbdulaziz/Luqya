@@ -134,13 +134,14 @@
                     android:layout_width="30dp"
                     android:layout_height="32dp"
                     android:id="@+id/show_hide_pwd"
-                    android:layout_marginTop="30dp"/>
+                    android:layout_marginTop="35dp"/>
 
                 <EditText
                     android:id="@+id/edittext_password_login"
                     android:layout_width="352dp"
                     android:layout_height="82dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
                     android:hint="123456Aa"
                     android:inputType="textPassword"
                     android:password="true"
