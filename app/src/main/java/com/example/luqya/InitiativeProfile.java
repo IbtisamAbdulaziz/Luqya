@@ -15,7 +15,7 @@ public class InitiativeProfile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.initiative_profile);
+        setContentView(R.layout.view_initiative_profile);
 
         searchView = findViewById(R.id.SearchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

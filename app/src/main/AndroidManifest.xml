@@ -16,7 +16,7 @@
             android:name=".AttendingListAndPoint"
             android:exported="false" />
         <activity
-            android:name=".InitiativeFounderProfile"
+            android:name=".View_InitiativeFounderProfile"
             android:exported="false" />
         <activity
             android:name=".SignUp"
