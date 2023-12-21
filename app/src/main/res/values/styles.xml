@@ -6,7 +6,9 @@
     </style>
 
     <style name="button_background" >
-        <item name="backgroundColor">#AE9571</item>
+        <item name="backgroundColor">#A87934</item>
+        <item name="boxStrokeWidth">1dp</item>
     </style>
+
 
 </resources>
