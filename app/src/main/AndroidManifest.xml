@@ -33,6 +33,8 @@
         <activity
             android:name=".LogIn"
             android:exported="false" />
+        <activity android:name=".FounderMainActivity"
+            android:exported="false" />
         <activity
             android:name=".MainInterface"
             android:exported="true">

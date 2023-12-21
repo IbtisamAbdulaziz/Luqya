@@ -166,7 +166,7 @@ public class LogIn extends AppCompatActivity {
                      startActivity(new Intent(getApplicationContext(), Events.class));
                      finish();
                  } else if (Objects.equals(documentSnapshot.getString("UserType"), "2")) {
-                     startActivity(new Intent(getApplicationContext(), InitiativeFounderProfile.class));
+                     startActivity(new Intent(getApplicationContext(), FounderMainActivity.class));
                      finish();
                  } else if (Objects.equals(documentSnapshot.getString("UserType"), "3")) {
                      startActivity(new Intent(getApplicationContext(),AdministratorMainActivity.class));
