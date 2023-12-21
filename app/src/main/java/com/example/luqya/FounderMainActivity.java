@@ -40,7 +40,7 @@ public class FounderMainActivity extends AppCompatActivity {
             Add_Event.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(MainActivity.this,AddEvent.class);
+                    Intent intent = new Intent(FounderMainActivity.this,AddEvent.class);
                     startActivity(intent);
                 }
             });
@@ -48,7 +48,7 @@ public class FounderMainActivity extends AppCompatActivity {
             Initiative_Profile.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent1 = new Intent(MainActivity.this,InitiativeProfile.class);
+                    Intent intent1 = new Intent(FounderMainActivity.this,InitiativeProfile.class);
                     startActivity(intent1);
                 }
             });

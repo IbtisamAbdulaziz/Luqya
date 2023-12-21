@@ -10,22 +10,31 @@
         android:id="@+id/imageView"
         android:layout_width="238dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="67dp"
         android:layout_marginTop="16dp"
         android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
         tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="354dp"
         android:layout_height="56dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="26dp"
         android:layout_marginTop="31dp"
+        android:layout_marginEnd="60dp"
         android:layout_weight="1"
-        android:text="Initiative Name"
         android:gravity="center"
+        android:text="Initiative Name"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,45 +46,68 @@
         android:id="@+id/button"
         android:layout_width="325dp"
         android:layout_height="69dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="46dp"
         android:text="View Initiative's Profile"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="273dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="276dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="142dp"
         android:layout_height="68dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="342dp"
         android:text="Add Event"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="361dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="361dp" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="132dp"
         android:layout_height="68dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="39dp"
         android:text="My Events"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="361dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="361dp" />
 
     <Button
         android:id="@+id/button4"
         android:layout_width="156dp"
         android:layout_height="62dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="420dp"
         android:text="Edit Profile"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="445dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="445dp" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="158dp"
         android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="229dp"
+        android:layout_marginTop="418dp"
         android:text="Statistics"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="445dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="445dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
