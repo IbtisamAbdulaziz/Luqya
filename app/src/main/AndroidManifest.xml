@@ -19,7 +19,7 @@
             android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".Login_administrator"
+            android:name=".AdministratorMainActivity"
             android:exported="false" />
         <activity
             android:name=".AddEvent"

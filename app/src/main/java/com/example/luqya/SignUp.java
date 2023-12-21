@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
 public class SignUp extends AppCompatActivity {
 
     private EditText editTextFullName, editTextDateOfBirth, editTextEmail,
-            editTextPhone, editTextUsername, editTextPassword, editTextPassword2;
+            editTextPhone, editTextPassword, editTextPassword2;
 
     private RadioGroup userTypeRadioGroup;
     private RadioButton userType;
@@ -62,7 +62,6 @@ public class SignUp extends AppCompatActivity {
         editTextDateOfBirth = findViewById(R.id.edittext_age);
         editTextEmail = findViewById(R.id.edittext_email);
         editTextPhone  = findViewById(R.id.editText_phone);
-        editTextUsername = findViewById(R.id.edittext_username);
         editTextPassword  = findViewById(R.id.editText_password);
         editTextPassword2  = findViewById(R.id.editText_passowrd2);
 
@@ -95,6 +94,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 int selectedUserTypeId = userTypeRadioGroup.getCheckedRadioButtonId();
                 userType = findViewById(selectedUserTypeId);
 
@@ -102,7 +102,6 @@ public class SignUp extends AppCompatActivity {
                 String textDoB = editTextDateOfBirth.getText().toString();
                 String textEmail = editTextEmail.getText().toString();
                 String textPhone = editTextPhone.getText().toString();
-                String textUserName = editTextUsername.getText().toString();
                 String textPassowrd = editTextPassword.getText().toString();
                 String textPassword2 = editTextPassword2.getText().toString();
                 String textUserType;
@@ -131,11 +130,6 @@ public class SignUp extends AppCompatActivity {
                     Toast.makeText(SignUp.this, "Please select a user type", Toast.LENGTH_LONG).show();
                     userType.setError("User type is required");
                     userType.requestFocus();
-
-                } else if (TextUtils.isEmpty(textUserName)) {
-                    Toast.makeText(SignUp.this, "Please enter a username", Toast.LENGTH_LONG).show();
-                    editTextUsername.setError("Username is required");
-                    editTextUsername.requestFocus();
 
                 } else if (TextUtils.isEmpty(textPhone)) {
                     Toast.makeText(SignUp.this, "Please enter your phone number", Toast.LENGTH_LONG).show();
@@ -177,7 +171,7 @@ public class SignUp extends AppCompatActivity {
                 } else {
 
                     textUserType = userType.getText().toString();
-                    registerUser(textFullName, textDoB, textEmail, textPhone, textUserName, textPassowrd, textUserType);
+                    registerUser(textFullName, textDoB, textEmail, textPhone, textPassowrd, textUserType);
                     progressBar.setVisibility(View.VISIBLE);
                 }
             }
@@ -195,7 +189,7 @@ public class SignUp extends AppCompatActivity {
 
 
 
-    private void registerUser(String textFullName, String textDoB, String textEmail, String textPhone, String textUserName, String textPassowrd, String textUserType) {
+    private void registerUser(String textFullName, String textDoB, String textEmail, String textPhone, String textPassowrd, String textUserType) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         auth.createUserWithEmailAndPassword(textEmail, textPassowrd).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
@@ -207,7 +201,7 @@ public class SignUp extends AppCompatActivity {
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDoB, textUserName, textUserType, textPhone);
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textDoB, textUserType, textPhone);
 
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
 
@@ -224,16 +218,19 @@ public class SignUp extends AppCompatActivity {
                                 userInfo.put("FullName",textFullName);
                                 userInfo.put("UserEmail", textEmail);
                                 userInfo.put("PhoneNumber", textPhone);
+                                userInfo.put("DateOfBirth", textDoB);
 
-                                userInfo.put("isUser","1");
+                                if(textUserType.equals("Events Seeker")){
+                                    userInfo.put("UserType","1");
+
+                                } else {
+                                    userInfo.put("UserType","2"); }
 
                                 df.set(userInfo);
-
                                 progressBar.setVisibility(View.GONE);
 
                                 Intent intent = new Intent(SignUp.this,LogIn.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-
                                 startActivity(intent);
                                 finish();
 
@@ -252,15 +249,19 @@ public class SignUp extends AppCompatActivity {
                         editTextPassword.setError("Your password is too weak. Kindly use a mix of alphabets, numbers " +
                                 "and special characters");
                         editTextPassword.requestFocus();
+                        progressBar.setVisibility(View.INVISIBLE);
                     } catch (FirebaseAuthInvalidCredentialsException e){
                         editTextEmail.setError("Your email is invalid or already in use. Kindly re-enter.");
                         editTextEmail.requestFocus();
+                        progressBar.setVisibility(View.INVISIBLE);
                     } catch (FirebaseAuthUserCollisionException e){
                         editTextEmail.setError("User is already registered with this email. use another email.");
                         editTextEmail.requestFocus();
+                        progressBar.setVisibility(View.INVISIBLE);
                     } catch (Exception e){
                         Log.e(TAG,e.getMessage());
                         Toast.makeText(SignUp.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.INVISIBLE);
                     }
                 }
             }

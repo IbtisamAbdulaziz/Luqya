@@ -21,12 +21,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Objects;
 
 public class LogIn extends AppCompatActivity {
 
@@ -34,6 +40,7 @@ public class LogIn extends AppCompatActivity {
     private ProgressBar progressBar;
 
     private FirebaseAuth authProfile;
+    private FirebaseFirestore fStore;
     private TextView textview_signup;
     private static final String TAG = "LogIn";
 
@@ -41,7 +48,6 @@ public class LogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-
 
 
         getSupportActionBar().setTitle("Login");
@@ -66,6 +72,7 @@ public class LogIn extends AppCompatActivity {
         });
 
         authProfile = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
 
         Button btnLogin = findViewById(R.id.button_login);
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -114,9 +121,10 @@ public class LogIn extends AppCompatActivity {
                 if(task.isSuccessful()){
 
                     FirebaseUser firebaseUser = authProfile.getCurrentUser();
-
+                    assert firebaseUser != null;
                     if(firebaseUser.isEmailVerified()){
                         Toast.makeText(LogIn.this, "You are logged in now", Toast.LENGTH_SHORT).show();
+                        checkUserType(firebaseUser.getUid());
                     } else {
                         firebaseUser.sendEmailVerification();
                         authProfile.signOut();
@@ -125,10 +133,9 @@ public class LogIn extends AppCompatActivity {
                 } else {
 
 
-
                     try{
 
-                        throw task.getException();
+                        throw Objects.requireNonNull(task.getException());
 
                     } catch (FirebaseAuthInvalidUserException e){
                         editTextLoginEmail.setError("User does not exist or is no longer valid. Please register again.");
@@ -143,6 +150,28 @@ public class LogIn extends AppCompatActivity {
                 }
 
                 progressBar.setVisibility(View.GONE);
+
+            }
+        });
+    }
+
+    private void checkUserType(String uid) {
+        DocumentReference df  = fStore.collection("Users").document(uid);
+        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Log.d(TAG, "onSuccess: "+ documentSnapshot.getData());
+
+                 if (Objects.equals(documentSnapshot.getString("UserType"), "1")){
+                     startActivity(new Intent(getApplicationContext(), Events.class));
+                     finish();
+                 } else if (Objects.equals(documentSnapshot.getString("UserType"), "2")) {
+                     startActivity(new Intent(getApplicationContext(), InitiativeFounderProfile.class));
+                     finish();
+                 } else if (Objects.equals(documentSnapshot.getString("UserType"), "3")) {
+                     startActivity(new Intent(getApplicationContext(),AdministratorMainActivity.class));
+                     finish();
+                 }
 
             }
         });
@@ -167,8 +196,9 @@ public class LogIn extends AppCompatActivity {
         alertDialog.show();
     }
 
+    /*
     @Override
-    protected void onStart() {
+   protected void onStart() {
         super.onStart();
         if(authProfile.getCurrentUser() != null){
             Toast.makeText(this, "Already Logged In!", Toast.LENGTH_SHORT).show();
@@ -180,5 +210,5 @@ public class LogIn extends AppCompatActivity {
         else {
             Toast.makeText(this, "You can login now!", Toast.LENGTH_SHORT).show();
         }
-    }
+    } */
 }
