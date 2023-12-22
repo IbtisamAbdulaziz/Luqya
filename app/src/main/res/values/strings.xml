@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">Luqya</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="forgotpass">Forgot Password?</string>
+    <string name="recovery_instr">Please provide your email address to recover your account.</string>
+    <string name="email">Email</string>
+    <string name="cntn">Continue</string>
+    <string name="forgotpass_ill">Forgot Password, thinking&#8230;</string>
+
 </resources>
