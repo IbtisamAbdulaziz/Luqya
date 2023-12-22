@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_end="474dp" />
+        app:layout_constraintGuide_percent=".35" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton4"
@@ -34,7 +34,7 @@
         android:layout_width="361dp"
         android:layout_height="88dp"
         android:includeFontPadding="true"
-        android:text="Edit Founder Account"
+        android:text="Create Founder Account"
         android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.337"
@@ -254,8 +254,8 @@
                         android:background="@drawable/button_background"
                         android:elevation="3dp"
                         android:padding="13dp"
-                        android:text="Save Edit"
-                        android:textColor="@color/black"
+                        android:text="Save"
+                        android:textColor="@color/white"
                         app:layout_constrainWidth=".8"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
