@@ -21,11 +21,10 @@ public class MainInterface extends AppCompatActivity {
 
         getSupportActionBar().setTitle("لُقيا");
 
-        Button System_Administrator = findViewById(R.id.System_Administrator);
-        Button Cultural_Initiative_Founder = findViewById(R.id.Cultural_Initiative_Founder);
-        Button Cultural_Event_Seeker = findViewById(R.id.Cultural_Event_Seeker);
+        Button loginButton = findViewById(R.id.btn_login);
+        Button signUpButton = findViewById(R.id.btn_sign_up);
 
-        System_Administrator.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -34,26 +33,18 @@ public class MainInterface extends AppCompatActivity {
             }
         });
 
-        Cultural_Initiative_Founder.setOnClickListener(new View.OnClickListener() {
+        signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent Initiative_Founder = new Intent(MainInterface.this, LogIn.class);
+                Intent Initiative_Founder = new Intent(MainInterface.this, SignUp.class);
                 startActivity(Initiative_Founder);
 
             }
         });
-        Cultural_Event_Seeker.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent Event_Seeker =new Intent(MainInterface.this, LogIn.class);
-                startActivity(Event_Seeker);
-            }
-        });
-
 
         //check the cookies if he has login before
+
         settings = getSharedPreferences("ID", 0);
         Boolean check = settings.getBoolean("check", false);
 

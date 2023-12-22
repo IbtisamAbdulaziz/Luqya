@@ -15,85 +15,73 @@
         android:gravity="center">
 
         <ImageView
+            android:layout_marginTop="50dp"
             android:layout_width="276dp"
             android:layout_height="227dp"
-            android:background="@drawable/logo"/>
+            android:background="@drawable/logo"
+            android:layout_marginBottom="5dp"/>
 
     </LinearLayout>
+
     <LinearLayout
+
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <Button
-            android:id="@+id/System_Administrator"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="8dp"
-            android:background="#A87934"
-            android:text="System Administrator"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/Cultural_Initiative_Founder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:background="@color/button_background"
-            android:text="Cultural Initiative Founder"
-            android:textColor="@color/black"
-            android:textSize="10sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/Cultural_Event_Seeker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:background="@color/button_background"
-            android:gravity="center_vertical"
-            android:text="Cultural Event Seeker"
+            android:layout_marginLeft="20dp"
+            android:background="@color/teal_700"
+            android:text="Log In"
             android:textColor="@color/black"
             android:textSize="10sp"
-            android:textStyle="bold" />
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:autoSizeTextType="uniform"/>
+
+
+        <Button
+            android:id="@+id/btn_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/button_background"
+            android:text="Sign Up"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:autoSizeTextType="uniform" />
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_marginTop="150dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:text="Continue"
-            android:textSize="15sp"
-            android:textColor="@color/black"/>
+            android:textSize="17sp"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/textview_guest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dip"
             android:text=" as guest"
             android:textColor="@color/button_text"
-            android:textSize="15sp"
+            android:textSize="17sp"
             android:textStyle="bold"/>
 
     </LinearLayout>
