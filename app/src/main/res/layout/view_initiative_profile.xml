@@ -6,30 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".View_InitiativeFounderProfile">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
 
-<ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="152dp"
-        android:layout_height="102dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="301dp"
-        tools:layout_editor_absoluteY="32dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="184dp"
-        android:layout_height="102dp"
-        android:text="Initiative's name"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="41dp" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:text=" LUQYA "
+                android:textColor="@color/button_text"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="نلتقي لنرتقي"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="258dp"
+                android:layout_height="62dp"
+                android:layout_marginStart="76dp"
+                android:background="@color/app_background"
+                android:text="Initiative's Name"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="103dp" />
+
+            <TextView
         android:id="@+id/textView5"
         android:layout_width="359dp"
         android:layout_height="96dp"
@@ -37,30 +63,67 @@
         android:text="Initiative's description box..."
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="160dp" />
+        tools:layout_editor_absoluteY="185dp" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="172dp"
-        android:layout_height="71dp"
-        android:text="Upcoming Events"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="36dp"
-        tools:layout_editor_absoluteY="272dp" />
-
-    <SearchView
-        android:id="@+id/SearchView"
-        android:layout_width="234dp"
-        android:layout_height="49dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.855"
+        <EditText
+        android:id="@+id/editTextText"
+        android:layout_width="381dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="12dp"
+        android:background="@drawable/search_background"
+        android:drawableStart="@drawable/search"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:hint="Search for event"
+        android:inputType="text"
+        android:paddingStart="20dp"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="272dp"
+        tools:layout_editor_absoluteY="301dp"
+        tools:textSize="14sp"
         tools:ignore="MissingConstraints" />
 
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout5"
+                tools:layout_editor_absoluteX="-82dp"
+                tools:layout_editor_absoluteY="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="186dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:text=" Events"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="367dp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:minHeight="250dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
