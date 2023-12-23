@@ -4,85 +4,107 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_background"
     tools:context=".FounderMainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="238dp"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="67dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text=" LUQYA "
+        android:textColor="@color/button_text"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="354dp"
-        android:layout_height="56dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="60dp"
-        android:layout_weight="1"
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="نلتقي لنرتقي"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+    <TextView
+        android:id="@+id/textView55"
+        android:layout_width="339dp"
+        android:layout_height="66dp"
         android:gravity="center"
-        android:text="Initiative Name"
+        android:text="Initiative's Name"
+        android:textColor="@color/button_text"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="103dp" />
+
+    <TextView
+        android:id="@+id/buttonAsk"
+        android:layout_width="412dp"
+        android:layout_height="83dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="Welcome, explore the options available in your own interface and discover more features tailored to you."
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="175dp" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="325dp"
-        android:layout_height="69dp"
+        android:layout_width="193dp"
+        android:layout_height="70dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="46dp"
         android:text="View Initiative's Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.366"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="276dp" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.431"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="142dp"
-        android:layout_height="68dp"
+        android:layout_width="156dp"
+        android:layout_height="62dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerVertical="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="342dp"
+        android:layout_marginStart="16dp"
         android:text="Add Event"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="28dp"
-        tools:layout_editor_absoluteY="361dp" />
+        tools:layout_editor_absoluteY="377dp" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="132dp"
-        android:layout_height="68dp"
+        android:layout_width="156dp"
+        android:layout_height="62dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="39dp"
+        android:layout_marginEnd="36dp"
         android:text="My Events"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="234dp"
-        tools:layout_editor_absoluteY="361dp" />
+        tools:layout_editor_absoluteY="377dp" />
 
     <Button
         android:id="@+id/button4"
@@ -91,23 +113,21 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="420dp"
+        android:layout_marginStart="16dp"
         android:text="Edit Profile"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="21dp"
-        tools:layout_editor_absoluteY="445dp" />
+        tools:layout_editor_absoluteY="469dp" />
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="158dp"
-        android:layout_height="64dp"
+        android:layout_width="156dp"
+        android:layout_height="62dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="229dp"
-        android:layout_marginTop="418dp"
+        android:layout_marginEnd="36dp"
         android:text="Statistics"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="445dp" />
+        tools:layout_editor_absoluteY="469dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

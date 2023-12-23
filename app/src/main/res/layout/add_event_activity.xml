@@ -4,8 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B3EBD2B2"
     tools:context=".AddEvent">
-    >
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imageView"
+        android:layout_width="168dp"
+        android:layout_height="177dp"
+        android:layout_marginTop="44dp"
+        android:padding="5dp"
+        android:background="#FF018786"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circular"
+        app:srcCompat="@drawable/person"
+        app:strokeColor="@color/white"
+        app:strokeWidth="5dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="53dp"
+        android:layout_height="67dp"
+        android:backgroundTint="@color/app_background"
+        android:clickable="true"
+        android:contentDescription="TODO"
+        android:focusable="true"
+        android:tint="@color/white"
+        app:srcCompat="@drawable/photo_camera"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="346dp"
+        tools:layout_editor_absoluteY="182dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -22,32 +52,20 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="111dp" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="201dp"
         android:layout_height="74dp"
         android:text="Attached picture of the event:"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         tools:ignore="MissingConstraints"
         android:textSize="20dp"
-        android:textStyle="bold"
         tools:layout_editor_absoluteX="27dp"
         tools:layout_editor_absoluteY="118dp" />
 
-
-    <ImageView
-        android:id="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="161dp"
-        android:layout_height="170dp"
-        android:layout_centerInParent="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/galaryimage"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="243dp"
-        tools:layout_editor_absoluteY="55dp" />
 
     <EditText
         android:id="@+id/editTextTextPersonName4"
@@ -56,7 +74,7 @@
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="  "
+        android:text="   "
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="256dp"
         tools:ignore="MissingConstraints" />
@@ -165,6 +183,8 @@
         android:gravity="center"
         android:textSize="16dp"
         android:text="Name of the event"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="258dp" />
@@ -176,6 +196,8 @@
         android:layout_marginStart="16dp"
         android:gravity="center"
         android:text="Overview of event"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
@@ -188,6 +210,8 @@
         android:layout_marginStart="16dp"
         android:gravity="center"
         android:text="Date of event"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
@@ -200,6 +224,8 @@
         android:layout_marginStart="16dp"
         android:gravity="center"
         android:text="Duration of event"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
@@ -212,6 +238,8 @@
         android:layout_marginStart="16dp"
         android:gravity="center"
         android:text="Language"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
@@ -224,6 +252,8 @@
         android:layout_marginStart="24dp"
         android:gravity="center"
         android:text="Location"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
@@ -236,6 +266,8 @@
         android:layout_marginStart="24dp"
         android:gravity="center"
         android:text="Gender:"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
@@ -248,6 +280,8 @@
         android:layout_marginStart="228dp"
         android:gravity="center"
         android:text="Age:"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
@@ -255,23 +289,14 @@
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="submit"
+        android:layout_width="349dp"
+        android:layout_height="48dp"
         android:gravity="center"
+        android:text="submit"
+        android:background="#A87934"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="634dp"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="634dp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:srcCompat="@drawable/baseline_photo_camera_24" />
 </androidx.constraintlayout.widget.ConstraintLayout>
