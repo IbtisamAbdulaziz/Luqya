@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -200,12 +199,15 @@
             app:layout_anchorGravity="center">
 
             <LinearLayout
+
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:id="@+id/Home_Btn"
-                    android:layout_width="0dp"
+                    android:layout_width="67dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
                     android:orientation="vertical">
@@ -224,8 +226,9 @@
                         android:layout_height="wrap_content"
                         android:text="Home"
                         android:textAlignment="center"
-                        android:textColor="676767"
+                        android:textColor="#676767"
                         android:textSize="12sp" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -250,7 +253,7 @@
                         android:layout_height="wrap_content"
                         android:text="My Event"
                         android:textAlignment="center"
-                        android:textColor="676767"
+                        android:textColor="#676767"
                         android:textSize="12sp" />
                 </LinearLayout>
 
@@ -275,11 +278,12 @@
                         android:layout_height="wrap_content"
                         android:text="Profile"
                         android:textAlignment="center"
-                        android:textColor="676767"
+                        android:textColor="#676767"
                         android:textSize="12sp" />
                 </LinearLayout>
 
             </LinearLayout>
+
         </com.google.android.material.bottomappbar.BottomAppBar>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

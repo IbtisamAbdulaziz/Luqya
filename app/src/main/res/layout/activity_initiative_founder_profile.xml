@@ -84,7 +84,6 @@
                     android:hint="SEDRA"
                     android:padding="13dp"
                     android:singleLine="true"
-                    app:layout_constrainWidth=".8"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -107,7 +106,6 @@
                     android:padding="13dp"
                     android:password="true"
                     android:singleLine="true"
-                    app:layout_constrainWidth=".8"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -134,7 +132,6 @@
                     android:hint="aaaa@......"
                     android:padding="13dp"
                     android:singleLine="true"
-                    app:layout_constrainWidth=".8"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -160,7 +157,6 @@
                     android:padding="13dp"
                     android:password="true"
                     android:singleLine="true"
-                    app:layout_constrainWidth=".8"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -186,7 +182,6 @@
                     android:padding="13dp"
                     android:phoneNumber="true"
                     android:singleLine="true"
-                    app:layout_constrainWidth=".8"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -212,7 +207,6 @@
                     android:padding="13dp"
                     android:phoneNumber="true"
                     android:singleLine="true"
-                    app:layout_constrainWidth=".8"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -238,7 +232,6 @@
                         android:padding="13dp"
                         android:text="Cansel"
                         android:textColor="@color/black"
-                        app:layout_constrainWidth=".8"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
@@ -256,7 +249,6 @@
                         android:padding="13dp"
                         android:text="Save"
                         android:textColor="@color/white"
-                        app:layout_constrainWidth=".8"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
