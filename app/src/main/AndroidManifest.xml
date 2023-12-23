@@ -13,11 +13,16 @@
         android:theme="@style/Theme.Luqya"
         tools:targetApi="31">
         <activity
+            android:name=".SignUpType"
+            android:exported="false" />
+        <activity
             android:name=".AttendingListAndPoint"
             android:exported="false" />
         <activity
             android:name=".View_InitiativeFounderProfile"
             android:exported="false" />
+        <activity android:name=".Initiative_Founder_Profile"
+            android:exported="false"/>
         <activity
             android:name=".SignUp"
             android:exported="false" />
@@ -33,7 +38,8 @@
         <activity
             android:name=".LogIn"
             android:exported="false" />
-        <activity android:name=".FounderMainActivity"
+        <activity
+            android:name=".FounderMainActivity"
             android:exported="false" />
         <activity
             android:name=".MainInterface"
@@ -47,7 +53,6 @@
         <activity
             android:name=".Events"
             android:exported="false" />
-
     </application>
 
 </manifest>

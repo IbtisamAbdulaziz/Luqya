@@ -37,7 +37,7 @@ public class MainInterface extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent Initiative_Founder = new Intent(MainInterface.this, SignUp.class);
+                Intent Initiative_Founder = new Intent(MainInterface.this, SignUpType.class);
                 startActivity(Initiative_Founder);
 
             }
