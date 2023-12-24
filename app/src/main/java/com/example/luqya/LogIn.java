@@ -122,13 +122,16 @@ public class LogIn extends AppCompatActivity {
 
                     FirebaseUser firebaseUser = authProfile.getCurrentUser();
                     assert firebaseUser != null;
+
                     if(firebaseUser.isEmailVerified()){
                         Toast.makeText(LogIn.this, "You are logged in now", Toast.LENGTH_SHORT).show();
                         checkUserType(firebaseUser.getUid());
+
                     } else {
-                        firebaseUser.sendEmailVerification();
+
                         authProfile.signOut();
                         showAlertDialog();
+                        firebaseUser.sendEmailVerification();
                     }
                 } else {
 
@@ -168,7 +171,7 @@ public class LogIn extends AppCompatActivity {
                  } else if (Objects.equals(documentSnapshot.getString("UserType"), "2")) {
                      startActivity(new Intent(getApplicationContext(),FounderMainActivity.class));
                      finish();
-                 } else if (Objects.equals(documentSnapshot.getString("UserType"), "3")) {
+                 } else {
                      startActivity(new Intent(getApplicationContext(),AdministratorMainActivity.class));
                      finish();
                  }

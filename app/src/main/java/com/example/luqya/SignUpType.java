@@ -22,7 +22,7 @@ public class SignUpType extends AppCompatActivity {
         initiativeFounderSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SignUpType.this, Initiative_Founder_Profile.class);
+                Intent i = new Intent(SignUpType.this, InitiativeFounderSignUp.class);
                 startActivity(i);
             }
         });
@@ -30,7 +30,7 @@ public class SignUpType extends AppCompatActivity {
         eventsSeekerSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SignUpType.this, SignUp.class);
+                Intent i = new Intent(SignUpType.this, EventsSeekerSignUp.class);
                 startActivity(i);
             }
         });

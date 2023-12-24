@@ -21,10 +21,10 @@
         <activity
             android:name=".View_InitiativeFounderProfile"
             android:exported="false" />
-        <activity android:name=".Initiative_Founder_Profile"
+        <activity android:name=".InitiativeFounderSignUp"
             android:exported="false"/>
         <activity
-            android:name=".SignUp"
+            android:name=".EventsSeekerSignUp"
             android:exported="false" />
         <activity
             android:name=".AdministratorMainActivity"

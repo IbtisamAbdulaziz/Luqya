@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/button_background"
-    tools:context=".SignUp">
+    tools:context=".EventsSeekerSignUp">
 
 
 
@@ -14,56 +14,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
-
-    <TextView
-        android:id="@+id/link_to_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:text="Sign up Now"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/button_background"
-        android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circular"
-        app:srcCompat="@drawable/person"
-        app:strokeColor="@color/white"
-        app:strokeWidth="5dp" />
+        app:layout_constraintGuide_percent="0.32" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="53dp"
-        android:layout_height="67dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/app_background"
+        android:id="@+id/floatingActionButton4"
+        android:layout_width="57dp"
+        android:layout_height="55dp"
         android:clickable="true"
-        android:contentDescription="TODO"
-        android:focusable="true"
-        android:tint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:srcCompat="@drawable/photo_camera" />
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/arrow_back"
+        app:backgroundTint="#F1EAEA"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        tools:ignore="ContentDescription,UnknownIdInLayout" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="361dp"
+        android:layout_height="88dp"
+        android:includeFontPadding="true"
+        android:text="Create Events Seeker Account"
+        android:textSize="35dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.337"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="100dp" />
+
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:backgroundTint="@color/app_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,10 +73,12 @@
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
+                        android:layout_marginTop="20dp"
                         android:text="Full Name*"
                         android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:paddingLeft="5dp"/>
 
                     <EditText
                         android:id="@+id/edittext_name"
@@ -106,7 +95,9 @@
                         android:layout_height="wrap_content"
                         android:text="Date of Birth(dd/mm/yyyy)"
                         android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:paddingLeft="5dp"/>
 
                     <EditText
                         android:id="@+id/edittext_age"
@@ -119,40 +110,6 @@
                         android:focusable="false"
                         android:singleLine="true" />
 
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:text="User Type*"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <RadioGroup
-                        android:id="@+id/radio_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="20dp"
-                        android:orientation="horizontal">
-
-                        <RadioButton
-                            android:id="@+id/radio_events_seeker"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="20dp"
-                            android:text="Events Seeker">
-
-                        </RadioButton>
-
-                        <RadioButton
-                            android:id="@+id/radio_initiative_founder"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Initiative Founder">
-
-                        </RadioButton>
-
-                    </RadioGroup>
-
                     <!--  Email Label -->
                     <TextView
                         android:layout_width="fill_parent"
@@ -160,14 +117,16 @@
                         android:drawableLeft="@drawable/email"
                         android:text="  Email*"
                         android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:paddingLeft="5dp"/>
 
                     <EditText
                         android:id="@+id/edittext_email"
                         android:layout_width="fill_parent"
                         android:layout_height="60dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="10dp"
                         android:hint="email@domain.com"
                         android:inputType="textEmailAddress"
                         android:singleLine="true" />
@@ -180,7 +139,9 @@
                         android:drawableLeft="@drawable/baseline_phone_24"
                         android:text="Phone*"
                         android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:paddingLeft="5dp"/>
 
                     <EditText
                         android:id="@+id/editText_phone"
@@ -189,7 +150,8 @@
                         android:layout_marginTop="5dp"
                         android:hint="+9665012345678"
                         android:phoneNumber="true"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:layout_marginBottom="15dp"/>
 
                     <!--  Password Label -->
                     <TextView
@@ -198,7 +160,9 @@
                         android:drawableLeft="@drawable/lock"
                         android:text="Password*"
                         android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:paddingLeft="5dp"/>
 
                     <EditText
                         android:id="@+id/editText_password"
@@ -208,7 +172,8 @@
                         android:hint="Enter your password"
                         android:inputType="textPassword"
                         android:password="true"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:layout_marginBottom="15sp"/>
 
                     <!--  Location Label -->
                     <TextView
@@ -217,7 +182,9 @@
                         android:drawableLeft="@drawable/lock"
                         android:text="Confirm Password*"
                         android:textColor="@color/black"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:paddingLeft="5dp"/>
 
                     <EditText
                         android:id="@+id/editText_passowrd2"

@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/half_background"
-    tools:context=".Initiative_Founder_Profile">
+    tools:context=".InitiativeFounderSignUp">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".35" />
+        app:layout_constraintGuide_percent=".32" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton4"
@@ -27,6 +27,7 @@
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
         tools:ignore="ContentDescription,UnknownIdInLayout" />
 
     <TextView
@@ -34,13 +35,13 @@
         android:layout_width="361dp"
         android:layout_height="88dp"
         android:includeFontPadding="true"
-        android:text="Create Founder Account"
+        android:text="Create Initiative Founder Account"
         android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.337"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="132dp" />
+        tools:layout_editor_absoluteY="100dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -52,7 +53,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline2"
         tools:ignore="UnknownIdInLayout">
 
-        <ScrollView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -67,8 +72,9 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="15sp"
                     android:layout_marginTop="10dp"
-                    android:text=" Initiative Name"
+                    android:text=" Initiative Name*"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -91,7 +97,8 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text=" Initiative Founder"
+                    android:text=" Initiative Founder*"
+                    android:textSize="15sp"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
@@ -104,7 +111,6 @@
                     android:elevation="3dp"
                     android:hint="SEDRA"
                     android:padding="13dp"
-                    android:password="true"
                     android:singleLine="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -117,9 +123,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:drawableLeft="@drawable/email"
-                    android:text=" Email or Username"
+                    android:text="Initiative Email*"
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
 
                 <EditText
                     android:id="@+id/edittext_email_login"
@@ -134,17 +141,19 @@
                     android:singleLine="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:inputType="textEmailAddress"/>
 
                 <!--  Password Label -->
                 <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:contentDescription="Input password"
-                    android:drawableLeft="@drawable/lock"
-                    android:text=" Password"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:contentDescription="Input password"
+                android:drawableLeft="@drawable/lock"
+                android:text=" Password*"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edittext_password_login"
@@ -155,17 +164,45 @@
                     android:elevation="3dp"
                     android:hint="123456Aa"
                     android:padding="13dp"
-                    android:password="true"
+                    android:inputType="textPassword"
                     android:singleLine="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:contentDescription="Input password"
+                    android:drawableLeft="@drawable/lock"
+                    android:text=" Password Confirmation*"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginTop="15dp"/>
+
+                <EditText
+                    android:id="@+id/edittext_password_confirmation"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/editext_background"
+                    android:elevation="3dp"
+                    android:hint="Re-Enter your password"
+                    android:padding="13dp"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
                 <!--  Phone Label -->
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:textSize="15sp"
+                    android:layout_marginTop="15dp"
                     android:drawableLeft="@drawable/baseline_phone_24"
                     android:text="Phone*"
                     android:textColor="@color/black"
@@ -180,7 +217,8 @@
                     android:elevation="3dp"
                     android:hint="+9665012345678"
                     android:padding="13dp"
-                    android:phoneNumber="true"
+                    android:inputType="phone"
+                    android:textSize="15sp"
                     android:singleLine="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -192,9 +230,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:drawableLeft="@drawable/add_location"
-                    android:text="Phone*"
+                    android:text="Initiative Location*"
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
 
                 <EditText
                     android:id="@+id/editText_location"
@@ -205,7 +244,7 @@
                     android:elevation="3dp"
                     android:hint="Riyadh"
                     android:padding="13dp"
-                    android:phoneNumber="true"
+                    android:inputType="text"
                     android:singleLine="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -238,7 +277,7 @@
 
                     <!-- Save button -->
                     <Button
-                        android:id="@+id/button_save"
+                        android:id="@+id/button_sign_up"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -247,16 +286,25 @@
                         android:background="@drawable/button_background"
                         android:elevation="3dp"
                         android:padding="13dp"
-                        android:text="Save"
+                        android:text="Sign Up"
                         android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
+                    </LinearLayout>
+
                 </LinearLayout>
 
-            </LinearLayout>
-
-        </ScrollView>
+            </ScrollView>
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:elevation="10dp"
+                android:visibility="gone"/>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
