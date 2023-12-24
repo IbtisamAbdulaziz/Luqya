@@ -17,7 +17,7 @@ public class InitiativeProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_initiative_profile);
 
-        searchView = findViewById(R.id.SearchView);
+        /*searchView = findViewById(R.id.SearchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -30,7 +30,7 @@ public class InitiativeProfile extends AppCompatActivity {
                 // يمكنك تنفيذ البحث أثناء كتابة النص هنا، إذا رغبت
                 return false;
             }
-        });
+        }); */
     }
 
     private void performSearch(String query) {
