@@ -200,10 +200,36 @@ public class LogIn extends AppCompatActivity {
     }
 
     /*
+
+    هذا عشان ما يضطر المستخدم يسجل دخول في كل مرة يفتح التطبيق
+    بس خلوه كومينت لين نكتب كود تسجيل الخروج
+
     @Override
    protected void onStart() {
         super.onStart();
         if(authProfile.getCurrentUser() != null){
+
+            DocumentReference df = FirebaseFirestore.getInstance().collection("Users")
+                    .document(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+
+            df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                    if (Objects.equals(documentSnapshot.getString("UserType"), "1")){
+                        startActivity(new Intent(getApplicationContext(), Events.class));
+                        finish();
+                    } else if (Objects.equals(documentSnapshot.getString("UserType"), "2")) {
+                        startActivity(new Intent(getApplicationContext(),FounderMainActivity.class));
+                        finish();
+                    } else {
+                        startActivity(new Intent(getApplicationContext(),AdministratorMainActivity.class));
+                        finish();
+                    }
+                }
+            });
+
+
             Toast.makeText(this, "Already Logged In!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(LogIn.this, Events.class);
             startActivity(intent);
