@@ -85,44 +85,44 @@ public class AddEvent extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(textEventName)) {
                     Toast.makeText(AddEvent.this, "Please enter event name", Toast.LENGTH_LONG).show();
-                    name.setError("Initiative Name is required");
+                    name.setError("Event Name is required");
                     name.requestFocus();
 
                 } else if (TextUtils.isEmpty(textOverview)) {
-                    Toast.makeText(AddEvent.this, "Please enter initiative founder name", Toast.LENGTH_LONG).show();
-                    overview.setError("Initiative Founder Name is required");
+                    Toast.makeText(AddEvent.this, "Please enter event overview", Toast.LENGTH_LONG).show();
+                    overview.setError("Event Overview is required");
                     overview.requestFocus();
 
                 } else if (TextUtils.isEmpty(textDate)) {
-                    Toast.makeText(AddEvent.this, "Please enter initiative email", Toast.LENGTH_LONG).show();
-                    date.setError("Initiative Email address is required");
+                    Toast.makeText(AddEvent.this, "Please enter event date", Toast.LENGTH_LONG).show();
+                    date.setError("Event Date is required");
                     date.requestFocus();
 
                 } else if (TextUtils.isEmpty(textGender)) {
-                    Toast.makeText(AddEvent.this, "Please enter your phone number", Toast.LENGTH_LONG).show();
-                    gender.setError("Phone number is required");
+                    Toast.makeText(AddEvent.this, "Please enter the gender", Toast.LENGTH_LONG).show();
+                    gender.setError("Gender is required");
                     gender.requestFocus();
 
 
                 } else if (TextUtils.isEmpty(textDuration)) {
-                    Toast.makeText(AddEvent.this, "Please enter initiative location", Toast.LENGTH_LONG).show();
-                    Duration.setError("Initiative location is required");
+                    Toast.makeText(AddEvent.this, "Please enter event duration", Toast.LENGTH_LONG).show();
+                    Duration.setError("Event Duration is required");
                     Duration.requestFocus();
 
 
                 } else if (TextUtils.isEmpty(textLanguage)) {
-                    Toast.makeText(AddEvent.this, "Please enter a password", Toast.LENGTH_LONG).show();
-                    Language.setError("Password is required");
+                    Toast.makeText(AddEvent.this, "Please enter The language", Toast.LENGTH_LONG).show();
+                    Language.setError("Language is required");
                     Language.requestFocus();
 
                 } else if (TextUtils.isEmpty(textAge)) {
-                    Toast.makeText(AddEvent.this, "Please confirm your password", Toast.LENGTH_LONG).show();
-                    age.setError("Password confirmation is required");
+                    Toast.makeText(AddEvent.this, "Please enter the age", Toast.LENGTH_LONG).show();
+                    age.setError("Age is required");
                     age.requestFocus();
 
                 } else if (TextUtils.isEmpty(textLocation)) {
-                    Toast.makeText(AddEvent.this, "Please confirm your password", Toast.LENGTH_LONG).show();
-                    location.setError("Password confirmation is required");
+                    Toast.makeText(AddEvent.this, "Please enter the location", Toast.LENGTH_LONG).show();
+                    location.setError("location is required");
                     location.requestFocus();
                 } else {
 
@@ -135,13 +135,6 @@ public class AddEvent extends AppCompatActivity {
 
 
 
-  /*  private void AddEvents(String textEventName, String textOverview, String textDate, String textGender, String textDuration, String textLanguage, String textAge, String textLocation) {
-
-
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
-
-    }*/
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
