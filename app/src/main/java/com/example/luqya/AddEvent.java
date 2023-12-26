@@ -25,11 +25,15 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.text.DateFormat;
 import java.util.Calendar;
@@ -38,7 +42,8 @@ import java.util.Objects;
 public class AddEvent extends AppCompatActivity {
 
     ImageView imageView;
-    FloatingActionButton floatingActionButton;
+
+   // FloatingActionButton floatingActionButton;
     EditText name, overview, date, gender, Duration, Language, age, location;
     Button submit;
 
@@ -121,7 +126,7 @@ public class AddEvent extends AppCompatActivity {
                     location.requestFocus();
                 } else {
 
-                    AddEvents(textEventName, textOverview, textDate, textGender, textDuration, textLanguage, textAge, textLocation);
+                    DataClass dataClass = new DataClass(textEventName, textOverview, textDate, textGender, textDuration, textLanguage, textAge,textLocation);
                 }
 
             }
@@ -170,6 +175,7 @@ public class AddEvent extends AppCompatActivity {
     }
 
     public void saveData(){
+
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images")
                 .child(uri.getLastPathSegment());
         AlertDialog.Builder builder = new AlertDialog.Builder(AddEvent.this);
