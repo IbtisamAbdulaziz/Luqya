@@ -219,7 +219,8 @@ public class AddEvent extends AppCompatActivity {
                             finish();
                         }
                     }
-                }).addOnFailureListener(new OnFailureListener() {
+                })
+                .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(AddEvent.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
