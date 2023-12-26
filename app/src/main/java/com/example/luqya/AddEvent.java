@@ -202,6 +202,7 @@ public class AddEvent extends AppCompatActivity {
         });
     }
     public void uploadData(){
+
         String textEventName = name.getText().toString();
         String textOverview = overview.getText().toString();
         String textDate = date.getText().toString();
