@@ -169,7 +169,7 @@ public class AddEvent extends AppCompatActivity {
 
     public void saveData(){
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Android Images")
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Event Images")
                 .child(uri.getLastPathSegment());
         AlertDialog.Builder builder = new AlertDialog.Builder(AddEvent.this);
         builder.setCancelable(false);
@@ -206,10 +206,10 @@ public class AddEvent extends AppCompatActivity {
         String textLocation = location.getText().toString();
 
         DataClass dataClass = new DataClass(textEventName, textOverview, textDate, textGender, textDuration, textLanguage, textAge,textLocation);
-        //We are changing the child from title to currentDate,
-        // because we will be updating title as well and it may affect child value.
+        //We are changing the child from textEventName to currentDate,
+        // because we will be updating textEventName as well and it may affect child value.
         String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-        FirebaseDatabase.getInstance().getReference("Android Tutorials").child(currentDate)
+        FirebaseDatabase.getInstance().getReference("Add Event").child(currentDate)
 
                 .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
