@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,113 +8,129 @@
     android:background="#B3EBD2B2"
     tools:context=".AddEvent">
 
-        <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="168dp"
-        android:layout_height="177dp"
-        android:layout_marginTop="44dp"
-        android:padding="5dp"
-        android:background="#FF018786"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/circular"
-        app:srcCompat="@drawable/person"
-        app:strokeColor="@color/white"
-        app:strokeWidth="5dp" />
+ <ImageView
+     android:id="@+id/imageView"
+     android:layout_width="168dp"
+     android:layout_height="177dp"
+     android:layout_alignParentEnd="true"
+     android:layout_marginTop="40dp"
+     android:background="#FF018786"
+     android:padding="5dp"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.938"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent"
+     app:shapeAppearanceOverlay="@style/circular"
+     app:srcCompat="@drawable/person"
+     app:strokeColor="@color/white"
+     app:strokeWidth="5dp" />
 
-   <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="53dp"
-        android:layout_height="67dp"
-        android:backgroundTint="@color/app_background"
-        android:clickable="true"
-        android:contentDescription="TODO"
-        android:focusable="true"
-        android:tint="@color/white"
-        app:srcCompat="@drawable/photo_camera"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="346dp"
-        tools:layout_editor_absoluteY="182dp" />
+ <com.google.android.material.floatingactionbutton.FloatingActionButton
+     android:id="@+id/floatingActionButton"
+     android:layout_width="53dp"
+     android:layout_height="67dp"
+     android:layout_alignParentTop="true"
+     android:layout_alignParentEnd="true"
+     android:layout_marginTop="195dp"
+     android:backgroundTint="@color/app_background"
+     android:clickable="true"
+     android:contentDescription="TODO"
+     android:focusable="true"
+     android:tint="@color/white"
+     app:srcCompat="@drawable/photo_camera"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteX="346dp"
+     tools:layout_editor_absoluteY="182dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="152dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="12dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Add Event"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.332"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="201dp"
-        android:layout_height="74dp"
-        android:text="Attached picture of the event:"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints"
-        android:textSize="20dp"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="118dp" />
+ <TextView
+     android:id="@+id/textView"
+     android:layout_width="152dp"
+     android:layout_height="30dp"
+     android:layout_centerHorizontal="true"
+     android:layout_marginTop="12dp"
+     android:layout_weight="1"
+     android:gravity="center"
+     android:text="Add Event"
+     android:textColor="@color/black"
+     android:textSize="25dp"
+     android:textStyle="bold"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintHorizontal_bias="0.332"
+     app:layout_constraintStart_toStartOf="parent"
+     app:layout_constraintTop_toTopOf="parent"
+     tools:ignore="MissingConstraints" />
 
 
-    <EditText
-        android:id="@+id/eventName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="   "
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="256dp"
-        tools:ignore="MissingConstraints" />
+ <TextView
+     android:id="@+id/textView1"
+     android:layout_width="201dp"
+     android:layout_height="74dp"
+     android:layout_alignParentStart="true"
+     android:layout_alignParentTop="true"
+     android:layout_marginStart="13dp"
+     android:layout_marginTop="56dp"
+     android:text="Attached picture of the event:"
+     android:textColor="@color/black"
+     android:textSize="20dp"
+     android:textStyle="bold"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteX="27dp"
+     tools:layout_editor_absoluteY="118dp" />
 
-    <EditText
-        android:id="@+id/eventOverview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="  "
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="301dp" />
+ <EditText
+     android:id="@+id/eventName"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentTop="true"
+     android:layout_alignParentEnd="true"
+     android:layout_marginEnd="1dp"
+     android:layout_toEndOf="@+id/textView26"
+     android:ems="10"
+     android:inputType="textPersonName"
+     android:text="   "
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toEndOf="@+id/textView3"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="256dp" />
 
-    <EditText
-        android:id="@+id/eventLanguage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="  "
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="436dp" />
+ <EditText
+     android:id="@+id/eventOverview"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginEnd="16dp"
+     android:ems="10"
+     android:inputType="textPersonName"
+     android:text="  "
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toEndOf="@+id/textView4"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="301dp" />
 
-    <EditText
-        android:id="@+id/eventLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="  "
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="548dp" />
+ <EditText
+     android:id="@+id/eventLanguage"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginEnd="16dp"
+     android:ems="10"
+     android:inputType="textPersonName"
+     android:text="  "
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toEndOf="@+id/textView23"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="436dp" />
+
+ <EditText
+     android:id="@+id/eventLocation"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginEnd="12dp"
+     android:ems="10"
+     android:inputType="textPersonName"
+     android:text="  "
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toEndOf="@+id/textView26"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="548dp" />
 
     <EditText
         android:id="@+id/editTextTextPersonName12"
@@ -127,153 +144,177 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="489dp" />
 
-    <EditText
-        android:id="@+id/eventEge"
-        android:layout_width="80dp"
-        android:layout_height="37dp"
-        android:layout_marginEnd="12dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="  "
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="489dp" />
+ <EditText
+     android:id="@+id/eventEge"
+     android:layout_width="80dp"
+     android:layout_height="37dp"
+     android:layout_marginEnd="12dp"
+     android:ems="10"
+     android:inputType="textPersonName"
+     android:text="  "
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toEndOf="@+id/textView25"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="489dp" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName14"
-        android:layout_width="80dp"
-        android:layout_height="37dp"
-        android:layout_marginEnd="208dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="  "
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="489dp" />
+ <EditText
+     android:id="@+id/editTextTextPersonName14"
+     android:layout_width="80dp"
+     android:layout_height="37dp"
+     android:layout_marginEnd="208dp"
+     android:ems="10"
+     android:inputType="textPersonName"
+     android:text="  "
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toEndOf="@+id/eventGender"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="489dp" />
 
-    <EditText
-        android:id="@+id/eventDuration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="  "
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="391dp" />
+ <EditText
+     android:id="@+id/eventDuration"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentEnd="true"
+     android:layout_alignParentBottom="true"
+     android:layout_marginEnd="-5dp"
+     android:layout_toEndOf="@+id/textView22"
+     android:ems="10"
+     android:inputType="textPersonName"
+     android:text="  "
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toEndOf="@+id/textView22"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="391dp" />
 
-    <EditText
-        android:id="@+id/eventDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="  "
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="346dp" />
+ <EditText
+     android:id="@+id/eventDate"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentEnd="true"
+     android:layout_alignParentBottom="true"
+     android:layout_marginEnd="20dp"
+     android:layout_toEndOf="@+id/textView21"
+     android:ems="10"
+     android:inputType="textPersonName"
+     android:text="  "
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toEndOf="@+id/textView21"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="346dp" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="152dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:textSize="16dp"
-        android:text="Name of the event"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="258dp" />
+ <TextView
+     android:id="@+id/textView3"
+     android:layout_width="152dp"
+     android:layout_height="43dp"
+     android:layout_alignParentStart="true"
+     android:layout_alignParentTop="true"
+     android:layout_marginStart="7dp"
+     android:layout_marginTop="128dp"
+     android:gravity="center"
+     android:text="Name of the event"
+     android:textColor="@color/black"
+     android:textSize="16dp"
+     android:textStyle="bold"
+     app:layout_constraintStart_toStartOf="parent"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="258dp" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="152dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:text="Overview of event"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="301dp" />
+ <TextView
+     android:id="@+id/textView4"
+     android:layout_width="152dp"
+     android:layout_height="43dp"
+     android:layout_alignParentTop="true"
+     android:layout_marginStart="16dp"
+     android:layout_marginTop="176dp"
+     android:gravity="center"
+     android:text="Overview of event"
+     android:textColor="@color/black"
+     android:textSize="16dp"
+     android:textStyle="bold"
+     app:layout_constraintStart_toStartOf="parent"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="301dp" />
 
-    <TextView
-        android:id="@+id/textView21"
-        android:layout_width="152dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:text="Date of event"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="346dp" />
+ <TextView
+     android:id="@+id/textView21"
+     android:layout_width="152dp"
+     android:layout_height="43dp"
+     android:layout_alignParentBottom="true"
+     android:layout_marginStart="16dp"
+     android:layout_marginBottom="106dp"
+     android:gravity="center"
+     android:text="Date of event"
+     android:textColor="@color/black"
+     android:textSize="16dp"
+     android:textStyle="bold"
+     app:layout_constraintStart_toStartOf="parent"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="346dp" />
 
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="152dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:text="Duration of event"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="389dp" />
+ <TextView
+     android:id="@+id/textView22"
+     android:layout_width="152dp"
+     android:layout_height="43dp"
+     android:layout_alignParentBottom="true"
+     android:layout_marginStart="16dp"
+     android:layout_marginBottom="162dp"
+     android:gravity="center"
+     android:text="Duration of event"
+     android:textColor="@color/black"
+     android:textSize="16dp"
+     android:textStyle="bold"
+     app:layout_constraintStart_toStartOf="parent"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="389dp" />
 
-    <TextView
-        android:id="@+id/textView23"
-        android:layout_width="152dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:gravity="center"
-        android:text="Language"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="432dp" />
+ <TextView
+     android:id="@+id/textView23"
+     android:layout_width="152dp"
+     android:layout_height="43dp"
+     android:layout_centerVertical="true"
+     android:layout_marginStart="16dp"
+     android:gravity="center"
+     android:text="Language"
+     android:textColor="@color/black"
+     android:textSize="16dp"
+     android:textStyle="bold"
+     app:layout_constraintStart_toStartOf="parent"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="432dp" />
 
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="152dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="24dp"
-        android:gravity="center"
-        android:text="Location"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="548dp" />
+ <TextView
+     android:id="@+id/textView26"
+     android:layout_width="152dp"
+     android:layout_height="43dp"
+     android:layout_alignParentTop="true"
+     android:layout_marginStart="24dp"
+     android:layout_marginTop="241dp"
+     android:gravity="center"
+     android:text="Location"
+     android:textColor="@color/black"
+     android:textSize="16dp"
+     android:textStyle="bold"
+     app:layout_constraintStart_toStartOf="parent"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="548dp" />
 
-    <TextView
-        android:id="@+id/eventGender"
-        android:layout_width="82dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="24dp"
-        android:gravity="center"
-        android:text="Gender:"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="489dp" />
+ <TextView
+     android:id="@+id/eventGender"
+     android:layout_width="82dp"
+     android:layout_height="39dp"
+     android:layout_alignParentTop="true"
+     android:layout_marginStart="24dp"
+     android:layout_marginTop="304dp"
+     android:gravity="center"
+     android:text="Gender:"
+     android:textColor="@color/black"
+     android:textSize="16dp"
+     android:textStyle="bold"
+     app:layout_constraintStart_toStartOf="parent"
+     tools:ignore="MissingConstraints"
+     tools:layout_editor_absoluteY="489dp" />
 
-    <TextView
+ <TextView
         android:id="@+id/textView25"
         android:layout_width="82dp"
         android:layout_height="39dp"
@@ -287,16 +328,19 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="489dp" />
 
-    <Button
-        android:id="@+id/submitEvent_button"
-        android:layout_width="349dp"
-        android:layout_height="48dp"
-        android:gravity="center"
-        android:text="submit"
-        android:background="#A87934"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="634dp" />
+ <Button
+     android:id="@+id/submitEvent_button"
+     android:layout_width="349dp"
+     android:layout_height="48dp"
+     android:layout_alignParentBottom="true"
+     android:layout_centerHorizontal="true"
+     android:layout_marginBottom="16dp"
+     android:background="#A87934"
+     android:gravity="center"
+     android:text="submit"
+     app:layout_constraintBottom_toBottomOf="parent"
+     app:layout_constraintEnd_toEndOf="parent"
+     app:layout_constraintStart_toStartOf="parent"
+     tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
