@@ -127,6 +127,8 @@ public class AddEvent extends AppCompatActivity {
                 } else {
 
                     uploadData();
+                    saveData();
+
                 }
 
             }
@@ -159,13 +161,14 @@ public class AddEvent extends AppCompatActivity {
                 activityResultLauncher.launch(photoPicker);
             }
         });
-        submit.setOnClickListener(new View.OnClickListener() {
+
+       /*submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 saveData();
             }
-        });
+        });*/
     }
 
     public void saveData(){
