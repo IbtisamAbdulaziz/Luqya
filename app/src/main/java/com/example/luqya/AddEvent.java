@@ -126,7 +126,6 @@ public class AddEvent extends AppCompatActivity {
                     location.requestFocus();
                 } else {
 
-                    DataClass dataClass = new DataClass(textEventName, textOverview, textDate, textGender, textDuration, textLanguage, textAge,textLocation);
                 }
 
             }
@@ -162,6 +161,7 @@ public class AddEvent extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 saveData();
             }
         });
@@ -196,22 +196,18 @@ public class AddEvent extends AppCompatActivity {
     }
     public void uploadData(){
 
-        String textEventName = name.getText().toString();
-        String textOverview = overview.getText().toString();
-        String textDate = date.getText().toString();
-        String textGender = gender.getText().toString();
-        String textDuration = Duration.getText().toString();
-        String textLanguage = Language.getText().toString();
-        String textAge = age.getText().toString();
-        String textLocation = location.getText().toString();
+        String EventName = name.getText().toString();
+        String Overview = overview.getText().toString();
+        String Date = date.getText().toString();
+        String Gender = gender.getText().toString();
+        String duration = Duration.getText().toString();
+        String language = Language.getText().toString();
+        String Age = age.getText().toString();
+        String Location = location.getText().toString();
 
-        DataClass dataClass = new DataClass(textEventName, textOverview, textDate, textGender, textDuration, textLanguage, textAge,textLocation);
-        //We are changing the child from textEventName to currentDate,
-        // because we will be updating textEventName as well and it may affect child value.
-        String currentDate = DateFormat.getDateTimeInstance().format(Calendar.getInstance().getTime());
-        FirebaseDatabase.getInstance().getReference("Add Event").child(currentDate)
+        DataClass dataClass = new DataClass(EventName, Overview, Date, Gender, duration, language, Age,Location, imageURL);
 
-                .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference("Add Event").child(EventName).setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
