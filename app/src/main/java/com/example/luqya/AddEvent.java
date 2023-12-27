@@ -126,6 +126,7 @@ public class AddEvent extends AppCompatActivity {
                     location.requestFocus();
                 } else {
 
+                    uploadData();
                 }
 
             }
