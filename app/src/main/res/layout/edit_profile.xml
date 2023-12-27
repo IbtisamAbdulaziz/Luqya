@@ -12,24 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.40" />
 
-    <TextView
-        android:id="@+id/link_to_signup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Edit Sign up"
-        android:textColor="@color/black"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        tools:ignore="MissingConstraints" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="20dp"
         android:background="@color/button_background"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,6 +30,18 @@
         app:strokeColor="@color/white"
         app:strokeWidth="5dp" />
 
+    <TextView
+        android:id="@+id/textViewWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loading..."
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="149dp"
+        tools:layout_editor_absoluteY="236dp" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="53dp"
@@ -48,12 +50,12 @@
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/app_background"
         android:clickable="true"
-        android:contentDescription="TODO"
         android:focusable="true"
         android:tint="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:srcCompat="@drawable/photo_camera" />
+        app:srcCompat="@drawable/photo_camera"
+        android:contentDescription="TODO" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -65,184 +67,110 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline">
 
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleLarge"
+            android:id="@+id/progressBarEditProfile"
+            android:elevation="10dp"
+            android:layout_centerInParent="true"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:padding="10dp">
 
                 <!--  Name Label -->
                 <TextView
-                    android:layout_width="fill_parent"
+                    android:id="@+id/textViewShowFullName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:text="Full Name*"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="Loading..."
+                    android:textSize="18sp"
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginBottom="20dp" />
 
-                <EditText
-                    android:id="@+id/edittext_name"
-                    android:layout_width="fill_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="20dp"
-                    android:hint="Ali Saad"
-                    android:inputType="textPersonName"
-                    android:singleLine="true" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Date of Birth(dd/mm/yyyy)"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edittext_age"
-                    android:layout_width="fill_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="20dp"
-                    android:hint="Enter your date of birth (dd/mm/yyyy)"
-                    android:inputType="date"
-                    android:singleLine="true" />
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:text="User Type*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <RadioGroup
-                    android:id="@+id/radio_group"
+                <View
                     android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginBottom="20dp"/>
+
+
+                <TextView
+                    android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:orientation="horizontal">
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:text="Loading..."
+                    android:layout_marginLeft="20dp"
+                    android:textSize="18sp"
+                    android:id="@+id/textViewShowDoB"
+                    android:layout_marginBottom="20dp"/>
 
-                    <RadioButton
-                        android:id="@+id/radio_events_seeker"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="20dp"
-                        android:text="Events Seeker">
-
-                    </RadioButton>
-
-                    <RadioButton
-                        android:id="@+id/radio_initiative_founder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Initiative Founder">
-
-                    </RadioButton>
-
-                </RadioGroup>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginBottom="20dp"/>
 
                 <!--  Email Label -->
                 <TextView
+                    android:id="@+id/textViewShowEmail"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/email"
-                    android:text="  Email*"
+                    android:text=" Loading..."
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_marginBottom="20dp"/>
 
-                <EditText
-                    android:id="@+id/edittext_email"
-                    android:layout_width="fill_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="20dp"
-                    android:hint="email@domain.com"
-                    android:inputType="textEmailAddress"
-                    android:singleLine="true" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginBottom="20dp"/>
 
                 <!--  Phone Label -->
                 <TextView
+                    android:id="@+id/textViewShowPhone"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:drawableLeft="@drawable/baseline_phone_24"
-                    android:text="Phone*"
+                    android:text=" Loading..."
+                    android:textSize="18sp"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
-                <EditText
-                    android:id="@+id/editText_phone"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:hint="+9665012345678"
-                    android:phoneNumber="true"
-                    android:singleLine="true" />
 
-                <!--  Username Label -->
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Username*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/edittext_username"
-                    android:layout_width="fill_parent"
-                    android:layout_height="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:singleLine="true" />
-
-
-                <!--  Password Label -->
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/lock"
-                    android:text="Password*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editText_password"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:hint="Enter your password"
-                    android:inputType="textPassword"
-                    android:password="true"
-                    android:singleLine="true" />
-
-                <!--  Confirm Password Label -->
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/lock"
-                    android:text="Confirm Password*"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/editText_passowrd2"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:hint="Re-Enter your password"
-                    android:inputType="textPassword"
-                    android:password="true"
-                    android:singleLine="true" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"
+                    android:layout_marginTop="30dp"
                     android:weightSum="100">
 
                     <!-- Cansel button -->
@@ -274,5 +202,7 @@
             </LinearLayout>
 
         </ScrollView>
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

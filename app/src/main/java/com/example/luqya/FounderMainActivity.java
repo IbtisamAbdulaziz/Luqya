@@ -41,7 +41,7 @@ public class FounderMainActivity extends AppCompatActivity {
         Initiative_Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(FounderMainActivity.this,InitiativeProfile.class);
+                Intent intent1 = new Intent(FounderMainActivity.this ,View_InitiativeFounderProfile.class);
                 startActivity(intent1);
             }
         });

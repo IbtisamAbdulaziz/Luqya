@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Events">
+    tools:context=".Events"
+    android:id="@+id/parentLayout">
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -18,6 +19,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -168,7 +170,7 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="260dp"
                 android:minHeight="250dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -177,25 +179,23 @@
         </LinearLayout>
     </ScrollView>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        tools:ignore="MissingConstraints"
+    <RelativeLayout
+
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView">
+        android:layout_height="70dp"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.bottomappbar.BottomAppBar
             android:id="@+id/app_bar"
             tools:ignore="BottomAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
+            android:layout_gravity="center_horizontal"
             android:backgroundTint="#f6f6f6"
             app:fabCradleMargin="8dp"
             app:fabCradleRoundedCornerRadius="50dp"
             app:fabCradleVerticalOffset="6dp"
-            app:layout_anchor="@+id/app_bar"
             app:layout_anchorGravity="center">
 
             <LinearLayout
@@ -286,5 +286,5 @@
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,11 @@ public class ReadWriteUserDetails {
     public String fullName, doD, phone, initiativeName, initiativeFounderName, intiativePhone, initiativeLocation;
 
 
+    public ReadWriteUserDetails(){
+
+    }
+
+
     public ReadWriteUserDetails(String textFullName, String textDoB, String textPhone){
 
         this.fullName = textFullName;
