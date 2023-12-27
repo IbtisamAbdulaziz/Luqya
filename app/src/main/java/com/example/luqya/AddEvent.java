@@ -62,7 +62,7 @@ public class AddEvent extends AppCompatActivity {
         name = findViewById(R.id.eventName);
         overview = findViewById(R.id.eventOverview);
         date = findViewById(R.id.eventDate);
-        gender = findViewById(R.id.eventGender);
+        gender = findViewById(R.id.editTextGender);
         Duration = findViewById(R.id.eventDuration);
         Language = findViewById(R.id.eventLanguage);
         age = findViewById(R.id.eventEge);

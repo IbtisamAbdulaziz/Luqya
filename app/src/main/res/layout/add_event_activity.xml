@@ -140,7 +140,7 @@
         tools:layout_editor_absoluteY="489dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName14"
+        android:id="@+id/editTextGender"
         android:layout_width="80dp"
         android:layout_height="37dp"
         android:layout_marginEnd="208dp"
