@@ -41,7 +41,7 @@ public class LogIn extends AppCompatActivity {
 
     private FirebaseAuth authProfile;
     private FirebaseFirestore fStore;
-    private TextView textview_signup;
+    private TextView textview_signup, textView_forgot_password;
     private static final String TAG = "LogIn";
 
     @Override
@@ -52,6 +52,7 @@ public class LogIn extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Login");
         textview_signup = findViewById(R.id.textview_signup);
+        textView_forgot_password = findViewById(R.id.textview_forgot_pass);
         editTextLoginEmail = findViewById(R.id.edittext_email_login);
         editTextLoginPwd = findViewById(R.id.edittext_password_login);
         progressBar = findViewById(R.id.progressBarLogin);
@@ -112,6 +113,15 @@ public class LogIn extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        textView_forgot_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LogIn.this,Forgot_Yor_Password.class);
+                startActivity(i);
+            }
+        });
+
     }
 
     private void loginUser(String email, String pwd) {
