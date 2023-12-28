@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -65,7 +66,7 @@ public class AddEvent extends AppCompatActivity {
         gender = findViewById(R.id.editTextGender);
         Duration = findViewById(R.id.eventDuration);
         Language = findViewById(R.id.eventLanguage);
-        age = findViewById(R.id.eventEge);
+        age = findViewById(R.id.editEventAge);
         location = findViewById(R.id.eventLocation);
 
         submit = findViewById(R.id.submitEvent_button);
@@ -73,14 +74,15 @@ public class AddEvent extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String textEventName = name.getText().toString();
-                String textOverview = overview.getText().toString();
-                String textDate = date.getText().toString();
-                String textGender = gender.getText().toString();
-                String textDuration = Duration.getText().toString();
-                String textLanguage = Language.getText().toString();
-                String textAge = age.getText().toString();
-                String textLocation = location.getText().toString();
+                String textEventName = name.getText().toString().trim();
+
+                String textOverview = overview.getText().toString().trim();
+                String textDate = date.getText().toString().trim();
+                String textGender = gender.getText().toString().trim();
+                String textDuration = Duration.getText().toString().trim();
+                String textLanguage = Language.getText().toString().trim();
+                String textAge = age.getText().toString().trim();
+                String textLocation = location.getText().toString().trim();
 
 
                 if (TextUtils.isEmpty(textEventName)) {
@@ -127,7 +129,6 @@ public class AddEvent extends AppCompatActivity {
                 } else {
 
                     uploadData();
-                    saveData();
 
                 }
 
@@ -200,30 +201,52 @@ public class AddEvent extends AppCompatActivity {
     }
     public void uploadData(){
 
-        String EventName = name.getText().toString();
-        String Overview = overview.getText().toString();
-        String Date = date.getText().toString();
-        String Gender = gender.getText().toString();
-        String duration = Duration.getText().toString();
-        String language = Language.getText().toString();
-        String Age = age.getText().toString();
-        String Location = location.getText().toString();
+        String EventName = name.getText().toString().trim();
 
-        DataClass dataClass = new DataClass(EventName, Overview, Date, Gender, duration, language, Age,Location, imageURL);
+        String Overview = overview.getText().toString().trim();
 
-        FirebaseDatabase.getInstance().getReference("Add Event").child(EventName).setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
+        String Date = date.getText().toString().trim();
+
+        String Gender = gender.getText().toString().trim();
+
+        String duration = Duration.getText().toString().trim();
+
+        String language = Language.getText().toString().trim();
+
+        String Age = age.getText().toString().trim();
+
+        String Location = location.getText().toString().trim();
+
+
+        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
+
+        DataClass data = new DataClass(EventName, Overview, Date, Gender, duration, language, Age,Location, imageURL);
+
+        databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(AddEvent.this, "Saved", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(AddEvent.this, FounderMainActivity.class);
+                            startActivity(intent);
+
+       /* FirebaseDatabase.getInstance().getReference("Add Event").child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(AddEvent.this, "Saved", Toast.LENGTH_SHORT).show();
-                            finish();
+                            finish();*/
                         }
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
+                }) .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AddEvent.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+               /* .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddEvent.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddEvent.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();*/
                     }
            });
 }
