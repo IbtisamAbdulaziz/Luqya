@@ -144,7 +144,7 @@
         tools:layout_editor_absoluteY="548dp" />
 
     <EditText
-        android:id="@+id/eventEge"
+        android:id="@+id/editEventAge"
         android:layout_width="190dp"
         android:layout_height="35dp"
         android:layout_alignParentEnd="true"
