@@ -7,6 +7,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -20,6 +22,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -38,6 +42,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Objects;
 
 public class AddEvent extends AppCompatActivity {
@@ -45,6 +50,10 @@ public class AddEvent extends AppCompatActivity {
     ImageView imageView;
 
    // FloatingActionButton floatingActionButton;
+    RecyclerView recyclerView;
+    List<DataClass>dataList;
+    DatabaseReference databaseReference;
+    ValueEventListener eventListener;
     EditText name, overview, date, gender, Duration, Language, age, location;
     Button submit;
 
@@ -68,6 +77,10 @@ public class AddEvent extends AppCompatActivity {
         Language = findViewById(R.id.eventLanguage);
         age = findViewById(R.id.editEventAge);
         location = findViewById(R.id.eventLocation);
+
+        recyclerView = findViewById(R.id.recyclerView);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(AddEvent.this, 1);
+        recyclerView.setLayoutManager(gridLayoutManager);
 
         submit = findViewById(R.id.submitEvent_button);
 
@@ -163,13 +176,7 @@ public class AddEvent extends AppCompatActivity {
             }
         });
 
-       /*submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                saveData();
-            }
-        });*/
     }
 
     public void saveData(){
@@ -230,12 +237,7 @@ public class AddEvent extends AppCompatActivity {
                             Intent intent = new Intent(AddEvent.this, FounderMainActivity.class);
                             startActivity(intent);
 
-       /* FirebaseDatabase.getInstance().getReference("Add Event").child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(AddEvent.this, "Saved", Toast.LENGTH_SHORT).show();
-                            finish();*/
+
                         }
                     }
                 }) .addOnFailureListener(new OnFailureListener() {
@@ -243,10 +245,6 @@ public class AddEvent extends AppCompatActivity {
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(AddEvent.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
-               /* .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddEvent.this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();*/
                     }
            });
 }
