@@ -62,7 +62,7 @@
                     app:srcCompat="@drawable/notification"/>
 
                 <EditText
-                    android:id="@+id/editTextText"
+                    android:id="@+id/editTextSearch"
                     tools:textSize="14sp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
@@ -80,17 +80,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-                <ImageView
-                    tools:ignore="MissingConstraints"
-                    android:layout_width="33dp"
-                    android:layout_height="56dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:src="@drawable/filter"
-                    app:layout_constraintBottom_toBottomOf="@+id/editTextText"
-                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout5"
-                    app:layout_constraintTop_toTopOf="@+id/editTextText" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout5"
@@ -122,6 +111,20 @@
                         android:textColor="@color/button_text"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/Filter"
+                        android:layout_width="30dp"
+                        android:layout_height="45dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        app:backgroundTint="@color/button_background"
+                        app:icon="@drawable/filter"
+                        app:iconTint="@android:color/black"
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteX="356dp"
+                        tools:layout_editor_absoluteY="52dp"
+                        android:contentDescription="Filter by category and location" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

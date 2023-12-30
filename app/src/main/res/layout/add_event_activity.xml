@@ -345,7 +345,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="9dp"
-        android:background="#A87934"
+        android:background="@color/button_background"
         android:gravity="center"
         android:text="submit"
         app:layout_constraintBottom_toBottomOf="parent"
