@@ -18,6 +18,8 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
