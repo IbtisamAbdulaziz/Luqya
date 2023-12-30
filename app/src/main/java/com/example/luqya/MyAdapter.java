@@ -18,6 +18,8 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,43 +36,42 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @NonNull
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_events, parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_events, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
         Glide.with(context).load(dataList.get(position).getDataImage()).into(holder.eventImage);
-        holder.Title.setText(dataList.get(position).getTitle());
+        holder.Title.setText(dataList.get(position).getName());
         holder.Location.setText(dataList.get(position).getLocation());
         holder.Date.setText(dataList.get(position).getDate());
-        holder.register.setText(dataList.get(position).getRegister());
-        holder.Details.setText(dataList.get(position).getDetails());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Details_event_class.class);
                 intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
-                intent.putExtra("Description", dataList.get(holder.getAdapterPosition()).getDataDesc());
-                intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getDataTitle());
-                intent.putExtra("Key", dataList.get(holder.getAdapterPosition()).getKey());
-                intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getDataLang());
+                intent.putExtra("Date", dataList.get(holder.getAdapterPosition()).getDate());
+                intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getName());
+                intent.putExtra("Location", dataList.get(holder.getAdapterPosition()).getLocation());
                 context.startActivity(intent);
             }
         });
     }
-        @Override
-        public int getItemCount() {
-            return dataList.size();
-        }
-        public void searchDataList(ArrayList<DataClass> searchList){
-            dataList = searchList;
-            notifyDataSetChanged();
-}
+
+    @Override
+    public int getItemCount() {
+        return dataList.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder{
+    public void searchDataList(ArrayList<DataClass> searchList) {
+        dataList = searchList;
+        notifyDataSetChanged();
+    }
+
+
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView eventImage, LocationImage, DateImage;
         TextView Title;
@@ -79,18 +80,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         Button register;
         Button Details;
         CardView cardView;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            eventImage=itemView.findViewById(R.id.pic);
-            LocationImage=itemView.findViewById(R.id.imageView4);
-            DateImage=itemView.findViewById(R.id.imageView5);
-            Title=itemView.findViewById(R.id.TitleText);
-            Location=itemView.findViewById(R.id.StarText);
-            Date=itemView.findViewById(R.id.Date);
-            register=itemView.findViewById(R.id.Register);
-            Details=itemView.findViewById(R.id.Details);
-            cardView=itemView.findViewById(R.id.CardViewID);
+            eventImage = itemView.findViewById(R.id.pic);
+            LocationImage = itemView.findViewById(R.id.imageView4);
+            DateImage = itemView.findViewById(R.id.imageView5);
+            Title = itemView.findViewById(R.id.TitleText);
+            Location = itemView.findViewById(R.id.StarText);
+            Date = itemView.findViewById(R.id.Date);
+            register = itemView.findViewById(R.id.Register);
+            Details = itemView.findViewById(R.id.Details);
+            cardView = itemView.findViewById(R.id.CardViewID);
 
         }
     }
+}

@@ -31,7 +31,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.play.core.integrity.v;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -41,6 +44,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
@@ -59,6 +63,7 @@ public class AddEvent extends AppCompatActivity {
 
     String imageURL;
     Uri uri;
+    private MyAdapter adapter;
 
     @SuppressLint({"ResourceAsColor", "MissingInflatedId", "WrongViewCast"})
     @Override
@@ -81,6 +86,39 @@ public class AddEvent extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(AddEvent.this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(AddEvent.this);
+        builder.setCancelable(false);
+        builder.setView(R.layout.progress_layout);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dataList = new ArrayList<>();
+
+        adapter = new MyAdapter(AddEvent.this, dataList);
+        recyclerView.setAdapter(adapter);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Android Tutorials");
+        dialog.show();
+        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+                                                                    @Override
+                                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                                        dataList.clear();
+
+                                                                        for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                                                                            DataClass dataClass = itemSnapshot.getValue(DataClass.class);
+                                                                            dataList.add(dataClass);
+                                                                        }
+                                                                        adapter.notifyDataSetChanged();
+                                                                        dialog.dismiss();
+                                                                    }
+
+                                                                    @Override
+                                                                    public void onCancelled(@NonNull DatabaseError error) {
+                                                                        dialog.dismiss();
+                                                                    }
+                                                                });
+
 
         submit = findViewById(R.id.submitEvent_button);
 
@@ -248,4 +286,4 @@ public class AddEvent extends AppCompatActivity {
                     }
            });
 }
-}
+    }
