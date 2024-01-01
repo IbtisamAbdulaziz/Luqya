@@ -34,6 +34,8 @@ public class UploadProfilePicture extends AppCompatActivity {
     private ImageView imageViewUploadPic;
     private FirebaseAuth authProfile;
     private StorageReference storageReference;
+
+
     private FirebaseUser firebaseUser;
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri uriImage;
@@ -160,6 +162,7 @@ public class UploadProfilePicture extends AppCompatActivity {
 
             Intent intent = new Intent(UploadProfilePicture.this, EditSeekerProfile.class);
             startActivity(intent);
+            finish();
 
         } else if (id == R.id.menu_item_reset_password) {
 

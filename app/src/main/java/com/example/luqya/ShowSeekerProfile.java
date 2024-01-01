@@ -1,6 +1,7 @@
 package com.example.luqya;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class ShowSeekerProfile extends AppCompatActivity {
 
@@ -86,6 +88,12 @@ public class ShowSeekerProfile extends AppCompatActivity {
                     textViewEmail.setText(email);
                     textViewPhone.setText(phone);
                     textViewDoB.setText(doB);
+
+                    Uri uri = firebaseUser.getPhotoUrl();
+                    Picasso.with(ShowSeekerProfile.this).load(uri).into(imageView);
+
+                } else {
+                    Toast.makeText(ShowSeekerProfile.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
 
                 progressBar.setVisibility(View.GONE);
