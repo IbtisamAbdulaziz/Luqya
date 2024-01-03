@@ -52,7 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.Date.setText(dataList.get(position).getDate());
 
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+        holder.Details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Details_event_class.class);
