@@ -53,17 +53,11 @@ public class AddEvent extends AppCompatActivity {
 
     ImageView imageView;
 
-   // FloatingActionButton floatingActionButton;
-    RecyclerView recyclerView;
-    List<DataClass>dataList;
-    DatabaseReference databaseReference;
-    ValueEventListener eventListener;
     EditText name, overview, date, gender, Duration, Language, age, location;
     Button submit;
 
     String imageURL;
     Uri uri;
-    private MyAdapter adapter;
 
     @SuppressLint({"ResourceAsColor", "MissingInflatedId", "WrongViewCast"})
     @Override
@@ -82,42 +76,6 @@ public class AddEvent extends AppCompatActivity {
         Language = findViewById(R.id.eventLanguage);
         age = findViewById(R.id.editEventAge);
         location = findViewById(R.id.eventLocation);
-
-        recyclerView = findViewById(R.id.recyclerView);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(AddEvent.this, 1);
-        recyclerView.setLayoutManager(gridLayoutManager);
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(AddEvent.this);
-        builder.setCancelable(false);
-        builder.setView(R.layout.progress_layout);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-        dataList = new ArrayList<>();
-
-        adapter = new MyAdapter(AddEvent.this, dataList);
-        recyclerView.setAdapter(adapter);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Android Tutorials");
-        dialog.show();
-        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
-                                                                    @Override
-                                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                                                        dataList.clear();
-
-                                                                        for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
-                                                                            DataClass dataClass = itemSnapshot.getValue(DataClass.class);
-                                                                            dataList.add(dataClass);
-                                                                        }
-                                                                        adapter.notifyDataSetChanged();
-                                                                        dialog.dismiss();
-                                                                    }
-
-                                                                    @Override
-                                                                    public void onCancelled(@NonNull DatabaseError error) {
-                                                                        dialog.dismiss();
-                                                                    }
-                                                                });
 
 
         submit = findViewById(R.id.submitEvent_button);

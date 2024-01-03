@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.time.Duration;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @NonNull
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_events, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_event, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -49,7 +51,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.Location.setText(dataList.get(position).getLocation());
         holder.Date.setText(dataList.get(position).getDate());
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
+
+        holder.Details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Details_event_class.class);
@@ -57,6 +60,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("Date", dataList.get(holder.getAdapterPosition()).getDate());
                 intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getName());
                 intent.putExtra("Location", dataList.get(holder.getAdapterPosition()).getLocation());
+                intent.putExtra("Duration", dataList.get(holder.getAdapterPosition()).getDuration());
+                intent.putExtra("Age", dataList.get(holder.getAdapterPosition()).getAge());
+                intent.putExtra("Gender", dataList.get(holder.getAdapterPosition()).getGender());
+                intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
+                intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getLanguage());
                 context.startActivity(intent);
             }
         });

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,6 +26,8 @@ public class Details_event_class extends AppCompatActivity {
 
         TextView Title, Location, Duration,Overview,Gender,Age,Language;
         Button Register;
+
+        ImageView imageView;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,7 @@ public class Details_event_class extends AppCompatActivity {
                 Gender.setText(bundle.getString("Gender"));
                 Age.setText(bundle.getString("Age"));
                 Language.setText(bundle.getString("Language"));
-
+                Glide.with(this).load(bundle.getString("Image")).into(imageView);
             }
           /*  deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
