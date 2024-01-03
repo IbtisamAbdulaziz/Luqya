@@ -99,7 +99,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             Date = itemView.findViewById(R.id.Date);
             register = itemView.findViewById(R.id.Register);
             Details = itemView.findViewById(R.id.Details);
-            cardView = itemView.findViewById(R.id.CardViewID);
 
         }
     }
