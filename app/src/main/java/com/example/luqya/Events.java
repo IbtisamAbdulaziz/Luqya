@@ -39,7 +39,6 @@ public class Events extends AppCompatActivity {
     DatabaseReference databaseReference;
     ValueEventListener eventListener;
     RecyclerView recyclerView;
-    private MyAdapter adapter;
 
     public static int s_id;
     public SharedPreferences settings;
@@ -72,9 +71,10 @@ public class Events extends AppCompatActivity {
 
         dataList = new ArrayList<>();
 
-        adapter = new MyAdapter(Events.this, dataList);
+        MyAdapter adapter = new MyAdapter(Events.this, dataList);
         recyclerView.setAdapter(adapter);
-        databaseReference = FirebaseDatabase.getInstance().getReference("Android Tutorials");
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Add Event");
         dialog.show();
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -84,6 +84,7 @@ public class Events extends AppCompatActivity {
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
                     DataClass dataClass = itemSnapshot.getValue(DataClass.class);
                     dataList.add(dataClass);
+
                 }
                 adapter.notifyDataSetChanged();
                 dialog.dismiss();

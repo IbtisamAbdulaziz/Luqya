@@ -52,7 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.Date.setText(dataList.get(position).getDate());
 
 
-        holder.Details.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Details_event_class.class);
@@ -72,13 +72,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
+
         return dataList.size();
     }
 
-    public void searchDataList(ArrayList<DataClass> searchList) {
-        dataList = searchList;
-        notifyDataSetChanged();
-    }
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -106,4 +103,4 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         }
     }
-}
+    }
