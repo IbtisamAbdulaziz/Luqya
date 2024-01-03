@@ -41,6 +41,7 @@ public class Details_event_class extends AppCompatActivity {
             Gender = findViewById(R.id.Gender);
             Age = findViewById(R.id.Age);
             Language = findViewById(R.id.Language);
+            imageView=findViewById(R.id.imageView6);
 
             Register = findViewById(R.id.Register);
 
