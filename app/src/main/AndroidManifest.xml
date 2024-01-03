@@ -63,6 +63,10 @@
         <activity
             android:name=".Forgot_Yor_Password"
             android:exported="false" />
+        <activity
+            android:name=".Details_event_class"
+            android:exported="false" />
+
     </application>
 
 </manifest>
