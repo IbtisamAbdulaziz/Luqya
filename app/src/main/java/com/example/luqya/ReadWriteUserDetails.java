@@ -17,11 +17,11 @@ public class ReadWriteUserDetails {
         this.phone = textPhone;
     }
 
-    public ReadWriteUserDetails(String textInitiativeName, String textInitiativeFounderName, String textIntiativePhone, String textInitiativeLocation){
+    public ReadWriteUserDetails(String textInitiativeName, String textInitiativeFounderName, String textInitiativePhone, String textInitiativeLocation){
 
         this.initiativeName = textInitiativeName;
         this.initiativeFounderName = textInitiativeFounderName;
-        this.intiativePhone = textIntiativePhone;
+        this.intiativePhone = textInitiativePhone;
         this.initiativeLocation = textInitiativeLocation;
     }
 

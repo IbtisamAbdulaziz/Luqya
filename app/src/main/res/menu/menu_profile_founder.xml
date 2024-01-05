@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.testapp.Initiative_Founder"
     android:icon="@drawable/person">
 
-    <item android:id="@+id/action_edit_founder_profile"
-        android:title="Edit Profile"
-        android:orderInCategory="103"
-        app:showAsAction="never"/>
 
-    <item android:id="@+id/action_founder_log_out"
-        android:title="Log Out"
-        android:orderInCategory="103"
-        app:showAsAction="never"/>
+    <item android:title="Reset Password"
+        android:id="@+id/menu_item_reset_password" />
+
+    <item android:title="Logout"
+        android:id="@+id/menu_item_logout" />
 
 </menu>

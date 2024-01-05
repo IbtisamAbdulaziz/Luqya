@@ -45,6 +45,15 @@ public class FounderMainActivity extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+
+        Edit_Profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FounderMainActivity.this, Edit_InitiativeFounderProfile.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
 
