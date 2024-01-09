@@ -149,7 +149,7 @@ public class Events extends AppCompatActivity {
             Intent go_edit_profile = new Intent(getApplicationContext(), EditSeekerProfile.class);
             go_edit_profile.putExtra("std_id",""+s_id);
             startActivity(go_edit_profile);
-        }else if (id == R.id.action_founder_log_out){
+        }else if (id == R.id.action_log_out){
             getSharedPreferences("ID",0).edit().clear().commit();
             Intent go_login = new Intent(getApplicationContext(),LogIn.class);
             startActivity(go_login);
