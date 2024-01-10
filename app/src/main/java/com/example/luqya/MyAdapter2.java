@@ -75,7 +75,6 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
         TextView Gender;
         TextView Date;
         Button edit_event;
-        CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
