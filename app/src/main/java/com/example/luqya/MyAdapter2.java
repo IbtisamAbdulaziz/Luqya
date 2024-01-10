@@ -69,27 +69,22 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView eventImage, LocationImage, DateImage;
-        TextView Title,Overview,Language,Age,Duration;
-        TextView Location;
-        TextView Gender;
+        ImageView  DateImage;
+        TextView Title;
+
         TextView Date;
-        Button edit_event;
+        Button edit_event,Delete_Event, Attending_List;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            eventImage = itemView.findViewById(R.id.pic);
-            LocationImage = itemView.findViewById(R.id.imageView4);
-            DateImage = itemView.findViewById(R.id.imageView5);
             Title = itemView.findViewById(R.id.TitleText);
-            Location = itemView.findViewById(R.id.StarText);
             Date = itemView.findViewById(R.id.Date);
-            Gender = itemView.findViewById(R.id.Date);
-            Overview = itemView.findViewById(R.id.Date);
-            Language= itemView.findViewById(R.id.Date);
-            Age =  itemView.findViewById(R.id.Date);
-            Duration = itemView.findViewById(R.id.Date);
+            DateImage = itemView.findViewById(R.id.imageView5);
+            edit_event=itemView.findViewById(R.id.edit_event);
+            Delete_Event=itemView.findViewById(R.id.delete_event);
+            Attending_List=itemView.findViewById(R.id.attending_List);
+
         }
     }
 }

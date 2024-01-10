@@ -1,5 +1,6 @@
 package com.example.luqya;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -40,15 +41,15 @@ public class My_Events extends AppCompatActivity {
     RecyclerView recyclerView;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events);
 
 
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView2);
 
-        recyclerView = findViewById(R.id.recyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(My_Events.this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
 
