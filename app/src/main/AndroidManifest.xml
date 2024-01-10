@@ -68,7 +68,8 @@
             android:exported="false" />
         <activity android:name=".Edit_InitiativeFounderProfile"
             android:exported="false"/>
-
+        <activity android:name=".My_Events"
+            android:exported="false"/>
     </application>
 
 </manifest>

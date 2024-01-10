@@ -53,7 +53,13 @@ public class FounderMainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        My_Events.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FounderMainActivity.this, My_Events.class);
+                startActivity(intent);
+            }
+        });
     }
 }
 
