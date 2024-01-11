@@ -2,13 +2,13 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="290dp"
+    android:id="@+id/CardViewID"
+    android:layout_width="300dp"
     android:layout_height="310dp"
     android:layout_marginTop="8dp"
+    android:background="@color/app_background"
     app:cardCornerRadius="15dp"
-    app:cardElevation="3dp"
-    android:id="@+id/CardViewID"
-    android:background="@color/app_background">
+    app:cardElevation="3dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,13 +27,13 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@color/app_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/pic"
-            app:layout_constraintVertical_bias="0.0"
-            android:background="@color/app_background">
+            app:layout_constraintVertical_bias="0.0">
 
             <TextView
                 android:id="@+id/TitleText"
@@ -72,7 +72,7 @@
 
             <Button
                 android:id="@+id/Register"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="50dp"
                 android:background="@drawable/button_event_background"
                 android:gravity="center"
@@ -111,7 +111,7 @@
 
             <Button
                 android:id="@+id/Details"
-                android:layout_width="100dp"
+                android:layout_width="110dp"
                 android:layout_height="50dp"
                 android:background="@drawable/button_event_background"
                 android:gravity="center"

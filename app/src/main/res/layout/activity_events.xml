@@ -63,7 +63,6 @@
 
                 <EditText
                     android:id="@+id/editTextSearch"
-                    tools:textSize="14sp"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="32dp"
@@ -79,27 +78,45 @@
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView3"
+                    tools:textSize="14sp" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                    android:id="@+id/Filter"
+                    android:layout_width="30dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:contentDescription="Filter by category and location"
+                    app:backgroundTint="@color/button_background"
+                    app:icon="@drawable/filter"
+                    app:iconTint="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="@+id/editTextSearch"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView3"
+                    tools:ignore="MissingConstraints" />
+
+                <LinearLayout
                     android:id="@+id/constraintLayout5"
-                    tools:layout_editor_absoluteX="-82dp"
-                    tools:layout_editor_absoluteY="0dp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="@id/recyclerView"
+                    app:layout_constraintBottom_toBottomOf="@+id/editTextSearch"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
+                    app:layout_constraintEnd_toEndOf="@+id/recyclerView"
+                    tools:ignore="NotSibling">
 
                     <TextView
                         android:id="@+id/textView5"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteX="32dp"
-                        tools:layout_editor_absoluteY="168dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Upcoming Events"
                         android:textColor="@color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="MissingConstraints" />
 
                     <TextView
                         android:id="@+id/textView5_1"
@@ -108,25 +125,9 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="VIEW ALL"
-                        android:textColor="@color/button_text"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        android:textColor="@color/button_text" />
 
-                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-                        android:id="@+id/Filter"
-                        android:layout_width="30dp"
-                        android:layout_height="45dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        app:backgroundTint="@color/button_background"
-                        app:icon="@drawable/filter"
-                        app:iconTint="@android:color/black"
-                        tools:ignore="MissingConstraints"
-                        tools:layout_editor_absoluteX="356dp"
-                        tools:layout_editor_absoluteY="52dp"
-                        android:contentDescription="Filter by category and location" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -143,20 +144,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textView8"
-                    tools:ignore="MissingConstraints"
-                    tools:layout_editor_absoluteX="32dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Future Events"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    tools:ignore="MissingConstraints" />
 
                 <TextView
                     android:id="@+id/textView8_1"
@@ -165,11 +165,9 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="4dp"
                     android:text="VIEW ALL"
-                    android:textColor="@color/button_text"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    android:textColor="@color/button_text" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"

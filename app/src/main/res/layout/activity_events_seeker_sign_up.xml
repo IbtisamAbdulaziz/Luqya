@@ -175,7 +175,7 @@
                         android:singleLine="true"
                         android:layout_marginBottom="15sp"/>
 
-                    <!--  Location Label -->
+                    <!--  Confirm Label -->
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"

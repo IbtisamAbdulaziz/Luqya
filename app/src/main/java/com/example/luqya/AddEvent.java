@@ -1,5 +1,18 @@
 package com.example.luqya;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -7,53 +20,22 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Patterns;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridLayout;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.play.core.integrity.v;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Objects;
 
 public class AddEvent extends AppCompatActivity {
 
     ImageView imageView;
 
-    EditText name, overview, date, gender, Duration, Language, age, location;
+    EditText name, overview,category,date, gender, Duration, Language, age, location;
     Button submit;
 
     String imageURL;
@@ -70,6 +52,7 @@ public class AddEvent extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         name = findViewById(R.id.eventName);
         overview = findViewById(R.id.eventOverview);
+        category =findViewById(R.id.eventCategory);
         date = findViewById(R.id.eventDate);
         gender = findViewById(R.id.editTextGender);
         Duration = findViewById(R.id.eventDuration);
@@ -84,8 +67,8 @@ public class AddEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String textEventName = name.getText().toString().trim();
-
                 String textOverview = overview.getText().toString().trim();
+                String textCategory = category.getText().toString().trim();
                 String textDate = date.getText().toString().trim();
                 String textGender = gender.getText().toString().trim();
                 String textDuration = Duration.getText().toString().trim();
@@ -103,6 +86,10 @@ public class AddEvent extends AppCompatActivity {
                     Toast.makeText(AddEvent.this, "Please enter event overview", Toast.LENGTH_LONG).show();
                     overview.setError("Event Overview is required");
                     overview.requestFocus();
+                }else if (TextUtils.isEmpty(textCategory)){
+                    Toast.makeText(AddEvent.this, "Please enter event overview", Toast.LENGTH_LONG).show();
+                    category.setError("Event Overview is required");
+                    category.requestFocus();
 
                 } else if (TextUtils.isEmpty(textDate)) {
                     Toast.makeText(AddEvent.this, "Please enter event date", Toast.LENGTH_LONG).show();
@@ -207,6 +194,8 @@ public class AddEvent extends AppCompatActivity {
         String EventName = name.getText().toString().trim();
 
         String Overview = overview.getText().toString().trim();
+
+        String Category = category.getText().toString().trim();
 
         String Date = date.getText().toString().trim();
 
