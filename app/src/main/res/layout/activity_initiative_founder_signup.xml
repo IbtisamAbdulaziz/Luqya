@@ -12,23 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".32" />
+        app:layout_constraintGuide_percent=".20" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
-        android:layout_width="57dp"
-        android:layout_height="55dp"
-        android:clickable="true"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/arrow_back"
-        app:backgroundTint="#F1EAEA"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"
-        tools:ignore="ContentDescription,UnknownIdInLayout" />
 
     <TextView
         android:id="@+id/textView9"
@@ -36,12 +21,12 @@
         android:layout_height="88dp"
         android:includeFontPadding="true"
         android:text="Create Initiative Founder Account"
-        android:textSize="35dp"
+        android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.337"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="100dp" />
+        tools:layout_editor_absoluteY="30dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -250,6 +235,30 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="DuplicateIds" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Initiative Description*"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="15sp"/>
+
+                <EditText
+                    android:id="@+id/edittext_initiative_desriptipn"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/editext_background"
+                    android:elevation="3dp"
+                    android:hint="Type a short desriptipn of your initiative"
+                    android:padding="13dp"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
 
                 <LinearLayout
                     android:layout_width="fill_parent"
