@@ -171,7 +171,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
-                android:background="#A87934"
+                android:background="@drawable/button_background"
                 android:onClick="LogIn"
                 android:text="Login"
                 android:textColor="@color/black" />
