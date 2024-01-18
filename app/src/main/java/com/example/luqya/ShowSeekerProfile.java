@@ -29,6 +29,7 @@ public class ShowSeekerProfile extends AppCompatActivity {
     private TextView textViewWelcome, textViewFullName, textViewDoB, textViewEmail, textViewPhone, textViewPoints ;
     private ProgressBar progressBar;
     private String fullName, email, doB, phone;
+    private int points;
     private ImageView imageView;
     private FirebaseAuth authProfile;
     @Override
@@ -83,12 +84,15 @@ public class ShowSeekerProfile extends AppCompatActivity {
                     email = firebaseUser.getEmail();
                     doB = readUserDetails.doD;
                     phone = readUserDetails.phone;
+                    points = readUserDetails.points;
 
                     textViewWelcome.setText("Welcome, "+ fullName + "!");
                     textViewFullName.setText(fullName);
                     textViewEmail.setText(email);
                     textViewPhone.setText(phone);
                     textViewDoB.setText(doB);
+
+                    textViewPoints.setText(points);
 
                     Uri uri = firebaseUser.getPhotoUrl();
                     Picasso.with(ShowSeekerProfile.this).load(uri).into(imageView);

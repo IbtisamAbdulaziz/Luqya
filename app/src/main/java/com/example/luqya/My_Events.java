@@ -32,60 +32,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class My_Events extends AppCompatActivity {
-    TextView title, Date;
-    Button Attending_List, Edit_Event, Delete_Event;
 
-    List<DataClass> dataList;
-    DatabaseReference databaseReference;
-    ValueEventListener eventListener;
-    RecyclerView recyclerView;
-
-
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_events);
-
-
-        recyclerView = findViewById(R.id.recyclerView2);
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(My_Events.this, 1);
-        recyclerView.setLayoutManager(gridLayoutManager);
-
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(My_Events.this);
-        builder.setCancelable(false);
-        builder.setView(R.layout.progress_layout);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-
-        dataList = new ArrayList<>();
-
-        MyAdapter adapter = new MyAdapter(My_Events.this, dataList);
-        recyclerView.setAdapter(adapter);
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("Add Event");
-        dialog.show();
-        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                dataList.clear();
-
-                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
-                    DataClass dataClass = itemSnapshot.getValue(DataClass.class);
-                    dataList.add(dataClass);
-
-                }
-                adapter.notifyDataSetChanged();
-                dialog.dismiss();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                dialog.dismiss();
-            }
-        });
+        setContentView(R.layout.activity_my_events);
 
 
     }
