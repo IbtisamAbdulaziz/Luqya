@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.45" />
+        app:layout_constraintGuide_percent="0.28" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
@@ -26,7 +26,6 @@
         android:contentDescription="TODO"
         android:focusable="true"
         android:tint="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.0"
@@ -37,40 +36,18 @@
         android:id="@+id/imageView"
         android:layout_width="168dp"
         android:layout_height="177dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="20dp"
         android:background="@color/button_background"
         android:padding="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.95"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/circular"
         app:srcCompat="@drawable/person"
         app:strokeColor="@color/white"
         app:strokeWidth="5dp" />
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="361dp"
-        android:layout_height="88dp"
-        android:layout_alignParentStart="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="4dp"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text="Add Event"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.64"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView1"
@@ -81,9 +58,9 @@
         android:layout_marginBottom="16dp"
         android:layout_toStartOf="@+id/imageView"
         android:paddingLeft="5dp"
-        android:text="Attached picture of the event:"
+        android:text="Attache picture of the event:"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,6 +98,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:text="Name of the event"
+                        android:layout_marginTop="20dp"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -134,7 +112,6 @@
                         android:ems="10"
                         android:inputType="textPersonName"
                         android:singleLine="true"
-                        android:text="   "
                         tools:ignore="MissingConstraints"
                         android:hint="Event Name"/>
 
@@ -143,7 +120,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
-                        android:text="Overview of event"
+                        android:text="Description of event"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -154,11 +131,15 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="  "
+                        android:layout_marginHorizontal="5dp"
+                        android:background="@drawable/edit_text_border"
+                        android:inputType="textMultiLine"
+                        android:lines="5"
+                        android:padding="5dp"
+                        android:scrollbars="vertical"
                         tools:ignore="MissingConstraints"
-                        android:hint="Event Overview"/>
+                        android:hint="Event Overview..."
+                        android:gravity="top|start"/>
 
                     <TextView
                         android:id="@+id/textView23"
@@ -168,18 +149,54 @@
                         android:text="Category"
                         android:textColor="@color/black"
                         android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:gravity="top|start"/>
 
-                    <EditText
+                    <Spinner
                         android:id="@+id/eventCategory"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        tools:ignore="MissingConstraints"
-                        android:hint="Event Category"/>
+                        android:layout_marginBottom="10dp" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Attending Method"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/inPersonRB"
+                            android:checked="true"
+                            android:text="In Person"
+                            android:layout_marginRight="50dp"
+                            android:textAlignment="center"/>
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/onlineRB"
+                            android:text="Online"
+                            android:textAlignment="center"/>
+
+                    </RadioGroup>
 
                     <TextView
                         android:id="@+id/textView6"
@@ -198,10 +215,9 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
                         android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="  "
+                        android:inputType="date"
                         tools:ignore="MissingConstraints"
-                        android:hint="Select your date of event"/>
+                        android:hint="Select date of event"/>
 
                     <TextView
                         android:id="@+id/eventGender"

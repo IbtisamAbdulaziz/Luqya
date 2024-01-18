@@ -6,4 +6,13 @@
     <string name="email">Email</string>
     <string name="forgotpass_ill">Forgot Password, thinking&#8230;</string>
 
+    <string-array name="categories">
+
+        <item>Music</item>
+        <item>Literature</item>
+        <item>Scientific</item>
+        <item>Artistic</item>
+
+    </string-array>
+
 </resources>

@@ -3,14 +3,18 @@ package com.example.luqya;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -31,15 +35,17 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.Calendar;
+
 public class AddEvent extends AppCompatActivity {
 
-    ImageView imageView;
-
-    EditText name, overview,category,date, gender, Duration, Language, age, location;
-    Button submit;
-
-    String imageURL;
-    Uri uri;
+    private ImageView imageView;
+    private EditText name, overview,date, gender, Duration, Language, age, location;
+    private Spinner categorySpinner;
+    private Button submit;
+    private String imageURL;
+    private Uri uri;
+    private  DatePickerDialog picker;
 
     @SuppressLint({"ResourceAsColor", "MissingInflatedId", "WrongViewCast"})
     @Override
@@ -52,7 +58,6 @@ public class AddEvent extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         name = findViewById(R.id.eventName);
         overview = findViewById(R.id.eventOverview);
-        category =findViewById(R.id.eventCategory);
         date = findViewById(R.id.eventDate);
         gender = findViewById(R.id.editTextGender);
         Duration = findViewById(R.id.eventDuration);
@@ -61,20 +66,50 @@ public class AddEvent extends AppCompatActivity {
         location = findViewById(R.id.eventLocation);
 
 
-        submit = findViewById(R.id.submitEvent_button);
+        //To implement the spinner (list) witj an array in Strings.xml file
 
+        categorySpinner =findViewById(R.id.eventCategory);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories,
+                android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        categorySpinner.setAdapter(adapter);
+
+
+        //To choose a date from a calender
+        date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Calendar calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                picker = new DatePickerDialog(AddEvent.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+
+                        date.setText(dayOfMonth+ "/" + (month+1) + "/" + year);
+                    }
+                } , year, month, day);
+                picker.show();
+            }
+        });
+
+        submit = findViewById(R.id.submitEvent_button);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String textEventName = name.getText().toString().trim();
                 String textOverview = overview.getText().toString().trim();
-                String textCategory = category.getText().toString().trim();
+                String textCategory = categorySpinner.getSelectedItem().toString();
                 String textDate = date.getText().toString().trim();
                 String textGender = gender.getText().toString().trim();
                 String textDuration = Duration.getText().toString().trim();
                 String textLanguage = Language.getText().toString().trim();
                 String textAge = age.getText().toString().trim();
                 String textLocation = location.getText().toString().trim();
+
 
 
                 if (TextUtils.isEmpty(textEventName)) {
@@ -86,10 +121,6 @@ public class AddEvent extends AppCompatActivity {
                     Toast.makeText(AddEvent.this, "Please enter event overview", Toast.LENGTH_LONG).show();
                     overview.setError("Event Overview is required");
                     overview.requestFocus();
-                }else if (TextUtils.isEmpty(textCategory)){
-                    Toast.makeText(AddEvent.this, "Please enter event overview", Toast.LENGTH_LONG).show();
-                    category.setError("Event Overview is required");
-                    category.requestFocus();
 
                 } else if (TextUtils.isEmpty(textDate)) {
                     Toast.makeText(AddEvent.this, "Please enter event date", Toast.LENGTH_LONG).show();
@@ -195,7 +226,7 @@ public class AddEvent extends AppCompatActivity {
 
         String Overview = overview.getText().toString().trim();
 
-        String Category = category.getText().toString().trim();
+        String Category = categorySpinner.getSelectedItem().toString();
 
         String Date = date.getText().toString().trim();
 
