@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -42,6 +44,9 @@ public class AddEvent extends AppCompatActivity {
     private ImageView imageView;
     private EditText name, overview,date, Duration, age, location;
     private Spinner categorySpinner, languageSpinner;
+
+    RadioGroup radioGroup;
+    RadioButton radioButton;
     private Button submit;
     private String imageURL;
     private Uri uri;
@@ -63,6 +68,7 @@ public class AddEvent extends AppCompatActivity {
         age = findViewById(R.id.editEventAge);
         location = findViewById(R.id.eventLocation);
 
+        radioButton = findViewById(R.id.radioGroup);
 
         //To implement categories spinner (list) with an array in strings.xml file
 
@@ -101,6 +107,7 @@ public class AddEvent extends AppCompatActivity {
                 picker.show();
             }
         });
+
 
         submit = findViewById(R.id.submitEvent_button);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -188,6 +195,12 @@ public class AddEvent extends AppCompatActivity {
 
     }
 
+    //To implements radio buttons( Online + In Person)
+    public void checkButton(View v){
+        int radioId = radioGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
+        Toast.makeText(AddEvent.this, "Selected radio button: " + radioButton.getText(), Toast.LENGTH_SHORT).show();
+    }
     public void saveData(){
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Event Images")
