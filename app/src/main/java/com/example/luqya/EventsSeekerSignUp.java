@@ -206,6 +206,7 @@ public class EventsSeekerSignUp extends AppCompatActivity {
                                 userInfo.put("PhoneNumber", textPhone);
                                 userInfo.put("DateOfBirth", textDoB);
                                 userInfo.put("UserType","1");
+                                userInfo.put("Points",0 );
 
                                 df.set(userInfo);
                                 progressBar.setVisibility(View.GONE);

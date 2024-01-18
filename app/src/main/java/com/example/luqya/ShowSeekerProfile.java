@@ -26,7 +26,7 @@ import com.squareup.picasso.Picasso;
 
 public class ShowSeekerProfile extends AppCompatActivity {
 
-    private TextView textViewWelcome, textViewFullName, textViewDoB, textViewEmail, textViewPhone ;
+    private TextView textViewWelcome, textViewFullName, textViewDoB, textViewEmail, textViewPhone, textViewPoints ;
     private ProgressBar progressBar;
     private String fullName, email, doB, phone;
     private ImageView imageView;
@@ -43,6 +43,7 @@ public class ShowSeekerProfile extends AppCompatActivity {
         textViewDoB = findViewById(R.id.textViewShowDoB);
         textViewEmail = findViewById(R.id.textViewShowEmail);
         textViewPhone = findViewById(R.id.textViewShowPhone);
+        textViewPoints = findViewById(R.id.textView_pts);
         imageView = findViewById(R.id.imageView);
 
         progressBar = findViewById(R.id.progressBarEditProfile);

@@ -3,10 +3,10 @@ package com.example.luqya;
 public class ReadWriteUserDetails {
 
     public String fullName, doD, phone, initiativeName, initiativeFounderName, intiativePhone, initiativeLocation;
+    public int points;
 
 
     public ReadWriteUserDetails(){
-
     }
 
 
@@ -15,6 +15,7 @@ public class ReadWriteUserDetails {
         this.fullName = textFullName;
         this.doD = textDoB;
         this.phone = textPhone;
+        this.points = 0;
     }
 
     public ReadWriteUserDetails(String textInitiativeName, String textInitiativeFounderName, String textInitiativePhone, String textInitiativeLocation){

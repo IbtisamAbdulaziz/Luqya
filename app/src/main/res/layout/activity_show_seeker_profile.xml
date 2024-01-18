@@ -21,6 +21,26 @@
         app:layout_constraintEnd_toStartOf="@id/cardView"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Points"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@id/textView_pts"
+            android:layout_marginRight="5dp"/>
+
+        <TextView
+            android:id="@+id/textView_pts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 0 "
+            android:textSize="20sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"/>
+
 
         <ImageView
             android:id="@+id/imageView"
