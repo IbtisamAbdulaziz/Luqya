@@ -68,7 +68,7 @@ public class AddEvent extends AppCompatActivity {
         age = findViewById(R.id.editEventAge);
         location = findViewById(R.id.eventLocation);
 
-        radioButton = findViewById(R.id.radioGroup);
+        radioGroup = findViewById(R.id.radioGroup);
 
         //To implement categories spinner (list) with an array in strings.xml file
 
