@@ -36,43 +36,66 @@
         android:id="@+id/button"
         android:layout_width="325dp"
         android:layout_height="69dp"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:text="View Initiative's Profile"
-        android:layout_below="@id/button5" />
+        android:layout_below="@id/button5"
+        android:background="@drawable/button_background"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/button2"
         android:layout_width="156dp"
         android:layout_height="62dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="10dp"
         android:layout_alignParentStart="true"
         android:layout_below="@id/textView"
         android:layout_centerVertical="true"
-        android:layout_marginStart="40dp"
-        android:text="Add Event" />
+        android:layout_marginStart="15dp"
+        android:text="Add Event"
+        android:background="@drawable/button_background"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/button3"
         android:layout_width="156dp"
         android:layout_height="62dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/button2"
         android:layout_alignParentEnd="true"
         android:layout_below="@id/textView"
-        android:layout_marginEnd="40dp"
-        android:text="My Events" />
+        android:layout_marginEnd="15dp"
+        android:text="My Events"
+        android:background="@drawable/button_background"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/button4"
         android:layout_width="156dp"
         android:layout_height="62dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="10dp"
         android:layout_below="@id/button2"
         android:text="Edit Profile"
-        android:layout_marginStart="40dp"/>
+        android:layout_marginStart="15dp"
+        android:background="@drawable/button_background"
+        android:textColor="@color/black"/>
 
     <Button
         android:id="@+id/button5"
-        android:layout_width="158dp"
-        android:layout_height="64dp"
+        android:layout_width="156dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toRightOf="@+id/button4"
         android:layout_below="@id/button3"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="40dp"
-        android:text="Statistics" />
+        android:layout_marginEnd="15dp"
+        android:text="Statistics"
+        android:background="@drawable/button_background"
+        android:textColor="@color/black"/>
 </RelativeLayout>
