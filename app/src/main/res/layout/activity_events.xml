@@ -96,27 +96,25 @@
                     app:layout_constraintTop_toBottomOf="@+id/imageView3"
                     tools:ignore="MissingConstraints" />
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginEnd="@id/recyclerView"
-                    app:layout_constraintBottom_toBottomOf="@+id/editTextSearch"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextSearch"
-                    app:layout_constraintEnd_toEndOf="@+id/recyclerView"
-                    tools:ignore="NotSibling">
+                    tools:layout_editor_absoluteX="-82dp"
+                    tools:layout_editor_absoluteY="0dp"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextSearch">
 
                     <TextView
                         android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:text="Upcoming Events"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        tools:ignore="MissingConstraints" />
+                        tools:ignore="MissingConstraints"
+                        tools:layout_editor_absoluteX="32dp"
+                        tools:layout_editor_absoluteY="168dp" />
 
                     <TextView
                         android:id="@+id/textView5_1"
@@ -125,9 +123,11 @@
                         android:layout_marginEnd="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="VIEW ALL"
-                        android:textColor="@color/button_text" />
+                        android:textColor="@color/button_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -156,7 +156,7 @@
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"/>
 
                 <TextView
                     android:id="@+id/textView8_1"
@@ -165,14 +165,16 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="4dp"
                     android:text="VIEW ALL"
-                    android:textColor="@color/button_text" />
-
+                    android:textColor="@color/button_text"
+                    android:layout_marginStart="173dp"/>
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
                 android:minHeight="250dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="426dp" />
