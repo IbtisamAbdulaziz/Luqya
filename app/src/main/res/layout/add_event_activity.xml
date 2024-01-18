@@ -219,26 +219,6 @@
                         tools:ignore="MissingConstraints"
                         android:hint="Select date of event"/>
 
-                    <TextView
-                        android:id="@+id/eventGender"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:text="Gender:"
-                        android:textColor="@color/black"
-                        android:textSize="15dp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/editTextGender"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        tools:ignore="MissingConstraints"
-                        android:hint="Text Gender"/>
 
                     <TextView
                         android:id="@+id/textView22"
@@ -257,9 +237,10 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
                         android:ems="10"
-                        android:inputType="textPersonName"
+                        android:inputType="time"
                         tools:ignore="MissingConstraints"
                         android:hint="Event Duration"/>
+
 
                     <TextView
                         android:id="@+id/textView21"
@@ -271,17 +252,12 @@
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <Spinner
                         android:id="@+id/eventLanguage"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="20dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:text="  "
-                        tools:ignore="MissingConstraints"
-                        android:hint="Event Language" />
+                        android:layout_marginBottom="20dp" />
 
                     <TextView
                         android:id="@+id/textView25"

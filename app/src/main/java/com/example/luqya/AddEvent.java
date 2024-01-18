@@ -40,8 +40,8 @@ import java.util.Calendar;
 public class AddEvent extends AppCompatActivity {
 
     private ImageView imageView;
-    private EditText name, overview,date, gender, Duration, Language, age, location;
-    private Spinner categorySpinner;
+    private EditText name, overview,date, Duration, age, location;
+    private Spinner categorySpinner, languageSpinner;
     private Button submit;
     private String imageURL;
     private Uri uri;
@@ -59,20 +59,27 @@ public class AddEvent extends AppCompatActivity {
         name = findViewById(R.id.eventName);
         overview = findViewById(R.id.eventOverview);
         date = findViewById(R.id.eventDate);
-        gender = findViewById(R.id.editTextGender);
         Duration = findViewById(R.id.eventDuration);
-        Language = findViewById(R.id.eventLanguage);
         age = findViewById(R.id.editEventAge);
         location = findViewById(R.id.eventLocation);
 
 
-        //To implement the spinner (list) witj an array in Strings.xml file
+        //To implement categories spinner (list) with an array in strings.xml file
 
         categorySpinner =findViewById(R.id.eventCategory);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories,
                 android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         categorySpinner.setAdapter(adapter);
+
+
+        //To implement languages spinner (list) with an array in strings.xml file
+
+        languageSpinner =findViewById(R.id.eventLanguage);
+        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.languages,
+                android.R.layout.simple_spinner_item);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        languageSpinner.setAdapter(adapter2);
 
 
         //To choose a date from a calender
@@ -104,9 +111,8 @@ public class AddEvent extends AppCompatActivity {
                 String textOverview = overview.getText().toString().trim();
                 String textCategory = categorySpinner.getSelectedItem().toString();
                 String textDate = date.getText().toString().trim();
-                String textGender = gender.getText().toString().trim();
                 String textDuration = Duration.getText().toString().trim();
-                String textLanguage = Language.getText().toString().trim();
+                String textLanguage = languageSpinner.getSelectedItem().toString();
                 String textAge = age.getText().toString().trim();
                 String textLocation = location.getText().toString().trim();
 
@@ -127,24 +133,13 @@ public class AddEvent extends AppCompatActivity {
                     date.setError("Event Date is required");
                     date.requestFocus();
 
-                } else if (TextUtils.isEmpty(textGender)) {
-                    Toast.makeText(AddEvent.this, "Please enter the gender", Toast.LENGTH_LONG).show();
-                    gender.setError("Gender is required");
-                    gender.requestFocus();
-
-
-                } else if (TextUtils.isEmpty(textDuration)) {
+                }  else if (TextUtils.isEmpty(textDuration)) {
                     Toast.makeText(AddEvent.this, "Please enter event duration", Toast.LENGTH_LONG).show();
                     Duration.setError("Event Duration is required");
                     Duration.requestFocus();
 
 
-                } else if (TextUtils.isEmpty(textLanguage)) {
-                    Toast.makeText(AddEvent.this, "Please enter The language", Toast.LENGTH_LONG).show();
-                    Language.setError("Language is required");
-                    Language.requestFocus();
-
-                } else if (TextUtils.isEmpty(textAge)) {
+                }  else if (TextUtils.isEmpty(textAge)) {
                     Toast.makeText(AddEvent.this, "Please enter the age", Toast.LENGTH_LONG).show();
                     age.setError("Age is required");
                     age.requestFocus();
@@ -230,11 +225,9 @@ public class AddEvent extends AppCompatActivity {
 
         String Date = date.getText().toString().trim();
 
-        String Gender = gender.getText().toString().trim();
-
         String duration = Duration.getText().toString().trim();
 
-        String language = Language.getText().toString().trim();
+        String language = languageSpinner.getSelectedItem().toString();
 
         String Age = age.getText().toString().trim();
 
@@ -243,7 +236,7 @@ public class AddEvent extends AppCompatActivity {
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
 
-        DataClass data = new DataClass(EventName, Overview, Date, Gender, duration, language, Age,Location, imageURL);
+        DataClass data = new DataClass(EventName, Overview, Date,duration, language, Age,Location, imageURL);
 
         databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

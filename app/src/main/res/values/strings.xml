@@ -8,10 +8,17 @@
 
     <string-array name="categories">
 
-        <item>Music</item>
         <item>Literature</item>
+        <item>Music</item>
         <item>Scientific</item>
         <item>Artistic</item>
+
+    </string-array>
+
+    <string-array name="languages">
+
+        <item>Arabic</item>
+        <item>English</item>
 
     </string-array>
 

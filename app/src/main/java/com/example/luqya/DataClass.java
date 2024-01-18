@@ -3,13 +3,12 @@ package com.example.luqya;
 
 public class DataClass {
 
-  private String name, overview, date, gender, Duration, Language, age, location, dataImage;
+  private String name, overview, date, Duration, Language, age, location, dataImage;
 
-    public DataClass(String name, String overview, String date, String gender, String duration, String language, String age, String location,String dataImage) {
+    public DataClass(String name, String overview, String date, String duration, String language, String age, String location,String dataImage) {
         this.name = name;
         this.overview = overview;
         this.date = date;
-        this.gender = gender;
         this.Duration = duration;
         this.Language = language;
         this.age = age;
@@ -26,10 +25,6 @@ public class DataClass {
 
     public String getDate() {
         return date;
-    }
-
-    public String getGender() {
-        return gender;
     }
 
     public String getDuration() {
