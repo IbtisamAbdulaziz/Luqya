@@ -2,11 +2,14 @@ package com.example.luqya;
 
 public class ReadWriteUserDetails {
 
-    public String fullName, doD, phone, initiativeName, initiativeFounderName, intiativePhone, initiativeLocation;
+    public String fullName, doD, phone, initiativeName,
+            initiativeFounderName, intiativePhone, initiativeLocation,
+            initiativeOverView;
     public int points;
 
 
     public ReadWriteUserDetails(){
+
     }
 
 
@@ -18,12 +21,14 @@ public class ReadWriteUserDetails {
         this.points = 0;
     }
 
-    public ReadWriteUserDetails(String textInitiativeName, String textInitiativeFounderName, String textInitiativePhone, String textInitiativeLocation){
+    public ReadWriteUserDetails(String textInitiativeName, String textInitiativeFounderName, String textInitiativePhone,
+                                String textInitiativeLocation, String textInitiativeDescription){
 
         this.initiativeName = textInitiativeName;
         this.initiativeFounderName = textInitiativeFounderName;
         this.intiativePhone = textInitiativePhone;
         this.initiativeLocation = textInitiativeLocation;
+        this.initiativeOverView = textInitiativeDescription;
     }
 
 }

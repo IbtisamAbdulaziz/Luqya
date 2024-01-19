@@ -44,7 +44,6 @@ public class AddEvent extends AppCompatActivity {
     private ImageView imageView;
     private EditText name, overview,date, Duration, age, location;
     private Spinner categorySpinner, languageSpinner;
-
     RadioGroup radioGroup;
     RadioButton radioButton;
     private Button submit;

@@ -25,7 +25,7 @@ import com.squareup.picasso.Picasso;
 
 public class View_InitiativeFounderProfile extends AppCompatActivity {
 
-    private TextView textViewInitiativeName;
+    private TextView textViewInitiativeName, textViewInitiativeOverview;
     private ImageView imageViewInitiativeLogo;
     private ProgressBar progressBar;
     private String initiativeName, initiativeDescription;
@@ -37,6 +37,7 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         setContentView(R.layout.view_initiative_profile);
 
         textViewInitiativeName = findViewById(R.id.textView_initiative_name);
+        textViewInitiativeOverview = findViewById(R.id.textView_Initiative_overview);
         imageViewInitiativeLogo = findViewById(R.id.imageView_initiative_logo);
 
         getSupportActionBar().setTitle("Initiative Profile");
@@ -71,9 +72,10 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ReadWriteUserDetails readUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
+
                 if(readUserDetails != null){
                     initiativeName = readUserDetails.initiativeName;
-
+                    initiativeDescription = readUserDetails.initiativeOverView;
                     textViewInitiativeName.setText(initiativeName);
 
                     Uri uri = firebaseUser.getPhotoUrl();

@@ -63,15 +63,6 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
             }
         });
 
-        Button buttonUpdateEmail = findViewById(R.id.button_edit_email);
-        buttonUpdateEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               /* Intent intent = new Intent(EditSeekerProfile.this, UpdateEmailActivity.class);
-                startActivity(intent);
-                finish();*/
-            }
-        });
 
         Button buttonUpdateProfile = findViewById(R.id.button_update_profile);
         buttonUpdateProfile.setOnClickListener(new View.OnClickListener() {
@@ -132,7 +123,7 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
             textInitiativeLocation = editTextUpdateInitiativeLocation.getText().toString();
             textInitiativePhone = editTextUpdateInitiativePhone.getText().toString();
 
-            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation );
+            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textInitiativeDescription );
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
 
             String userID = firebaseUser.getUid();

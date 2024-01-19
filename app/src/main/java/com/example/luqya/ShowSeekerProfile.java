@@ -79,7 +79,9 @@ public class ShowSeekerProfile extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ReadWriteUserDetails readUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
+
                 if(readUserDetails != null){
+
                     fullName = firebaseUser.getDisplayName();
                     email = firebaseUser.getEmail();
                     doB = readUserDetails.doD;

@@ -102,6 +102,32 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
 
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="5dp"
+                    android:text="Description of Initiative*"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eventOverview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginHorizontal="5dp"
+                    android:background="@drawable/edit_text_border"
+                    android:inputType="textMultiLine"
+                    android:lines="5"
+                    android:padding="13dp"
+                    android:scrollbars="vertical"
+                    tools:ignore="MissingConstraints"
+                    android:hint="Event Overview..."
+                    android:gravity="top|start"/>
+
 
                 <!--  Email Label -->
                 <TextView

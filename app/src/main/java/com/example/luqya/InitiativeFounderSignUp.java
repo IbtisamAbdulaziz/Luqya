@@ -36,7 +36,7 @@ import java.util.regex.Pattern;
 
 public class InitiativeFounderSignUp extends AppCompatActivity {
 
-    private EditText initiativeNameEditText, initiativeFounderNameEditText, initiativeEmailEditText,
+    private EditText initiativeNameEditText, initiativeFounderNameEditText, initiativeEmailEditText, initiativeDescriptionEditText,
     passwordEditText, passwordConfirmationEditText, phoneEditText, locationEditText;
     private Button cancelBtn, signUpBtn;
     private ProgressBar progressBar;
@@ -56,6 +56,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
         passwordConfirmationEditText = findViewById(R.id.edittext_password_confirmation);
         phoneEditText = findViewById(R.id.editText_phone);
         locationEditText = findViewById(R.id.editText_location);
+        initiativeDescriptionEditText = findViewById(R.id.eventOverview);
 
         cancelBtn = findViewById(R.id.button_cansel);
         signUpBtn = findViewById(R.id.button_sign_up);
@@ -75,6 +76,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                 String textInitiativeName = initiativeNameEditText.getText().toString();
                 String textInitiativeFounderName = initiativeFounderNameEditText.getText().toString();
                 String textInitiativeEmail = initiativeEmailEditText.getText().toString();
+                String textInitiativeDescription = initiativeDescriptionEditText.getText().toString();
 
                 String textPassowrd = passwordEditText.getText().toString();
                 String textPasswordConfirmation = passwordConfirmationEditText.getText().toString();
@@ -97,7 +99,12 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                     initiativeFounderNameEditText.setError("Initiative Founder Name is required");
                     initiativeFounderNameEditText.requestFocus();
 
-                } else if (TextUtils.isEmpty(textInitiativeEmail)) {
+                } else if (TextUtils.isEmpty(textInitiativeDescription)) {
+                    Toast.makeText(InitiativeFounderSignUp.this, "Please enter initiative description", Toast.LENGTH_LONG).show();
+                    initiativeDescriptionEditText.setError("Initiative Overview is required");
+                    initiativeDescriptionEditText.requestFocus();
+
+            } else if (TextUtils.isEmpty(textInitiativeEmail)) {
                     Toast.makeText(InitiativeFounderSignUp.this, "Please enter initiative email", Toast.LENGTH_LONG).show();
                     initiativeEmailEditText.setError("Initiative Email address is required");
                     initiativeEmailEditText.requestFocus();
@@ -152,7 +159,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                     passwordConfirmationEditText.setText(" ");
                 } else {
 
-                    registerInitiative(textInitiativeName, textInitiativeFounderName, textInitiativeEmail, textInitiativePhone, textInitiativeLocation, textPassowrd);
+                    registerInitiative(textInitiativeName, textInitiativeFounderName, textInitiativeEmail, textInitiativePhone, textInitiativeLocation, textPassowrd, textInitiativeDescription);
                     progressBar.setVisibility(View.VISIBLE);
                 }
 
@@ -161,7 +168,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
 
     }
 
-    private void registerInitiative(String textInitiativeName, String textInitiativeFounderName, String textInitiativeEmail, String textInitiativePhone, String textInitiativeLocation, String textPassowrd) {
+    private void registerInitiative(String textInitiativeName, String textInitiativeFounderName, String textInitiativeEmail, String textInitiativePhone, String textInitiativeLocation, String textPassowrd, String textDescription) {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
@@ -175,7 +182,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(textInitiativeName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation);
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textDescription);
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
 
                     referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -193,6 +200,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                                 userInfo.put("InitiativeEmail", textInitiativeEmail);
                                 userInfo.put("InitiativePhone", textInitiativePhone);
                                 userInfo.put("InitiativeLocation", textInitiativeLocation);
+                                userInfo.put("InitiativeDescription", textDescription);
                                 userInfo.put("UserType","2");
 
                                 df.set(userInfo);

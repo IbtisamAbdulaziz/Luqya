@@ -30,7 +30,8 @@
             android:layout_marginTop="30dp"
             android:padding="6dp"
             android:textSize="18sp"
-            android:textColor="#555555"/>
+            android:textColor="#555555"
+            android:layout_below="@id/textView_update_profile_head"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -52,6 +53,8 @@
             android:padding="6dp"
             android:textSize="18sp"
             android:textColor="#555555" />
+
+
 
         <EditText
             android:layout_width="match_parent"
@@ -130,10 +133,14 @@
             android:id="@+id/editText_update_initiative_description"
             android:layout_below="@id/textView_update_initiative_description"
             android:inputType="textMultiLine"
+            android:lines="5"
+            android:scrollbars="vertical"
             android:padding="6dp"
             android:focusable="false"
             android:textSize="16sp"
-            android:hint="Edit initiative description"/>
+            android:background="@drawable/edit_text_border"
+            android:gravity="start"
+            android:hint="Edit initiative description..."/>
 
         <Button
             android:layout_width="match_parent"
@@ -148,22 +155,12 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_edit_email"
-            android:text="Update Email"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_below="@id/button_upload_profile_pic"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/button_update_profile"
             android:text="Update Profile"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
-            android:layout_below="@id/button_edit_email"
+            android:layout_below="@id/button_upload_profile_pic"
             android:backgroundTint="@color/button_text"/>
 
         <ProgressBar
