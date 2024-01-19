@@ -31,14 +31,13 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_event, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.my_events_list_item, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.Title.setText(dataList.get(position).getName());
-        holder.Date.setText(dataList.get(position).getDate());
 
 
         holder.edit_event.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +52,9 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 intent.putExtra("Age", dataList.get(holder.getAdapterPosition()).getAge());
                 intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
                 intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getLanguage());
+                intent.putExtra("category", dataList.get(holder.getAdapterPosition()).getCategory());
+                intent.putExtra("attendingMeth", dataList.get(holder.getAdapterPosition()).getAttendingMeth());
+
                 context.startActivity(intent);
             }
         });
@@ -68,18 +70,14 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
 
     class MyViewHolder extends RecyclerView.ViewHolder {
 
-        ImageView  DateImage;
         TextView Title;
 
-        TextView Date;
         Button edit_event,Delete_Event, Attending_List;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             Title = itemView.findViewById(R.id.TitleText);
-            Date = itemView.findViewById(R.id.Date);
-            DateImage = itemView.findViewById(R.id.imageView5);
             edit_event=itemView.findViewById(R.id.edit_event);
             Delete_Event=itemView.findViewById(R.id.delete_event);
             Attending_List=itemView.findViewById(R.id.attending_List);

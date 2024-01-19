@@ -41,12 +41,14 @@ import java.util.Calendar;
 
 public class AddEvent extends AppCompatActivity {
 
+    DataClass dataClass;
     private ImageView imageView;
     private EditText name, overview,date, Duration, age, location;
     private Spinner categorySpinner, languageSpinner;
 
-    RadioGroup radioGroup;
-    RadioButton radioButton;
+
+    RadioButton attendingMeth, Online , InPerson;
+
     private Button submit;
     private String imageURL;
     private Uri uri;
@@ -60,6 +62,7 @@ public class AddEvent extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Add Event");
 
+        dataClass = new DataClass();
         imageView = findViewById(R.id.imageView);
         name = findViewById(R.id.eventName);
         overview = findViewById(R.id.eventOverview);
@@ -67,8 +70,9 @@ public class AddEvent extends AppCompatActivity {
         Duration = findViewById(R.id.eventDuration);
         age = findViewById(R.id.editEventAge);
         location = findViewById(R.id.eventLocation);
-
-        radioGroup = findViewById(R.id.radioGroup);
+        categorySpinner =  findViewById(R.id.eventCategory);
+        Online = findViewById(R.id.onlineRB);
+        InPerson = findViewById(R.id.inPersonRB);
 
         //To implement categories spinner (list) with an array in strings.xml file
 
@@ -122,10 +126,18 @@ public class AddEvent extends AppCompatActivity {
                 String textLanguage = languageSpinner.getSelectedItem().toString();
                 String textAge = age.getText().toString().trim();
                 String textLocation = location.getText().toString().trim();
+                String textOnline = Online.getText().toString().trim();
+                String textInPerson = InPerson.getText().toString().trim();
 
 
+                //To implements radio buttons( Online + In Person)
+                if (Online.isChecked()){
+                    dataClass.setAttendingMeth(textOnline);
 
-                if (TextUtils.isEmpty(textEventName)) {
+                } else if (InPerson.isChecked()) {
+                       dataClass.setAttendingMeth(textInPerson);
+
+                   } else if (TextUtils.isEmpty(textEventName)) {
                     Toast.makeText(AddEvent.this, "Please enter event name", Toast.LENGTH_LONG).show();
                     name.setError("Event Name is required");
                     name.requestFocus();
@@ -155,6 +167,7 @@ public class AddEvent extends AppCompatActivity {
                     Toast.makeText(AddEvent.this, "Please enter the location", Toast.LENGTH_LONG).show();
                     location.setError("location is required");
                     location.requestFocus();
+
                 } else {
 
                     uploadData();
@@ -196,11 +209,12 @@ public class AddEvent extends AppCompatActivity {
     }
 
     //To implements radio buttons( Online + In Person)
-    public void checkButton(View v){
+   /* public void checkButton(View v){
         int radioId = radioGroup.getCheckedRadioButtonId();
         radioButton = findViewById(radioId);
         Toast.makeText(AddEvent.this, "Selected radio button: " + radioButton.getText(), Toast.LENGTH_SHORT).show();
-    }
+    }*/
+    
     public void saveData(){
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Event Images")
@@ -246,10 +260,16 @@ public class AddEvent extends AppCompatActivity {
 
         String Location = location.getText().toString().trim();
 
+        String AttendingMeth = attendingMeth.getText().toString().trim();
+
+        String OnLine = Online.getText().toString().trim();
+        
+        String inPerson = InPerson.getText().toString().trim();
+
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
 
-        DataClass data = new DataClass(EventName, Overview, Date,duration, language, Age,Location, imageURL);
+        DataClass data = new DataClass(EventName, Overview, Date,duration, language, Age,Location, imageURL,Category,AttendingMeth);
 
         databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

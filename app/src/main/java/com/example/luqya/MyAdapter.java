@@ -64,6 +64,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("Age", dataList.get(holder.getAdapterPosition()).getAge());
                 intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
                 intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getLanguage());
+                intent.putExtra("category", dataList.get(holder.getAdapterPosition()).getCategory());
+                intent.putExtra("attendingMeth", dataList.get(holder.getAdapterPosition()).getAttendingMeth());
+
                 context.startActivity(intent);
             }
         });
@@ -85,7 +88,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         TextView Date;
         Button register;
         Button Details;
-        CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
