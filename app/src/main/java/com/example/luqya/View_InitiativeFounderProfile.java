@@ -38,7 +38,7 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
 
         textViewInitiativeName = findViewById(R.id.textView_initiative_name);
         textViewInitiativeOverview = findViewById(R.id.textView_Initiative_overview);
-        imageViewInitiativeLogo = findViewById(R.id.imageView_initiative_logo);
+        imageViewInitiativeLogo = findViewById(R.id.imageView_initiative_logo2);
 
         getSupportActionBar().setTitle("Initiative Profile");
         progressBar = findViewById(R.id.progressBarEditProfile);
@@ -46,7 +46,7 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         imageViewInitiativeLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(View_InitiativeFounderProfile.this, UploadProfilePicture.class);
+                Intent i = new Intent(View_InitiativeFounderProfile.this, UploadInitiativePicture.class);
                 startActivity(i);
             }
         });
@@ -76,7 +76,9 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
                 if(readUserDetails != null){
                     initiativeName = readUserDetails.initiativeName;
                     initiativeDescription = readUserDetails.initiativeOverView;
+
                     textViewInitiativeName.setText(initiativeName);
+                    textViewInitiativeOverview.setText(initiativeDescription);
 
                     Uri uri = firebaseUser.getPhotoUrl();
                     Picasso.with(View_InitiativeFounderProfile.this).load(uri).into(imageViewInitiativeLogo);

@@ -39,8 +39,8 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.edit_initiative_founder_profile);
-
         getSupportActionBar().setTitle("Update Initiative Details");
+
         progressBar = findViewById(R.id.progressBarEditInitiativeProfile);
         editTextUpdateInitiativeName = findViewById(R.id.editText_update_initiative_name);
         editTextUpdateInitiativeFounderName = findViewById(R.id.editText_update_initiative_founder_name);

@@ -65,16 +65,6 @@ public class EditSeekerProfile extends AppCompatActivity {
             }
         });
 
-        Button buttonUpdateEmail = findViewById(R.id.button_edit_email);
-        buttonUpdateEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               /* Intent intent = new Intent(EditSeekerProfile.this, UpdateEmailActivity.class);
-                startActivity(intent);
-                finish();*/
-            }
-        });
-
 
         editTextUpdateDoB.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -26,7 +26,7 @@
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
         android:gravity="center"
-        android:textSize="18sp" />
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView_Initiative_overview"
@@ -38,6 +38,7 @@
         android:text="Initiative's description box..."
         android:textSize="17sp"
         android:layout_marginTop="20dp"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
