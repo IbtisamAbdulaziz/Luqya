@@ -82,7 +82,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                 String textPasswordConfirmation = passwordConfirmationEditText.getText().toString();
 
                 String textInitiativePhone = phoneEditText.getText().toString();
-                String textInitiativeLocation = phoneEditText.getText().toString();
+                String textInitiativeLocation = locationEditText.getText().toString();
 
                 String mobileRegex = "[+][0-9]{12}";
                 Matcher mobileMatcher;
