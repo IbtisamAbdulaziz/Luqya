@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="vertical"
     tools:context=".View_InitiativeFounderProfile">
-
 
     <ImageView
         android:id="@+id/imageView_initiative_logo"
@@ -32,11 +32,12 @@
         android:id="@+id/textView_Initiative_overview"
         android:layout_below="@id/imageView_initiative_logo"
         android:layout_width="359dp"
-        android:layout_height="96dp"
+        android:layout_height="90dp"
         android:background="@color/app_background"
         android:layout_centerHorizontal="true"
         android:text="Initiative's description box..."
-        android:textSize="17sp"
+        android:textSize="16sp"
+        android:scrollbars="vertical"
         android:layout_marginTop="20dp"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -67,7 +68,7 @@
         android:textStyle="italic"
         android:layout_below="@id/textView_Initiative_overview"
         tools:textSize="14sp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -77,9 +78,9 @@
         android:layout_marginStart="16dp"
         android:text=" Events"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="23sp"
         android:textStyle="bold"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/editTextText"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -87,12 +88,118 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
-        android:minHeight="250dp"
+        android:minHeight="170dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:layout_below="@id/textView33"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_below="@id/recyclerView"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/recyclerView"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Founder of the Initiative: "
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/textView_show_founder_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name of founder"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/linearLayout1"
+        android:layout_marginHorizontal="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Phone: "
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_show_initiative_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="phone of initiative"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/linearLayout2"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Initiative Address: "
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/textView_show_initiative_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address of initiative"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/linearLayout3"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Initiative Email "
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/textView_show_initiative_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="email of initiative"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/black"/>
+
+    </LinearLayout>
 
 
     <ProgressBar
@@ -104,7 +211,6 @@
         android:layout_marginLeft="160dp"
         android:layout_marginRight="160dp"
         android:elevation="10dp" />
-
 
 
 </RelativeLayout>

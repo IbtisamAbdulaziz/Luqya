@@ -25,10 +25,12 @@ import com.squareup.picasso.Picasso;
 
 public class View_InitiativeFounderProfile extends AppCompatActivity {
 
-    private TextView textViewInitiativeName, textViewInitiativeOverview;
+    private TextView textViewInitiativeName, textViewInitiativeOverview, textViewInitiativeFounder, textViewInitiativePhone,
+            textViewInitiativeAddress, textViewInitiativeEmail;
     private ImageView imageViewInitiativeLogo;
     private ProgressBar progressBar;
-    private String initiativeName, initiativeDescription;
+    private String initiativeName, initiativeDescription, initiativeFounder, initiativePhone,
+    initiativeAddress, initiativeEmail;
     private FirebaseAuth authProfile;
 
     @Override
@@ -38,6 +40,11 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
 
         textViewInitiativeName = findViewById(R.id.textView_initiative_name);
         textViewInitiativeOverview = findViewById(R.id.textView_Initiative_overview);
+        textViewInitiativeFounder = findViewById(R.id.textView_show_founder_name);
+        textViewInitiativePhone = findViewById(R.id.textView_show_initiative_phone);
+        textViewInitiativeAddress = findViewById(R.id.textView_show_initiative_address);
+        textViewInitiativeEmail = findViewById(R.id.textView_show_initiative_email);
+
         imageViewInitiativeLogo = findViewById(R.id.imageView_initiative_logo2);
 
         getSupportActionBar().setTitle("Initiative Profile");
@@ -76,9 +83,17 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
                 if(readUserDetails != null){
                     initiativeName = readUserDetails.initiativeName;
                     initiativeDescription = readUserDetails.initiativeOverView;
+                    initiativeFounder = readUserDetails.initiativeFounderName;
+                    initiativePhone = readUserDetails.intiativePhone;
+                    initiativeEmail = firebaseUser.getEmail();
+                    initiativeAddress = readUserDetails.initiativeLocation;
 
                     textViewInitiativeName.setText(initiativeName);
                     textViewInitiativeOverview.setText(initiativeDescription);
+                    textViewInitiativeFounder.setText(initiativeFounder);
+                    textViewInitiativePhone.setText(initiativePhone);
+                    textViewInitiativeEmail.setText(initiativeEmail);
+                    textViewInitiativeAddress.setText(initiativeAddress);
 
                     Uri uri = firebaseUser.getPhotoUrl();
                     Picasso.with(View_InitiativeFounderProfile.this).load(uri).into(imageViewInitiativeLogo);
