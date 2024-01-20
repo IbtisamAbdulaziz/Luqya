@@ -189,7 +189,7 @@
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.google.android.material.bottomappbar.BottomAppBar
+        <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/app_bar"
             tools:ignore="BottomAppBar"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -289,7 +289,7 @@
 
             </LinearLayout>
 
-        </com.google.android.material.bottomappbar.BottomAppBar>
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
