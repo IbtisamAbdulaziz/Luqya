@@ -1,62 +1,50 @@
 package com.example.luqya;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 public class Details_event_class extends AppCompatActivity {
 
 
+    TextView Title, Location, Duration, Overview, Gender, Age, Language;
+    Button Register;
 
+    ImageView imageView;
 
-        TextView Title, Location, Duration,Overview,Gender,Age,Language;
-        Button Register;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_details_event_class);
 
-        ImageView imageView;
+        Title = findViewById(R.id.TitleText);
+        Location = findViewById(R.id.StarText);
+        Duration = findViewById(R.id.Duration);
+        Overview = findViewById(R.id.Overview);
+        Gender = findViewById(R.id.Gender);
+        Age = findViewById(R.id.Age);
+        Language = findViewById(R.id.Language);
+        imageView = findViewById(R.id.imageView6);
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_details_event_class);
+        Register = findViewById(R.id.Register);
 
-            Title = findViewById(R.id.TitleText);
-            Location = findViewById(R.id.StarText);
-            Duration = findViewById(R.id.Duration);
-            Overview = findViewById(R.id.Overview);
-            Gender = findViewById(R.id.Gender);
-            Age = findViewById(R.id.Age);
-            Language = findViewById(R.id.Language);
-            imageView=findViewById(R.id.imageView6);
-
-            Register = findViewById(R.id.Register);
-
-            Bundle bundle = getIntent().getExtras();
-            if (bundle != null){
-                Title.setText(bundle.getString("Title"));
-                Location.setText(bundle.getString("Location"));
-                Duration.setText(bundle.getString("Duration"));
-                Overview.setText(bundle.getString("Overview"));
-                Location.setText(bundle.getString("Location"));
-                Gender.setText(bundle.getString("Gender"));
-                Age.setText(bundle.getString("Age"));
-                Language.setText(bundle.getString("Language"));
-                Glide.with(this).load(bundle.getString("Image")).into(imageView);
-            }
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            Title.setText(bundle.getString("Title"));
+            Location.setText(bundle.getString("Location"));
+            Duration.setText(bundle.getString("Duration"));
+            Overview.setText(bundle.getString("Overview"));
+            Location.setText(bundle.getString("Location"));
+            Gender.setText(bundle.getString("Gender"));
+            Age.setText(bundle.getString("Age"));
+            Language.setText(bundle.getString("Language"));
+            Glide.with(this).load(bundle.getString("Image")).into(imageView);
+        }
           /*  deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -87,7 +75,8 @@ public class Details_event_class extends AppCompatActivity {
                     startActivity(intent);
                 }
    });*/
-}
+
     }
+}
 
 

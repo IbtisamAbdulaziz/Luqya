@@ -113,6 +113,7 @@ public class Events extends AppCompatActivity {
             }
         });
 
+
         editTextSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -157,6 +158,4 @@ public class Events extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }
