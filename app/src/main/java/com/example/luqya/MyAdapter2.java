@@ -31,7 +31,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_event, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_event, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -53,7 +53,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
                 intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getLanguage());
                 intent.putExtra("category", dataList.get(holder.getAdapterPosition()).getCategory());
-                intent.putExtra("attendingMeth", dataList.get(holder.getAdapterPosition()).getAttendingMeth());
+             //   intent.putExtra("attendingMeth", dataList.get(holder.getAdapterPosition()).getAttendingMeth());
 
                 context.startActivity(intent);
             }

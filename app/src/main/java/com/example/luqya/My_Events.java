@@ -1,18 +1,8 @@
 package com.example.luqya;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,7 +29,61 @@ public class My_Events extends AppCompatActivity {
         setContentView(R.layout.activity_my_events);
 
 
+        FirebaseAuth authProfile;
+
+        List<DataClass> dataList;
+        DatabaseReference databaseReference;
+        ValueEventListener eventListener;
+        RecyclerView recyclerView;
+
+
+        authProfile = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = authProfile.getCurrentUser();
+        recyclerView = findViewById(R.id.recyclerView);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(My_Events.this, 1);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(My_Events.this);
+        builder.setCancelable(false);
+        builder.setView(R.layout.progress_layout);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dataList = new ArrayList<>();
+
+        MyAdapter2 adapter = new MyAdapter2(My_Events.this, dataList);
+        recyclerView.setAdapter(adapter);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Add Event");
+        dialog.show();
+        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dataList.clear();
+
+                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                    DataClass dataClass = itemSnapshot.getValue(DataClass.class);
+                    dataList.add(dataClass);
+
+                }
+                adapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                dialog.dismiss();
+            }
+        });
+
+
     }
-}
+        }
+
+
+
+
 
 

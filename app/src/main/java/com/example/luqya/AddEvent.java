@@ -130,14 +130,8 @@ public class AddEvent extends AppCompatActivity {
                 String textInPerson = InPerson.getText().toString().trim();
 
 
-                //To implements radio buttons( Online + In Person)
-                if (Online.isChecked()){
-                    dataClass.setAttendingMeth(textOnline);
 
-                } else if (InPerson.isChecked()) {
-                       dataClass.setAttendingMeth(textInPerson);
-
-                   } else if (TextUtils.isEmpty(textEventName)) {
+                   if (TextUtils.isEmpty(textEventName)) {
                     Toast.makeText(AddEvent.this, "Please enter event name", Toast.LENGTH_LONG).show();
                     name.setError("Event Name is required");
                     name.requestFocus();
@@ -207,6 +201,12 @@ public class AddEvent extends AppCompatActivity {
 
 
     }
+    /*To implements radio buttons( Online + In Person)
+                if (Online.isChecked()){
+        dataClass.setAttendingMeth(textOnline);
+
+    } else if (InPerson.isChecked()) {
+        dataClass.setAttendingMeth(textInPerson);*/
 
     //To implements radio buttons( Online + In Person)
    /* public void checkButton(View v){
@@ -260,16 +260,16 @@ public class AddEvent extends AppCompatActivity {
 
         String Location = location.getText().toString().trim();
 
-        String AttendingMeth = attendingMeth.getText().toString().trim();
+      /*  String AttendingMeth = attendingMeth.getText().toString().trim();
 
         String OnLine = Online.getText().toString().trim();
         
-        String inPerson = InPerson.getText().toString().trim();
+        String inPerson = InPerson.getText().toString().trim();*/
 
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
 
-        DataClass data = new DataClass(EventName, Overview, Date,duration, language, Age,Location, imageURL,Category,AttendingMeth);
+        DataClass data = new DataClass(EventName, Overview, Date,duration, language, Age,Location, imageURL,Category);
 
         databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
