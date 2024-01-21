@@ -3,9 +3,12 @@ package com.example.luqya;
 
 public class DataClass {
 
-  private String name, overview, date, Duration, Language, age, location, dataImage,categorySpinner;
+  private String name, overview, date, Duration, Language, age, location, attendingMethod ,category, dataImage;
 
-    public DataClass(String name, String overview, String date, String duration, String language, String age, String location,String dataImage,String categorySpinner) {
+
+    public DataClass(String name, String overview, String date, String duration, String language, String age,
+                     String location,String attendingMethod,String category) {
+
         this.name = name;
         this.overview = overview;
         this.date = date;
@@ -13,9 +16,8 @@ public class DataClass {
         this.Language = language;
         this.age = age;
         this.location = location;
-        this.categorySpinner = categorySpinner;
-       // this.attendingMeth = attendingMeth;
-
+        this.attendingMethod = attendingMethod;
+        this.category = category;
 
     }
 
@@ -47,14 +49,15 @@ public class DataClass {
         return location;
     }
 
-    public String getDataImage(){return dataImage;}
-    public String getCategory(){return categorySpinner;}
-    //public String getAttendingMeth(){return attendingMeth;}
 
+    public String getCategory(){return category;}
 
-   // public void setAttendingMeth(String attendingMeth) {
-     //   this.attendingMeth = attendingMeth;
-   // }
+    public String getAttendingMeth(){return attendingMethod;}
+
+    public String getDataImage(){
+        return dataImage;
+    }
+
 
     public DataClass(){
 

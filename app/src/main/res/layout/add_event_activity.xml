@@ -184,7 +184,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:id="@+id/inPersonRB"
-                            android:checked="true"
                             android:text="In Person"
                             android:layout_marginRight="50dp"
                             android:textAlignment="center"/>

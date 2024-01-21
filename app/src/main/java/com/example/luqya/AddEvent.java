@@ -45,9 +45,10 @@ public class AddEvent extends AppCompatActivity {
     private ImageView imageView;
     private EditText name, overview,date, Duration, age, location;
     private Spinner categorySpinner, languageSpinner;
+    private RadioGroup radioGroupAttendingMethod;
+    private RadioButton radioButtonAttendingMethodSelected;
 
-
-    RadioButton attendingMeth, Online , InPerson;
+    private RadioButton Online , InPerson;
 
     private Button submit;
     private String imageURL;
@@ -71,8 +72,16 @@ public class AddEvent extends AppCompatActivity {
         age = findViewById(R.id.editEventAge);
         location = findViewById(R.id.eventLocation);
         categorySpinner =  findViewById(R.id.eventCategory);
+
+
         Online = findViewById(R.id.onlineRB);
         InPerson = findViewById(R.id.inPersonRB);
+
+        //Ibtisam's changes
+
+        radioGroupAttendingMethod = findViewById(R.id.radioGroup);
+        radioGroupAttendingMethod.clearCheck();
+
 
         //To implement categories spinner (list) with an array in strings.xml file
 
@@ -118,6 +127,11 @@ public class AddEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //Ibtisam changes - 1-Finding which radio button has been selected.
+                int selectedAttendingMethodId = radioGroupAttendingMethod.getCheckedRadioButtonId();
+                radioButtonAttendingMethodSelected = findViewById(selectedAttendingMethodId);
+
+
                 String textEventName = name.getText().toString().trim();
                 String textOverview = overview.getText().toString().trim();
                 String textCategory = categorySpinner.getSelectedItem().toString();
@@ -126,12 +140,15 @@ public class AddEvent extends AppCompatActivity {
                 String textLanguage = languageSpinner.getSelectedItem().toString();
                 String textAge = age.getText().toString().trim();
                 String textLocation = location.getText().toString().trim();
-                String textOnline = Online.getText().toString().trim();
-                String textInPerson = InPerson.getText().toString().trim();
 
 
+                /*Ibtisam changes - 2-Extracting text from the selected radio button
+                cannot be done before checking if any of the radio buttons has been selected*/
 
-                   if (TextUtils.isEmpty(textEventName)) {
+                String textAttendingMethod;
+
+
+                if (TextUtils.isEmpty(textEventName)) {
                     Toast.makeText(AddEvent.this, "Please enter event name", Toast.LENGTH_LONG).show();
                     name.setError("Event Name is required");
                     name.requestFocus();
@@ -162,7 +179,16 @@ public class AddEvent extends AppCompatActivity {
                     location.setError("location is required");
                     location.requestFocus();
 
+                } else if (radioGroupAttendingMethod.getCheckedRadioButtonId()== -1) {
+                    Toast.makeText(AddEvent.this, "Please select attending method", Toast.LENGTH_LONG).show();
+                    radioButtonAttendingMethodSelected.setError("location is required");
+                    radioButtonAttendingMethodSelected.requestFocus();
+
                 } else {
+
+                     //Ibtisam changes - 3-Extracting text from the selected radio button
+
+                    textAttendingMethod = radioButtonAttendingMethodSelected.getText().toString();
 
                     uploadData();
 
@@ -199,21 +225,7 @@ public class AddEvent extends AppCompatActivity {
             }
         });
 
-
     }
-    /*To implements radio buttons( Online + In Person)
-                if (Online.isChecked()){
-        dataClass.setAttendingMeth(textOnline);
-
-    } else if (InPerson.isChecked()) {
-        dataClass.setAttendingMeth(textInPerson);*/
-
-    //To implements radio buttons( Online + In Person)
-   /* public void checkButton(View v){
-        int radioId = radioGroup.getCheckedRadioButtonId();
-        radioButton = findViewById(radioId);
-        Toast.makeText(AddEvent.this, "Selected radio button: " + radioButton.getText(), Toast.LENGTH_SHORT).show();
-    }*/
     
     public void saveData(){
 
@@ -242,34 +254,22 @@ public class AddEvent extends AppCompatActivity {
             }
         });
     }
+
     public void uploadData(){
 
         String EventName = name.getText().toString().trim();
-
         String Overview = overview.getText().toString().trim();
-
         String Category = categorySpinner.getSelectedItem().toString();
-
         String Date = date.getText().toString().trim();
-
         String duration = Duration.getText().toString().trim();
-
         String language = languageSpinner.getSelectedItem().toString();
-
         String Age = age.getText().toString().trim();
-
         String Location = location.getText().toString().trim();
-
-      /*  String AttendingMeth = attendingMeth.getText().toString().trim();
-
-        String OnLine = Online.getText().toString().trim();
-        
-        String inPerson = InPerson.getText().toString().trim();*/
+        String AttendingMethod = radioButtonAttendingMethodSelected.getText().toString();
 
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
-
-        DataClass data = new DataClass(EventName, Overview, Date,duration, language, Age,Location, imageURL,Category);
+        DataClass data = new DataClass(EventName, Overview, Date, duration, language, Age, Location, AttendingMethod ,Category);
 
         databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -278,8 +278,6 @@ public class AddEvent extends AppCompatActivity {
                             Toast.makeText(AddEvent.this, "Saved", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(AddEvent.this, FounderMainActivity.class);
                             startActivity(intent);
-
-
                         }
                     }
                 }) .addOnFailureListener(new OnFailureListener() {
