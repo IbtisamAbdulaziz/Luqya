@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,11 +61,14 @@ public class Events extends AppCompatActivity {
         settings = getSharedPreferences("ID", 0);
         s_id = settings.getInt("id",0);
         editTextSearch = findViewById(R.id.editTextSearch);
-        recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView = findViewById(R.id.recyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(Events.this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Events.this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
 
         editTextSearch.clearFocus();
 

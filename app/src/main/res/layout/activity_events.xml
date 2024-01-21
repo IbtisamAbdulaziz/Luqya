@@ -136,6 +136,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:minHeight="250dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
@@ -172,6 +174,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:minHeight="250dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
