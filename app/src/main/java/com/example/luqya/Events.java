@@ -66,6 +66,8 @@ public class Events extends AppCompatActivity {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(Events.this, 1);
         recyclerView.setLayoutManager(gridLayoutManager);
 
+        editTextSearch.clearFocus();
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Events.this);
         builder.setCancelable(false);
