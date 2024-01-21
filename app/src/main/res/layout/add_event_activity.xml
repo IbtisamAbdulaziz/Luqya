@@ -148,7 +148,7 @@
                         android:paddingLeft="5dp"
                         android:text="Category"
                         android:textColor="@color/black"
-                        android:textSize="15dp"
+                        android:textSize="15sp"
                         android:textStyle="bold"
                         android:gravity="top|start"/>
 
@@ -215,6 +215,7 @@
                         android:layout_marginBottom="20dp"
                         android:ems="10"
                         android:inputType="date"
+                        android:focusable="false"
                         tools:ignore="MissingConstraints"
                         android:hint="Select date of event"/>
 
@@ -263,7 +264,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
-                        android:text="Age:"
+                        android:text="Time of event"
                         android:textColor="@color/black"
                         android:textSize="15dp"
                         android:textStyle="bold" />
@@ -275,9 +276,9 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
                         android:ems="10"
-                        android:inputType="textPersonName"
+                        android:inputType="time"
                         tools:ignore="MissingConstraints"
-                        android:hint="Event Age"/>
+                        android:hint="Event start time"/>
 
                     <TextView
                         android:id="@+id/textView26"
