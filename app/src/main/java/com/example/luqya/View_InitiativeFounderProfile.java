@@ -2,7 +2,11 @@ package com.example.luqya;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,6 +27,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class View_InitiativeFounderProfile extends AppCompatActivity {
 
     private TextView textViewInitiativeName, textViewInitiativeOverview, textViewInitiativeFounder, textViewInitiativePhone,
@@ -32,7 +39,11 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
     private String initiativeName, initiativeDescription, initiativeFounder, initiativePhone,
     initiativeAddress, initiativeEmail;
     private FirebaseAuth authProfile;
+    RecyclerView recyclerView;
 
+    List<DataClass> dataList;
+    DatabaseReference databaseReference;
+    ValueEventListener eventListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +60,49 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Initiative Profile");
         progressBar = findViewById(R.id.progressBarEditProfile);
+
+        // To Display a events added by Initiative in its Profile.
+
+        recyclerView = findViewById(R.id.recyclerView);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(View_InitiativeFounderProfile.this, 1);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(View_InitiativeFounderProfile.this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(View_InitiativeFounderProfile.this);
+        builder.setCancelable(false);
+        builder.setView(R.layout.progress_layout);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dataList = new ArrayList<>();
+
+        MyAdapter adapter = new MyAdapter(View_InitiativeFounderProfile.this, dataList);
+        recyclerView.setAdapter(adapter);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Add Event");
+        dialog.show();
+        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dataList.clear();
+
+                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                    DataClass dataClass = itemSnapshot.getValue(DataClass.class);
+                    dataList.add(dataClass);
+
+                }
+                adapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                dialog.dismiss();
+            }
+        });
+
 
         imageViewInitiativeLogo.setOnClickListener(new View.OnClickListener() {
             @Override
