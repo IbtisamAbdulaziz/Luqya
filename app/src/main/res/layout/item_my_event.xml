@@ -9,7 +9,7 @@
     app:cardElevation="3dp"
     android:background="@color/app_background">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
 
         android:layout_width="411dp"
         android:layout_height="174dp"
@@ -38,7 +38,10 @@
             android:background="@drawable/button_event_background"
             android:gravity="center"
             android:text="Edit Event"
+            android:layout_alignParentRight="true"
             android:textColor="@color/black"
+            android:layout_below="@+id/attending_List"
+            android:layout_marginTop="10dp"
             android:textSize="13sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,12 +52,14 @@
             android:id="@+id/delete_event"
             android:layout_width="149dp"
             android:layout_height="47dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="36dp"
             android:background="@drawable/button_event_background"
             android:gravity="center"
             android:text="Delete Event"
             android:textColor="@color/black"
+            android:layout_below="@+id/edit_event"
+            android:layout_alignParentRight="true"
             android:textSize="13sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,27 +70,20 @@
             android:layout_width="87dp"
             android:layout_height="21dp"
             android:text="Date"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:drawableLeft="@drawable/date"
+            android:layout_marginLeft="20dp"
             tools:ignore="MissingConstraints"
             tools:layout_editor_absoluteX="29dp"
             tools:layout_editor_absoluteY="100dp" />
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginEnd="24dp"
-            app:layout_constraintBottom_toBottomOf="@+id/Date"
-            app:layout_constraintHorizontal_bias="0.087"
-            app:layout_constraintStart_toEndOf="@+id/Date"
-            app:layout_constraintTop_toTopOf="@+id/Date"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/date"
-            tools:ignore="UseAppTint" />
 
         <Button
             android:id="@+id/attending_List"
             android:layout_width="145dp"
+            android:layout_marginTop="5dp"
+            android:layout_alignParentRight="true"
             android:layout_height="50dp"
             android:layout_marginEnd="36dp"
             android:background="@drawable/button_event_background"
@@ -99,6 +97,6 @@
             app:layout_constraintTop_toTopOf="@+id/TitleText"
             app:layout_constraintVertical_bias="0.0" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>
 

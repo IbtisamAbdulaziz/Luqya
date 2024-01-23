@@ -35,7 +35,7 @@ import java.util.List;
 public class Events extends AppCompatActivity {
 
 
-    private LinearLayout profile_Btn;
+    private LinearLayout profile_Btn, home_Btn;
     private FirebaseAuth authProfile;
 
     List<DataClass> dataList;
@@ -56,6 +56,7 @@ public class Events extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         profile_Btn = findViewById(R.id.Profile_Btn);
+        home_Btn = findViewById(R.id.Home_Btn);
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
         settings = getSharedPreferences("ID", 0);
@@ -119,6 +120,15 @@ public class Events extends AppCompatActivity {
                     Intent i = new Intent(Events.this, ShowSeekerProfile.class);
                     startActivity(i);
                 }
+            }
+        });
+
+        home_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                    Intent i = new Intent(Events.this, Events.class);
+                    startActivity(i);
             }
         });
 

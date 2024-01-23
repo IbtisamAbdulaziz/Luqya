@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +30,7 @@ public class ShowSeekerProfile extends AppCompatActivity {
 
     private TextView textViewWelcome, textViewFullName, textViewDoB, textViewEmail, textViewPhone, textViewPoints ;
     private ProgressBar progressBar;
+    private LinearLayout profile_Btn, Home_Btn;
     private String fullName, email, doB, phone, pointsString;
 
     private int points;
@@ -39,6 +42,8 @@ public class ShowSeekerProfile extends AppCompatActivity {
         setContentView(R.layout.activity_show_seeker_profile);
 
         getSupportActionBar().setTitle("My Profile");
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
 
         textViewWelcome = findViewById(R.id.textViewWelcome);
         textViewFullName = findViewById(R.id.textViewShowFullName);
@@ -48,6 +53,8 @@ public class ShowSeekerProfile extends AppCompatActivity {
         textViewPoints = findViewById(R.id.textView_pts);
         imageView = findViewById(R.id.imageView);
 
+        profile_Btn = findViewById(R.id.Profile_Btn);
+        Home_Btn = findViewById(R.id.Home_Btn);
         progressBar = findViewById(R.id.progressBarEditProfile);
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +75,31 @@ public class ShowSeekerProfile extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             showUserProfile(firebaseUser);
         }
+
+        profile_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(firebaseUser == null){
+                    Intent i = new Intent(ShowSeekerProfile.this, SignUpType.class);
+                    startActivity(i);
+
+                } else {
+                    Intent i = new Intent(ShowSeekerProfile.this, ShowSeekerProfile.class);
+                    startActivity(i);
+                }
+            }
+        });
+
+        Home_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                    Intent i = new Intent(ShowSeekerProfile.this, Events.class);
+                    startActivity(i);
+
+            }
+        });
 
     }
 
