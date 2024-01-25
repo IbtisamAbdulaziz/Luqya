@@ -1,6 +1,7 @@
 package com.example.luqya;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,9 +13,8 @@ import com.bumptech.glide.Glide;
 public class Details_event_class extends AppCompatActivity {
 
 
-    TextView Title, Location, Duration, Overview, Gender, Age, Language;
-    Button Register;
-
+    TextView title, category, initiative, location, date, time, language, duration, atthendingMethod, overview;
+    Button register_button;
     ImageView imageView;
 
     @Override
@@ -22,29 +22,42 @@ public class Details_event_class extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_event_class);
 
-        Title = findViewById(R.id.TitleText);
-        Location = findViewById(R.id.StarText);
-        Duration = findViewById(R.id.Duration);
-        Overview = findViewById(R.id.Overview);
-        Gender = findViewById(R.id.Gender);
-        Age = findViewById(R.id.Age);
-        Language = findViewById(R.id.Language);
-        imageView = findViewById(R.id.imageView6);
+        title = findViewById(R.id.event_title);
+        category = findViewById(R.id.event_category);
+        initiative = findViewById(R.id.event_initiative_name);
+        location = findViewById(R.id.event_location);
+        date = findViewById(R.id.event_date);
+        time = findViewById(R.id.event_time);
+        language = findViewById(R.id.event_language);
+        duration = findViewById(R.id.event_duration);
+        overview = findViewById(R.id.event_overview);
+        atthendingMethod = findViewById(R.id.event_attending_method);
 
-        Register = findViewById(R.id.Register);
+        imageView = findViewById(R.id.event_image);
+        register_button = findViewById(R.id.event_register_button);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            Title.setText(bundle.getString("Title"));
-            Location.setText(bundle.getString("Location"));
-            Duration.setText(bundle.getString("Duration"));
-            Overview.setText(bundle.getString("Overview"));
-            Location.setText(bundle.getString("Location"));
-            Gender.setText(bundle.getString("Gender"));
-            Age.setText(bundle.getString("Age"));
-            Language.setText(bundle.getString("Language"));
+            title.setText(bundle.getString("Title"));
+            category.setText(bundle.getString("category"));
+            location.setText(bundle.getString("Location"));
+            date.setText(bundle.getString("Date"));
+            duration.setText(bundle.getString("Duration"));
+            overview.setText(bundle.getString("Overview"));
+            time.setText(bundle.getString("Age"));
+            language.setText(bundle.getString("Language"));
+            atthendingMethod.setText(bundle.getString("attendingMethod"));
             Glide.with(this).load(bundle.getString("Image")).into(imageView);
         }
+
+
+        register_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
           /*  deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -18,6 +18,10 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import java.util.List;
 
@@ -25,10 +29,14 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
 
     private Context context;
     private List<DataClass> dataList;
+    FirebaseDatabase firebaseDatabase;
+    FirebaseAuth auth;
 
     public MyAdapter2(Context context, List<DataClass> dataList) {
         this.context = context;
         this.dataList = dataList;
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        auth = FirebaseAuth.getInstance();
     }
 
     @NonNull
@@ -46,6 +54,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
         holder.edit_event.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(context, Details_event_class.class);
                 intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
                 intent.putExtra("Date", dataList.get(holder.getAdapterPosition()).getDate());
@@ -56,7 +65,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
                 intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getLanguage());
                 intent.putExtra("category", dataList.get(holder.getAdapterPosition()).getCategory());
-             //   intent.putExtra("attendingMeth", dataList.get(holder.getAdapterPosition()).getAttendingMeth());
+                intent.putExtra("attendingMeth", dataList.get(holder.getAdapterPosition()).getAttendingMeth());
 
                 context.startActivity(intent);
             }
@@ -74,6 +83,8 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Add Event");
+                        databaseRef.child(databaseRef.getKey()).removeValue();
                         Toast.makeText(context, "Event has been deleted successfully.", Toast.LENGTH_SHORT).show();
                     }
                 });

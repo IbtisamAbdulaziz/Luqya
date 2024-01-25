@@ -4,6 +4,304 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditEvent">
+    android:background="@color/button_background"
+    tools:context=".AddEvent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.28" />
+
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="168dp"
+        android:layout_height="177dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/button_background"
+        android:padding="5dp"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginRight="120dp"
+        android:layout_marginLeft="120dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/circular"
+        app:srcCompat="@drawable/person"
+        app:strokeColor="@color/white"
+        app:strokeWidth="5dp" />
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    tools:ignore="MissingConstraints">
+
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Name of the event"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/eventName"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:singleLine="true"
+                        tools:ignore="MissingConstraints"
+                        android:hint="Event Name"/>
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Description of event"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/eventOverview"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:background="@drawable/edit_text_border"
+                        android:inputType="textMultiLine"
+                        android:lines="5"
+                        android:padding="5dp"
+                        android:scrollbars="vertical"
+                        tools:ignore="MissingConstraints"
+                        android:hint="Event Overview..."
+                        android:gravity="top|start"/>
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Category"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:gravity="top|start"/>
+
+                    <Spinner
+                        android:id="@+id/eventCategory"
+                        android:layout_width="fill_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp" />
+
+                    <TextView
+                        android:id="@+id/textView7"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Attending Method"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/inPersonRB"
+                            android:text="In Person"
+                            android:layout_marginRight="50dp"
+                            android:textAlignment="center"/>
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/onlineRB"
+                            android:text="Online"
+                            android:textAlignment="center"/>
+
+                    </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Date of event"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/eventDate"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:ems="10"
+                        android:inputType="date"
+                        android:focusable="false"
+                        tools:ignore="MissingConstraints"
+                        android:hint="Select date of event"/>
+
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Duration of event"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/eventDuration"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:ems="10"
+                        android:inputType="time"
+                        tools:ignore="MissingConstraints"
+                        android:hint="Event Duration"/>
+
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Language"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/eventLanguage"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp" />
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Time of event"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editEventAge"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:ems="10"
+                        android:inputType="time"
+                        tools:ignore="MissingConstraints"
+                        android:hint="Event start time"/>
+
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
+                        android:text="Location"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/eventLocation"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="20dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        tools:ignore="MissingConstraints"
+                        android:hint="Event Location"/>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        android:weightSum="100">
+
+                        <!-- Submit button -->
+                        <Button
+                            android:id="@+id/submitEvent_button"
+                            android:layout_width="349dp"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="32dp"
+                            android:layout_marginBottom="9dp"
+                            android:background="@color/button_background"
+                            android:textColor="@color/black"
+                            android:gravity="center"
+                            android:text="Submit"
+                            tools:ignore="MissingConstraints" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:elevation="10dp"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

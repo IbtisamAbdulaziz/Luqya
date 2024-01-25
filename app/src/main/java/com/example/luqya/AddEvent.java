@@ -222,6 +222,7 @@ public class AddEvent extends AppCompatActivity {
                 Intent photoPicker = new Intent(Intent.ACTION_PICK);
                 photoPicker.setType("image/*");
                 activityResultLauncher.launch(photoPicker);
+                saveData();;
             }
         });
 
