@@ -31,8 +31,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -51,9 +56,10 @@ public class AddEvent extends AppCompatActivity {
     private RadioButton Online , InPerson;
 
     private Button submit;
-    private String imageURL;
+    private String imageURL, initiative;
     private Uri uri;
-    private  DatePickerDialog picker;
+    private DatePickerDialog picker;
+    private FirebaseAuth authProfile;
 
     @SuppressLint({"ResourceAsColor", "MissingInflatedId", "WrongViewCast"})
     @Override
@@ -118,6 +124,25 @@ public class AddEvent extends AppCompatActivity {
                     }
                 } , year, month, day);
                 picker.show();
+            }
+        });
+
+        authProfile = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = authProfile.getCurrentUser();
+        String userID = firebaseUser.getUid();
+        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
+        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ReadWriteUserDetails readUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
+                if(readUserDetails != null){
+                    initiative = readUserDetails.initiativeName;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AddEvent.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -222,7 +247,6 @@ public class AddEvent extends AppCompatActivity {
                 Intent photoPicker = new Intent(Intent.ACTION_PICK);
                 photoPicker.setType("image/*");
                 activityResultLauncher.launch(photoPicker);
-                saveData();;
             }
         });
 
@@ -270,12 +294,13 @@ public class AddEvent extends AppCompatActivity {
 
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
-        DataClass data = new DataClass(EventName, Overview, Date, duration, language, Age, Location, AttendingMethod ,Category);
+        DataClass data = new DataClass(EventName, Overview, Date, duration, language, Age, Location, AttendingMethod ,Category, initiative , imageURL);
 
         databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            saveData();
                             Toast.makeText(AddEvent.this, "Saved", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(AddEvent.this, FounderMainActivity.class);
                             startActivity(intent);

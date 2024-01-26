@@ -13,41 +13,58 @@ import com.bumptech.glide.Glide;
 public class Details_event_class extends AppCompatActivity {
 
 
-    TextView title, category, initiative, location, date, time, language, duration, atthendingMethod, overview;
+    private TextView titleTextView, categoryTextView, initiativeTextView, locationTextView, dateTextView,
+            timeTextView, languageTextView, durationTextView, atthendingMethodTextView, overviewTextView;
     Button register_button;
     ImageView imageView;
+    private String title, category, initiative, location, date, time, language, duration, attendingMethod, overview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_event_class);
+        getSupportActionBar().setTitle("Event Details");
 
-        title = findViewById(R.id.event_title);
-        category = findViewById(R.id.event_category);
-        initiative = findViewById(R.id.event_initiative_name);
-        location = findViewById(R.id.event_location);
-        date = findViewById(R.id.event_date);
-        time = findViewById(R.id.event_time);
-        language = findViewById(R.id.event_language);
-        duration = findViewById(R.id.event_duration);
-        overview = findViewById(R.id.event_overview);
-        atthendingMethod = findViewById(R.id.event_attending_method);
+        titleTextView = findViewById(R.id.event_title);
+        categoryTextView = findViewById(R.id.event_category);
+        initiativeTextView = findViewById(R.id.event_initiative_name);
+        locationTextView = findViewById(R.id.event_location);
+        dateTextView = findViewById(R.id.event_date);
+        timeTextView = findViewById(R.id.event_time);
+        languageTextView = findViewById(R.id.event_language);
+        durationTextView = findViewById(R.id.event_duration);
+        overviewTextView = findViewById(R.id.event_overview);
+        atthendingMethodTextView = findViewById(R.id.event_attending_method);
 
         imageView = findViewById(R.id.event_image);
         register_button = findViewById(R.id.event_register_button);
 
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            title.setText(bundle.getString("Title"));
-            category.setText(bundle.getString("category"));
-            location.setText(bundle.getString("Location"));
-            date.setText(bundle.getString("Date"));
-            duration.setText(bundle.getString("Duration"));
-            overview.setText(bundle.getString("Overview"));
-            time.setText(bundle.getString("Age"));
-            language.setText(bundle.getString("Language"));
-            atthendingMethod.setText(bundle.getString("attendingMethod"));
+
+            title = bundle.getString("Title");
+            category = bundle.getString("category");
+            location = bundle.getString("Location");
+            date = bundle.getString("Date");
+            duration = bundle.getString("Duration");
+            overview = bundle.getString("Overview");
+            time = bundle.getString("Time");
+            language = bundle.getString("Language");
+            attendingMethod = bundle.getString("attendingMethod");
+            initiative = bundle.getString("initiative");
             Glide.with(this).load(bundle.getString("Image")).into(imageView);
+
+            titleTextView.setText(title);
+            categoryTextView.setText(category);
+            locationTextView.setText(location);
+            dateTextView.setText(date);
+            durationTextView.setText(duration);
+            overviewTextView.setText(overview);
+            timeTextView.setText(time);
+            languageTextView.setText(language);
+            atthendingMethodTextView.setText(attendingMethod);
+            initiativeTextView.setText(initiative);
         }
 
 

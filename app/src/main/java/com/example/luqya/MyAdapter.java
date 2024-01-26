@@ -45,16 +45,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, Details_event_class.class);
+
                 intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
                 intent.putExtra("Date", dataList.get(holder.getAdapterPosition()).getDate());
+                intent.putExtra("Time", dataList.get(holder.getAdapterPosition()).getAge());
                 intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getName());
                 intent.putExtra("Location", dataList.get(holder.getAdapterPosition()).getLocation());
                 intent.putExtra("Duration", dataList.get(holder.getAdapterPosition()).getDuration());
-                intent.putExtra("Age", dataList.get(holder.getAdapterPosition()).getAge());
                 intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
                 intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getLanguage());
                 intent.putExtra("category", dataList.get(holder.getAdapterPosition()).getCategory());
                 intent.putExtra("attendingMethod", dataList.get(holder.getAdapterPosition()).getAttendingMeth());
+                intent.putExtra("initiative",dataList.get(holder.getAdapterPosition()).getInitiative());
 
                 context.startActivity(intent);
             }

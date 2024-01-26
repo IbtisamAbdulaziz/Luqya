@@ -113,7 +113,7 @@ public class Events extends AppCompatActivity {
             public void onClick(View view) {
 
                 if(firebaseUser == null){
-                    Intent i = new Intent(Events.this, SignUpType.class);
+                    Intent i = new Intent(Events.this, LogIn.class);
                     startActivity(i);
 
                 } else {

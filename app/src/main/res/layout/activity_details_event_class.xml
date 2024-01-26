@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,9 +28,9 @@
 
                 <TextView
                     android:id="@+id/event_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="230dp"
                     android:layout_height="wrap_content"
-                    android:textSize="38sp"
+                    android:textSize="28sp"
                     android:text="Event Title"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -47,7 +47,7 @@
 
                 <TextView
                     android:id="@+id/event_initiative_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="140dp"
                     android:layout_height="wrap_content"
                     android:text="Initiative Name"
                     android:drawableRight="@drawable/initiative"
@@ -62,11 +62,24 @@
                 <ImageView
                     android:id="@+id/event_image"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:scaleType="centerCrop"
+                    android:layout_height="200dp"
+                    android:scaleType="fitCenter"
                     android:src="@drawable/logo"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/event_overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:lines="5"
+                android:text="Overview"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:scrollbars="vertical"/>
 
 
                 <TextView
@@ -79,7 +92,7 @@
                     android:drawableLeft="@drawable/add_location"
                     android:text="Location"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
             <RelativeLayout
@@ -95,7 +108,7 @@
                     android:text="Date"
                     android:drawableLeft="@drawable/date"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -105,12 +118,12 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="50dp"
+                    android:layout_marginEnd="70dp"
                     android:layout_marginBottom="10dp"
                     android:drawableLeft="@drawable/time"
                     android:text="Time"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>
@@ -132,7 +145,7 @@
                     android:drawableLeft="@drawable/language"
                     android:text="Language"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -147,7 +160,7 @@
                     android:layout_marginEnd="50dp"
                     android:text="Duration"
                     android:textColor="@color/black"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
             </RelativeLayout>
@@ -164,39 +177,26 @@
                 android:layout_marginEnd="50dp"
                 android:text="Attending Method"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/event_overview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:lines="5"
-                    android:text="Overview"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:scrollbars="vertical"/>
 
         </LinearLayout>
 
     </ScrollView>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="75dp"
         android:background="@color/app_background"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        android:layout_alignParentBottom="true">
+
 
         <Button
             android:id="@+id/event_register_button"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_margin="10dp"
             android:background="@drawable/button_background"
             android:text="Register Now"
             android:textColor="@color/white"
@@ -206,5 +206,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</RelativeLayout>
