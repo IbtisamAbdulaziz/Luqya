@@ -15,7 +15,6 @@
         app:layout_constraintGuide_percent="0.28" />
 
 
-
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="168dp"
@@ -237,7 +236,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/editEventAge"
+                        android:id="@+id/editEventTime"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
@@ -277,7 +276,7 @@
 
                         <!-- Submit button -->
                         <Button
-                            android:id="@+id/submitEvent_button"
+                            android:id="@+id/update_event_button"
                             android:layout_width="349dp"
                             android:layout_height="48dp"
                             android:layout_marginTop="10dp"
@@ -286,7 +285,7 @@
                             android:background="@color/button_background"
                             android:textColor="@color/black"
                             android:gravity="center"
-                            android:text="Submit"
+                            android:text="Update"
                             tools:ignore="MissingConstraints" />
                     </LinearLayout>
                 </LinearLayout>

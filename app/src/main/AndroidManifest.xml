@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Luqya"
         tools:targetApi="31">
         <activity
+            android:name=".UploadEventPicture"
+            android:exported="false" />
+        <activity
             android:name=".EditEvent"
             android:exported="false" />
         <activity
