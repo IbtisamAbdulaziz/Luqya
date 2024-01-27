@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -48,7 +50,7 @@ public class AddEvent extends AppCompatActivity {
 
     DataClass dataClass;
     private ImageView imageView;
-    private EditText name, overview,date, Duration, age, location;
+    private EditText name, overview,date, Duration, time, location;
     private Spinner categorySpinner, languageSpinner;
     private RadioGroup radioGroupAttendingMethod;
     private RadioButton radioButtonAttendingMethodSelected;
@@ -70,15 +72,14 @@ public class AddEvent extends AppCompatActivity {
         getSupportActionBar().setTitle("Add Event");
 
         dataClass = new DataClass();
+
         imageView = findViewById(R.id.imageView);
         name = findViewById(R.id.eventName);
         overview = findViewById(R.id.eventOverview);
         date = findViewById(R.id.eventDate);
         Duration = findViewById(R.id.eventDuration);
-        age = findViewById(R.id.editEventAge);
+        time = findViewById(R.id.editEventTime);
         location = findViewById(R.id.eventLocation);
-        categorySpinner =  findViewById(R.id.eventCategory);
-
 
         Online = findViewById(R.id.onlineRB);
         InPerson = findViewById(R.id.inPersonRB);
@@ -127,6 +128,42 @@ public class AddEvent extends AppCompatActivity {
             }
         });
 
+        time.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar calendar = Calendar.getInstance();
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int minute = calendar.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(AddEvent.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                        time.setText(i + " : " + i1);
+                    }
+                }, hour, minute, true);
+                timePickerDialog.setTitle("Select Time of Event");
+                timePickerDialog.show();
+            }
+        });
+
+        Duration.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar calendar = Calendar.getInstance();
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int minute = calendar.get(Calendar.MINUTE);
+
+                TimePickerDialog timePickerDialog = new TimePickerDialog(AddEvent.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                        Duration.setText(i + " hr " + i1 + " min");
+                    }
+                }, hour, minute, true);
+                timePickerDialog.setTitle("Select Duration of Event");
+                timePickerDialog.show();
+            }
+        });
+
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
         String userID = firebaseUser.getUid();
@@ -163,8 +200,9 @@ public class AddEvent extends AppCompatActivity {
                 String textDate = date.getText().toString().trim();
                 String textDuration = Duration.getText().toString().trim();
                 String textLanguage = languageSpinner.getSelectedItem().toString();
-                String textAge = age.getText().toString().trim();
+                String textAge = time.getText().toString().trim();
                 String textLocation = location.getText().toString().trim();
+
 
 
                 /*Ibtisam changes - 2-Extracting text from the selected radio button
@@ -196,8 +234,8 @@ public class AddEvent extends AppCompatActivity {
 
                 }  else if (TextUtils.isEmpty(textAge)) {
                     Toast.makeText(AddEvent.this, "Please enter the age", Toast.LENGTH_LONG).show();
-                    age.setError("Age is required");
-                    age.requestFocus();
+                    time.setError("Age is required");
+                    time.requestFocus();
 
                 } else if (TextUtils.isEmpty(textLocation)) {
                     Toast.makeText(AddEvent.this, "Please enter the location", Toast.LENGTH_LONG).show();
@@ -288,7 +326,7 @@ public class AddEvent extends AppCompatActivity {
         String Date = date.getText().toString().trim();
         String duration = Duration.getText().toString().trim();
         String language = languageSpinner.getSelectedItem().toString();
-        String Age = age.getText().toString().trim();
+        String Age = time.getText().toString().trim();
         String Location = location.getText().toString().trim();
         String AttendingMethod = radioButtonAttendingMethodSelected.getText().toString();
 

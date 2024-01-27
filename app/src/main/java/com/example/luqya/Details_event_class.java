@@ -44,14 +44,14 @@ public class Details_event_class extends AppCompatActivity {
         if (bundle != null) {
 
             title = bundle.getString("Title");
-            category = bundle.getString("category");
+            category = getIntent().getStringExtra("category");
             location = bundle.getString("Location");
             date = bundle.getString("Date");
             duration = bundle.getString("Duration");
             overview = bundle.getString("Overview");
             time = bundle.getString("Time");
-            language = bundle.getString("Language");
-            attendingMethod = bundle.getString("attendingMethod");
+            language = getIntent().getStringExtra("Language");
+            attendingMethod = getIntent().getStringExtra("attendingMethod");
             initiative = bundle.getString("initiative");
             Glide.with(this).load(bundle.getString("Image")).into(imageView);
 

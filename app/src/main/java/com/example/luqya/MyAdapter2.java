@@ -8,20 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
 import java.util.List;
 
@@ -61,7 +57,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getName());
                 intent.putExtra("Location", dataList.get(holder.getAdapterPosition()).getLocation());
                 intent.putExtra("Duration", dataList.get(holder.getAdapterPosition()).getDuration());
-                intent.putExtra("Age", dataList.get(holder.getAdapterPosition()).getAge());
+                intent.putExtra("Age", dataList.get(holder.getAdapterPosition()).getTime());
                 intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
                 intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getLanguage());
                 intent.putExtra("category", dataList.get(holder.getAdapterPosition()).getCategory());

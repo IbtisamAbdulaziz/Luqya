@@ -236,6 +236,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
+                        android:focusable="false"
                         android:ems="10"
                         android:inputType="time"
                         tools:ignore="MissingConstraints"
@@ -270,13 +271,14 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/editEventAge"
+                        android:id="@+id/editEventTime"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
                         android:ems="10"
                         android:inputType="time"
+                        android:focusable="false"
                         tools:ignore="MissingConstraints"
                         android:hint="Event start time"/>
 

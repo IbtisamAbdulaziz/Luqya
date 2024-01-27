@@ -11,8 +11,7 @@
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
-                android:lines="5"
+                android:layout_marginBottom="20dp"
                 android:text="Overview"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -84,7 +83,7 @@
 
                 <TextView
                     android:layout_marginTop="20dp"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:id="@+id/event_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,11 +101,11 @@
 
                 <TextView
                     android:id="@+id/event_date"
-                    android:layout_margin="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date"
+                    android:layout_margin="5dp"
                     android:drawableLeft="@drawable/date"
+                    android:text="Date"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -119,7 +118,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="70dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="5dp"
                     android:drawableLeft="@drawable/time"
                     android:text="Time"
                     android:textColor="@color/black"
@@ -138,10 +137,7 @@
                     android:id="@+id/event_language"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_margin="5dp"
                     android:drawableLeft="@drawable/language"
                     android:text="Language"
                     android:textColor="@color/black"
@@ -154,7 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="10dp"
                     android:drawableLeft="@drawable/duration"
                     android:layout_marginEnd="50dp"
@@ -170,9 +166,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_margin="5dp"
                 android:drawableLeft="@drawable/method"
                 android:layout_marginEnd="50dp"
                 android:text="Attending Method"

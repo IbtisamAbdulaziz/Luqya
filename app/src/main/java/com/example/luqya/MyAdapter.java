@@ -35,6 +35,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
+
         Glide.with(context).load(dataList.get(position).getDataImage()).into(holder.eventImage);
         holder.Title.setText(dataList.get(position).getName());
         holder.Location.setText(dataList.get(position).getLocation());
@@ -44,18 +45,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.Details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, Details_event_class.class);
 
+                Intent intent = new Intent(context, Details_event_class.class);
                 intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
                 intent.putExtra("Date", dataList.get(holder.getAdapterPosition()).getDate());
-                intent.putExtra("Time", dataList.get(holder.getAdapterPosition()).getAge());
+                intent.putExtra("Time", dataList.get(holder.getAdapterPosition()).getTime());
                 intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getName());
                 intent.putExtra("Location", dataList.get(holder.getAdapterPosition()).getLocation());
-                intent.putExtra("Duration", dataList.get(holder.getAdapterPosition()).getDuration());
+                intent.putExtra("Duration", dataList.get(holder.getAbsoluteAdapterPosition()).getDuration());
                 intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
-                intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getLanguage());
-                intent.putExtra("category", dataList.get(holder.getAdapterPosition()).getCategory());
-                intent.putExtra("attendingMethod", dataList.get(holder.getAdapterPosition()).getAttendingMeth());
+                intent.putExtra("Language", dataList.get(holder.getAbsoluteAdapterPosition()).getLanguage());
+                intent.putExtra("category", dataList.get(holder.getAbsoluteAdapterPosition()).getCategory());
+                intent.putExtra("attendingMethod", dataList.get(holder.getAbsoluteAdapterPosition()).getAttendingMeth());
                 intent.putExtra("initiative",dataList.get(holder.getAdapterPosition()).getInitiative());
 
                 context.startActivity(intent);
