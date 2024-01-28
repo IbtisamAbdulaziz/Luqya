@@ -51,9 +51,6 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
             @Override
             public void onClick(View view) {
 
-                /*firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference databaseRef = firebaseDatabase.getReference("Add Event");
-                String eventName = databaseRef.child(dataList.get(holder.getAbsoluteAdapterPosition()).getName()).toString();*/
 
                 Intent intent = new Intent(context, EditEvent.class);
                 intent.putExtra("eventName", dataList.get(holder.getAbsoluteAdapterPosition()).getName());
@@ -85,8 +82,8 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Add Event");
-                        databaseRef.child(databaseRef.getKey()).removeValue();
+                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Add Event").child(dataList.get(holder.getAbsoluteAdapterPosition()).getName());
+                        databaseRef.removeValue();
                         Toast.makeText(context, "Event has been deleted successfully.", Toast.LENGTH_SHORT).show();
                     }
                 });
