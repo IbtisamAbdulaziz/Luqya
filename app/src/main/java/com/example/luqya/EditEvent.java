@@ -61,12 +61,25 @@ public class EditEvent extends AppCompatActivity {
 
     private String name, overview, date, duration, time, location, category, language, attendingMethod;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_event);
 
         getSupportActionBar().setTitle("Update Event");
+
+        Bundle bundle = getIntent().getExtras();
+        name = bundle.getString("eventName");
+        overview = bundle.getString("eventOverview");
+        date = bundle.getString("eventDate");
+        duration = bundle.getString("eventDuration");
+        time = bundle.getString("eventTime");
+        location = bundle.getString("eventLocation");
+        category = bundle.getString("eventCategory");
+        language = bundle.getString("eventLanguage");
+        attendingMethod = bundle.getString("eventAttendingMethod");
+
 
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
@@ -163,25 +176,19 @@ public class EditEvent extends AppCompatActivity {
             }
         });
 
-        showEventDetails(firebaseUser);
+        showEventDetails();
+
 
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateEvent(firebaseUser);
+                updateEvent();
             }
         });
 
-        if(firebaseUser == null){
-            Toast.makeText(EditEvent.this, "Something went wrong! User's details are not available at the moment", Toast.LENGTH_SHORT).show();
-        } else {
-
-
-        }
-
     }
 
-    private void updateEvent(FirebaseUser firebaseUser) {
+    private void updateEvent() {
 
         int selectedAttendingMethodId = radioGroupAttendingMethod.getCheckedRadioButtonId();
         radioButtonAttendingMethodSelected = findViewById(selectedAttendingMethodId);
@@ -278,60 +285,28 @@ public class EditEvent extends AppCompatActivity {
             }
         });
     }
-    private void showEventDetails(FirebaseUser firebaseUser) {
+   private void showEventDetails() {
 
-        String userIDofRegistered = firebaseUser.getUid();
-        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Add Event");
+       nameEditText.setText(name);
+       overviewEditText.setText(overview);
+       dateEditText.setText(date);
+       DurationEditText.setText(duration);
+       timeEditText.setText(time);
+       locationEditText.setText(location);
 
-        referenceProfile.child(userIDofRegistered).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                DataClass event = snapshot.getValue(DataClass.class);
-                if(event != null){
-                    name = firebaseUser.getDisplayName();
-                    attendingMethod = event.getAttendingMeth();
-                    category = event.getCategory();
-                    date = event.getDate();
-                    duration = event.getDuration();
-                    language = event.getLanguage();
-                    location = event.getLocation();
-                    overview = event.getOverview();
-                    time = event.getTime();
+       if(attendingMethod!=null) {
+           if (attendingMethod.equals("Online")) {
+               onlineRadioButton.setChecked(true);
+           } else {
+               inPersonRadioButton.setChecked(true);
+           }
+       }
+       int position = adapter.getPosition(category);
+       categorySpinner.setSelection(position);
 
-                    nameEditText.setText(name);
-                    if(attendingMethod.equals("Online")){
-                        onlineRadioButton.setChecked(true);
-                    } else {
-                        inPersonRadioButton.setChecked(true);
-                    }
+       int position2 = adapter2.getPosition(language);
+       languageSpinner.setSelection(position2);
 
-                   int position = adapter.getPosition(category);
-                    categorySpinner.setSelection(position);
-
-                    int position2 = adapter2.getPosition(language);
-                    languageSpinner.setSelection(position2);
-
-                    dateEditText.setText(date);
-                    DurationEditText.setText(duration);
-                    locationEditText.setText(location);
-                    overviewEditText.setText(overview);
-                    timeEditText.setText(time);
-
-
-                } else {
-                    Toast.makeText(EditEvent.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-                Toast.makeText(EditEvent.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-    }
+   }
 
 }

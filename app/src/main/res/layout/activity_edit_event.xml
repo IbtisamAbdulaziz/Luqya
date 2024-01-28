@@ -203,6 +203,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
                         android:ems="10"
+                        android:focusable="false"
                         android:inputType="time"
                         tools:ignore="MissingConstraints"
                         android:hint="Event Duration"/>
@@ -242,6 +243,7 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
                         android:ems="10"
+                        android:focusable="false"
                         android:inputType="time"
                         tools:ignore="MissingConstraints"
                         android:hint="Event start time"/>

@@ -51,17 +51,23 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
             @Override
             public void onClick(View view) {
 
+                /*firebaseDatabase = FirebaseDatabase.getInstance();
+                DatabaseReference databaseRef = firebaseDatabase.getReference("Add Event");
+                String eventName = databaseRef.child(dataList.get(holder.getAbsoluteAdapterPosition()).getName()).toString();*/
+
                 Intent intent = new Intent(context, EditEvent.class);
-                intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
-                intent.putExtra("Date", dataList.get(holder.getAdapterPosition()).getDate());
-                intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getName());
-                intent.putExtra("Location", dataList.get(holder.getAdapterPosition()).getLocation());
-                intent.putExtra("Duration", dataList.get(holder.getAdapterPosition()).getDuration());
-                intent.putExtra("Age", dataList.get(holder.getAdapterPosition()).getTime());
-                intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
-                intent.putExtra("Language", dataList.get(holder.getAdapterPosition()).getLanguage());
-                intent.putExtra("category", dataList.get(holder.getAdapterPosition()).getCategory());
-                intent.putExtra("attendingMeth", dataList.get(holder.getAdapterPosition()).getAttendingMeth());
+                intent.putExtra("eventName", dataList.get(holder.getAbsoluteAdapterPosition()).getName());
+                //intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());'
+
+                intent.putExtra("eventDate", dataList.get(holder.getAbsoluteAdapterPosition()).getDate());
+                intent.putExtra("eventTitle", dataList.get(holder.getAbsoluteAdapterPosition()).getName());
+                intent.putExtra("eventLocation", dataList.get(holder.getAbsoluteAdapterPosition()).getLocation());
+                intent.putExtra("eventDuration", dataList.get(holder.getAbsoluteAdapterPosition()).getDuration());
+                intent.putExtra("eventTime", dataList.get(holder.getAbsoluteAdapterPosition()).getTime());
+                intent.putExtra("eventOverview", dataList.get(holder.getAbsoluteAdapterPosition()).getOverview());
+                intent.putExtra("eventLanguage", dataList.get(holder.getAbsoluteAdapterPosition()).getLanguage());
+                intent.putExtra("eventCategory", dataList.get(holder.getAbsoluteAdapterPosition()).getCategory());
+                intent.putExtra("eventAttendingMethod", dataList.get(holder.getAbsoluteAdapterPosition()).getAttendingMeth());
 
                 context.startActivity(intent);
             }
