@@ -64,7 +64,7 @@ public class Details_event_class extends AppCompatActivity {
             timeTextView.setText(time);
             languageTextView.setText(language);
             atthendingMethodTextView.setText(attendingMethod);
-            initiativeTextView.setText(initiative);
+            initiativeTextView.setText(initiative + " ");
         }
 
 
@@ -74,38 +74,6 @@ public class Details_event_class extends AppCompatActivity {
 
             }
         });
-
-          /*  deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Android Tutorials");
-                    FirebaseStorage storage = FirebaseStorage.getInstance();
-
-                    StorageReference storageReference = storage.getReferenceFromUrl(imageUrl);
-                    storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            reference.child(key).removeValue();
-                            Toast.makeText(DetailActivity.this, "Deleted", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
-                        }
-                    });
-                }
-            });
-            editButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(DetailActivity.this, UpdateActivity.class)
-                            .putExtra("Title", detailTitle.getText().toString())
-                            .putExtra("Description", detailDesc.getText().toString())
-                            .putExtra("Language", detailLang.getText().toString())
-                            .putExtra("Image", imageUrl)
-                            .putExtra("Key", key);
-                    startActivity(intent);
-                }
-   });*/
-
     }
 }
 
