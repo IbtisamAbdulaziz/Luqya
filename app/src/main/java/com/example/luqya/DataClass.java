@@ -3,7 +3,7 @@ package com.example.luqya;
 
 public class DataClass {
 
-  private String name, overview, date, duration, language, time, location, attendingMethod ,category, initiative, dataImage;
+  private String name, overview, date, Duration, Language, time, location, attendingMethod ,category, initiative, dataImage;
 
 
     public DataClass(String name, String overview, String date, String duration, String language, String time,
@@ -12,8 +12,8 @@ public class DataClass {
         this.name = name;
         this.overview = overview;
         this.date = date;
-        this.duration = duration;
-        this.language = language;
+        this.Duration = duration;
+        this.Language = language;
         this.time = time;
         this.location = location;
         this.attendingMethod = attendingMethod;
@@ -36,11 +36,11 @@ public class DataClass {
     }
 
     public String getDuration() {
-        return duration;
+        return Duration;
     }
 
     public String getLanguage() {
-        return language;
+        return Language;
     }
 
     public String getTime() {
@@ -54,7 +54,7 @@ public class DataClass {
 
     public String getCategory(){return category;}
 
-    public String getAttendingMethod(){return attendingMethod;}
+    public String getAttendingMeth(){return attendingMethod;}
 
     public String getInitiative() {
         return initiative;

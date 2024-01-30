@@ -80,6 +80,9 @@
         <activity
             android:name=".My_Events"
             android:exported="false" />
+        <activity
+            android:name=".MyEvent_bar"
+            android:exported="false" />
     </application>
 
 </manifest>
