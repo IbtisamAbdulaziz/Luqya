@@ -1,7 +1,10 @@
 package com.example.luqya;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,14 +24,16 @@ public class MyAdapter4 extends RecyclerView.Adapter<MyAdapter4.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Create a new view
-        TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(android.R.layout.simple_list_item_1, parent, false);
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.checkbox_row, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.nameTextView.setText(attendees.get(position).getName());
+        Model attendee = attendees.get(position);
+        holder.nameTextView.setText(attendee.getName());
+        // Set other data points if needed (e.g., initial checkbox state, point value)
     }
 
     @Override
@@ -38,10 +43,14 @@ public class MyAdapter4 extends RecyclerView.Adapter<MyAdapter4.MyViewHolder> {
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView nameTextView;
-
-        public MyViewHolder(TextView v) {
+        public CheckBox checkBox;
+        public EditText pointEditText; // Assuming you want to access the EditText
+        public MyViewHolder(View  v) {
             super(v);
-            nameTextView = v;
+           // nameTextView = v;
+            nameTextView = v.findViewById(R.id.textView7);
+            checkBox = v.findViewById(R.id.checkbox1);
+            pointEditText = v.findViewById(R.id.Point);
         }
     }
 }

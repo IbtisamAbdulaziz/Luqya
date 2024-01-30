@@ -1,8 +1,13 @@
 package com.example.luqya;
 
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +17,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
@@ -66,6 +75,54 @@ public class MyAdapter3 extends RecyclerView.Adapter<MyAdapter3.MyViewHolder> {
             }
         });
 
+        // Add click listener for the cancel_register button
+        holder.cancel_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(context)
+                        .setTitle("Confirm Cancellation")
+                        .setMessage("Are you sure you want to cancel your registration for this event?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Proceed with cancellation logic
+
+                                FirebaseAuth auth = FirebaseAuth.getInstance();
+                                FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                                FirebaseUser currentUser = auth.getCurrentUser();
+
+                                if (currentUser == null) {
+                                    // Handle the case where the user is not logged in
+                                    return;
+                                }
+
+                                String eventName = dataList.get(holder.getAdapterPosition()).getName();
+                                DatabaseReference dbRef = database.getReference("EventData/" + eventName + "/attendees");
+                                dbRef.child(currentUser.getUid()).removeValue()
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Log.d(TAG, "User successfully unregistered!");
+
+                                                // Update the UI or handle navigation as needed
+                                                holder.cancel_register.setVisibility(View.GONE); // Hide the button after cancellation
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.w(TAG, "Error unregistering user", e);
+
+                                            }
+                                        });
+                            }
+                        })
+                        .setNegativeButton("No", null) // Dismiss the dialog on "No"
+                        .show();
+            }
+
+        });
     }
 
     @Override
@@ -81,7 +138,6 @@ public class MyAdapter3 extends RecyclerView.Adapter<MyAdapter3.MyViewHolder> {
         TextView Title, Date, Location;
         Button Details;
         Button cancel_register;
-        Button register;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             Title = itemView.findViewById(R.id.TitleText);
@@ -89,7 +145,6 @@ public class MyAdapter3 extends RecyclerView.Adapter<MyAdapter3.MyViewHolder> {
             Location = itemView.findViewById(R.id.StarText);
             Details = itemView.findViewById(R.id.Details);
             cancel_register = itemView.findViewById(R.id.cancel_registeration);
-            register = itemView.findViewById(R.id.Register);
 
         }
     }
