@@ -108,6 +108,15 @@ public class AddEvent extends AppCompatActivity {
         languageSpinner.setAdapter(adapter2);
 
 
+        Button buttonUploadProfilePic = findViewById(R.id.button_upload_event_pic);
+        buttonUploadProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddEvent.this, UploadEventPicture.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         //To choose a date from a calender
         date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -262,38 +271,11 @@ public class AddEvent extends AppCompatActivity {
         });
 
 
-
-        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK) {
-                            Intent data = result.getData();
-                            uri = data.getData();
-                            imageView.setImageURI(uri);
-                        } else {
-                            Toast.makeText(AddEvent.this, "No Image Selected", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-        );
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent photoPicker = new Intent(Intent.ACTION_PICK);
-                photoPicker.setType("image/*");
-                activityResultLauncher.launch(photoPicker);
-            }
-        });
-
     }
     
     public void saveData(){
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Event Images");
-                //.child(uri.getLastPathSegment());
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Event Images").child(uri.getLastPathSegment());
         AlertDialog.Builder builder = new AlertDialog.Builder(AddEvent.this);
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);
