@@ -292,8 +292,8 @@ public class AddEvent extends AppCompatActivity {
     
     public void saveData(){
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Event Images");
-                //.child(uri.getLastPathSegment());
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Event Images")
+                .child(uri.getLastPathSegment());
         AlertDialog.Builder builder = new AlertDialog.Builder(AddEvent.this);
         builder.setCancelable(false);
         builder.setView(R.layout.progress_layout);

@@ -2,9 +2,11 @@ package com.example.luqya;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,7 +45,26 @@ public class MyAdapter3 extends RecyclerView.Adapter<MyAdapter3.MyViewHolder> {
         holder.Location.setText(dataList.get(position).getLocation());
 
 
+        holder.Details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                Intent intent = new Intent(context, Details_event_class.class);
+                intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
+                intent.putExtra("Date", dataList.get(holder.getAdapterPosition()).getDate());
+                intent.putExtra("Time", dataList.get(holder.getAdapterPosition()).getTime());
+                intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getName());
+                intent.putExtra("Location", dataList.get(holder.getAdapterPosition()).getLocation());
+                intent.putExtra("Duration", dataList.get(holder.getAbsoluteAdapterPosition()).getDuration());
+                intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
+                intent.putExtra("Language", dataList.get(holder.getAbsoluteAdapterPosition()).getLanguage());
+                intent.putExtra("category", dataList.get(holder.getAbsoluteAdapterPosition()).getCategory());
+                intent.putExtra("attendingMethod", dataList.get(holder.getAbsoluteAdapterPosition()).getAttendingMeth());
+                intent.putExtra("initiative",dataList.get(holder.getAdapterPosition()).getInitiative());
+
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -58,12 +79,17 @@ public class MyAdapter3 extends RecyclerView.Adapter<MyAdapter3.MyViewHolder> {
     class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView Title, Date, Location;
-
+        Button Details;
+        Button cancel_register;
+        Button register;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             Title = itemView.findViewById(R.id.TitleText);
             Date = itemView.findViewById(R.id.Date);
             Location = itemView.findViewById(R.id.StarText);
+            Details = itemView.findViewById(R.id.Details);
+            cancel_register = itemView.findViewById(R.id.cancel_registeration);
+            register = itemView.findViewById(R.id.Register);
 
         }
     }

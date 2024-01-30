@@ -1,7 +1,7 @@
 package com.example.luqya;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,18 +12,24 @@ import com.bumptech.glide.Glide;
 
 public class Details_event_class extends AppCompatActivity {
 
-
     private TextView titleTextView, categoryTextView, initiativeTextView, locationTextView, dateTextView,
             timeTextView, languageTextView, durationTextView, atthendingMethodTextView, overviewTextView;
     Button register_button;
     ImageView imageView;
     private String title, category, initiative, location, date, time, language, duration, attendingMethod, overview;
 
-    @Override
+
+    @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details_event_class);
         getSupportActionBar().setTitle("Event Details");
+
+        /*
+        List<DataClass> dataList;
+        RecyclerView recyclerView;
+                                   */
+
 
         titleTextView = findViewById(R.id.event_title);
         categoryTextView = findViewById(R.id.event_category);
@@ -39,6 +45,7 @@ public class Details_event_class extends AppCompatActivity {
         imageView = findViewById(R.id.event_image);
         register_button = findViewById(R.id.Register);
 
+       // recyclerView = findViewById(R.id.myeventView2);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -64,16 +71,27 @@ public class Details_event_class extends AppCompatActivity {
             timeTextView.setText(time);
             languageTextView.setText(language);
             atthendingMethodTextView.setText(attendingMethod);
+
             initiativeTextView.setText(initiative);
+
+            initiativeTextView.setText(initiative + " ");
         }
 
 
-        register_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            /*
 
-            }
-        });
+             dataList = new ArrayList<>();
+
+            MyAdapter adapter = new MyAdapter(Details_event_class.this, dataList);
+            recyclerView.setAdapter(adapter);
+            register_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                }
+            });
+
+            */
+
 
           /*  deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,7 +124,9 @@ public class Details_event_class extends AppCompatActivity {
                 }
    });*/
 
-    }
+        }
 }
+
+
 
 
