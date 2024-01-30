@@ -121,7 +121,15 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
             edit_event=itemView.findViewById(R.id.edit_event);
             Delete_Event=itemView.findViewById(R.id.delete_event);
             Attending_List=itemView.findViewById(R.id.attending_List);
-
+            Attending_List.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, AttendingListAndPoint.class);
+                    // Passing the event name to the AttendingListAndPoint activity
+                    intent.putExtra("eventName", dataList.get(getAdapterPosition()).getName());
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

@@ -34,7 +34,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:id="@+id/editText_update_profile_name"
             android:layout_below="@id/textView_update_profile_name"
             android:inputType="textPersonName"
@@ -55,7 +55,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:id="@+id/editText_update_profile_doB"
             android:layout_below="@id/textView_update_profile_doB"
             android:inputType="date"
@@ -79,7 +79,7 @@
 
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:id="@+id/editText_update_profile_phone"
             android:layout_below="@id/textView_update_profile_phone"
             android:inputType="phone"
@@ -89,35 +89,37 @@
             android:hint="Enter your phone number (+966xxxxxxxxx)"/>
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/button_upload_profile_pic"
-            android:text="Upload Profile Picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText_update_profile_phone"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="30dp"
-            android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
-            android:layout_below="@id/editText_update_profile_phone"/>
+            android:backgroundTint="@color/button_background"
+            android:text="Upload Profile Picture" />
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/button_edit_email"
-            android:text="Update Email"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginRight="60dp"
-            android:layout_below="@id/button_upload_profile_pic"/>
-
-        <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/button_update_profile"
-            android:text="Update Profile"
-            android:layout_marginTop="10dp"
+            android:layout_below="@id/button_upload_profile_pic"
             android:layout_marginLeft="60dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="60dp"
+            android:backgroundTint="@color/button_background"
+            android:text="Update Email" />
+
+        <Button
+            android:id="@+id/button_update_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@id/button_edit_email"
-            android:backgroundTint="@color/button_text"/>
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="60dp"
+            android:backgroundTint="@color/button_background"
+            android:text="Update Profile" />
 
         <ProgressBar
             android:layout_width="wrap_content"

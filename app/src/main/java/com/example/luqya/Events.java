@@ -1,5 +1,6 @@
 package com.example.luqya;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -35,7 +36,8 @@ import java.util.List;
 public class Events extends AppCompatActivity {
 
 
-    private LinearLayout profile_Btn, home_Btn;
+    private LinearLayout profile_Btn, home_Btn,homeBtn_3;
+
     private FirebaseAuth authProfile;
 
     List<DataClass> dataList;
@@ -45,9 +47,9 @@ public class Events extends AppCompatActivity {
 
     public static int s_id;
     public SharedPreferences settings;
-
     EditText editTextSearch;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,10 +59,11 @@ public class Events extends AppCompatActivity {
 
         profile_Btn = findViewById(R.id.Profile_Btn);
         home_Btn = findViewById(R.id.Home_Btn);
+        homeBtn_3 = findViewById(R.id.homeBtn_3);
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
         settings = getSharedPreferences("ID", 0);
-        s_id = settings.getInt("id",0);
+        s_id = settings.getInt("id", 0);
         editTextSearch = findViewById(R.id.editTextSearch);
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -112,7 +115,7 @@ public class Events extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(firebaseUser == null){
+                if (firebaseUser == null) {
                     Intent i = new Intent(Events.this, LogIn.class);
                     startActivity(i);
 
@@ -127,20 +130,28 @@ public class Events extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                    Intent i = new Intent(Events.this, Events.class);
-                    startActivity(i);
+                Intent i = new Intent(Events.this, Events.class);
+                startActivity(i);
             }
         });
 
+        homeBtn_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(Events.this, MyEvent_bar.class);
+                startActivity(i);
+            }
+        });
 
         editTextSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
                 if (actionId == EditorInfo.IME_ACTION_SEARCH
-                || actionId == EditorInfo.IME_ACTION_DONE
-                || event.getAction() == KeyEvent.ACTION_DOWN
-                || event.getAction() == KeyEvent.KEYCODE_ENTER){
+                        || actionId == EditorInfo.IME_ACTION_DONE
+                        || event.getAction() == KeyEvent.ACTION_DOWN
+                        || event.getAction() == KeyEvent.KEYCODE_ENTER) {
 
                     GoToSearchView();
                 }
@@ -177,4 +188,5 @@ public class Events extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

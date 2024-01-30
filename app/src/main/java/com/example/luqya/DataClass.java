@@ -64,7 +64,15 @@ public class DataClass {
         return dataImage;
     }
 
-
+    @Override
+    public String toString() {
+        return "DataClass{" +
+                "name='" + name + '\'' +
+                ", date='" + date + '\'' +
+                ", location='" + location + '\'' +
+                // Add other fields here...
+                '}';
+    }
     public DataClass(){
 
     }

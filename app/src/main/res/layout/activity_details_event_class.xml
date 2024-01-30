@@ -174,7 +174,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-
         </LinearLayout>
 
     </ScrollView>
@@ -187,10 +186,13 @@
 
 
         <Button
-            android:id="@+id/event_register_button"
+            android:id="@+id/Register"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/button_background"
             android:text="Register Now"
             android:textColor="@color/white"
@@ -200,5 +202,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/myeventView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </RelativeLayout>
+
+
 </RelativeLayout>

@@ -24,7 +24,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@color/app_background"
@@ -56,20 +56,27 @@
                 android:layout_marginBottom="8dp"
                 android:text="Location"
                 android:textColor="@color/black"
-                android:layout_alignParentBottom="true"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:drawableLeftCompat="@drawable/add_location" />
+                app:layout_constraintStart_toStartOf="@+id/TitleText" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/add_location"
+                app:layout_constraintBottom_toBottomOf="@+id/StarText"
+                app:layout_constraintStart_toEndOf="@+id/StarText"
+                app:layout_constraintTop_toTopOf="@+id/StarText"
+                app:layout_constraintVertical_bias="1.0" />
 
             <Button
                 android:id="@+id/cancel_registeration"
                 android:layout_width="110dp"
-                android:layout_below="@+id/Details"
                 android:layout_height="50dp"
                 android:background="@drawable/button_event_background"
                 android:gravity="center"
                 android:text="Cancel registeration"
-                android:layout_marginTop="5dp"
-                android:layout_alignParentRight="true"
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -82,15 +89,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:text="Date"
-                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="@+id/StarText"
-                android:drawableLeft="@drawable/date"
+                app:layout_constraintEnd_toStartOf="@+id/cancel_registeration"
                 app:layout_constraintHorizontal_bias="0.362"
+                app:layout_constraintStart_toEndOf="@+id/imageView4"
                 app:layout_constraintTop_toTopOf="@+id/StarText"
-                app:layout_constraintVertical_bias="1.0"
-                android:layout_toLeftOf="@id/cancel_registeration"
-                android:layout_alignParentBottom="true"/>
+                app:layout_constraintVertical_bias="1.0" />
 
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintBottom_toBottomOf="@+id/Date"
+                app:layout_constraintEnd_toStartOf="@+id/cancel_registeration"
+                app:layout_constraintStart_toEndOf="@+id/Date"
+                app:layout_constraintTop_toTopOf="@+id/Date"
+                app:srcCompat="@drawable/date"
+                tools:ignore="UseAppTint" />
 
             <Button
                 android:id="@+id/Details"
@@ -99,13 +116,13 @@
                 android:background="@drawable/button_event_background"
                 android:gravity="center"
                 android:text="Details"
-                android:layout_alignParentRight="true"
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/TitleText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/TitleText" />
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

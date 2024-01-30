@@ -1,20 +1,98 @@
 package com.example.luqya;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.os.Bundle;
+import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class AttendingListAndPoint extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    ArrayList<Model>arrayList=new ArrayList<>();
+    ArrayList<Model> arrayList = new ArrayList<>();
+    MyAdapter4 adapter;
+    String eventName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attending_list_and_point);
+
+        // Get the event name from the intent
+        eventName = getIntent().getStringExtra("eventName");
+
+        recyclerView = findViewById(R.id.list_seeker);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new MyAdapter4(arrayList);
+        recyclerView.setAdapter(adapter);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        // Get the current user
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser == null) {
+            // Handle the case where the user is not logged in
+            Log.d(TAG, "User is not logged in");
+            return;
+        }
+
+        // Get a reference to the "EventData" node in your Firebase Realtime Database
+        DatabaseReference eventDataRef = database.getReference("EventData").child(eventName).child("attendees");
+        DatabaseReference usersRef = database.getReference("Registered users");
+
+        // Attach a listener to read the data at our posts reference
+        eventDataRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                arrayList.clear();
+
+                for (DataSnapshot attendeeSnapshot: dataSnapshot.getChildren()) {
+                    // Get the user ID of the attendee
+                    String userId = attendeeSnapshot.getKey();
+
+                    // Get the user's name from the "Registered users" node
+                    usersRef.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            // Get the user's name
+                            String userName = dataSnapshot.child("fullName").getValue(String.class);
+
+                            // Create a new Model object for the attendee
+                            Model attendee = new Model(userName, true);
+
+                            // Update the data in the adapter
+                            arrayList.add(attendee);
+
+                            // Notify the adapter that the data has changed
+                            adapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+            }
+        });
     }
 }

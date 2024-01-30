@@ -1,7 +1,10 @@
 package com.example.luqya;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +16,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -25,7 +34,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         this.context = context;
         this.dataList = dataList;
     }
+    public void clearData() {
+        this.dataList.clear();
+    }
 
+    public void addData(DataClass data) {
+        this.dataList.add(data);
+    }
     @NonNull
     @Override
     public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -62,8 +77,48 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 context.startActivity(intent);
             }
         });
-    }
+        holder.register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                // Get the current user
+                FirebaseUser currentUser = auth.getCurrentUser();
+                if (currentUser == null) {
+                    // Handle the case where the user is not logged in
+                    return;
+                }
+
+                // Use the eventId of the current event
+                String eventName = dataList.get(holder.getAdapterPosition()).getName();  // replace this with your method to get the current eventId
+
+                // Add the current user to the attendees of the current event
+                DatabaseReference dbRef = database.getReference("EventData/" + eventName + "/attendees");
+                dbRef.child(currentUser.getUid()).setValue(true)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.d(TAG, "User successfully registered!");
+                                Log.d(TAG, eventName);
+
+                                // Navigate to the MyEventsActivity
+                                Intent intent = new Intent(context, MyEvent_bar.class);
+                                context.startActivity(intent);
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w(TAG, "Error registering user", e);
+                            }
+                        });
+            }
+        });
+
+    }
 
     @Override
     public int getItemCount() {

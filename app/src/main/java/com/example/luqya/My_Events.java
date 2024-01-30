@@ -56,6 +56,7 @@ public class My_Events extends AppCompatActivity {
         MyAdapter2 adapter = new MyAdapter2(My_Events.this, dataList);
         recyclerView.setAdapter(adapter);
 
+
         databaseReference = FirebaseDatabase.getInstance().getReference("Add Event");
         dialog.show();
         eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
