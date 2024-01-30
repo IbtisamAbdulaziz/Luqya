@@ -37,7 +37,7 @@ public class Details_event_class extends AppCompatActivity {
         atthendingMethodTextView = findViewById(R.id.event_attending_method);
 
         imageView = findViewById(R.id.event_image);
-        register_button = findViewById(R.id.event_register_button);
+        register_button = findViewById(R.id.Register);
 
 
         Bundle bundle = getIntent().getExtras();
