@@ -8,6 +8,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -37,7 +38,8 @@ import java.util.regex.Pattern;
 public class InitiativeFounderSignUp extends AppCompatActivity {
 
     private EditText initiativeNameEditText, initiativeFounderNameEditText, initiativeEmailEditText, initiativeDescriptionEditText,
-    passwordEditText, passwordConfirmationEditText, phoneEditText, locationEditText;
+    passwordEditText, passwordConfirmationEditText, phoneEditText, locationEditText, InstaLink;
+    ImageView instaImage;
     private Button cancelBtn, signUpBtn;
     private ProgressBar progressBar;
     private static final String TAG= "InitiativeFounderSignUp";
@@ -57,6 +59,9 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
         phoneEditText = findViewById(R.id.editText_phone);
         locationEditText = findViewById(R.id.editText_location);
         initiativeDescriptionEditText = findViewById(R.id.eventOverview);
+
+        instaImage =  findViewById(R.id.instagram);
+        InstaLink = findViewById(R.id.SocialMedia);
 
         cancelBtn = findViewById(R.id.button_cansel);
         signUpBtn = findViewById(R.id.button_sign_up);
