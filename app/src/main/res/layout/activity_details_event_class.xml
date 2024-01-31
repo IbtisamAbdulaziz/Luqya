@@ -46,7 +46,7 @@
 
                 <TextView
                     android:id="@+id/event_initiative_name"
-                    android:layout_width="140dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Initiative Name"
                     android:drawableRight="@drawable/initiative"

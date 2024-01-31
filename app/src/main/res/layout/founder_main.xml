@@ -76,7 +76,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@id/textView_founder_name_welcome"
         android:layout_centerVertical="true"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="45dp"
         android:text="Add Event"
         android:textSize="16sp"
         android:background="@drawable/button_background" />
@@ -102,7 +102,7 @@
         android:layout_marginEnd="10dp"
         android:layout_below="@id/button2"
         android:text="Edit Profile"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="45dp"
         android:background="@drawable/button_background"
         android:textSize="16sp" />
 

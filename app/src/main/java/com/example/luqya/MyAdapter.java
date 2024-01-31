@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -71,7 +72,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
                 intent.putExtra("Language", dataList.get(holder.getAbsoluteAdapterPosition()).getLanguage());
                 intent.putExtra("category", dataList.get(holder.getAbsoluteAdapterPosition()).getCategory());
-                intent.putExtra("attendingMethod", dataList.get(holder.getAbsoluteAdapterPosition()).getAttendingMeth());
+                intent.putExtra("attendingMethod", dataList.get(holder.getAbsoluteAdapterPosition()).getAttendingMethod());
                 intent.putExtra("initiative",dataList.get(holder.getAdapterPosition()).getInitiative());
 
                 context.startActivity(intent);
@@ -81,13 +82,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             @Override
             public void onClick(View v) {
 
-
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-
                 // Get the current user
                 FirebaseUser currentUser = auth.getCurrentUser();
                 if (currentUser == null) {
+                    Intent intent = new Intent(context, LogIn.class);
+                    context.startActivity(intent);
                     // Handle the case where the user is not logged in
                     return;
                 }
@@ -101,6 +102,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
+                                Toast.makeText(context, "You've successfully registered to the event!", Toast.LENGTH_LONG).show();
                                 Log.d(TAG, "User successfully registered!");
                                 Log.d(TAG, eventName);
 

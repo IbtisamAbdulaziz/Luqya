@@ -38,6 +38,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class EditEvent extends AppCompatActivity {
 
@@ -59,7 +61,7 @@ public class EditEvent extends AppCompatActivity {
     private ArrayAdapter<CharSequence> adapter;
     private  ArrayAdapter<CharSequence> adapter2;
 
-    private String name, overview, date, duration, time, location, category, language, attendingMethod;
+    private String name, overview, date, duration, time, location, category, language, attendingMethod, originalEventName;
 
 
     @Override
@@ -79,10 +81,9 @@ public class EditEvent extends AppCompatActivity {
         category = bundle.getString("eventCategory");
         language = bundle.getString("eventLanguage");
         attendingMethod = bundle.getString("eventAttendingMethod");
+        initiative = bundle.getString("eventInitiative");
+        originalEventName = name;
 
-
-        authProfile = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
         dataClass = new DataClass();
 
@@ -264,9 +265,9 @@ public class EditEvent extends AppCompatActivity {
         String Location = locationEditText.getText().toString().trim();
         String AttendingMethod = radioButtonAttendingMethodSelected.getText().toString();
 
-
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
         DataClass data = new DataClass(EventName, Overview, Date, duration, language, Age, Location, AttendingMethod ,Category, initiative , imageURL);
+
 
         databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

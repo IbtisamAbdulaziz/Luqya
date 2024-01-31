@@ -68,7 +68,7 @@ public class MyAdapter3 extends RecyclerView.Adapter<MyAdapter3.MyViewHolder> {
                 intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
                 intent.putExtra("Language", dataList.get(holder.getAbsoluteAdapterPosition()).getLanguage());
                 intent.putExtra("category", dataList.get(holder.getAbsoluteAdapterPosition()).getCategory());
-                intent.putExtra("attendingMethod", dataList.get(holder.getAbsoluteAdapterPosition()).getAttendingMeth());
+                intent.putExtra("attendingMethod", dataList.get(holder.getAbsoluteAdapterPosition()).getAttendingMethod());
                 intent.putExtra("initiative",dataList.get(holder.getAdapterPosition()).getInitiative());
 
                 context.startActivity(intent);
