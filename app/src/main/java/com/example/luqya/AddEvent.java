@@ -144,6 +144,7 @@ public class AddEvent extends AppCompatActivity {
                     }
                 }, hour, minute, true);
                 timePickerDialog.setTitle("Select Time of Event");
+
                 timePickerDialog.show();
             }
         });
@@ -166,6 +167,14 @@ public class AddEvent extends AppCompatActivity {
             }
         });
 
+
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(AddEvent.this, UploadEventPicture.class);
+                startActivity(i);
+            }
+        });
 
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
@@ -266,7 +275,7 @@ public class AddEvent extends AppCompatActivity {
 
 
 
-        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+        /*ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
@@ -280,20 +289,20 @@ public class AddEvent extends AppCompatActivity {
                         }
                     }
                 }
-        );
+        );*/
 
-        imageView.setOnClickListener(new View.OnClickListener() {
+        /*imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent photoPicker = new Intent(Intent.ACTION_PICK);
                 photoPicker.setType("image/*");
                 activityResultLauncher.launch(photoPicker);
             }
-        });
+        });*/
 
     }
     
-    public void saveData(){
+    /*public void saveData(){
 
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Event Images");
                 //.child(uri.getLastPathSegment());
@@ -319,7 +328,7 @@ public class AddEvent extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-    }
+    }*/
 
     public void uploadData(){
 
@@ -341,7 +350,7 @@ public class AddEvent extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            saveData();
+                            //saveData();
                             Toast.makeText(AddEvent.this, "Saved", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(AddEvent.this, FounderMainActivity.class);
                             startActivity(intent);

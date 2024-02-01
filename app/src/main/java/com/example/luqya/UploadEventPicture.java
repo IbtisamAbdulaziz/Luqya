@@ -20,6 +20,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -32,8 +34,8 @@ public class UploadEventPicture extends AppCompatActivity {
     private FirebaseAuth authProfile;
     private StorageReference storageReference;
 
-
     private FirebaseUser firebaseUser;
+    private DatabaseReference databaseReference;
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri uriImage;
 
@@ -51,6 +53,7 @@ public class UploadEventPicture extends AppCompatActivity {
 
         authProfile = FirebaseAuth.getInstance();
         firebaseUser = authProfile.getCurrentUser();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Add Event");
 
         storageReference = FirebaseStorage.getInstance().getReference("Event Images");
 
@@ -79,6 +82,7 @@ public class UploadEventPicture extends AppCompatActivity {
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
+        startActivity(intent);
     }
 
     @Override
@@ -93,7 +97,8 @@ public class UploadEventPicture extends AppCompatActivity {
 
     private void UploadPic(){
         if(uriImage != null){
-            StorageReference fileReference = storageReference.child(authProfile.getCurrentUser().getUid() + "."
+
+            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "."
                     + getFileExtension(uriImage));
 
             fileReference.putFile(uriImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -102,19 +107,19 @@ public class UploadEventPicture extends AppCompatActivity {
                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            Uri downloadUri = uri;
-                            firebaseUser = authProfile.getCurrentUser();
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setPhotoUri(downloadUri).build();
-                            firebaseUser.updateProfile(profileUpdates);
+
+                            Model2 model2 = new Model2(uri.toString());
+                            String modelId = databaseReference.push().getKey();
+                            databaseReference.child(modelId).setValue(model2);
+
                         }
                     });
 
-                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(UploadEventPicture.this, "Upload Successful!", Toast.LENGTH_SHORT).show();
 
-                    Intent i = new Intent(UploadEventPicture.this, EditEvent.class);
+                    /*Intent i = new Intent(UploadEventPicture.this, EditEvent.class);
                     startActivity(i);
-                    finish();
+                    finish();*/
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
