@@ -322,6 +322,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
+                        app:backgroundTint="@color/button_background"
                         android:background="@drawable/button_background"
                         android:elevation="3dp"
                         android:padding="13dp"
@@ -331,7 +332,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
-                    <!-- Save button -->
+                    <!-- signup button -->
                     <Button
                         android:id="@+id/button_sign_up"
                         android:layout_width="wrap_content"
@@ -339,6 +340,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_toRightOf="@+id/button_cansel"
+                        app:backgroundTint="@color/button_background"
                         android:background="@drawable/button_background"
                         android:elevation="3dp"
                         android:padding="13dp"

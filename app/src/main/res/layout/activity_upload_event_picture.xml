@@ -30,7 +30,7 @@
             android:layout_marginRight="70dp"
             android:layout_marginLeft="70dp"
             android:text="Choose Picture"
-            android:backgroundTint="@color/teal_700"/>
+            app:backgroundTint="@color/button_background"/>
 
         <ImageView
             android:layout_width="match_parent"
@@ -47,7 +47,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="70dp"
             android:layout_marginLeft="70dp"
-            android:text="Upload"/>
+            android:text="Upload"
+            app:backgroundTint="@color/button_background"/>
 
         <ProgressBar
             android:layout_width="wrap_content"

@@ -64,6 +64,7 @@
         android:layout_centerHorizontal="true"
         android:text="View Initiative's Profile"
         android:layout_below="@id/button5"
+        app:backgroundTint="@color/button_background"
         android:background="@drawable/button_background"
         android:textSize="16sp" />
 
@@ -79,6 +80,7 @@
         android:layout_marginStart="45dp"
         android:text="Add Event"
         android:textSize="16sp"
+        app:backgroundTint="@color/button_background"
         android:background="@drawable/button_background" />
 
     <Button
@@ -92,6 +94,7 @@
         android:layout_marginEnd="15dp"
         android:text="My Events"
         android:textSize="14sp"
+        app:backgroundTint="@color/button_background"
         android:background="@drawable/button_background" />
 
     <Button
@@ -103,6 +106,7 @@
         android:layout_below="@id/button2"
         android:text="Edit Profile"
         android:layout_marginStart="45dp"
+        app:backgroundTint="@color/button_background"
         android:background="@drawable/button_background"
         android:textSize="16sp" />
 
@@ -116,6 +120,7 @@
         android:layout_below="@id/button3"
         android:layout_marginEnd="15dp"
         android:text="Statistics"
+        app:backgroundTint="@color/button_background"
         android:background="@drawable/button_background"
         android:textSize="16sp" />
         </RelativeLayout>

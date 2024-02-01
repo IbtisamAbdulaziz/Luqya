@@ -5,19 +5,16 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,7 +44,9 @@ public class Events extends AppCompatActivity {
 
     public static int s_id;
     public SharedPreferences settings;
-    EditText editTextSearch;
+    SearchView searchView;
+    //FloatingActionButton filter;
+    MyAdapter adapter;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -64,7 +63,10 @@ public class Events extends AppCompatActivity {
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
         settings = getSharedPreferences("ID", 0);
         s_id = settings.getInt("id", 0);
-        editTextSearch = findViewById(R.id.editTextSearch);
+        searchView =findViewById(R.id.editTextSearch);
+        searchView.clearFocus();
+        //filter =findViewById(R.id.Filter);
+
 
         recyclerView = findViewById(R.id.recyclerView);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(Events.this, 1);
@@ -72,9 +74,6 @@ public class Events extends AppCompatActivity {
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Events.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-
-
-        editTextSearch.clearFocus();
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(Events.this);
@@ -85,7 +84,7 @@ public class Events extends AppCompatActivity {
 
         dataList = new ArrayList<>();
 
-        MyAdapter adapter = new MyAdapter(Events.this, dataList);
+        adapter = new MyAdapter(Events.this, dataList);
         recyclerView.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Add Event");
@@ -110,6 +109,26 @@ public class Events extends AppCompatActivity {
             }
         });
 
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchList(newText);
+                return true;
+            }
+        });
+
+        /*filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Events.this,Filter.class);
+                startActivityForResult(intent,101);
+            }
+        });*/
 
         profile_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,28 +162,7 @@ public class Events extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        editTextSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-
-                if (actionId == EditorInfo.IME_ACTION_SEARCH
-                        || actionId == EditorInfo.IME_ACTION_DONE
-                        || event.getAction() == KeyEvent.ACTION_DOWN
-                        || event.getAction() == KeyEvent.KEYCODE_ENTER) {
-
-                    GoToSearchView();
-                }
-                return false;
-            }
-        });
     }
-
-    private void GoToSearchView() {
-
-        //Query here
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -187,6 +185,24 @@ public class Events extends AppCompatActivity {
             startActivity(go_login);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void searchList(String text){
+        ArrayList<DataClass> searchList = new ArrayList<>();
+        for (DataClass dataClass: dataList){
+            if (dataClass.getName().toLowerCase().contains(text.toLowerCase())){
+                searchList.add(dataClass);
+            }
+        }
+        adapter.searchDataList(searchList);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        searchView.clearFocus();// Clear focus from the SearchView
+        // Optionally request focus on a different view:
+        // anotherView.requestFocus();
     }
 
 }

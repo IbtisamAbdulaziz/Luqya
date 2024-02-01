@@ -137,6 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="APPLY"
+        app:backgroundTint="@color/button_background"
         android:background="@drawable/button_background"
         android:textColor="@color/black" />
 

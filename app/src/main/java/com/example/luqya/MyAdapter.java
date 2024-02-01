@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -126,8 +127,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public int getItemCount() {
 
         return dataList.size();
+
     }
 
+    public void searchDataList(ArrayList<DataClass> searchList){
+        dataList = searchList;
+        notifyDataSetChanged();
+
+    }
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
