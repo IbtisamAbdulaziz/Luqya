@@ -3,7 +3,7 @@ package com.example.luqya;
 public class ReadWriteUserDetails {
 
     public String fullName, doD, phone, initiativeName,
-            initiativeFounderName, intiativePhone, initiativeLocation,
+            initiativeFounderName, initiativePhone, initiativeLocation,
             initiativeOverView;
     public int points;
 
@@ -26,7 +26,7 @@ public class ReadWriteUserDetails {
 
         this.initiativeName = textInitiativeName;
         this.initiativeFounderName = textInitiativeFounderName;
-        this.intiativePhone = textInitiativePhone;
+        this.initiativePhone = textInitiativePhone;
         this.initiativeLocation = textInitiativeLocation;
         this.initiativeOverView = textInitiativeDescription;
     }

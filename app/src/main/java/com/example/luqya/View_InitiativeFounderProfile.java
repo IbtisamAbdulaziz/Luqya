@@ -138,7 +138,7 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
                     initiativeName = readUserDetails.initiativeName;
                     initiativeDescription = readUserDetails.initiativeOverView;
                     initiativeFounder = readUserDetails.initiativeFounderName;
-                    initiativePhone = readUserDetails.intiativePhone;
+                    initiativePhone = readUserDetails.initiativePhone;
                     initiativeEmail = firebaseUser.getEmail();
                     initiativeAddress = readUserDetails.initiativeLocation;
 

@@ -60,8 +60,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         DatabaseReference dbRef = database.getReference("Add Event").child(eventName);
 
         //Glide.with(context).load(dataList.get(position).getDataImage()).into(holder.eventImage);
-        //Uri uri = dbRef.getPhotoUrl();
-        //Picasso.with(context).load(uri).into(holder.eventImage);
+
+        Picasso.with(context).load(dataList.get(holder.getAbsoluteAdapterPosition()).getDataImage()).into(holder.eventImage);
         holder.Title.setText(dataList.get(position).getName());
         holder.Location.setText(dataList.get(position).getLocation());
         holder.Date.setText(dataList.get(position).getDate());

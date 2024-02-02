@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <Button
-        android:id="@+id/my_button"
+        android:id="@+id/save_attendees_button"
         android:layout_width="178dp"
         android:layout_height="54dp"
         android:text="Save"

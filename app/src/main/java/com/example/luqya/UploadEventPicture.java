@@ -53,7 +53,7 @@ public class UploadEventPicture extends AppCompatActivity {
 
         authProfile = FirebaseAuth.getInstance();
         firebaseUser = authProfile.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Add Event");
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         storageReference = FirebaseStorage.getInstance().getReference("Event Images");
 
@@ -107,7 +107,6 @@ public class UploadEventPicture extends AppCompatActivity {
                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-
                             Model2 model2 = new Model2(uri.toString());
                             String modelId = databaseReference.push().getKey();
                             databaseReference.child(modelId).setValue(model2);

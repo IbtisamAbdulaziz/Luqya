@@ -4,7 +4,11 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +28,9 @@ public class AttendingListAndPoint extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Model> arrayList = new ArrayList<>();
     MyAdapter4 adapter;
-    String eventName;
+    String eventName, pointsText;
+    Button saveButton;
+    int points;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +42,11 @@ public class AttendingListAndPoint extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.list_seeker);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new MyAdapter4(arrayList);
+        adapter = new MyAdapter4(this, arrayList);
         recyclerView.setAdapter(adapter);
+        saveButton = findViewById(R.id.save_attendees_button);
+
+
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -72,7 +81,7 @@ public class AttendingListAndPoint extends AppCompatActivity {
                             String userName = dataSnapshot.child("fullName").getValue(String.class);
 
                             // Create a new Model object for the attendee
-                            Model attendee = new Model(userName, true);
+                            Model attendee = new Model(userName, false, 0);
 
                             // Update the data in the adapter
                             arrayList.add(attendee);
@@ -94,5 +103,16 @@ public class AttendingListAndPoint extends AppCompatActivity {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
             }
         });
+
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+            }
+        });
+
     }
 }
