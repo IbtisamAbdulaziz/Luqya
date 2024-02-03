@@ -35,6 +35,7 @@ public class EditSeekerProfile extends AppCompatActivity {
 
     private EditText editTextUpdateName, editTextUpdateDoB, editTextUpdatePhone;
     private String textFullName, textDoB, textPhone;
+    private int points;
     private FirebaseAuth authProfile;
     private ProgressBar progressBar;
 
@@ -131,7 +132,7 @@ public class EditSeekerProfile extends AppCompatActivity {
             textDoB = editTextUpdateDoB.getText().toString();
             textPhone = editTextUpdatePhone.getText().toString();
 
-            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textDoB, textPhone);
+            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textDoB, textPhone, points);
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
 
             String userID = firebaseUser.getUid();
@@ -181,6 +182,7 @@ public class EditSeekerProfile extends AppCompatActivity {
                     textFullName = firebaseUser.getDisplayName();
                     textDoB = readUserDetails.doD;
                     textPhone = readUserDetails.phone;
+                    points = readUserDetails.points;
 
                     editTextUpdateName.setText(textFullName);
                     editTextUpdateDoB.setText(textDoB);

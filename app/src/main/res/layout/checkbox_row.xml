@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/rowitem"
+    android:id="@+id/rowItem"
     android:layout_margin="10dp"
-    android:orientation="horizontal"
     android:padding="15dp"
     android:background="@color/app_background">
 
@@ -20,13 +17,7 @@
         android:gravity="center"
         android:text="Users Names"
         android:textColor="@color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.533"
-        tools:layout_editor_absoluteX="-11dp"
-        tools:ignore="MissingConstraints" />
+        android:textSize="20sp" />
 
     <CheckBox
         android:id="@+id/checkbox1"
@@ -35,32 +26,9 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:textColor="@color/black"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.639"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.505">
+        android:layout_alignParentEnd="true">
 
     </CheckBox>
 
-    <EditText
-        android:id="@+id/Point"
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:gravity="center"
-        android:inputType="number"
-        android:layout_marginLeft="30dp"
-        android:hint="Pts"
-        android:background="@drawable/edit_text_border"
-        android:layout_marginTop="20dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88" />
 
-</LinearLayout>
+</RelativeLayout>

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,17 +21,19 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.UserWriteRecord;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AttendingListAndPoint extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<Model> arrayList = new ArrayList<>();
     MyAdapter4 adapter;
-    String eventName, pointsText;
     Button saveButton;
-    int points;
+    ProgressBar progressBarAttendingList;
+    String eventName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class AttendingListAndPoint extends AppCompatActivity {
         adapter = new MyAdapter4(this, arrayList);
         recyclerView.setAdapter(adapter);
         saveButton = findViewById(R.id.save_attendees_button);
+        progressBarAttendingList = findViewById(R.id.progressBarAttendingList);
 
 
 
@@ -81,7 +85,7 @@ public class AttendingListAndPoint extends AppCompatActivity {
                             String userName = dataSnapshot.child("fullName").getValue(String.class);
 
                             // Create a new Model object for the attendee
-                            Model attendee = new Model(userName, false, 0);
+                            Model attendee = new Model(userId, userName, false, 0);
 
                             // Update the data in the adapter
                             arrayList.add(attendee);
@@ -109,7 +113,42 @@ public class AttendingListAndPoint extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                progressBarAttendingList.setVisibility(View.VISIBLE);
+                for(int i =0; i<arrayList.size(); i++){
+                    Model attendee = arrayList.get(i);
+                    boolean isAttendee = attendee.isSelected();
+                    if(isAttendee){
 
+                        String id = attendee.getUserId();
+                        usersRef.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                ReadWriteUserDetails readUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
+
+                                //int points = Integer.parseInt(Objects.requireNonNull(snapshot.child("points").getValue(String.class)));
+                                assert readUserDetails != null;
+                                int points = readUserDetails.points;
+                                points += 10;
+
+                                usersRef.child("points").setValue(points);
+                                adapter.notifyDataSetChanged();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+                                Toast.makeText(AttendingListAndPoint.this, "something went wrong!", Toast.LENGTH_SHORT).show();
+                                progressBarAttendingList.setVisibility(View.GONE);
+                            }
+
+                        });
+
+
+                    }
+                }
+
+                progressBarAttendingList.setVisibility(View.GONE);
+                Toast.makeText(AttendingListAndPoint.this, "Saved!", Toast.LENGTH_SHORT).show();
 
             }
         });

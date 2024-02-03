@@ -107,10 +107,6 @@ public class UploadEventPicture extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
 
-                            Model2 model2 = new Model2(uri.toString());
-                            String modelId = databaseReference.push().getKey();
-                            databaseReference.child(modelId).setValue(model2);
-
                         }
                     });
 
