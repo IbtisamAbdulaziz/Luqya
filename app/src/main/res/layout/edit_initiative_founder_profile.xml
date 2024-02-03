@@ -142,6 +142,25 @@
             android:gravity="start"
             android:hint="Edit initiative description..."/>
 
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/instagram"
+            android:layout_below="@id/editText_update_initiative_description"
+            android:src="@drawable/insta"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText_update_initiative_insta_account"
+            android:layout_below="@id/instagram"
+            android:inputType="textPersonName"
+            android:padding="6dp"
+            android:textSize="16sp"
+            android:hint="Edit initative instgram account"/>
+
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -150,7 +169,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
-            android:layout_below="@id/editText_update_initiative_description"
+            android:layout_below="@id/editText_update_initiative_insta_account"
             app:backgroundTint="@color/button_background" />
 
         <Button

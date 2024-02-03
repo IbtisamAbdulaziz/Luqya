@@ -4,7 +4,7 @@ public class ReadWriteUserDetails {
 
     public String fullName, doD, phone, initiativeName,
             initiativeFounderName, initiativePhone, initiativeLocation,
-            initiativeOverView;
+            initiativeOverView,initiativeSocialMediaAccount;
     public int points;
 
 
@@ -22,13 +22,15 @@ public class ReadWriteUserDetails {
     }
 
     public ReadWriteUserDetails(String textInitiativeName, String textInitiativeFounderName, String textInitiativePhone,
-                                String textInitiativeLocation, String textInitiativeDescription){
+                                String textInitiativeLocation, String textInitiativeDescription, String textInitiativeSocialMediaAccount){
 
         this.initiativeName = textInitiativeName;
         this.initiativeFounderName = textInitiativeFounderName;
         this.initiativePhone = textInitiativePhone;
         this.initiativeLocation = textInitiativeLocation;
         this.initiativeOverView = textInitiativeDescription;
+        this.initiativeSocialMediaAccount = textInitiativeSocialMediaAccount;
+
     }
 
 }
