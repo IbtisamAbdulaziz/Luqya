@@ -179,34 +179,16 @@
             android:layout_marginLeft="5dp"
             android:textColor="@color/black"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/linearLayout3"
-        android:layout_margin="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Initiative Email "
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
-
-        <TextView
-            android:id="@+id/textView_show_initiative_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="email of initiative"
-            android:layout_marginLeft="5dp"
-            android:textColor="@color/black"/>
-
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:id="@+id/instagram"
+            android:layout_below="@id/editText_update_initiative_description"
+            android:src="@drawable/insta"/>
     </LinearLayout>
 
 
-    <ProgressBar
+        <ProgressBar
         android:id="@+id/progressBarEditProfile"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
