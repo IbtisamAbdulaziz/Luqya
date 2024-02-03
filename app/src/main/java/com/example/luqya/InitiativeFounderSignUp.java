@@ -88,6 +88,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
 
                 String textInitiativePhone = phoneEditText.getText().toString();
                 String textInitiativeLocation = locationEditText.getText().toString();
+                String textInitiativeSocialMediaAccount = InstaLink.getText().toString();
 
                 String mobileRegex = "[+][0-9]{12}";
                 Matcher mobileMatcher;
@@ -162,9 +163,15 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                     passwordConfirmationEditText.requestFocus();
                     passwordEditText.setText(" ");
                     passwordConfirmationEditText.setText(" ");
+
+                } else if (TextUtils.isEmpty(textInitiativeSocialMediaAccount)) {
+                    Toast.makeText(InitiativeFounderSignUp.this, "Please enter initiative's Social Media Account", Toast.LENGTH_LONG).show();
+                    initiativeDescriptionEditText.setError("Instagram Account is required");
+                    initiativeDescriptionEditText.requestFocus();
+
                 } else {
 
-                    registerInitiative(textInitiativeName, textInitiativeFounderName, textInitiativeEmail, textInitiativePhone, textInitiativeLocation, textPassowrd, textInitiativeDescription);
+                    registerInitiative(textInitiativeName, textInitiativeFounderName, textInitiativeEmail, textInitiativePhone, textInitiativeLocation, textPassowrd, textInitiativeDescription, textInitiativeSocialMediaAccount);
                     progressBar.setVisibility(View.VISIBLE);
                 }
 
@@ -173,7 +180,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
 
     }
 
-    private void registerInitiative(String textInitiativeName, String textInitiativeFounderName, String textInitiativeEmail, String textInitiativePhone, String textInitiativeLocation, String textPassowrd, String textDescription) {
+    private void registerInitiative(String textInitiativeName, String textInitiativeFounderName, String textInitiativeEmail, String textInitiativePhone, String textInitiativeLocation, String textPassowrd, String textDescription, String textInitiativeSocialMediaAccount) {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
@@ -187,7 +194,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(textInitiativeName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textDescription);
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textDescription,textInitiativeSocialMediaAccount);
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
 
                     referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -206,6 +213,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                                 userInfo.put("InitiativePhone", textInitiativePhone);
                                 userInfo.put("InitiativeLocation", textInitiativeLocation);
                                 userInfo.put("InitiativeDescription", textDescription);
+                                userInfo.put("InitiativeSocialMediaAccount", textInitiativeSocialMediaAccount);
                                 userInfo.put("UserType","2");
 
                                 df.set(userInfo);

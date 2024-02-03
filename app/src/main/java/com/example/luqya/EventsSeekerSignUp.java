@@ -45,6 +45,7 @@ public class EventsSeekerSignUp extends AppCompatActivity {
     private ProgressBar progressBar;
     private static final String TAG= "EventSeekerSignUp";
     private  DatePickerDialog picker;
+    private int points;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,8 @@ public class EventsSeekerSignUp extends AppCompatActivity {
         editTextPhone  = findViewById(R.id.editText_phone);
         editTextPassword  = findViewById(R.id.editText_password);
         editTextPassword2  = findViewById(R.id.editText_passowrd2);
+
+        points = 0;
 
 
         editTextDateOfBirth.setOnClickListener(new View.OnClickListener() {
@@ -187,7 +190,7 @@ public class EventsSeekerSignUp extends AppCompatActivity {
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textDoB, textPhone);
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textDoB, textPhone, points);
 
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
 

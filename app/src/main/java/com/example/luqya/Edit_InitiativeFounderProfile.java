@@ -1,5 +1,6 @@
 package com.example.luqya;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -30,11 +31,12 @@ import java.util.regex.Pattern;
 public class Edit_InitiativeFounderProfile extends AppCompatActivity {
 
     private EditText editTextUpdateInitiativeName, editTextUpdateInitiativeFounderName, editTextUpdateInitiativeDescription,
-            editTextUpdateInitiativePhone, editTextUpdateInitiativeLocation;
-    private String textInitiativeName, textInitiativeFounderName, textInitiativeDescription, textInitiativePhone, textInitiativeLocation;
+            editTextUpdateInitiativePhone, editTextUpdateInitiativeLocation, editTextInitiativeSocialMediaAccount;
+    private String textInitiativeName, textInitiativeFounderName, textInitiativeDescription, textInitiativePhone, textInitiativeLocation,textInitiativeSocialMediaAccount;
     private FirebaseAuth authProfile;
     private ProgressBar progressBar;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,7 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
         editTextUpdateInitiativeDescription = findViewById(R.id.editText_update_initiative_description);
         editTextUpdateInitiativePhone = findViewById(R.id.editText_update_initiative_phone);
         editTextUpdateInitiativeLocation = findViewById(R.id.editText_update_initiative_location);
+        editTextInitiativeSocialMediaAccount = findViewById(R.id.editText_update_initiative_insta_account);
 
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
@@ -115,6 +118,10 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
             editTextUpdateInitiativeLocation.setError("Initiative Location is required");
             editTextUpdateInitiativeLocation.requestFocus();
 
+        } else if (TextUtils.isEmpty(textInitiativeSocialMediaAccount)) {
+            Toast.makeText(Edit_InitiativeFounderProfile.this, "Please enter initiative's Social Media Account", Toast.LENGTH_LONG).show();
+            editTextInitiativeSocialMediaAccount.setError("Instagram Account is required");
+            editTextInitiativeSocialMediaAccount.requestFocus();
         } else {
 
             textInitiativeName = editTextUpdateInitiativeName.getText().toString();
@@ -122,8 +129,10 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
             textInitiativeDescription = editTextUpdateInitiativeDescription.getText().toString();
             textInitiativeLocation = editTextUpdateInitiativeLocation.getText().toString();
             textInitiativePhone = editTextUpdateInitiativePhone.getText().toString();
+            textInitiativeSocialMediaAccount = editTextInitiativeSocialMediaAccount.getText().toString();
 
-            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textInitiativeDescription );
+
+            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textInitiativeDescription,textInitiativeSocialMediaAccount );
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
 
             String userID = firebaseUser.getUid();
@@ -176,6 +185,7 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
                     editTextUpdateInitiativeDescription.setText(textInitiativeDescription);
                     editTextUpdateInitiativePhone.setText(textInitiativePhone);
                     editTextUpdateInitiativeLocation.setText(textInitiativeLocation);
+                    editTextInitiativeSocialMediaAccount.setText(textInitiativeSocialMediaAccount);
 
 
                 } else {
