@@ -4,7 +4,6 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +16,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,8 +57,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         DatabaseReference dbRef = database.getReference("Add Event").child(eventName);
 
         //Glide.with(context).load(dataList.get(position).getDataImage()).into(holder.eventImage);
-
-        Picasso.with(context).load(dataList.get(holder.getAbsoluteAdapterPosition()).getDataImage()).into(holder.eventImage);
+        //Uri uri = dbRef.getPhotoUrl();
+        //Picasso.with(context).load(uri).into(holder.eventImage);
         holder.Title.setText(dataList.get(position).getName());
         holder.Location.setText(dataList.get(position).getLocation());
         holder.Date.setText(dataList.get(position).getDate());

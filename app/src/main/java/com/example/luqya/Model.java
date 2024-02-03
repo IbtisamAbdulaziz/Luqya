@@ -1,7 +1,6 @@
 package com.example.luqya;
 
-public class
-Model {
+public class Model {
     private String name;
     private boolean isSelected;
     private int points;

@@ -1,9 +1,5 @@
 package com.example.luqya;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,11 +11,14 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -53,7 +52,7 @@ public class UploadEventPicture extends AppCompatActivity {
 
         authProfile = FirebaseAuth.getInstance();
         firebaseUser = authProfile.getCurrentUser();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Add Event");
 
         storageReference = FirebaseStorage.getInstance().getReference("Event Images");
 
@@ -107,6 +106,7 @@ public class UploadEventPicture extends AppCompatActivity {
                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
+
                             Model2 model2 = new Model2(uri.toString());
                             String modelId = databaseReference.push().getKey();
                             databaseReference.child(modelId).setValue(model2);

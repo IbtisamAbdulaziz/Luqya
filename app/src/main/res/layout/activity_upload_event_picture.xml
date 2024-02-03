@@ -13,7 +13,6 @@
         android:layout_margin="15dp"
         android:background="@color/half_background">
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +28,6 @@
             android:layout_below="@id/textView_upload_pic"
             android:layout_marginTop="20dp"
             android:layout_marginRight="70dp"
-
             android:layout_marginLeft="70dp"
             android:text="Choose Picture"
             app:backgroundTint="@color/button_background"/>

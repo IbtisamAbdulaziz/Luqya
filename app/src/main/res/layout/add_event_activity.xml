@@ -26,26 +26,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/circular"
-        app:srcCompat="@drawable/add_image"
+        app:srcCompat="@drawable/person"
         app:strokeColor="@color/white"
         app:strokeWidth="5dp" />
 
 
-    <TextView
-        android:id="@+id/textView_upload_event_pic"
+    <Button
+        android:id="@+id/button_upload_event_pic"
         android:layout_width="201dp"
-        android:layout_height="wrap_content"
+        android:layout_height="74dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="24dp"
         android:layout_toStartOf="@+id/imageView"
         android:paddingLeft="5dp"
-        android:paddingTop="100dp"
         android:text="Attache picture of the event:"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="14sp"
         android:textStyle="bold"
         app:backgroundTint="@color/app_background"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
@@ -301,8 +301,8 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginEnd="32dp"
                             android:layout_marginBottom="9dp"
-                            android:background="@color/button_background"
-                            android:textColor="@color/black"
+                            app:backgroundTint="@color/button_background"
+                            android:background="@drawable/button_background"                            android:textColor="@color/black"
                             android:gravity="center"
                             android:text="Submit"
                             tools:ignore="MissingConstraints" />

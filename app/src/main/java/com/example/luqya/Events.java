@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -45,8 +46,9 @@ public class Events extends AppCompatActivity {
     public static int s_id;
     public SharedPreferences settings;
     SearchView searchView;
-    //FloatingActionButton filter;
     MyAdapter adapter;
+    private CheckBox InPerson, Online, Literary, Artistic, Musical,Scientific;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -63,9 +65,15 @@ public class Events extends AppCompatActivity {
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
         settings = getSharedPreferences("ID", 0);
         s_id = settings.getInt("id", 0);
-        searchView =findViewById(R.id.editTextSearch);
+        searchView = findViewById(R.id.editTextSearch);
         searchView.clearFocus();
-        //filter =findViewById(R.id.Filter);
+
+        InPerson = findViewById(R.id.In_person);
+        Online = findViewById(R.id.online);
+        Literary = findViewById(R.id.literary);
+        Artistic = findViewById(R.id.artistic);
+        Musical = findViewById(R.id.musical);
+        Scientific =findViewById(R.id.scientific);
 
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -122,13 +130,53 @@ public class Events extends AppCompatActivity {
             }
         });
 
-        /*filter.setOnClickListener(new View.OnClickListener() {
+        // Set onClickListener for the InPerson CheckBox
+        InPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Events.this,Filter.class);
-                startActivityForResult(intent,101);
+                filterData();
             }
-        });*/
+        });
+
+        // Set onClickListener for the Online CheckBox
+        Online.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterData();
+            }
+        });
+
+        // Add onClickListener for Literary CheckBox
+        Literary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterData();
+            }
+        });
+
+        // Add onClickListener for Artistic CheckBox
+        Artistic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterData();
+            }
+        });
+
+        // Add onClickListener for Musical CheckBox
+        Musical.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterData();
+            }
+        });
+
+        // Add onClickListener for Scientific CheckBox
+        Scientific.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterData();
+            }
+        });
 
         profile_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,6 +245,47 @@ public class Events extends AppCompatActivity {
         adapter.searchDataList(searchList);
     }
 
+
+    // Method to filter the data based on the selected CheckBoxes
+    private void filterData() {
+        ArrayList<DataClass> filteredList = new ArrayList<>();
+        for (DataClass data : dataList) {
+            // Check if the event matches the selected criteria
+            if (isEventMatchCriteria(data)) {
+                filteredList.add(data);
+            }
+        }
+        // Update the RecyclerView with the filtered list
+        adapter.searchDataList(filteredList);
+    }
+
+    // Method to check if an event matches the selected criteria
+    private boolean isEventMatchCriteria(DataClass data) {
+        // Implement your filtering logic here based on the selected CheckBoxes
+        // For example, check if the event type matches the selected criteria
+        if (InPerson.isChecked() && data.getAttendingMethod().equals("In Person")) {
+            return true;
+        }
+        if (Online.isChecked() && data.getAttendingMethod().equals("Online")) {
+            return true;
+        }
+        if (Literary.isChecked() && data.getCategory().equals("Literary")) {
+            return true;
+
+        }
+        if (Artistic.isChecked() && data.getCategory().equals("Artistic")) {
+            return true;
+        }
+        if (Musical.isChecked() && data.getCategory().equals("Musical")) {
+            return true;
+        }
+        if (Scientific.isChecked() && data.getCategory().equals("Scientific")) {
+            return true;
+        }
+        // Return true if no chips are selected to include the event by default
+        return !InPerson.isChecked() && !Online.isChecked() && !Literary.isChecked() &&
+                !Artistic.isChecked() && !Musical.isChecked() && !Scientific.isChecked();
+    }
     @Override
     protected void onResume() {
         super.onResume();

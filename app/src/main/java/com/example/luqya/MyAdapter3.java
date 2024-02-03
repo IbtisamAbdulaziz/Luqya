@@ -49,6 +49,7 @@ public class MyAdapter3 extends RecyclerView.Adapter<MyAdapter3.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
         holder.Title.setText(dataList.get(position).getName());
         holder.Date.setText(dataList.get(position).getDate());
         holder.Location.setText(dataList.get(position).getLocation());
