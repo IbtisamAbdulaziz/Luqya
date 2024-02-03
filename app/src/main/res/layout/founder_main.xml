@@ -56,19 +56,21 @@
         android:layout_centerHorizontal="true"
         android:textSize="18dp"/>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:text="View Initiative's Profile"
-        android:layout_below="@id/button5"
-        app:backgroundTint="@color/button_background"
-        android:background="@drawable/button_background"
-        android:textSize="16sp" />
+            <Button
+                android:id="@+id/button"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/button5"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="45dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="45dp"
+                android:background="@drawable/button_background"
+                android:text="View Initiative's Profile"
+                android:textSize="16sp"
+                app:backgroundTint="@color/button_background" />
 
-    <Button
+            <Button
         android:id="@+id/button2"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
