@@ -182,12 +182,6 @@
                 android:text="address of initiative"
                 android:textColor="@color/black" />
 
-            <ImageView
-                android:id="@+id/instagram"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_below="@id/textView_show_initiative_address"
-                android:src="@drawable/insta" />
         </LinearLayout>
 
         <LinearLayout
@@ -213,6 +207,13 @@
                 android:layout_marginLeft="5dp"
                 android:textColor="@color/black"/>
 
+
+            <ImageView
+                android:id="@+id/instagram"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_below="@id/textView_show_initiative_address"
+                android:src="@drawable/insta" />
         </LinearLayout>
 
 

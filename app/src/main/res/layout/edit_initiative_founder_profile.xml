@@ -155,7 +155,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/editText_update_initiative_insta_account"
             android:layout_below="@id/instagram"
-            android:inputType="textPersonName"
             android:padding="6dp"
             android:textSize="16sp"
             android:hint="Edit initative instgram account"/>

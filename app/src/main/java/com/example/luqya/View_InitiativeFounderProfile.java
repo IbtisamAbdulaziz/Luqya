@@ -1,6 +1,7 @@
 package com.example.luqya;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
 
     private TextView textViewInitiativeName, textViewInitiativeOverview, textViewInitiativeFounder, textViewInitiativePhone,
             textViewInitiativeAddress, textViewInitiativeEmail;
-    private ImageView imageViewInitiativeLogo;
+    private ImageView imageViewInitiativeLogo, insagramPic;
     private ProgressBar progressBar;
     private String initiativeName, initiativeDescription, initiativeFounder, initiativePhone,
     initiativeAddress, initiativeEmail;
@@ -57,7 +58,55 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         textViewInitiativeEmail = findViewById(R.id.textView_show_initiative_email);
 
         imageViewInitiativeLogo = findViewById(R.id.imageView_initiative_logo2);
+        insagramPic = findViewById(R.id.instagram);
 
+        insagramPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insagramPic.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Initialize link and package
+                        String sAppLink = "https://www.instagram.com/food.world";
+                        String sPackage = "com.instagram.android";
+
+                        // Call method
+                        openLink(sAppLink, sPackage, sAppLink);
+                    }
+                });
+            }
+
+            private void openLink(String sAppLink, String sPackage, String sWebLink){
+                //Use try catch
+                try {
+                    //When application is installed
+                    // Initialize uri
+                    Uri uri = Uri. parse(sAppLink);
+                    //Initialize intent
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    //Set data
+                    intent.setData(uri);
+                    //Set package
+                    intent.setPackage (sPackage);
+                    //Set flag
+                    intent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
+                    //Start activity
+                    startActivity(intent);
+                }catch (ActivityNotFoundException activityNotFoundException){
+                    //Open link in browser
+                    //Initialize uri
+                    Uri uri = Uri. parse(sWebLink);
+                    //Initialize intent
+                     Intent intent = new Intent(Intent.ACTION_VIEW);
+                    // Set data
+                     intent.setData(uri);
+                     //Set flag
+                     intent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                     startActivity(intent);
+                }
+            }
+        });
         getSupportActionBar().setTitle("Initiative Profile");
         progressBar = findViewById(R.id.progressBarEditProfile);
 
