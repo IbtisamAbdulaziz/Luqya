@@ -1,5 +1,6 @@
 package com.example.luqya;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -45,6 +47,11 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
     List<DataClass> dataList;
     DatabaseReference databaseReference;
     ValueEventListener eventListener;
+    SearchView searchInitiative;
+    MyAdapter adapter;
+
+
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +63,9 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         textViewInitiativePhone = findViewById(R.id.textView_show_initiative_phone);
         textViewInitiativeAddress = findViewById(R.id.textView_show_initiative_address);
         textViewInitiativeEmail = findViewById(R.id.textView_show_initiative_email);
+
+        searchInitiative = findViewById(R.id.Search_initiative);
+        searchInitiative.clearFocus();
 
         imageViewInitiativeLogo = findViewById(R.id.imageView_initiative_logo2);
         insagramPic = findViewById(R.id.instagram);
@@ -127,7 +137,7 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
 
         dataList = new ArrayList<>();
 
-        MyAdapter adapter = new MyAdapter(View_InitiativeFounderProfile.this, dataList);
+        adapter = new MyAdapter(View_InitiativeFounderProfile.this, dataList);
         recyclerView.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Add Event");
@@ -171,6 +181,29 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
             showUserProfile(firebaseUser);
         }
 
+        searchInitiative.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchList(newText);
+
+                return true;
+            }
+        });
+    }
+
+    private void searchList(String newText) {
+        ArrayList<DataClass> searchList = new ArrayList<>();
+        for (DataClass dataClass: dataList) {
+            if (dataClass.getName().toLowerCase().contains(newText.toLowerCase())) {
+                searchList.add(dataClass);
+            }
+        }
+        adapter.searchDataList(searchList);
     }
 
     private void showUserProfile(FirebaseUser firebaseUser) {
@@ -249,5 +282,12 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        searchInitiative.clearFocus();// Clear focus from the SearchView
+        // Optionally request focus on a different view:
+        // anotherView.requestFocus();
     }
 }

@@ -245,7 +245,6 @@ public class Events extends AppCompatActivity {
         adapter.searchDataList(searchList);
     }
 
-
     // Method to filter the data based on the selected CheckBoxes
     private void filterData() {
         ArrayList<DataClass> filteredList = new ArrayList<>();

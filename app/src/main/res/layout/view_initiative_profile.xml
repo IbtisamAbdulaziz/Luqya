@@ -35,11 +35,11 @@
     <TextView
         android:id="@+id/textView_Initiative_overview"
         android:layout_below="@id/imageView_initiative_logo"
-        android:layout_width="359dp"
+        android:layout_width="350dp"
         android:layout_height="90dp"
-        android:background="@color/app_background"
+        android:background="@drawable/overview_background"
         android:layout_centerHorizontal="true"
-        android:text="Initiative's description box..."
+        android:hint="Initiative's description box..."
         android:textSize="16sp"
         android:scrollbars="vertical"
         android:layout_marginTop="20dp"
@@ -58,18 +58,18 @@
         android:layout_marginRight="10dp"
         android:layout_toRightOf="@id/textView_initiative_name"/>
 
-    <EditText
-        android:id="@+id/editTextText"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/Search_initiative"
         android:layout_width="488dp"
         android:layout_height="48dp"
+        app:searchHintIcon="@null"
         android:background="@drawable/search_background"
-        android:drawableStart="@drawable/search"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:hint="Search for event"
+        app:queryHint="Search for event"
         android:inputType="text"
         android:layout_marginHorizontal="20dp"
         android:textStyle="italic"
+        app:closeIcon="@drawable/search_background"
+        app:searchIcon="@drawable/search"
         android:layout_below="@id/textView_Initiative_overview"
         tools:textSize="14sp"
         android:layout_marginTop="10dp"
@@ -85,7 +85,8 @@
         android:textSize="23sp"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/editTextText"/>
+        android:layout_below="@id/Search_initiative"
+        tools:ignore="UnknownId" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
