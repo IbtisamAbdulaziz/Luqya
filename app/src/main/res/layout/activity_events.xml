@@ -140,7 +140,7 @@
                         android:id="@+id/literary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Literary"
+                        android:text="Literature"
                         android:textSize="10sp"/>
 
                     <CheckBox
@@ -154,7 +154,7 @@
                         android:id="@+id/musical"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Musical"
+                        android:text="Music"
                         android:textSize="10sp"/>
 
                     <CheckBox

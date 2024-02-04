@@ -269,14 +269,14 @@ public class Events extends AppCompatActivity {
         if (Online.isChecked() && data.getAttendingMethod().equals("Online")) {
             return true;
         }
-        if (Literary.isChecked() && data.getCategory().equals("Literary")) {
+        if (Literary.isChecked() && data.getCategory().equals("Literature")) {
             return true;
 
         }
         if (Artistic.isChecked() && data.getCategory().equals("Artistic")) {
             return true;
         }
-        if (Musical.isChecked() && data.getCategory().equals("Musical")) {
+        if (Musical.isChecked() && data.getCategory().equals("Music")) {
             return true;
         }
         if (Scientific.isChecked() && data.getCategory().equals("Scientific")) {

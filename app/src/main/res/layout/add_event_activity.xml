@@ -296,16 +296,15 @@
                         <!-- Submit button -->
                         <Button
                             android:id="@+id/submitEvent_button"
-                            android:layout_width="349dp"
-                            android:layout_height="48dp"
+                            android:layout_width="fill_parent"
+                            android:layout_marginHorizontal="20dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:layout_marginEnd="32dp"
-                            android:layout_marginBottom="9dp"
+                            android:layout_marginBottom="10dp"
                             app:backgroundTint="@color/button_background"
-                            android:background="@drawable/button_background"                            android:textColor="@color/black"
-                            android:gravity="center"
+                            android:background="@drawable/button_background"
                             android:text="Submit"
-                            tools:ignore="MissingConstraints" />
+                            android:textColor="@color/black" />
                     </LinearLayout>
                 </LinearLayout>
             </ScrollView>
