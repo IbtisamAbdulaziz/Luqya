@@ -112,9 +112,9 @@ public class UploadEventPicture extends AppCompatActivity {
 
                     Toast.makeText(UploadEventPicture.this, "Upload Successful!", Toast.LENGTH_SHORT).show();
 
-                    /*Intent i = new Intent(UploadEventPicture.this, EditEvent.class);
+                    Intent i = new Intent(UploadEventPicture.this, EditEvent.class);
                     startActivity(i);
-                    finish();*/
+                    finish();
 
                 }
             }).addOnFailureListener(new OnFailureListener() {

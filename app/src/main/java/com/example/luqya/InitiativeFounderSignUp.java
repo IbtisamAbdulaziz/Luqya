@@ -166,8 +166,8 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
 
                 } else if (TextUtils.isEmpty(textInitiativeSocialMediaAccount)) {
                     Toast.makeText(InitiativeFounderSignUp.this, "Please enter initiative's Social Media Account", Toast.LENGTH_LONG).show();
-                    initiativeDescriptionEditText.setError("Instagram Account is required");
-                    initiativeDescriptionEditText.requestFocus();
+                    InstaLink.setError("Instagram Account is required");
+                    InstaLink.requestFocus();
 
                 } else {
 

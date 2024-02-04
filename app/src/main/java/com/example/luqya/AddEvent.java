@@ -57,7 +57,7 @@ public class AddEvent extends AppCompatActivity {
 
     private RadioButton Online , InPerson;
 
-    private Button submit;
+    private Button submit,uploadPic;
     private String imageURL, initiative;
     private Uri uri;
     private DatePickerDialog picker;
@@ -80,7 +80,7 @@ public class AddEvent extends AppCompatActivity {
         Duration = findViewById(R.id.eventDuration);
         time = findViewById(R.id.editEventTime);
         location = findViewById(R.id.eventLocation);
-
+        uploadPic = findViewById(R.id.button_upload_event_pic);
         Online = findViewById(R.id.onlineRB);
         InPerson = findViewById(R.id.inPersonRB);
 
@@ -107,7 +107,13 @@ public class AddEvent extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
         languageSpinner.setAdapter(adapter2);
 
-
+        uploadPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AddEvent.this,UploadEventPicture.class);
+                startActivity(intent);
+            }
+        });
         //To choose a date from a calender
         date.setOnClickListener(new View.OnClickListener() {
             @Override
