@@ -49,6 +49,7 @@ public class AttendingListAndPoint extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         saveButton = findViewById(R.id.save_attendees_button);
         progressBarAttendingList = findViewById(R.id.progressBarAttendingList);
+        progressBarAttendingList.setVisibility(View.GONE);
 
 
 
@@ -83,9 +84,11 @@ public class AttendingListAndPoint extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             // Get the user's name
                             String userName = dataSnapshot.child("fullName").getValue(String.class);
+                            int points = dataSnapshot.child("points").getValue(Integer.class);
+
 
                             // Create a new Model object for the attendee
-                            Model attendee = new Model(userId, userName, false, 0);
+                            Model attendee = new Model(userId, userName, false, points);
 
                             // Update the data in the adapter
                             arrayList.add(attendee);
@@ -114,37 +117,15 @@ public class AttendingListAndPoint extends AppCompatActivity {
             public void onClick(View view) {
 
                 progressBarAttendingList.setVisibility(View.VISIBLE);
-                for(int i =0; i<arrayList.size(); i++){
+
+                for (int i =0; i < arrayList.size(); i++){
+
                     Model attendee = arrayList.get(i);
-                    boolean isAttendee = attendee.isSelected();
-                    if(isAttendee){
-
-                        String id = attendee.getUserId();
-                        usersRef.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                                ReadWriteUserDetails readUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
-
-                                //int points = Integer.parseInt(Objects.requireNonNull(snapshot.child("points").getValue(String.class)));
-                                assert readUserDetails != null;
-                                int points = readUserDetails.points;
-                                points += 10;
-
-                                usersRef.child("points").setValue(points);
-                                adapter.notifyDataSetChanged();
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-                                Toast.makeText(AttendingListAndPoint.this, "something went wrong!", Toast.LENGTH_SHORT).show();
-                                progressBarAttendingList.setVisibility(View.GONE);
-                            }
-
-                        });
+                    int points = attendee.getPoints();
 
 
-                    }
+                    usersRef.child(attendee.getUserId()).child("points").setValue(points);
+
                 }
 
                 progressBarAttendingList.setVisibility(View.GONE);

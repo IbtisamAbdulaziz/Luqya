@@ -3,6 +3,7 @@ package com.example.luqya;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,13 +50,8 @@ public class MyAdapter4 extends RecyclerView.Adapter<MyAdapter4.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Model attendee = attendees.get(position);
         holder.nameTextView.setText(attendee.getName());
-        holder.checkBox.setSelected(false);
+        holder.checkBox.setChecked(attendee.isSelected());
 
-        if(holder.checkBox.isChecked()){
-            attendee.setSelected(true);
-        } else {
-            attendee.setSelected(false);
-        }
     }
 
     @Override
@@ -71,6 +67,24 @@ public class MyAdapter4 extends RecyclerView.Adapter<MyAdapter4.MyViewHolder> {
             super(v);
             nameTextView = v.findViewById(R.id.textView7);
             checkBox = v.findViewById(R.id.checkbox1);
+
+            checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    boolean isChecked = ((CheckBox) view).isChecked();
+                    if (isChecked){
+                        attendees.get(getAdapterPosition()).setSelected(true);
+                        int points = attendees.get(getAdapterPosition()).getPoints();
+                        attendees.get(getAdapterPosition()).setPoints(points+10);
+                    } else {
+                        attendees.get(getAdapterPosition()).setSelected(false);
+                    }
+                    notifyDataSetChanged();
+                    for (int i = 0; i<attendees.size(); i++){
+                        Log.d("TAG", attendees.toString());
+                    }
+                }
+            });
 
         }
 

@@ -34,7 +34,6 @@
         style="?android:attr/progressBarStyleLarge"
         android:layout_centerInParent="true"
         android:elevation="10dp"
-        android:visibility="gone"
         android:id="@+id/progressBarAttendingList" />
 
 

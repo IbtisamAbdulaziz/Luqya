@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,7 @@ public class FounderMainActivity extends AppCompatActivity {
     private Button Initiative_Profile, Add_Event, My_Events, Edit_Profile, Statistics;
     private String initiativeName, initiativeFounder;
     private FirebaseAuth authProfile;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class FounderMainActivity extends AppCompatActivity {
         My_Events = findViewById(R.id.button3);
         Edit_Profile = findViewById(R.id.button4);
         Statistics = findViewById(R.id.button5);
+        progressBar = findViewById(R.id.progressBarFounderMainActivity);
 
 
         Add_Event.setOnClickListener(new View.OnClickListener() {
@@ -88,10 +91,13 @@ public class FounderMainActivity extends AppCompatActivity {
             }
         });
 
+        progressBar.setVisibility(View.VISIBLE);
+
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
         if(firebaseUser == null){
+            progressBar.setVisibility(View.GONE);
             Toast.makeText(FounderMainActivity.this, "Something went wrong! User's details are not available at the moment", Toast.LENGTH_SHORT).show();
         } else {
             showUserProfile(firebaseUser);
@@ -121,16 +127,19 @@ public class FounderMainActivity extends AppCompatActivity {
                     Picasso.with(FounderMainActivity.this).load(uri).into(Initiative_Logo);
 
                 } else {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(FounderMainActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(FounderMainActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        progressBar.setVisibility(View.GONE);
 
     }
 

@@ -32,6 +32,6 @@ public class Model {
     }
 
     public String toString(){
-        return "user{"+ "name" + name + "is Selected" +isSelected+'}';
+        return "Model{"+ "name='" + name + '\'' + ", is Selected=" +isSelected+'}';
     }
 }
