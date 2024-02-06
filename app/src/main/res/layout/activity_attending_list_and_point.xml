@@ -2,7 +2,6 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/attending_List">
@@ -29,12 +28,13 @@
         android:layout_centerHorizontal="true"/>
 
     <ProgressBar
+        android:id="@+id/progressBarAttendingList"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="?android:attr/progressBarStyleLarge"
         android:layout_centerInParent="true"
-        android:elevation="10dp"
-        android:id="@+id/progressBarAttendingList" />
+        android:visibility="gone"
+        android:elevation="10dp" />
 
 
 

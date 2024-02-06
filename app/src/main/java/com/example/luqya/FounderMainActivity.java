@@ -91,8 +91,6 @@ public class FounderMainActivity extends AppCompatActivity {
             }
         });
 
-        progressBar.setVisibility(View.VISIBLE);
-
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
@@ -106,6 +104,8 @@ public class FounderMainActivity extends AppCompatActivity {
     }
 
     private void showUserProfile(FirebaseUser firebaseUser) {
+
+        progressBar.setVisibility(View.VISIBLE);
 
         String userID = firebaseUser.getUid();
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
@@ -125,6 +125,7 @@ public class FounderMainActivity extends AppCompatActivity {
 
                     Uri uri = firebaseUser.getPhotoUrl();
                     Picasso.with(FounderMainActivity.this).load(uri).into(Initiative_Logo);
+                    progressBar.setVisibility(View.GONE);
 
                 } else {
                     progressBar.setVisibility(View.GONE);
@@ -138,8 +139,6 @@ public class FounderMainActivity extends AppCompatActivity {
                 Toast.makeText(FounderMainActivity.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
             }
         });
-
-        progressBar.setVisibility(View.GONE);
 
     }
 

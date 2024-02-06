@@ -43,13 +43,13 @@ public class AttendingListAndPoint extends AppCompatActivity {
         // Get the event name from the intent
         eventName = getIntent().getStringExtra("eventName");
 
+
         recyclerView = findViewById(R.id.list_seeker);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new MyAdapter4(this, arrayList);
         recyclerView.setAdapter(adapter);
         saveButton = findViewById(R.id.save_attendees_button);
         progressBarAttendingList = findViewById(R.id.progressBarAttendingList);
-        progressBarAttendingList.setVisibility(View.GONE);
 
 
 

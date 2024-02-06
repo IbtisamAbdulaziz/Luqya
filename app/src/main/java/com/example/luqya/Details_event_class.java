@@ -81,6 +81,20 @@ public class Details_event_class extends AppCompatActivity {
 
             initiativeTextView.setText(initiative + " ");
         }
+
+        initiativeTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
+                referenceProfile.child(initiative);
+                Intent intent = new Intent(Details_event_class.this, View_InitiativeFounderProfile.class);
+
+                intent.putExtra("initiativeName" , initiative);
+                startActivity(intent);
+            }
+        });
+
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -134,6 +134,7 @@
         style="?android:attr/progressBarStyleLarge"
         android:id="@+id/progressBarFounderMainActivity"
         android:elevation="10dp"
+        android:visibility="gone"
         android:layout_centerInParent="true" />
 
 
