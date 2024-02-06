@@ -30,7 +30,7 @@ public class ShowSeekerProfile extends AppCompatActivity {
 
     private TextView textViewWelcome, textViewFullName, textViewDoB, textViewEmail, textViewPhone, textViewPoints ;
     private ProgressBar progressBar;
-    private LinearLayout profile_Btn, Home_Btn;
+    private LinearLayout profile_Btn, Home_Btn, myEvents_Btn;
     private String fullName, email, doB, phone, pointsString;
 
     private int points;
@@ -55,6 +55,7 @@ public class ShowSeekerProfile extends AppCompatActivity {
 
         profile_Btn = findViewById(R.id.Profile_Btn);
         Home_Btn = findViewById(R.id.Home_Btn);
+        myEvents_Btn = findViewById(R.id.myEventsBtn);
         progressBar = findViewById(R.id.progressBarEditProfile);
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +65,7 @@ public class ShowSeekerProfile extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
 
 
         authProfile = FirebaseAuth.getInstance();
@@ -76,12 +78,27 @@ public class ShowSeekerProfile extends AppCompatActivity {
             showUserProfile(firebaseUser);
         }
 
+        myEvents_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(firebaseUser == null){
+                    Intent i = new Intent(ShowSeekerProfile.this, LogIn.class);
+                    startActivity(i);
+
+                } else {
+                    Intent intent = new Intent(ShowSeekerProfile.this, MyEvent_bar.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
         profile_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 if(firebaseUser == null){
-                    Intent i = new Intent(ShowSeekerProfile.this, SignUpType.class);
+                    Intent i = new Intent(ShowSeekerProfile.this, LogIn.class);
                     startActivity(i);
 
                 } else {

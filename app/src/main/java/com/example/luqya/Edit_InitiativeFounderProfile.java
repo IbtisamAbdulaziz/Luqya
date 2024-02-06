@@ -36,7 +36,6 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
     private FirebaseAuth authProfile;
     private ProgressBar progressBar;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,8 +73,8 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
                 updateProfile(firebaseUser);
             }
         });
-
     }
+
     private void updateProfile(FirebaseUser firebaseUser) {
 
         String mobileRegex = "[+][0-9]{12}";
@@ -179,6 +178,13 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ReadWriteUserDetails readUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
                 if(readUserDetails != null){
+
+                    textInitiativeName = readUserDetails.getInitiativeName();
+                    textInitiativeFounderName = readUserDetails.getInitiativeFounderName();
+                    textInitiativeDescription = readUserDetails.getInitiativeOverView();
+                    textInitiativePhone = readUserDetails.getInitiativePhone();
+                    textInitiativeLocation = readUserDetails.getInitiativeLocation();
+                    textInitiativeSocialMediaAccount = readUserDetails.getInitiativeSocialMediaAccount();
 
                     editTextUpdateInitiativeName.setText(textInitiativeName);
                     editTextUpdateInitiativeFounderName.setText(textInitiativeFounderName);

@@ -63,7 +63,6 @@
             android:layout_below="@id/textView_update_initiative_founder_name"
             android:inputType="textPersonName"
             android:padding="6dp"
-            android:focusable="false"
             android:textSize="16sp"
             android:hint="Edit initiative founder name"/>
 
@@ -86,7 +85,6 @@
             android:layout_below="@id/textView_update_initiative_phone"
             android:inputType="phone"
             android:padding="6dp"
-            android:focusable="false"
             android:textSize="16sp"
             android:hint="Edit initiative phone"/>
 
@@ -109,7 +107,6 @@
             android:layout_below="@id/textView_update_initiative_location"
             android:inputType="phone"
             android:padding="6dp"
-            android:focusable="false"
             android:textSize="16sp"
             android:hint="Edit initiative location"/>
 

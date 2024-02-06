@@ -33,4 +33,27 @@ public class ReadWriteUserDetails {
 
     }
 
+    public String getInitiativeName() {
+        return initiativeName;
+    }
+
+    public String getInitiativeFounderName() {
+        return initiativeFounderName;
+    }
+
+    public String getInitiativePhone() {
+        return initiativePhone;
+    }
+
+    public String getInitiativeLocation() {
+        return initiativeLocation;
+    }
+
+    public String getInitiativeOverView() {
+        return initiativeOverView;
+    }
+
+    public String getInitiativeSocialMediaAccount() {
+        return initiativeSocialMediaAccount;
+    }
 }

@@ -60,7 +60,7 @@ public class Events extends AppCompatActivity {
 
         profile_Btn = findViewById(R.id.Profile_Btn);
         home_Btn = findViewById(R.id.Home_Btn);
-        homeBtn_3 = findViewById(R.id.homeBtn_3);
+        homeBtn_3 = findViewById(R.id.myEventsBtn);
         authProfile = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = authProfile.getCurrentUser();
         settings = getSharedPreferences("ID", 0);

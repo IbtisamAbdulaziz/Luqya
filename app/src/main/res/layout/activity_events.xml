@@ -71,6 +71,8 @@
                     android:layout_marginEnd="12dp"
                     app:iconifiedByDefault="false"
                     app:searchHintIcon="@null"
+                    android:focusableInTouchMode="false"
+                    android:focusable="false"
                     android:background="@drawable/search_background"
                     app:queryHint="Search for event"
                     app:closeIcon="@drawable/search_background"
@@ -92,7 +94,7 @@
                         android:id="@+id/location3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Location:"
+                        android:text="Attending Method:"
                         android:layout_marginLeft="6dp"
                         android:textColor="@color/black"
                         android:textSize="12sp"
@@ -314,7 +316,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/homeBtn_3"
+                    android:id="@+id/myEventsBtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
@@ -322,7 +324,7 @@
                     android:visibility="visible">
 
                     <ImageView
-                        android:id="@+id/imageView_3"
+                        android:id="@+id/myEventsBtn_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"

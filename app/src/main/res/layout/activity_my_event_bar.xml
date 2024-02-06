@@ -93,7 +93,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/homeBtn_3"
+                    android:id="@+id/myEventsBtn"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
@@ -101,7 +101,7 @@
                     android:visibility="visible">
 
                     <ImageView
-                        android:id="@+id/imageView_3"
+                        android:id="@+id/myEventsBtn_3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
