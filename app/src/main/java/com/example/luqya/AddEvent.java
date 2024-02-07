@@ -57,7 +57,7 @@ public class AddEvent extends AppCompatActivity {
 
     private RadioButton Online , InPerson;
 
-    private Button submit,uploadPic;
+    private Button submit;
     private String imageURL, initiative;
     private Uri uri;
     private DatePickerDialog picker;
