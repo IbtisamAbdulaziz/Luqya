@@ -80,7 +80,7 @@ public class AddEvent extends AppCompatActivity {
         Duration = findViewById(R.id.eventDuration);
         time = findViewById(R.id.editEventTime);
         location = findViewById(R.id.eventLocation);
-        uploadPic = findViewById(R.id.button_upload_event_pic);
+        //uploadPic = findViewById(R.id.button_upload_event_pic);
         Online = findViewById(R.id.onlineRB);
         InPerson = findViewById(R.id.inPersonRB);
 
@@ -92,7 +92,7 @@ public class AddEvent extends AppCompatActivity {
 
         //To implement categories spinner (list) with an array in strings.xml file
 
-        categorySpinner =findViewById(R.id.eventCategory);
+        categorySpinner = findViewById(R.id.eventCategory);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.categories,
                 android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
@@ -101,19 +101,20 @@ public class AddEvent extends AppCompatActivity {
 
         //To implement languages spinner (list) with an array in strings.xml file
 
-        languageSpinner =findViewById(R.id.eventLanguage);
+        languageSpinner = findViewById(R.id.eventLanguage);
         ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this, R.array.languages,
                 android.R.layout.simple_spinner_item);
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
         languageSpinner.setAdapter(adapter2);
 
-        uploadPic.setOnClickListener(new View.OnClickListener() {
+        imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddEvent.this,UploadEventPicture.class);
+                Intent intent = new Intent(AddEvent.this, UploadEventPicture.class);
                 startActivity(intent);
             }
         });
+
         //To choose a date from a calender
         date.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,9 +128,9 @@ public class AddEvent extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
 
-                        date.setText(dayOfMonth+ "/" + (month+1) + "/" + year);
+                        date.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
                     }
-                } , year, month, day);
+                }, year, month, day);
                 picker.show();
             }
         });
@@ -179,7 +180,7 @@ public class AddEvent extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ReadWriteUserDetails readUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
-                if(readUserDetails != null){
+                if (readUserDetails != null) {
                     initiative = readUserDetails.initiativeName;
                 }
             }
@@ -233,13 +234,13 @@ public class AddEvent extends AppCompatActivity {
                     date.setError("Event Date is required");
                     date.requestFocus();
 
-                }  else if (TextUtils.isEmpty(textDuration)) {
+                } else if (TextUtils.isEmpty(textDuration)) {
                     Toast.makeText(AddEvent.this, "Please enter event duration", Toast.LENGTH_LONG).show();
                     Duration.setError("Event Duration is required");
                     Duration.requestFocus();
 
 
-                }  else if (TextUtils.isEmpty(textAge)) {
+                } else if (TextUtils.isEmpty(textAge)) {
                     Toast.makeText(AddEvent.this, "Please enter the age", Toast.LENGTH_LONG).show();
                     time.setError("Age is required");
                     time.requestFocus();
@@ -249,14 +250,14 @@ public class AddEvent extends AppCompatActivity {
                     location.setError("location is required");
                     location.requestFocus();
 
-                } else if (radioGroupAttendingMethod.getCheckedRadioButtonId()== -1) {
+                } else if (radioGroupAttendingMethod.getCheckedRadioButtonId() == -1) {
                     Toast.makeText(AddEvent.this, "Please select attending method", Toast.LENGTH_LONG).show();
                     radioButtonAttendingMethodSelected.setError("location is required");
                     radioButtonAttendingMethodSelected.requestFocus();
 
                 } else {
 
-                     //Ibtisam changes - 3-Extracting text from the selected radio button
+                    //Ibtisam changes - 3-Extracting text from the selected radio button
 
                     textAttendingMethod = radioButtonAttendingMethodSelected.getText().toString();
 
@@ -269,61 +270,10 @@ public class AddEvent extends AppCompatActivity {
         });
 
 
-
-        ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK) {
-                            Intent data = result.getData();
-                            uri = data.getData();
-                            imageView.setImageURI(uri);
-                        } else {
-                            Toast.makeText(AddEvent.this, "No Image Selected", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-        );
-
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent photoPicker = new Intent(Intent.ACTION_PICK);
-                photoPicker.setType("image/*");
-                activityResultLauncher.launch(photoPicker);
-            }
-        });
-
     }
     
-    public void saveData(){
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Event Images");
-                //.child(uri.getLastPathSegment());
-        AlertDialog.Builder builder = new AlertDialog.Builder(AddEvent.this);
-        builder.setCancelable(false);
-        builder.setView(R.layout.progress_layout);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                while (!uriTask.isComplete());
-                Uri urlImage = uriTask.getResult();
-                imageURL = urlImage.toString();
-                uploadData();
-                dialog.dismiss();
-            }
 
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                dialog.dismiss();
-            }
-        });
-    }
 
     public void uploadData(){
 
@@ -345,7 +295,6 @@ public class AddEvent extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            saveData();
                             Toast.makeText(AddEvent.this, "Saved", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(AddEvent.this, FounderMainActivity.class);
                             startActivity(intent);

@@ -3,6 +3,7 @@ package com.example.luqya;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -73,49 +74,63 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         insagramPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                insagramPic.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Initialize link and package
-                        String sAppLink = "https://www.instagram.com/food.world";
-                        String sPackage = "com.instagram.android";
+                // Initialize Firebase
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference accountRef = database.getReference("Registered initiatives");
 
-                        // Call method
-                        openLink(sAppLink, sPackage, sAppLink);
+                // Retrieve account name from Firebase
+                accountRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            String accountName = dataSnapshot.getValue(String.class);
+
+                            // Use the retrieved account name in the link
+                            String sAppLink = "https://www.instagram.com/" + accountName;
+                            String sPackage = "com.instagram.android";
+
+                            // Call method
+                            openLink(v.getContext(), sAppLink, sPackage, sAppLink);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
             }
 
-            private void openLink(String sAppLink, String sPackage, String sWebLink){
-                //Use try catch
+            private void openLink(Context context, String sAppLink, String sPackage, String sWebLink) {
+                // Use try catch
                 try {
-                    //When application is installed
+                    // When application is installed
                     // Initialize uri
-                    Uri uri = Uri. parse(sAppLink);
-                    //Initialize intent
+                    Uri uri = Uri.parse(sAppLink);
+                    // Initialize intent
                     Intent intent = new Intent(Intent.ACTION_VIEW);
-                    //Set data
-                    intent.setData(uri);
-                    //Set package
-                    intent.setPackage (sPackage);
-                    //Set flag
-                    intent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
-                    //Start activity
-                    startActivity(intent);
-                }catch (ActivityNotFoundException activityNotFoundException){
-                    //Open link in browser
-                    //Initialize uri
-                    Uri uri = Uri. parse(sWebLink);
-                    //Initialize intent
-                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     // Set data
-                     intent.setData(uri);
-                     //Set flag
-                     intent.setFlags (Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.setData(uri);
+                    // Set package
+                    intent.setPackage(sPackage);
+                    // Set flag
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    // Start activity
+                    context.startActivity(intent);
+                } catch (ActivityNotFoundException activityNotFoundException) {
+                    // Open link in browser
+                    // Initialize uri
+                    Uri uri = Uri.parse(sWebLink);
+                    // Initialize intent
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    // Set data
+                    intent.setData(uri);
+                    // Set flag
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                     startActivity(intent);
-                }
-            }
+                    context.startActivity(intent);
+   }
+}
         });
         getSupportActionBar().setTitle("Initiative Profile");
         progressBar = findViewById(R.id.progressBarEditProfile);
