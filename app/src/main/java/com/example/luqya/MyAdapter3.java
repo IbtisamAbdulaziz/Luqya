@@ -50,82 +50,74 @@ public class MyAdapter3 extends RecyclerView.Adapter<MyAdapter3.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
-        holder.Title.setText(dataList.get(position).getName());
-        holder.Date.setText(dataList.get(position).getDate());
-        holder.Location.setText(dataList.get(position).getLocation());
+        DataClass data = dataList.get(position);
+        if (data != null) {
+            holder.Title.setText(data.getName());
+            holder.Location.setText(data.getLocation());
+            holder.Date.setText(data.getDate());
 
+            holder.Details.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, Details_event_class.class);
+                    intent.putExtra("Image", data.getDataImage());
+                    intent.putExtra("Date", data.getDate());
+                    intent.putExtra("Time", data.getTime());
+                    intent.putExtra("Title", data.getName());
+                    intent.putExtra("Location", data.getLocation());
+                    intent.putExtra("Duration", data.getDuration());
+                    intent.putExtra("Overview", data.getOverview());
+                    intent.putExtra("Language", data.getLanguage());
+                    intent.putExtra("category", data.getCategory());
+                    intent.putExtra("attendingMethod", data.getAttendingMethod());
+                    intent.putExtra("initiative", data.getInitiative());
+                    context.startActivity(intent);
+                }
+            });
 
-        holder.Details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            holder.cancel_register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(context)
+                            .setTitle("Confirm Cancellation")
+                            .setMessage("Are you sure you want to cancel your registration for this event?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    FirebaseAuth auth = FirebaseAuth.getInstance();
+                                    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-                Intent intent = new Intent(context, Details_event_class.class);
-                intent.putExtra("Image", dataList.get(holder.getAdapterPosition()).getDataImage());
-                intent.putExtra("Date", dataList.get(holder.getAdapterPosition()).getDate());
-                intent.putExtra("Time", dataList.get(holder.getAdapterPosition()).getTime());
-                intent.putExtra("Title", dataList.get(holder.getAdapterPosition()).getName());
-                intent.putExtra("Location", dataList.get(holder.getAdapterPosition()).getLocation());
-                intent.putExtra("Duration", dataList.get(holder.getAbsoluteAdapterPosition()).getDuration());
-                intent.putExtra("Overview", dataList.get(holder.getAdapterPosition()).getOverview());
-                intent.putExtra("Language", dataList.get(holder.getAbsoluteAdapterPosition()).getLanguage());
-                intent.putExtra("category", dataList.get(holder.getAbsoluteAdapterPosition()).getCategory());
-                intent.putExtra("attendingMethod", dataList.get(holder.getAbsoluteAdapterPosition()).getAttendingMethod());
-                intent.putExtra("initiative",dataList.get(holder.getAdapterPosition()).getInitiative());
+                                    FirebaseUser currentUser = auth.getCurrentUser();
 
-                context.startActivity(intent);
-            }
-        });
+                                    if (currentUser == null) {
+                                        return;
+                                    }
 
-        // Add click listener for the cancel_register button
-        holder.cancel_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new AlertDialog.Builder(context)
-                        .setTitle("Confirm Cancellation")
-                        .setMessage("Are you sure you want to cancel your registration for this event?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // Proceed with cancellation logic
-
-                                FirebaseAuth auth = FirebaseAuth.getInstance();
-                                FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-                                FirebaseUser currentUser = auth.getCurrentUser();
-
-                                if (currentUser == null) {
-                                    // Handle the case where the user is not logged in
-                                    return;
+                                    String eventName = data.getName();
+                                    DatabaseReference dbRef = database.getReference("EventData/" + eventName + "/attendees");
+                                    dbRef.child(currentUser.getUid()).removeValue()
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void unused) {
+                                                    Log.d(TAG, "User successfully unregistered!");
+                                                    holder.cancel_register.setVisibility(View.GONE);
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.w(TAG, "Error unregistering user", e);
+                                                }
+                                            });
                                 }
+                            })
+                            .setNegativeButton("No", null)
+                            .show();
+                }
 
-                                String eventName = dataList.get(holder.getAdapterPosition()).getName();
-                                DatabaseReference dbRef = database.getReference("EventData/" + eventName + "/attendees");
-                                dbRef.child(currentUser.getUid()).removeValue()
-                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void unused) {
-                                                Log.d(TAG, "User successfully unregistered!");
-
-                                                // Update the UI or handle navigation as needed
-                                                holder.cancel_register.setVisibility(View.GONE); // Hide the button after cancellation
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                Log.w(TAG, "Error unregistering user", e);
-
-                                            }
-                                        });
-                            }
-                        })
-                        .setNegativeButton("No", null) // Dismiss the dialog on "No"
-                        .show();
-            }
-
-        });
+            });
+        }
     }
-
     @Override
     public int getItemCount() {
 

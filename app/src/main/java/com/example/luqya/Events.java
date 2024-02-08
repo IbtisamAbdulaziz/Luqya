@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -33,7 +34,6 @@ import java.util.List;
 
 public class Events extends AppCompatActivity {
 
-
     private LinearLayout profile_Btn, home_Btn,homeBtn_3;
 
     private FirebaseAuth authProfile;
@@ -49,7 +49,7 @@ public class Events extends AppCompatActivity {
     MyAdapter adapter;
     private CheckBox InPerson, Online, Literary, Artistic, Musical,Scientific;
 
-
+    private ImageButton notification;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,12 +68,14 @@ public class Events extends AppCompatActivity {
         searchView = findViewById(R.id.editTextSearch);
         searchView.clearFocus();
 
+        notification = findViewById(R.id.notification);
+
         InPerson = findViewById(R.id.In_person);
         Online = findViewById(R.id.online);
         Literary = findViewById(R.id.literary);
         Artistic = findViewById(R.id.artistic);
         Musical = findViewById(R.id.musical);
-        Scientific =findViewById(R.id.scientific);
+        Scientific = findViewById(R.id.scientific);
 
 
         recyclerView = findViewById(R.id.recyclerView);
@@ -116,6 +118,14 @@ public class Events extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+
+        notification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NotificationHelper.showNotification(Events.this, "New Event", "A new event has been added!, Hurry up and register");
+            }
+        });
+        NotificationHelper.createNotificationChannel(this);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -292,5 +302,4 @@ public class Events extends AppCompatActivity {
         // Optionally request focus on a different view:
         // anotherView.requestFocus();
     }
-
 }
