@@ -82,4 +82,48 @@ public class DataClass {
     public DataClass() {
 
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setAttendingMethod(String attendingMethod) {
+        this.attendingMethod = attendingMethod;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setInitiative(String initiative) {
+        this.initiative = initiative;
+    }
+
+    public void setDataImage(String dataImage) {
+        this.dataImage = dataImage;
+    }
 }
