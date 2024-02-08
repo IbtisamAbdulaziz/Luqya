@@ -143,7 +143,6 @@ public class EditSeekerProfile extends AppCompatActivity {
                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                 .setDisplayName(textFullName).build();
                         firebaseUser.updateProfile(profileUpdates);
-
                         Toast.makeText(EditSeekerProfile.this, "Update Successful!", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(EditSeekerProfile.this, ShowSeekerProfile.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

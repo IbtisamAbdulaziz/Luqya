@@ -28,6 +28,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,19 +51,16 @@ public class EditEvent extends AppCompatActivity {
     private RadioButton radioButtonAttendingMethodSelected;
 
     private Button updateButton;
-    private String imageURL, initiative;
-    private Uri uri;
+    private String eventName, eventDescription, eventDate, eventDuration, eventTime, eventLocation,
+            eventCategory, eventAttendingMethod, eventLanguage, imageURL, initiative, originalEventName;
 
+    private Uri uri;
     private RadioButton onlineRadioButton, inPersonRadioButton;
     private DatePickerDialog picker;
     private FirebaseAuth authProfile;
     private DataClass dataClass;
-
     private ArrayAdapter<CharSequence> adapter;
     private  ArrayAdapter<CharSequence> adapter2;
-
-    private String name, overview, date, duration, time, location, category, language, attendingMethod, originalEventName;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,17 +70,19 @@ public class EditEvent extends AppCompatActivity {
         getSupportActionBar().setTitle("Update Event");
 
         Bundle bundle = getIntent().getExtras();
-        name = bundle.getString("eventName");
-        overview = bundle.getString("eventOverview");
-        date = bundle.getString("eventDate");
-        duration = bundle.getString("eventDuration");
-        time = bundle.getString("eventTime");
-        location = bundle.getString("eventLocation");
-        category = bundle.getString("eventCategory");
-        language = bundle.getString("eventLanguage");
-        attendingMethod = bundle.getString("eventAttendingMethod");
+        eventName = bundle.getString("eventName");
+        eventDescription = bundle.getString("eventOverview");
+        eventDate = bundle.getString("eventDate");
+        eventDuration = bundle.getString("eventDuration");
+        eventTime = bundle.getString("eventTime");
+        eventLocation = bundle.getString("eventLocation");
+        eventCategory = bundle.getString("eventCategory");
+        eventLanguage = bundle.getString("eventLanguage");
+        eventAttendingMethod = bundle.getString("eventAttendingMethod");
         initiative = bundle.getString("eventInitiative");
-        originalEventName = name;
+
+        originalEventName = eventName;
+
 
 
         dataClass = new DataClass();
@@ -194,48 +194,43 @@ public class EditEvent extends AppCompatActivity {
         int selectedAttendingMethodId = radioGroupAttendingMethod.getCheckedRadioButtonId();
         radioButtonAttendingMethodSelected = findViewById(selectedAttendingMethodId);
 
-        String textEventName = nameEditText.getText().toString().trim();
-        String textOverview = overviewEditText.getText().toString().trim();
-        String textCategory = categorySpinner.getSelectedItem().toString();
-        String textDate = dateEditText.getText().toString().trim();
-        String textDuration = DurationEditText.getText().toString().trim();
-        String textLanguage = languageSpinner.getSelectedItem().toString();
-        String textAge = timeEditText.getText().toString().trim();
-        String textLocation = locationEditText.getText().toString().trim();
-
-                /*Ibtisam changes - 2-Extracting text from the selected radio button
-                cannot be done before checking if any of the radio buttons has been selected*/
-
-        String textAttendingMethod;
+        eventName = nameEditText.getText().toString().trim();
+        eventDescription = overviewEditText.getText().toString().trim();
+        eventCategory = categorySpinner.getSelectedItem().toString();
+        eventDate = dateEditText.getText().toString().trim();
+        eventDuration = DurationEditText.getText().toString().trim();
+        eventLanguage = languageSpinner.getSelectedItem().toString();
+        eventTime = timeEditText.getText().toString().trim();
+        eventLocation = locationEditText.getText().toString().trim();
 
 
-        if (TextUtils.isEmpty(textEventName)) {
+        if (TextUtils.isEmpty(eventName)) {
             Toast.makeText(EditEvent.this, "Please enter event name", Toast.LENGTH_LONG).show();
             nameEditText.setError("Event Name is required");
             nameEditText.requestFocus();
 
-        } else if (TextUtils.isEmpty(textOverview)) {
+        } else if (TextUtils.isEmpty(eventDescription)) {
             Toast.makeText(EditEvent.this, "Please enter event overview", Toast.LENGTH_LONG).show();
             overviewEditText.setError("Event Overview is required");
             overviewEditText.requestFocus();
 
-        } else if (TextUtils.isEmpty(textDate)) {
+        } else if (TextUtils.isEmpty(eventDate)) {
             Toast.makeText(EditEvent.this, "Please enter event date", Toast.LENGTH_LONG).show();
             dateEditText.setError("Event Date is required");
             dateEditText.requestFocus();
 
-        }  else if (TextUtils.isEmpty(textDuration)) {
+        }  else if (TextUtils.isEmpty(eventDuration)) {
             Toast.makeText(EditEvent.this, "Please enter event duration", Toast.LENGTH_LONG).show();
             DurationEditText.setError("Event Duration is required");
             DurationEditText.requestFocus();
 
 
-        }  else if (TextUtils.isEmpty(textAge)) {
+        }  else if (TextUtils.isEmpty(eventTime)) {
             Toast.makeText(EditEvent.this, "Please enter the age", Toast.LENGTH_LONG).show();
             timeEditText.setError("Age is required");
             timeEditText.requestFocus();
 
-        } else if (TextUtils.isEmpty(textLocation)) {
+        } else if (TextUtils.isEmpty(eventLocation)) {
             Toast.makeText(EditEvent.this, "Please enter the location", Toast.LENGTH_LONG).show();
             locationEditText.setError("location is required");
             locationEditText.requestFocus();
@@ -247,7 +242,7 @@ public class EditEvent extends AppCompatActivity {
 
         } else {
 
-            textAttendingMethod = radioButtonAttendingMethodSelected.getText().toString();
+            eventAttendingMethod = radioButtonAttendingMethodSelected.getText().toString();
 
             uploadData();
         }
@@ -255,27 +250,20 @@ public class EditEvent extends AppCompatActivity {
 
     public void uploadData(){
 
-        String EventName = nameEditText.getText().toString().trim();
-        String Overview = overviewEditText.getText().toString().trim();
-        String Category = categorySpinner.getSelectedItem().toString();
-        String Date = dateEditText.getText().toString().trim();
-        String duration = DurationEditText.getText().toString().trim();
-        String language = languageSpinner.getSelectedItem().toString();
-        String Age = timeEditText.getText().toString().trim();
-        String Location = locationEditText.getText().toString().trim();
-        String AttendingMethod = radioButtonAttendingMethodSelected.getText().toString();
-
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
-        DataClass data = new DataClass(EventName, Overview, Date, duration, language, Age, Location, AttendingMethod ,Category, initiative , imageURL);
+        DataClass data = new DataClass(eventName, eventDescription, eventDate, eventDuration, eventLanguage,
+                eventTime, eventLocation, eventAttendingMethod ,eventCategory, initiative , imageURL);
 
-
-        databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseRef.child(originalEventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
+                    databaseRef.child(originalEventName).child("name").setValue(eventName);
                     Toast.makeText(EditEvent.this, "Saved", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(EditEvent.this, FounderMainActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
+                    finish();
                 }
             }
         }) .addOnFailureListener(new OnFailureListener() {
@@ -288,24 +276,24 @@ public class EditEvent extends AppCompatActivity {
     }
    private void showEventDetails() {
 
-       nameEditText.setText(name);
-       overviewEditText.setText(overview);
-       dateEditText.setText(date);
-       DurationEditText.setText(duration);
-       timeEditText.setText(time);
-       locationEditText.setText(location);
+       nameEditText.setText(eventName);
+       overviewEditText.setText(eventDescription);
+       dateEditText.setText(eventDate);
+       DurationEditText.setText(eventDuration);
+       timeEditText.setText(eventTime);
+       locationEditText.setText(eventLocation);
 
-       if(attendingMethod!=null) {
-           if (attendingMethod.equals("Online")) {
+       if(eventAttendingMethod!=null) {
+           if (eventAttendingMethod.equals("Online")) {
                onlineRadioButton.setChecked(true);
            } else {
                inPersonRadioButton.setChecked(true);
            }
        }
-       int position = adapter.getPosition(category);
+       int position = adapter.getPosition(eventCategory);
        categorySpinner.setSelection(position);
 
-       int position2 = adapter2.getPosition(language);
+       int position2 = adapter2.getPosition(eventLanguage);
        languageSpinner.setSelection(position2);
 
    }
