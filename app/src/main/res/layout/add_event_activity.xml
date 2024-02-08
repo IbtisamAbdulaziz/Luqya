@@ -31,7 +31,7 @@
         app:strokeWidth="5dp" />
 
 
-    <Button
+    <TextView
         android:id="@+id/button_upload_event_pic"
         android:layout_width="201dp"
         android:layout_height="74dp"

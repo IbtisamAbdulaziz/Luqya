@@ -77,10 +77,18 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
 
     private void updateProfile(FirebaseUser firebaseUser) {
 
+        textInitiativeName = editTextUpdateInitiativeName.getText().toString();
+        textInitiativePhone = editTextUpdateInitiativePhone.getText().toString();
+        textInitiativeLocation = editTextUpdateInitiativeLocation.getText().toString();
+        textInitiativeDescription = editTextUpdateInitiativeDescription.getText().toString();
+        textInitiativeFounderName = editTextUpdateInitiativeFounderName.getText().toString();
+        textInitiativeSocialMediaAccount = editTextInitiativeSocialMediaAccount.getText().toString();
+
         String mobileRegex = "[+][0-9]{12}";
         Matcher mobileMatcher;
         Pattern mobilePattern = Pattern.compile(mobileRegex);
         mobileMatcher = mobilePattern.matcher(textInitiativePhone);
+
 
         if (TextUtils.isEmpty(textInitiativeName)){
             Toast.makeText(Edit_InitiativeFounderProfile.this, "Please enter initiative name", Toast.LENGTH_LONG).show();
@@ -122,14 +130,6 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
             editTextInitiativeSocialMediaAccount.setError("Instagram Account is required");
             editTextInitiativeSocialMediaAccount.requestFocus();
         } else {
-
-            textInitiativeName = editTextUpdateInitiativeName.getText().toString();
-            textInitiativeFounderName = editTextUpdateInitiativeFounderName.getText().toString();
-            textInitiativeDescription = editTextUpdateInitiativeDescription.getText().toString();
-            textInitiativeLocation = editTextUpdateInitiativeLocation.getText().toString();
-            textInitiativePhone = editTextUpdateInitiativePhone.getText().toString();
-            textInitiativeSocialMediaAccount = editTextInitiativeSocialMediaAccount.getText().toString();
-
 
             ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textInitiativeDescription,textInitiativeSocialMediaAccount );
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
