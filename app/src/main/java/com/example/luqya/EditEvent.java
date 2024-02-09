@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -45,7 +46,8 @@ import java.util.Map;
 public class EditEvent extends AppCompatActivity {
 
     private ImageView eventImageView;
-    private EditText nameEditText , overviewEditText ,dateEditText, DurationEditText, timeEditText, locationEditText;
+    private EditText overviewEditText ,dateEditText, DurationEditText, timeEditText, locationEditText;
+    private TextView eventNameTextView;
     private Spinner categorySpinner, languageSpinner;
     private RadioGroup radioGroupAttendingMethod;
     private RadioButton radioButtonAttendingMethodSelected;
@@ -81,14 +83,12 @@ public class EditEvent extends AppCompatActivity {
         eventAttendingMethod = bundle.getString("eventAttendingMethod");
         initiative = bundle.getString("eventInitiative");
 
-        originalEventName = eventName;
-
 
 
         dataClass = new DataClass();
 
         eventImageView = findViewById(R.id.imageView);
-        nameEditText = findViewById(R.id.eventName);
+        eventNameTextView = findViewById(R.id.eventName);
         overviewEditText = findViewById(R.id.eventOverview);
         dateEditText = findViewById(R.id.eventDate);
         DurationEditText = findViewById(R.id.eventDuration);
@@ -194,7 +194,7 @@ public class EditEvent extends AppCompatActivity {
         int selectedAttendingMethodId = radioGroupAttendingMethod.getCheckedRadioButtonId();
         radioButtonAttendingMethodSelected = findViewById(selectedAttendingMethodId);
 
-        eventName = nameEditText.getText().toString().trim();
+        eventName = eventNameTextView.getText().toString().trim();
         eventDescription = overviewEditText.getText().toString().trim();
         eventCategory = categorySpinner.getSelectedItem().toString();
         eventDate = dateEditText.getText().toString().trim();
@@ -204,12 +204,7 @@ public class EditEvent extends AppCompatActivity {
         eventLocation = locationEditText.getText().toString().trim();
 
 
-        if (TextUtils.isEmpty(eventName)) {
-            Toast.makeText(EditEvent.this, "Please enter event name", Toast.LENGTH_LONG).show();
-            nameEditText.setError("Event Name is required");
-            nameEditText.requestFocus();
-
-        } else if (TextUtils.isEmpty(eventDescription)) {
+        if (TextUtils.isEmpty(eventDescription)) {
             Toast.makeText(EditEvent.this, "Please enter event overview", Toast.LENGTH_LONG).show();
             overviewEditText.setError("Event Overview is required");
             overviewEditText.requestFocus();
@@ -254,11 +249,10 @@ public class EditEvent extends AppCompatActivity {
         DataClass data = new DataClass(eventName, eventDescription, eventDate, eventDuration, eventLanguage,
                 eventTime, eventLocation, eventAttendingMethod ,eventCategory, initiative , imageURL);
 
-        databaseRef.child(originalEventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+        databaseRef.child(eventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    databaseRef.child(originalEventName).child("name").setValue(eventName);
                     Toast.makeText(EditEvent.this, "Saved", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(EditEvent.this, FounderMainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -276,7 +270,7 @@ public class EditEvent extends AppCompatActivity {
     }
    private void showEventDetails() {
 
-       nameEditText.setText(eventName);
+       eventNameTextView.setText(eventName);
        overviewEditText.setText(eventDescription);
        dateEditText.setText(eventDate);
        DurationEditText.setText(eventDuration);
