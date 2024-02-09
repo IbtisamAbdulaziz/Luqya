@@ -1,6 +1,7 @@
 package com.example.luqya;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -43,6 +44,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
     private Button cancelBtn, signUpBtn;
     private ProgressBar progressBar;
     private static final String TAG= "InitiativeFounderSignUp";
+    private Uri initiativeImage;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -194,7 +196,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(textInitiativeName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textDescription,textInitiativeSocialMediaAccount);
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textDescription,textInitiativeSocialMediaAccount,initiativeImage);
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
 
                     referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {

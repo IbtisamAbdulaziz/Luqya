@@ -57,29 +57,18 @@
                     android:orientation="vertical"
                     tools:ignore="MissingConstraints">
 
-
                     <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:text="Name of the event"
-                        android:layout_marginTop="20dp"
-                        android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <EditText
                         android:id="@+id/eventName"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="20dp"
                         android:ems="10"
-                        android:inputType="textPersonName"
+                        android:textSize="20sp"
+                        android:textColor="@color/black"
+                        android:gravity="center"
                         android:singleLine="true"
-                        tools:ignore="MissingConstraints"
-                        android:hint="Event Name"/>
+                        android:text="Event Name"/>
 
                     <TextView
                         android:id="@+id/textView4"

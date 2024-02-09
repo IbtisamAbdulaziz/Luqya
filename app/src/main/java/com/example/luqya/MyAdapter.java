@@ -80,6 +80,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("category", dataList.get(holder.getAbsoluteAdapterPosition()).getCategory());
                 intent.putExtra("attendingMethod", dataList.get(holder.getAbsoluteAdapterPosition()).getAttendingMethod());
                 intent.putExtra("initiative",dataList.get(holder.getAdapterPosition()).getInitiative());
+                intent.putExtra("initiativeId", dataList.get(holder.getAbsoluteAdapterPosition()).getInitativeId());
+
 
                 context.startActivity(intent);
             }

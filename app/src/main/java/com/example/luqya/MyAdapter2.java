@@ -66,6 +66,7 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
                 intent.putExtra("eventCategory", dataList.get(holder.getAbsoluteAdapterPosition()).getCategory());
                 intent.putExtra("eventAttendingMethod", dataList.get(holder.getAbsoluteAdapterPosition()).getAttendingMethod());
                 intent.putExtra("eventInitiative", dataList.get(holder.getAbsoluteAdapterPosition()).getInitiative());
+                intent.putExtra("initiativeId", dataList.get(holder.getAdapterPosition()).getInitativeId());
 
 
                 context.startActivity(intent);

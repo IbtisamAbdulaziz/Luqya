@@ -3,12 +3,12 @@ package com.example.luqya;
 
 public class DataClass {
 
-    private String name, overview, date, duration, language, time, location, attendingMethod, category, initiative, dataImage;
+    private String name, overview, date, duration, language, time, location, attendingMethod, category, initiative, dataImage, initativeId;
     private Object eventType;
 
 
     public DataClass(String name, String overview, String date, String duration, String language, String time,
-                     String location, String attendingMethod, String category, String initiative, String dataImage) {
+                     String location, String attendingMethod, String category, String initiative, String dataImage, String initativeId) {
 
         this.name = name;
         this.overview = overview;
@@ -21,6 +21,7 @@ public class DataClass {
         this.category = category;
         this.dataImage = dataImage;
         this.initiative = initiative;
+        this.initativeId = initativeId;
 
     }
 
@@ -125,5 +126,13 @@ public class DataClass {
 
     public void setDataImage(String dataImage) {
         this.dataImage = dataImage;
+    }
+
+    public String getInitativeId() {
+        return initativeId;
+    }
+
+    public void setInitativeId(String initativeId) {
+        this.initativeId = initativeId;
     }
 }

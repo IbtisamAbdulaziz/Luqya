@@ -2,6 +2,7 @@ package com.example.luqya;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -35,6 +36,7 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
     private String textInitiativeName, textInitiativeFounderName, textInitiativeDescription, textInitiativePhone, textInitiativeLocation,textInitiativeSocialMediaAccount;
     private FirebaseAuth authProfile;
     private ProgressBar progressBar;
+    private Uri initiativeImage;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -131,7 +133,7 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
             editTextInitiativeSocialMediaAccount.requestFocus();
         } else {
 
-            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textInitiativeDescription,textInitiativeSocialMediaAccount );
+            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textInitiativeDescription,textInitiativeSocialMediaAccount, initiativeImage );
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
 
             String userID = firebaseUser.getUid();
@@ -185,6 +187,7 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
                     textInitiativePhone = readUserDetails.getInitiativePhone();
                     textInitiativeLocation = readUserDetails.getInitiativeLocation();
                     textInitiativeSocialMediaAccount = readUserDetails.getInitiativeSocialMediaAccount();
+                    initiativeImage = readUserDetails.getInitativeImageUri();
 
                     editTextUpdateInitiativeName.setText(textInitiativeName);
                     editTextUpdateInitiativeFounderName.setText(textInitiativeFounderName);

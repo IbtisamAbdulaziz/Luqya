@@ -27,7 +27,7 @@ public class Details_event_class extends AppCompatActivity {
             timeTextView, languageTextView, durationTextView, atthendingMethodTextView, overviewTextView;
     Button register_button;
     ImageView imageView;
-    private String title, category, initiative, location, date, time, language, duration, attendingMethod, overview;
+    private String title, category, initiative, location, date, time, language, duration, attendingMethod, overview, initiativeId;
 
 
     @SuppressLint("MissingInflatedId")
@@ -86,11 +86,10 @@ public class Details_event_class extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
-                referenceProfile.child(initiative);
                 Intent intent = new Intent(Details_event_class.this, View_InitiativeFounderProfile.class);
-
-                intent.putExtra("initiativeName" , initiative);
+                assert bundle != null;
+                initiativeId = bundle.getString("initiativeId");
+                intent.putExtra("initiativeId", initiativeId);
                 startActivity(intent);
             }
         });

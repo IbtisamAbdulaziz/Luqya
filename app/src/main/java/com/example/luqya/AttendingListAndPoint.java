@@ -2,6 +2,7 @@ package com.example.luqya;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -123,13 +124,14 @@ public class AttendingListAndPoint extends AppCompatActivity {
                     Model attendee = arrayList.get(i);
                     int points = attendee.getPoints();
 
-
                     usersRef.child(attendee.getUserId()).child("points").setValue(points);
+                    finish();
 
                 }
 
                 progressBarAttendingList.setVisibility(View.GONE);
                 Toast.makeText(AttendingListAndPoint.this, "Saved!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AttendingListAndPoint.this, My_Events.class);
 
             }
         });
