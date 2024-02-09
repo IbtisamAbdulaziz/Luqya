@@ -58,7 +58,7 @@ public class AddEvent extends AppCompatActivity {
     private RadioButton Online , InPerson;
 
     private Button submit;
-    private String imageURL, initiative;
+    private String imageURL, initiative, initiativeId;
     private Uri uri;
     private DatePickerDialog picker;
     private FirebaseAuth authProfile;
@@ -182,6 +182,7 @@ public class AddEvent extends AppCompatActivity {
                 ReadWriteUserDetails readUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
                 if (readUserDetails != null) {
                     initiative = readUserDetails.initiativeName;
+                    initiativeId = firebaseUser.getUid();
                 }
             }
 
@@ -289,7 +290,7 @@ public class AddEvent extends AppCompatActivity {
 
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
-        DataClass data = new DataClass(EventName, Overview, Date, duration, language, Age, Location, AttendingMethod ,Category, initiative , imageURL);
+        DataClass data = new DataClass(EventName, Overview, Date, duration, language, Age, Location, AttendingMethod ,Category, initiative , imageURL, initiativeId);
 
         databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

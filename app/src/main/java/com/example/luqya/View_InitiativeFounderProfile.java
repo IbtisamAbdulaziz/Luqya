@@ -33,6 +33,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class View_InitiativeFounderProfile extends AppCompatActivity {
 
@@ -50,6 +51,7 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
     ValueEventListener eventListener;
     SearchView searchInitiative;
     MyAdapter adapter;
+    String initiativeId;
 
 
     @SuppressLint("WrongViewCast")
@@ -58,12 +60,15 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_initiative_profile);
 
+        Bundle bundle = getIntent().getExtras();
+        initiativeId = bundle.getString("initiativeId");
+
+
         textViewInitiativeName = findViewById(R.id.textView_initiative_name);
         textViewInitiativeOverview = findViewById(R.id.textView_Initiative_overview);
         textViewInitiativeFounder = findViewById(R.id.textView_show_founder_name);
         textViewInitiativePhone = findViewById(R.id.textView_show_initiative_phone);
         textViewInitiativeAddress = findViewById(R.id.textView_show_initiative_address);
-        textViewInitiativeEmail = findViewById(R.id.textView_show_initiative_email);
 
         searchInitiative = findViewById(R.id.Search_initiative);
         searchInitiative.clearFocus();
@@ -187,14 +192,10 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         });
 
         authProfile = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = authProfile.getCurrentUser();
 
-        if(firebaseUser == null){
-            Toast.makeText(View_InitiativeFounderProfile.this, "Something went wrong! User's details are not available at the moment", Toast.LENGTH_SHORT).show();
-        } else {
-            progressBar.setVisibility(View.VISIBLE);
-            showUserProfile(firebaseUser);
-        }
+        progressBar.setVisibility(View.VISIBLE);
+        showUserProfile();
+
 
         searchInitiative.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -221,9 +222,18 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         adapter.searchDataList(searchList);
     }
 
-    private void showUserProfile(FirebaseUser firebaseUser) {
+    private void showUserProfile() {
 
-        String userID = firebaseUser.getUid();
+        FirebaseUser firebaseUser = authProfile.getCurrentUser();
+        authProfile = FirebaseAuth.getInstance();
+        String userID = initiativeId;
+
+        if(firebaseUser != null ) {
+            if(firebaseUser.getUid().equals(Objects.requireNonNull(authProfile.getCurrentUser()).getUid())) {
+                userID = firebaseUser.getUid();
+            }
+        }
+
 
         DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
         referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -236,18 +246,15 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
                     initiativeDescription = readUserDetails.initiativeOverView;
                     initiativeFounder = readUserDetails.initiativeFounderName;
                     initiativePhone = readUserDetails.initiativePhone;
-                    initiativeEmail = firebaseUser.getEmail();
                     initiativeAddress = readUserDetails.initiativeLocation;
-
                     textViewInitiativeName.setText(initiativeName);
                     textViewInitiativeOverview.setText(initiativeDescription);
                     textViewInitiativeFounder.setText(initiativeFounder);
                     textViewInitiativePhone.setText(initiativePhone);
-                    textViewInitiativeEmail.setText(initiativeEmail);
                     textViewInitiativeAddress.setText(initiativeAddress);
 
-                    Uri uri = firebaseUser.getPhotoUrl();
-                    Picasso.with(View_InitiativeFounderProfile.this).load(uri).into(imageViewInitiativeLogo);
+                    //Uri uri = firebaseUser.getPhotoUrl();
+                    //Picasso.with(View_InitiativeFounderProfile.this).load(uri).into(imageViewInitiativeLogo);
 
                 } else {
                     Toast.makeText(View_InitiativeFounderProfile.this, "Something went wrong!", Toast.LENGTH_SHORT).show();

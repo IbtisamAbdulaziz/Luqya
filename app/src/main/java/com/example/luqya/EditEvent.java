@@ -54,7 +54,7 @@ public class EditEvent extends AppCompatActivity {
 
     private Button updateButton;
     private String eventName, eventDescription, eventDate, eventDuration, eventTime, eventLocation,
-            eventCategory, eventAttendingMethod, eventLanguage, imageURL, initiative, originalEventName;
+            eventCategory, eventAttendingMethod, eventLanguage, imageURL, initiative, initativeId;
 
     private Uri uri;
     private RadioButton onlineRadioButton, inPersonRadioButton;
@@ -82,6 +82,7 @@ public class EditEvent extends AppCompatActivity {
         eventLanguage = bundle.getString("eventLanguage");
         eventAttendingMethod = bundle.getString("eventAttendingMethod");
         initiative = bundle.getString("eventInitiative");
+        initativeId = bundle.getString("initiativeId");
 
 
 
@@ -247,7 +248,7 @@ public class EditEvent extends AppCompatActivity {
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
         DataClass data = new DataClass(eventName, eventDescription, eventDate, eventDuration, eventLanguage,
-                eventTime, eventLocation, eventAttendingMethod ,eventCategory, initiative , imageURL);
+                eventTime, eventLocation, eventAttendingMethod ,eventCategory, initiative , imageURL, initativeId );
 
         databaseRef.child(eventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override

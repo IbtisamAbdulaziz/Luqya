@@ -193,21 +193,6 @@
             android:layout_below="@id/linearLayout3"
             android:layout_marginHorizontal="5dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Email: "
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView_show_initiative_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="email of initiative"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"/>
-
 
             <ImageView
                 android:id="@+id/instagram"
@@ -215,6 +200,7 @@
                 android:layout_height="48dp"
                 android:layout_below="@id/textView_show_initiative_address"
                 android:src="@drawable/insta" />
+
         </LinearLayout>
 
 
