@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:background="@color/app_background">
+
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AdminMainActivity"
-        android:layout_centerInParent="true"
-        android:id="@+id/textView"/>
+        android:id="@+id/view_initiatives_button"
+        android:layout_marginTop="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="View Initiatives"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/half_background"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/view_seekers_button"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="View Event Seekers"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/half_background"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:id="@+id/view_events_button"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="View Event"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/half_background"
+        android:textSize="25sp"/>
 
 
-</RelativeLayout>
+
+
+
+</LinearLayout>

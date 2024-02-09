@@ -1,11 +1,14 @@
 package com.example.luqya;
 
+import android.net.Uri;
+
 public class ReadWriteUserDetails {
 
     public String fullName, doD, phone, initiativeName,
             initiativeFounderName, initiativePhone, initiativeLocation,
             initiativeOverView,initiativeSocialMediaAccount;
     public int points;
+    public Uri initativeImageUri;
 
 
     public ReadWriteUserDetails(){
@@ -22,7 +25,7 @@ public class ReadWriteUserDetails {
     }
 
     public ReadWriteUserDetails(String textInitiativeName, String textInitiativeFounderName, String textInitiativePhone,
-                                String textInitiativeLocation, String textInitiativeDescription, String textInitiativeSocialMediaAccount){
+                                String textInitiativeLocation, String textInitiativeDescription, String textInitiativeSocialMediaAccount, Uri initativeImageUri){
 
         this.initiativeName = textInitiativeName;
         this.initiativeFounderName = textInitiativeFounderName;
@@ -30,6 +33,7 @@ public class ReadWriteUserDetails {
         this.initiativeLocation = textInitiativeLocation;
         this.initiativeOverView = textInitiativeDescription;
         this.initiativeSocialMediaAccount = textInitiativeSocialMediaAccount;
+        this.initativeImageUri = initativeImageUri;
 
     }
 
@@ -55,5 +59,13 @@ public class ReadWriteUserDetails {
 
     public String getInitiativeSocialMediaAccount() {
         return initiativeSocialMediaAccount;
+    }
+
+    public Uri getInitativeImageUri() {
+        return initativeImageUri;
+    }
+
+    public void setInitativeImageUri(Uri initativeImageUri) {
+        this.initativeImageUri = initativeImageUri;
     }
 }
