@@ -19,46 +19,37 @@ import java.util.ArrayList;
 public class ViewInitiatives extends AppCompatActivity {
 
     private ListView initiativesListView;
-    ArrayList<String> initiativesArrayList;
 
     DatabaseReference reference;
+    ArrayList<String> arrayList = new ArrayList<>();
+    ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_initiatives);
+        getSupportActionBar().setTitle("Registered initiatives");
 
-        initiativesListView = findViewById(R.id.initiativesList);
-        initiativesArrayList = new ArrayList<String>();
-
-        initializeListView();
-
-    }
-
-    private void initializeListView() {
-
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, initiativesArrayList);
+        initiativesListView = (ListView) findViewById(R.id.initiativesList);
         reference = FirebaseDatabase.getInstance().getReference("Registered initiatives");
+        arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+        initiativesListView.setAdapter(arrayAdapter);
+
         reference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                initiativesArrayList.add(snapshot.getValue(String.class));
-                adapter.notifyDataSetChanged();
+                String value = snapshot.getValue(ReadWriteUserDetails.class).toString();
+                arrayList.add(value);
+                arrayAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-               adapter.notifyDataSetChanged();
-
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                initiativesArrayList.remove(snapshot.getValue(String.class));
-                adapter.notifyDataSetChanged();
 
             }
 
@@ -72,6 +63,12 @@ public class ViewInitiatives extends AppCompatActivity {
 
             }
         });
-        initiativesListView.setAdapter(adapter);
+
+        initializeListView();
+
+    }
+
+    private void initializeListView() {
+
     }
 }

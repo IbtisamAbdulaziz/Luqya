@@ -2,6 +2,8 @@ package com.example.luqya;
 
 import android.net.Uri;
 
+import androidx.annotation.NonNull;
+
 public class ReadWriteUserDetails {
 
     public String fullName, doD, phone, initiativeName,
@@ -67,5 +69,9 @@ public class ReadWriteUserDetails {
 
     public void setInitativeImageUri(Uri initativeImageUri) {
         this.initativeImageUri = initativeImageUri;
+    }
+    @NonNull
+    public String toString(){
+        return this.initiativeName + ", Founded by: " + initiativeFounderName;
     }
 }
