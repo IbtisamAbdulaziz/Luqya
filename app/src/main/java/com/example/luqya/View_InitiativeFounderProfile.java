@@ -1,5 +1,7 @@
 package com.example.luqya;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
@@ -7,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,7 +32,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +63,14 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         setContentView(R.layout.view_initiative_profile);
 
         Bundle bundle = getIntent().getExtras();
-        initiativeId = bundle.getString("initiativeId");
+        if (bundle != null) {
+            initiativeId = bundle.getString("initiativeId");
+        } else {
+            // Handle the case where bundle is null (e.g., display an error message)
+            Log.w(TAG, "Error user ID");
+
+        }
+
 
 
         textViewInitiativeName = findViewById(R.id.textView_initiative_name);

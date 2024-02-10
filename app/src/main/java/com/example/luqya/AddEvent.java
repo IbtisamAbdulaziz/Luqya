@@ -1,8 +1,6 @@
 package com.example.luqya;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -21,17 +19,12 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,9 +33,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.Calendar;
 
@@ -272,7 +262,7 @@ public class AddEvent extends AppCompatActivity {
 
 
     }
-    
+
 
 
 
@@ -293,20 +283,20 @@ public class AddEvent extends AppCompatActivity {
         DataClass data = new DataClass(EventName, Overview, Date, duration, language, Age, Location, AttendingMethod ,Category, initiative , imageURL, initiativeId);
 
         databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(AddEvent.this, "Saved", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(AddEvent.this, FounderMainActivity.class);
-                            startActivity(intent);
-                        }
-                    }
-                }) .addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(AddEvent.this, "Saved", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(AddEvent.this, FounderMainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        }) .addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(AddEvent.this, e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                    }
-           });
-}
+            }
+        });
     }
+}
