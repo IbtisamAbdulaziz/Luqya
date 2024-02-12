@@ -1,5 +1,6 @@
 package com.example.luqya;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +33,7 @@ public class ShowSeekerProfile extends AppCompatActivity {
 
     private TextView textViewWelcome, textViewFullName, textViewDoB, textViewEmail, textViewPhone, textViewPoints ;
     private ProgressBar progressBar;
+    private Button redeemPointsButton;
     private LinearLayout profile_Btn, Home_Btn, myEvents_Btn;
     private String fullName, email, doB, phone, pointsString;
 
@@ -57,6 +61,7 @@ public class ShowSeekerProfile extends AppCompatActivity {
         Home_Btn = findViewById(R.id.Home_Btn);
         myEvents_Btn = findViewById(R.id.myEventsBtn);
         progressBar = findViewById(R.id.progressBarEditProfile);
+        redeemPointsButton = findViewById(R.id.redeem_points_button);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +120,71 @@ public class ShowSeekerProfile extends AppCompatActivity {
                     Intent i = new Intent(ShowSeekerProfile.this, Events.class);
                     startActivity(i);
 
+            }
+        });
+
+        redeemPointsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ShowSeekerProfile.this);
+                builder.setMessage("Are you sure? You want redeem your points now?");
+                builder.setTitle("Confirm Redeem Points");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Redeem", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String userID = firebaseUser.getUid();
+                        DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
+                        referenceProfile.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                                ReadWriteUserDetails writeUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
+                                if(writeUserDetails != null){
+                                    int points = writeUserDetails.points;
+
+                                    if(points >= 100){
+                                        writeUserDetails.setPoints(0);
+                                        Intent intent = new Intent(ShowSeekerProfile.this, RedeemPoints.class);
+                                        intent.putExtra("points", points);
+                                        startActivity(intent);
+
+                                    } else {
+                                        AlertDialog dialog = new AlertDialog.Builder(ShowSeekerProfile.this).setTitle("Collect More Points")
+                                                        .setMessage("Sorry, You must have at least 100 Points to redeem.")
+                                                .setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                                        dialogInterface.dismiss();
+                                                    }
+                                                }).create();
+                                        dialog.show();
+                                    }
+
+                                } else {
+                                    Toast.makeText(ShowSeekerProfile.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                                Toast.makeText(ShowSeekerProfile.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
 

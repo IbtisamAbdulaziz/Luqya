@@ -5,8 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +25,7 @@ public class ViewInitiatives extends AppCompatActivity {
     DatabaseReference reference;
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +34,13 @@ public class ViewInitiatives extends AppCompatActivity {
         getSupportActionBar().setTitle("Registered initiatives");
 
         initiativesListView = (ListView) findViewById(R.id.initiativesList);
+        progressBar = findViewById(R.id.progressBarViewInitiatives);
+
         reference = FirebaseDatabase.getInstance().getReference("Registered initiatives");
         arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
         initiativesListView.setAdapter(arrayAdapter);
+
+        progressBar.setVisibility(View.VISIBLE);
 
         reference.addChildEventListener(new ChildEventListener() {
             @Override
@@ -41,6 +48,8 @@ public class ViewInitiatives extends AppCompatActivity {
                 String value = snapshot.getValue(ReadWriteUserDetails.class).toString();
                 arrayList.add(value);
                 arrayAdapter.notifyDataSetChanged();
+
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override

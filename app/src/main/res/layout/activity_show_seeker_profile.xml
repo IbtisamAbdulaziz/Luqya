@@ -16,7 +16,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="330dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/cardView"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Points"
-            android:textSize="22sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:layout_toLeftOf="@id/textView_pts"
@@ -36,17 +36,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" 0 "
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:layout_alignParentRight="true"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/redeem_points_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewWelcome"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Redeem Points" />
 
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
             android:layout_marginBottom="10dp"
             android:background="@color/button_background"
             app:shapeAppearanceOverlay="@style/circular"

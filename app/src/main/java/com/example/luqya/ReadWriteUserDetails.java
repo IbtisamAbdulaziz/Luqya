@@ -72,6 +72,10 @@ public class ReadWriteUserDetails {
     }
     @NonNull
     public String toString(){
-        return this.initiativeName + ", Founded by: " + initiativeFounderName;
+        return this.initiativeName + ",\nFounded by: " + initiativeFounderName;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 }

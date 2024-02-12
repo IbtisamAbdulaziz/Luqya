@@ -15,6 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
+        <activity
+            android:name=".RedeemPoints"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/default_notification_channel_id" />
@@ -99,9 +103,8 @@
             android:name=".MyEvent_bar"
             android:exported="false" />
         <activity
-            android:name=".Notification"
+            android:name=".NotificationHelper"
             android:exported="false" />
-
     </application>
 
 </manifest>

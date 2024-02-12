@@ -21,9 +21,18 @@
         <item>English</item>
 
     </string-array>
+
+    <string-array name="list_partners_array">
+        <item> Rawan Stationery </item>
+        <item> Roots Coffeehouse </item>
+        <item> Sociable Cafe </item>
+        <item> Hao Saudi </item>
+        <item> Salwa Bookstore </item>
+        <item> Couplet Studio </item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
 
     <string name="default_notification_channel_id" translatable="false">default_channel_id</string>
