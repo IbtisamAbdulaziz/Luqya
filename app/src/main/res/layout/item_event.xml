@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/CardViewID"
-    android:layout_width="350dp"
-    android:layout_height="310dp"
+    android:layout_width="300dp"
+    android:layout_height="260dp"
     android:layout_marginTop="8dp"
     android:background="@color/app_background"
     app:cardCornerRadius="15dp"
@@ -19,8 +19,7 @@
         <ImageView
             android:id="@+id/pic"
             android:layout_width="0dp"
-            android:layout_height="206dp"
-
+            android:layout_height="150dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +37,7 @@
 
             <TextView
                 android:id="@+id/TitleText"
-                android:layout_width="215dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"

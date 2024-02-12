@@ -21,10 +21,11 @@ public class RedeemPoints extends AppCompatActivity implements AdapterView.OnIte
         getSupportActionBar().setTitle("Our Partners");
         partnersListView = findViewById(R.id.partner_list_view);
 
-        Bundle bundle = getIntent().getExtras();
+       /* Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            points = Integer.parseInt(bundle.getString("points"));
-        }
+            String pointsString = bundle.getString("points");
+            points = Integer.parseInt(pointsString);
+        }*/
 
         partnersListView.setOnItemClickListener(this);
 
