@@ -93,7 +93,6 @@ public class Details_event_class extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,6 +138,7 @@ public class Details_event_class extends AppCompatActivity {
                 });
     }
 }
+
 
 
 

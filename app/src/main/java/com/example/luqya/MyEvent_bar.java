@@ -1,10 +1,7 @@
 package com.example.luqya;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,9 +22,8 @@ import java.util.List;
 public class MyEvent_bar extends AppCompatActivity {
 
     private static final String TAG = "MyEvent_bar";
-    private LinearLayout profile_Btn, home_Btn,homeBtn_3;
-    private FirebaseAuth authProfile;
-    FirebaseUser firebaseUser = authProfile.getCurrentUser();
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,43 +95,6 @@ public class MyEvent_bar extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
-            }
-        });
-        profile_Btn = findViewById(R.id.Profile_Btn);
-        home_Btn = findViewById(R.id.Home_Btn);
-        homeBtn_3 = findViewById(R.id.myEventsBtn);
-        authProfile = FirebaseAuth.getInstance();
-
-        profile_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if (firebaseUser == null) {
-                    Intent i = new Intent(MyEvent_bar.this, LogIn.class);
-                    startActivity(i);
-
-                } else {
-                    Intent i = new Intent(MyEvent_bar.this, ShowSeekerProfile.class);
-                    startActivity(i);
-                }
-            }
-        });
-
-        home_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent i = new Intent(MyEvent_bar.this, Events.class);
-                startActivity(i);
-            }
-        });
-
-        homeBtn_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent i = new Intent(MyEvent_bar.this, MyEvent_bar.class);
-                startActivity(i);
             }
         });
     }

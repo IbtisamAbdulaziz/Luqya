@@ -87,6 +87,8 @@ public class MyAdapter2 extends RecyclerView.Adapter<MyAdapter2.MyViewHolder> {
 
                         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Add Event").child(dataList.get(holder.getAbsoluteAdapterPosition()).getName());
                         databaseRef.removeValue();
+                        DatabaseReference archiveRef = FirebaseDatabase.getInstance().getReference("EventData").child(dataList.get(holder.getAbsoluteAdapterPosition()).getName());
+                        archiveRef.removeValue();
                         Toast.makeText(context, "Event has been deleted successfully.", Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -264,9 +264,6 @@ public class AddEvent extends AppCompatActivity {
 
     }
 
-
-
-
     public void uploadData(){
 
         String EventName = name.getText().toString().trim();
