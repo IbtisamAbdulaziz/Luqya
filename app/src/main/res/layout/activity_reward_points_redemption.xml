@@ -8,10 +8,10 @@
     tools:context=".RewardPointsRedemption">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:src="@drawable/logo"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"/>
 
@@ -32,7 +32,7 @@
         android:layout_marginHorizontal="20dp"
         android:layout_below="@id/congrats_textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:lines="4"
         android:textSize="18sp"
@@ -53,7 +53,7 @@
         android:layout_marginStart="30dp"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/rewardimage"
         android:text="This is a reward coupon for : " />
 
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textStyle="italic"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/rewardimage"
         android:layout_toRightOf="@id/textView1"
         android:text=" holder name " />
@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textStyle="italic"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/textView3"
         android:layout_centerHorizontal="true"
         android:text=" issue date " />
