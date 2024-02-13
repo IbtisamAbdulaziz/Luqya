@@ -80,6 +80,10 @@ public class DataClass {
                 '}';
     }
 
+    public String toString2(){
+        return this.name + ",\nPublished by: " + initiative;
+    }
+
     public DataClass() {
 
     }

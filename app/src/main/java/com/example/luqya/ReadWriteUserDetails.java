@@ -75,6 +75,11 @@ public class ReadWriteUserDetails {
         return this.initiativeName + ",\nFounded by: " + initiativeFounderName;
     }
 
+    public String toString2(){
+
+        return this.fullName;
+    }
+
     public void setPoints(int points) {
         this.points = points;
     }
