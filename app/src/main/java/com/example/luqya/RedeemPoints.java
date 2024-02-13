@@ -12,8 +12,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -70,8 +73,29 @@ public class RedeemPoints extends AppCompatActivity implements AdapterView.OnIte
                         if(readUserDetails != null){
 
                             String name = readUserDetails.fullName;
-                            points = points - 100;
-                            readUserDetails.setPoints(points);
+                            points = readUserDetails.points;
+                            readUserDetails.setPoints(points-100);
+                            String seekerName = readUserDetails.fullName;
+
+                            String userID = firebaseUser.getUid();
+                            referenceProfile.child(userID).setValue(readUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                                .setDisplayName(seekerName).build();
+                                        firebaseUser.updateProfile(profileUpdates);
+                                    } else {
+                                        try {
+                                            throw task.getException();
+                                        } catch (Exception e){
+                                            Toast.makeText(RedeemPoints.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                        }
+
+                                    }
+                                }
+                            });
+
                             Intent intent = new Intent(RedeemPoints.this, RewardPointsRedemption.class);
                             intent.putExtra("name", name);
                             intent.putExtra("partner", itemList);
