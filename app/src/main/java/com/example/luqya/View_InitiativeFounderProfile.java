@@ -86,67 +86,9 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         imageViewInitiativeLogo = findViewById(R.id.imageView_initiative_logo2);
         instgramPic = findViewById(R.id.instagram);
 
-        instgramPic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Initialize Firebase
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference accountRef = database.getReference("Registered initiatives");
 
-                // Retrieve account name from Firebase
-                accountRef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            String accountName = dataSnapshot.getValue(String.class);
 
-                            // Use the retrieved account name in the link
-                            String sAppLink = "https://www.instagram.com/" + accountName;
-                            String sPackage = "com.instagram.android";
 
-                            // Call method
-                            openLink(v.getContext(), sAppLink, sPackage, sAppLink);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-
-            private void openLink(Context context, String sAppLink, String sPackage, String sWebLink) {
-                // Use try catch
-                try {
-                    // When application is installed
-                    // Initialize uri
-                    Uri uri = Uri.parse(sAppLink);
-                    // Initialize intent
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    // Set data
-                    intent.setData(uri);
-                    // Set package
-                    intent.setPackage(sPackage);
-                    // Set flag
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    // Start activity
-                    context.startActivity(intent);
-                } catch (ActivityNotFoundException activityNotFoundException) {
-                    // Open link in browser
-                    // Initialize uri
-                    Uri uri = Uri.parse(sWebLink);
-                    // Initialize intent
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    // Set data
-                    intent.setData(uri);
-                    // Set flag
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                    context.startActivity(intent);
-                }
-            }
-        });
         getSupportActionBar().setTitle("Initiative Profile");
         progressBar = findViewById(R.id.progressBarEditProfile);
 
@@ -238,8 +180,8 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         authProfile = FirebaseAuth.getInstance();
         String userID = initiativeId;
 
-        if(firebaseUser != null ) {
-            if(firebaseUser.getUid().equals(Objects.requireNonNull(authProfile.getCurrentUser()).getUid())) {
+        if (firebaseUser != null) {
+            if (firebaseUser.getUid().equals(Objects.requireNonNull(authProfile.getCurrentUser()).getUid())) {
                 userID = firebaseUser.getUid();
             }
         }
@@ -251,7 +193,7 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ReadWriteUserDetails readUserDetails = snapshot.getValue(ReadWriteUserDetails.class);
 
-                if(readUserDetails != null){
+                if (readUserDetails != null) {
                     initiativeName = readUserDetails.initiativeName;
                     initiativeDescription = readUserDetails.initiativeOverView;
                     initiativeFounder = readUserDetails.initiativeFounderName;
@@ -262,25 +204,82 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
                     textViewInitiativeFounder.setText(initiativeFounder);
                     textViewInitiativePhone.setText(initiativePhone);
                     textViewInitiativeAddress.setText(initiativeAddress);
+                    instgramPic.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            // استرداد اسم الحساب من Firebase
 
-                    //Uri uri = firebaseUser.getPhotoUrl();
-                    //Picasso.with(View_InitiativeFounderProfile.this).load(uri).into(imageViewInitiativeLogo);
+                                String accountName = " ";
 
-                } else {
-                    Toast.makeText(View_InitiativeFounderProfile.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
-                }
+                                if (accountName != null && !accountName.isEmpty()) {
+                                // استخدام اسم الحساب المسترد من Firebase في الرابط
+                                String sAppLink = "https://www.instagram.com/" + accountName;
+                                String sPackage = "com.instagram.android";
 
-                progressBar.setVisibility(View.GONE);
+                                // استدعاء الدالة لفتح الرابط
+                                openLink(v.getContext(), sAppLink, sPackage, sAppLink);
+                            } else {
+                                // إشعار بأن اسم الحساب غير متاح
+                                Toast.makeText(v.getContext(), "اسم الحساب غير متاح", Toast.LENGTH_SHORT).show();
+   }
+}
+                    });
+
+
+
+                } else
+            {
+                Toast.makeText(View_InitiativeFounderProfile.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
+            }
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
                 Toast.makeText(View_InitiativeFounderProfile.this, "Something went wrong!", Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.GONE);
             }
+            //Uri uri = firebaseUser.getPhotoUrl();
+            //Picasso.with(View_InitiativeFounderProfile.this).load(uri).into(imageViewInitiativeLogo);
+
+
         });
 
+                progressBar.setVisibility(View.GONE);
+    }
+
+
+
+
+    private void openLink(Context context, String sAppLink, String sPackage, String sWebLink) {
+        // Use try catch
+        try {
+            // When application is installed
+            // Initialize uri
+            Uri uri = Uri.parse(sAppLink);
+            // Initialize intent
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            // Set data
+            intent.setData(uri);
+            // Set package
+            intent.setPackage(sPackage);
+            // Set flag
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            // Start activity
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException activityNotFoundException) {
+            // Open link in browser
+            // Initialize uri
+            Uri uri = Uri.parse(sWebLink);
+            // Initialize intent
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            // Set data
+            intent.setData(uri);
+            // Set flag
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            context.startActivity(intent);
+        }
     }
 
     @Override
