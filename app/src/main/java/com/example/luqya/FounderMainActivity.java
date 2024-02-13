@@ -28,7 +28,7 @@ import com.squareup.picasso.Picasso;
 public class FounderMainActivity extends AppCompatActivity {
     private ImageView Initiative_Logo;
     private TextView textViewInitiativeName, textViewInitiativeFounder;
-    private Button Initiative_Profile, Add_Event, My_Events, Edit_Profile, Statistics;
+    private Button Initiative_Profile, Add_Event, My_Events, Edit_Profile;
     private String initiativeName, initiativeFounder;
     private FirebaseAuth authProfile;
     private ProgressBar progressBar;
@@ -48,7 +48,6 @@ public class FounderMainActivity extends AppCompatActivity {
         Add_Event = findViewById(R.id.button2);
         My_Events = findViewById(R.id.button3);
         Edit_Profile = findViewById(R.id.button4);
-        Statistics = findViewById(R.id.button5);
         progressBar = findViewById(R.id.progressBarFounderMainActivity);
 
 

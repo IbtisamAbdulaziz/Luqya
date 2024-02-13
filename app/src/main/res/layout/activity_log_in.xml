@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
                 android:drawableLeft="@drawable/email"
-                android:text=" Email or Username"
+                android:text=" Email"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:textSize="18sp"/>

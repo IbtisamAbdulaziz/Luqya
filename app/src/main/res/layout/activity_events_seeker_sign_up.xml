@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/button_background"
+    android:background="@color/half_background"
     tools:context=".EventsSeekerSignUp">
-
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -14,23 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.32" />
+        app:layout_constraintGuide_percent="0.20" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton4"
-        android:layout_width="57dp"
-        android:layout_height="55dp"
-        android:clickable="true"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/arrow_back"
-        app:backgroundTint="#F1EAEA"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.076"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"
-        tools:ignore="ContentDescription,UnknownIdInLayout" />
 
     <TextView
         android:id="@+id/textView9"
@@ -40,12 +24,9 @@
         android:text="Create Events Seeker Account"
         android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.337"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="100dp" />
-
-
+        tools:layout_editor_absoluteY="16dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -74,18 +55,19 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
+                        android:paddingLeft="5dp"
                         android:text="Full Name*"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:textSize="15sp"
-                        android:paddingLeft="5dp"/>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/edittext_name"
                         android:layout_width="fill_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
+                        android:background="@drawable/editext_background"
                         android:hint="Ail Saad"
                         android:inputType="textPersonName"
                         android:singleLine="true" />
@@ -93,21 +75,22 @@
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="5dp"
                         android:text="Date of Birth(dd/mm/yyyy)"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:textSize="15sp"
-                        android:paddingLeft="5dp"/>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/edittext_age"
                         android:layout_width="fill_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="20dp"
+                        android:background="@drawable/editext_background"
+                        android:focusable="false"
                         android:hint="Select your date of birth"
                         android:inputType="date"
-                        android:focusable="false"
                         android:singleLine="true" />
 
                     <!--  Email Label -->
@@ -115,18 +98,19 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/email"
+                        android:paddingLeft="5dp"
                         android:text="  Email*"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:textSize="15sp"
-                        android:paddingLeft="5dp"/>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/edittext_email"
                         android:layout_width="fill_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
+                        android:background="@drawable/editext_background"
                         android:hint="email@domain.com"
                         android:inputType="textEmailAddress"
                         android:singleLine="true" />
@@ -137,60 +121,63 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:drawableLeft="@drawable/baseline_phone_24"
+                        android:paddingLeft="5dp"
                         android:text="Phone*"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:textSize="15sp"
-                        android:paddingLeft="5dp"/>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/editText_phone"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_marginTop="5dp"
-                        android:hint="+9665012345678"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/editext_background"
+                        android:hint="+966501234567"
                         android:phoneNumber="true"
-                        android:singleLine="true"
-                        android:layout_marginBottom="15dp"/>
+                        android:singleLine="true" />
 
                     <!--  Password Label -->
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/lock"
+                        android:paddingLeft="5dp"
                         android:text="Password*"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:textSize="15sp"
-                        android:paddingLeft="5dp"/>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/editText_password"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_marginTop="5dp"
+                        android:layout_marginBottom="15sp"
+                        android:background="@drawable/editext_background"
                         android:hint="Enter your password"
                         android:inputType="textPassword"
                         android:password="true"
-                        android:singleLine="true"
-                        android:layout_marginBottom="15sp"/>
+                        android:singleLine="true" />
 
                     <!--  Confirm Label -->
                     <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:drawableLeft="@drawable/lock"
+                        android:paddingLeft="5dp"
                         android:text="Confirm Password*"
                         android:textColor="@color/black"
-                        android:textStyle="bold"
                         android:textSize="15sp"
-                        android:paddingLeft="5dp"/>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/editText_passowrd2"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="50dp"
                         android:layout_marginTop="5dp"
+                        android:background="@drawable/editext_background"
                         android:hint="Re-Enter your password"
                         android:inputType="textPassword"
                         android:password="true"
@@ -211,10 +198,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
-                            app:backgroundTint="@color/button_background"
                             android:background="@drawable/button_background"
                             android:text="Cansel"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            app:backgroundTint="@color/button_background" />
 
                         <!-- Save button -->
                         <Button
@@ -224,10 +211,10 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
                             android:layout_toRightOf="@+id/button_cansel"
-                            app:backgroundTint="@color/button_background"
                             android:background="@drawable/button_background"
                             android:text="Save"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            app:backgroundTint="@color/button_background" />
 
                     </LinearLayout>
 
@@ -236,13 +223,13 @@
             </ScrollView>
 
             <ProgressBar
+                android:id="@+id/progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/progressBar"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:elevation="10dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>

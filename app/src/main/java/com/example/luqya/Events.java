@@ -2,6 +2,7 @@ package com.example.luqya;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -122,11 +125,43 @@ public class Events extends AppCompatActivity {
         notification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NotificationHelper.showNotification(Events.this, "New Event", "A new event has been added!, Hurry up and register");
+                SharedPreferences preferences = getSharedPreferences("NewEvent", MODE_PRIVATE);
+                boolean isNewEventAdded = preferences.getBoolean("isNewEventAdded", false);
+
+                if (isNewEventAdded) {
+                    String newEventName = preferences.getString("newEventName", "");
+                    String newEvenDate = preferences.getString("newEvenDate", "");
+                    // ... (retrieve other details as needed)
+
+                    // Create AlertDialog with custom layout
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Events.this);
+                    View dialogView = getLayoutInflater().inflate(R.layout.custom_dialog_layout, null);
+                    // ... (populate dialog view with event details)
+
+                    TextView eventNameText = dialogView.findViewById(R.id.TitleText);
+                    TextView dateText = dialogView.findViewById(R.id.Date);
+                    // ... (set other text views)
+
+                    eventNameText.setText(newEventName);
+                    dateText.setText(newEvenDate);
+                    // ... (set other values)
+
+                    builder.setView(dialogView);
+                    builder.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            preferences.edit().clear().commit(); // Clear the new event flag
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                } else {
+                    Toast.makeText(Events.this, "There is no added event.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-        NotificationHelper.createNotificationChannel(this);
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

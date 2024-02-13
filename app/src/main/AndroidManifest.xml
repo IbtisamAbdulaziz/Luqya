@@ -42,6 +42,9 @@
             android:name=".UploadProfilePicture"
             android:exported="false" />
         <activity
+            android:name=".UploadInitiativePicture"
+            android:exported="false" />
+        <activity
             android:name=".EditSeekerProfile"
             android:exported="false" />
         <activity

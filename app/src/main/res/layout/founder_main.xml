@@ -56,75 +56,63 @@
         android:layout_centerHorizontal="true"
         android:textSize="18dp"/>
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/button5"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="40dp"
-                android:background="@drawable/button_background"
-                android:text="View Initiative's Profile"
-                android:textSize="16sp"
-                app:backgroundTint="@color/button_background" />
 
             <Button
         android:id="@+id/button2"
-        android:layout_width="150dp"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_alignParentStart="true"
         android:layout_below="@id/textView_founder_name_welcome"
         android:layout_centerVertical="true"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="35dp"
         android:text="Add Event"
-        android:textSize="16sp"
-        app:backgroundTint="@color/button_background"
-        android:background="@drawable/button_background" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_toRightOf="@+id/button2"
-        android:layout_below="@id/textView_founder_name_welcome"
-        android:layout_marginEnd="15dp"
-        android:text="My Events"
         android:textSize="14sp"
         app:backgroundTint="@color/button_background"
         android:background="@drawable/button_background" />
 
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        android:layout_below="@id/button2"
-        android:text="Edit Profile"
-        android:layout_marginStart="40dp"
-        app:backgroundTint="@color/button_background"
-        android:background="@drawable/button_background"
-        android:textSize="16sp" />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textView_founder_name_welcome"
+                android:layout_marginLeft="63dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/button2"
+                android:background="@drawable/button_background"
+                android:text="My Events"
+                android:textSize="14sp"
+                app:backgroundTint="@color/button_background" />
 
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_toRightOf="@+id/button4"
-        android:layout_below="@id/button3"
-        android:layout_marginEnd="15dp"
-        android:text="Statistics"
-        app:backgroundTint="@color/button_background"
-        android:background="@drawable/button_background"
-        android:textSize="16sp" />
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/button2"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/button_background"
+                android:text="Edit Profile"
+                android:textSize="14sp"
+                app:backgroundTint="@color/button_background" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="35dp"
+                android:layout_toRightOf="@+id/button4"
+                android:layout_below="@id/button3"
+                android:layout_marginEnd="35dp"
+                android:text="View Initiative's Profile"
+                app:backgroundTint="@color/button_background"
+                android:background="@drawable/button_background"
+                android:textSize="14sp" />
         </RelativeLayout>
     </ScrollView>
 

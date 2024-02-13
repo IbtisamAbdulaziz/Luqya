@@ -1,8 +1,5 @@
 package com.example.luqya;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +11,10 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -62,6 +60,7 @@ public class EventsSeekerSignUp extends AppCompatActivity {
         editTextPhone  = findViewById(R.id.editText_phone);
         editTextPassword  = findViewById(R.id.editText_password);
         editTextPassword2  = findViewById(R.id.editText_passowrd2);
+
 
         points = 0;
 

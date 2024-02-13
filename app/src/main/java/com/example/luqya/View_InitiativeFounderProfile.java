@@ -143,8 +143,8 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                     context.startActivity(intent);
-   }
-}
+                }
+            }
         });
         getSupportActionBar().setTitle("Initiative Profile");
         progressBar = findViewById(R.id.progressBarEditProfile);
