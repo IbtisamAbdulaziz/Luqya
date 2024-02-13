@@ -39,8 +39,7 @@ import java.util.regex.Pattern;
 public class InitiativeFounderSignUp extends AppCompatActivity {
 
     private EditText initiativeNameEditText, initiativeFounderNameEditText, initiativeEmailEditText, initiativeDescriptionEditText,
-    passwordEditText, passwordConfirmationEditText, phoneEditText, locationEditText, InstaLink;
-    ImageView instaImage;
+    passwordEditText, passwordConfirmationEditText, phoneEditText, locationEditText, initiativeInstaLinkEditText;
     private Button cancelBtn, signUpBtn;
     private ProgressBar progressBar;
     private static final String TAG= "InitiativeFounderSignUp";
@@ -61,9 +60,8 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
         phoneEditText = findViewById(R.id.editText_phone);
         locationEditText = findViewById(R.id.editText_location);
         initiativeDescriptionEditText = findViewById(R.id.eventOverview);
+        initiativeInstaLinkEditText = findViewById(R.id.SocialMedia);
 
-        instaImage =  findViewById(R.id.instagram);
-        InstaLink = findViewById(R.id.SocialMedia);
 
         cancelBtn = findViewById(R.id.button_cansel);
         signUpBtn = findViewById(R.id.button_sign_up);
@@ -90,7 +88,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
 
                 String textInitiativePhone = phoneEditText.getText().toString();
                 String textInitiativeLocation = locationEditText.getText().toString();
-                String textInitiativeSocialMediaAccount = InstaLink.getText().toString();
+                String textInitiativeSocialMediaAccount = initiativeInstaLinkEditText.getText().toString();
 
                 String mobileRegex = "[+][0-9]{12}";
                 Matcher mobileMatcher;
@@ -168,8 +166,8 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
 
                 } else if (TextUtils.isEmpty(textInitiativeSocialMediaAccount)) {
                     Toast.makeText(InitiativeFounderSignUp.this, "Please enter initiative's Social Media Account", Toast.LENGTH_LONG).show();
-                    InstaLink.setError("Instagram Account is required");
-                    InstaLink.requestFocus();
+                    initiativeInstaLinkEditText.setError("Instagram Account is required");
+                    initiativeInstaLinkEditText.requestFocus();
 
                 } else {
 
@@ -215,7 +213,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                                 userInfo.put("InitiativePhone", textInitiativePhone);
                                 userInfo.put("InitiativeLocation", textInitiativeLocation);
                                 userInfo.put("InitiativeDescription", textDescription);
-                                userInfo.put("InitiativeSocialMediaAccount", textInitiativeSocialMediaAccount);
+                                userInfo.put("initiativeSocialMediaAccount", textInitiativeSocialMediaAccount);
                                 userInfo.put("UserType","2");
 
                                 df.set(userInfo);

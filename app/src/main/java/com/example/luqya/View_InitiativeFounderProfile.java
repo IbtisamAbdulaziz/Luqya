@@ -27,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,7 +42,7 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
 
     private TextView textViewInitiativeName, textViewInitiativeOverview, textViewInitiativeFounder, textViewInitiativePhone,
             textViewInitiativeAddress, textViewInitiativeEmail;
-    private ImageView imageViewInitiativeLogo, insagramPic;
+    private ImageView imageViewInitiativeLogo, instgramPic;
     private ProgressBar progressBar;
     private String initiativeName, initiativeDescription, initiativeFounder, initiativePhone,
     initiativeAddress, initiativeEmail;
@@ -83,9 +84,9 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
         searchInitiative.clearFocus();
 
         imageViewInitiativeLogo = findViewById(R.id.imageView_initiative_logo2);
-        insagramPic = findViewById(R.id.instagram);
+        instgramPic = findViewById(R.id.instagram);
 
-        insagramPic.setOnClickListener(new View.OnClickListener() {
+        instgramPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Initialize Firebase
