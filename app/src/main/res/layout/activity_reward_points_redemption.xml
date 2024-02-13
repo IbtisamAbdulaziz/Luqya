@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/half_background"
+    tools:context=".RewardPointsRedemption">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+   <TextView
+       android:id="@+id/congrats_textView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerHorizontal="true"
+       android:text="Congratulations!"
+       android:layout_marginTop="20dp"
+       android:textSize="30sp"
+       style="@style/TextAppearance.AppCompat"/>
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_below="@id/congrats_textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:lines="4"
+        android:textSize="18sp"
+        android:text="@string/reward_message"/>
+
+    <ImageView
+        android:id="@+id/rewardimage"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/textView5"
+        android:src="@drawable/reward"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/rewardimage"
+        android:text="This is a reward coupon for : " />
+
+
+    <TextView
+        android:id="@+id/holder_name_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/rewardimage"
+        android:layout_toRightOf="@id/textView1"
+        android:text=" holder name " />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/textView1"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text=" To collect a reward from : " />
+
+    <TextView
+        android:id="@+id/partner_name_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:layout_toRightOf="@id/textView2"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/holder_name_textView"
+        android:text=" partner name" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/textView2"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:text=" Important Note: It can be used once in issue day only " />
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:layout_marginTop="60dp"
+        android:layout_below="@id/textView3"
+        android:layout_centerHorizontal="true"
+        android:text=" issue date " />
+
+    <TextView
+        android:id="@+id/issue_date_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:drawableBottom="@drawable/date"
+        android:textStyle="italic"
+        android:layout_below="@id/textView4"
+        android:layout_centerHorizontal="true"
+        android:text=" issue date " />
+
+
+
+</RelativeLayout>

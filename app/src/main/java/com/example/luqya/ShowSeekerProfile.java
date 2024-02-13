@@ -145,7 +145,6 @@ public class ShowSeekerProfile extends AppCompatActivity {
                                     int points = writeUserDetails.points;
 
                                     if(points >= 100){
-                                        writeUserDetails.setPoints(0);
                                         Intent intent = new Intent(ShowSeekerProfile.this, RedeemPoints.class);
                                         intent.putExtra("points", points);
                                         startActivity(intent);
