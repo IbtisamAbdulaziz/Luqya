@@ -67,17 +67,17 @@ public class ReadWriteUserDetails {
         return initativeImageUri;
     }
 
+
+    public String getFullName() {
+        return fullName;
+    }
+
     public void setInitativeImageUri(Uri initativeImageUri) {
         this.initativeImageUri = initativeImageUri;
     }
     @NonNull
     public String toString(){
         return this.initiativeName + ",\nFounded by: " + initiativeFounderName;
-    }
-
-    public String toString2(){
-
-        return this.fullName;
     }
 
     public void setPoints(int points) {

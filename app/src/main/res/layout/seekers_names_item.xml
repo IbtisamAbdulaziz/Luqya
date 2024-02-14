@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="8dp"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="3dp"
+    android:background="@color/app_background">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background">
+
+        <TextView
+            android:id="@+id/seeker_name_textView"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/person"
+            android:text="Seeker Name"
+            android:textColor="@color/button_text"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+
+        <Button
+            android:id="@+id/delete_seeker"
+            android:layout_width="165dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            app:backgroundTint="@color/button_background"
+            android:background="@drawable/button_event_background"
+            android:gravity="center"
+            android:text="Delete User"
+            android:textColor="@color/black"
+            android:layout_alignParentRight="true"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+
