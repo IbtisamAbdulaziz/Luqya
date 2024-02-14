@@ -206,7 +206,6 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
                     instgramPic.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            // استرداد اسم الحساب من Firebase
 
                             // Open Instagram link based on stored account name
                             String accountName = readUserDetails.initiativeSocialMediaAccount;
