@@ -117,6 +117,7 @@ public class UploadEventPicture extends AppCompatActivity {
                     finish();
 
                 }
+
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
