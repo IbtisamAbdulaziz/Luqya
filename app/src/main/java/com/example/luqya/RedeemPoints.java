@@ -53,7 +53,6 @@ public class RedeemPoints extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
         String itemList = (String) parent.getItemAtPosition(position);
-        Toast.makeText(this, "List of Item is : " + itemList, Toast.LENGTH_SHORT).show();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(RedeemPoints.this);
         builder.setMessage("You can only Collect your reward from " + itemList + ", 100 points will be redeemed.");

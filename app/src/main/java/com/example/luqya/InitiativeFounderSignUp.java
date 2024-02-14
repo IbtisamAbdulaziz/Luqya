@@ -1,6 +1,6 @@
 package com.example.luqya;
 
-import static com.example.luqya.AddEvent.IMAGE_PICK_CODE;
+//import static com.example.luqya.AddEvent.IMAGE_PICK_CODE;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -75,7 +75,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(intent, IMAGE_PICK_CODE);
+                //startActivityForResult(intent, IMAGE_PICK_CODE);
             }
         });
         signUpBtn.setOnClickListener(new View.OnClickListener() {
@@ -274,9 +274,9 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == IMAGE_PICK_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+        //if (requestCode == IMAGE_PICK_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
             initiativeImage = data.getData();
             imageViewInitiativeLogo.setImageURI(initiativeImage);
         }
     }
-}
+//}
