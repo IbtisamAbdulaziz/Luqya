@@ -38,7 +38,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Calendar;
 
 public class AddEvent extends AppCompatActivity {
-    static final int IMAGE_PICK_CODE = 1000;
 
     DataClass dataClass;
     private ImageView imageView;
@@ -54,7 +53,6 @@ public class AddEvent extends AppCompatActivity {
     private Uri uri;
     private DatePickerDialog picker;
     private FirebaseAuth authProfile;
-    private ImageView uploadPic;
 
     @SuppressLint({"ResourceAsColor", "MissingInflatedId", "WrongViewCast"})
     @Override
@@ -73,7 +71,7 @@ public class AddEvent extends AppCompatActivity {
         Duration = findViewById(R.id.eventDuration);
         time = findViewById(R.id.editEventTime);
         location = findViewById(R.id.eventLocation);
-        uploadPic = findViewById(R.id.button_upload_event_pic);
+        //uploadPic = findViewById(R.id.button_upload_event_pic);
         Online = findViewById(R.id.onlineRB);
         InPerson = findViewById(R.id.inPersonRB);
 
@@ -100,15 +98,7 @@ public class AddEvent extends AppCompatActivity {
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_item);
         languageSpinner.setAdapter(adapter2);
 
-        uploadPic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(Intent.createChooser(intent, "Select Picture"), IMAGE_PICK_CODE);
-            }
-        });
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -275,15 +265,8 @@ public class AddEvent extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == IMAGE_PICK_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            uri = data.getData();
-            imageView.setImageURI(uri);
-            imageURL = uri.toString(); // Store image URL for later use
-        }
-    }
+
+
 
     public void uploadData(){
 
@@ -299,7 +282,7 @@ public class AddEvent extends AppCompatActivity {
 
 
         DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference().child("Add Event");
-        DataClass data = new DataClass(EventName, Overview, Date, duration, language, Age, Location, AttendingMethod, Category, initiative, imageURL, initiativeId); // Include imageURL
+        DataClass data = new DataClass(EventName, Overview, Date, duration, language, Age, Location, AttendingMethod ,Category, initiative , imageURL, initiativeId);
 
         databaseRef.child(EventName).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -322,7 +305,7 @@ public class AddEvent extends AppCompatActivity {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean("isNewEventAdded", true);
         editor.putString("newEventName", EventName);
-        editor.putString("newEvenDate", Date);
+        editor.putString("newEventDate", Date);
         // ... (store other details as needed)
         editor.apply();
 
