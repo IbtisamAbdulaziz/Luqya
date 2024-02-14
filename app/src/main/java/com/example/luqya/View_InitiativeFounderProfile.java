@@ -27,7 +27,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -209,20 +208,15 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
                         public void onClick(View v) {
                             // استرداد اسم الحساب من Firebase
 
-                                String accountName = " ";
-
-                                if (accountName != null && !accountName.isEmpty()) {
-                                // استخدام اسم الحساب المسترد من Firebase في الرابط
-                                String sAppLink = "https://www.instagram.com/" + accountName;
-                                String sPackage = "com.instagram.android";
-
-                                // استدعاء الدالة لفتح الرابط
-                                openLink(v.getContext(), sAppLink, sPackage, sAppLink);
+                            // Open Instagram link based on stored account name
+                            String accountName = readUserDetails.initiativeSocialMediaAccount;
+                            if (accountName != null && !accountName.isEmpty()) {
+                                String instagramLink = "https://www.instagram.com/" + accountName;
+                                openLink(v.getContext(), instagramLink);
                             } else {
-                                // إشعار بأن اسم الحساب غير متاح
-                                Toast.makeText(v.getContext(), "اسم الحساب غير متاح", Toast.LENGTH_SHORT).show();
-   }
-}
+                                Toast.makeText(v.getContext(), "Instagram account not available", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     });
 
 
@@ -251,25 +245,18 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
 
 
 
-    private void openLink(Context context, String sAppLink, String sPackage, String sWebLink) {
+    private void openLink(Context context, String sAppLink) {
         // Use try catch
         try {
             // When application is installed
             // Initialize uri
             Uri uri = Uri.parse(sAppLink);
-            // Initialize intent
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            // Set data
-            intent.setData(uri);
-            // Set package
-            intent.setPackage(sPackage);
-            // Set flag
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            // Start activity
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
             context.startActivity(intent);
         } catch (ActivityNotFoundException activityNotFoundException) {
             // Open link in browser
             // Initialize uri
+            String sWebLink = null;
             Uri uri = Uri.parse(sWebLink);
             // Initialize intent
             Intent intent = new Intent(Intent.ACTION_VIEW);

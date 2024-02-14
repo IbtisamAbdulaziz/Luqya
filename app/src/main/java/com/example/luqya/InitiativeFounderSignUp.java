@@ -1,8 +1,11 @@
 package com.example.luqya;
 
+import static com.example.luqya.AddEvent.IMAGE_PICK_CODE;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
@@ -37,13 +40,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InitiativeFounderSignUp extends AppCompatActivity {
-
     private EditText initiativeNameEditText, initiativeFounderNameEditText, initiativeEmailEditText, initiativeDescriptionEditText,
     passwordEditText, passwordConfirmationEditText, phoneEditText, locationEditText, initiativeInstaLinkEditText;
     private Button cancelBtn, signUpBtn;
     private ProgressBar progressBar;
     private static final String TAG= "InitiativeFounderSignUp";
     private Uri initiativeImage;
+    private String initiativeSocialMediaAccount;
+    private ImageView imageViewInitiativeLogo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,8 +74,8 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
         cancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InitiativeFounderSignUp.this, LogIn.class);
-                startActivity(intent);
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, IMAGE_PICK_CODE);
             }
         });
         signUpBtn.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +93,10 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                 String textInitiativePhone = phoneEditText.getText().toString();
                 String textInitiativeLocation = locationEditText.getText().toString();
                 String textInitiativeSocialMediaAccount = initiativeInstaLinkEditText.getText().toString();
-
+                if (!isValidInstagramLink(initiativeSocialMediaAccount)) {
+                    Toast.makeText(InitiativeFounderSignUp.this, "Invalid Instagram link format", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 String mobileRegex = "[+][0-9]{12}";
                 Matcher mobileMatcher;
                 Pattern mobilePattern = Pattern.compile(mobileRegex);
@@ -174,6 +181,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                     registerInitiative(textInitiativeName, textInitiativeFounderName, textInitiativeEmail, textInitiativePhone, textInitiativeLocation, textPassowrd, textInitiativeDescription, textInitiativeSocialMediaAccount);
                     progressBar.setVisibility(View.VISIBLE);
                 }
+                registerInitiative(textInitiativeName, textInitiativeFounderName, textInitiativeEmail, textInitiativePhone, textInitiativeLocation, textPassowrd, textInitiativeDescription, initiativeSocialMediaAccount);
 
             }
         });
@@ -257,5 +265,18 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean isValidInstagramLink(String link) {
+        // Implement logic to check for valid Instagram link format (e.g., using regex)
+        return true; // Replace with your actual validation
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == IMAGE_PICK_CODE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            initiativeImage = data.getData();
+            imageViewInitiativeLogo.setImageURI(initiativeImage);
+        }
     }
 }
