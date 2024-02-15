@@ -8,8 +8,20 @@
 
 
     <TextView
+        android:id="@+id/Add_Event"
+        android:layout_marginTop="170dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Add Event"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="20dp"
+        android:background="@color/half_background"
+        android:textSize="25sp"/>
+
+    <TextView
         android:id="@+id/view_initiatives_button"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:text="View Initiatives"
