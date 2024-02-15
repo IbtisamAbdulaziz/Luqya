@@ -8,7 +8,7 @@ public class ReadWriteUserDetails {
 
     public String fullName, doD, phone, initiativeName,
             initiativeFounderName, initiativePhone, initiativeLocation,
-            initiativeOverView,initiativeSocialMediaAccount;
+            initiativeOverView,initiativeSocialMediaAccount, initiativeId, userId;
     public int points;
     public Uri initativeImageUri;
 
@@ -18,16 +18,18 @@ public class ReadWriteUserDetails {
     }
 
 
-    public ReadWriteUserDetails(String textFullName, String textDoB, String textPhone, int points){
+    public ReadWriteUserDetails(String textFullName, String textDoB, String textPhone, int points, String userId ){
 
         this.fullName = textFullName;
         this.doD = textDoB;
         this.phone = textPhone;
         this.points = points;
+        this.userId = userId;
     }
 
     public ReadWriteUserDetails(String textInitiativeName, String textInitiativeFounderName, String textInitiativePhone,
-                                String textInitiativeLocation, String textInitiativeDescription, String textInitiativeSocialMediaAccount, Uri initativeImageUri){
+                                String textInitiativeLocation, String textInitiativeDescription, String textInitiativeSocialMediaAccount,
+                                Uri initativeImageUri, String initiativeId){
 
         this.initiativeName = textInitiativeName;
         this.initiativeFounderName = textInitiativeFounderName;
@@ -36,6 +38,7 @@ public class ReadWriteUserDetails {
         this.initiativeOverView = textInitiativeDescription;
         this.initiativeSocialMediaAccount = textInitiativeSocialMediaAccount;
         this.initativeImageUri = initativeImageUri;
+        this.initiativeId = initiativeId;
 
     }
 
@@ -82,5 +85,13 @@ public class ReadWriteUserDetails {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    public String getInitiativeId() {
+        return initiativeId;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 }

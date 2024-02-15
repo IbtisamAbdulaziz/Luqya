@@ -60,7 +60,7 @@ public class MyAdapter6 extends RecyclerView.Adapter<MyAdapter6.MyViewHolder> {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Registered initiatives").child(dataList.get(holder.getAbsoluteAdapterPosition()).getInitiativeName());
+                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Registered initiatives").child(dataList.get(holder.getAbsoluteAdapterPosition()).getInitiativeId());
                         databaseRef.removeValue();
                         Toast.makeText(context, "initiative has been deleted successfully.", Toast.LENGTH_SHORT).show();
                     }

@@ -133,7 +133,10 @@ public class Edit_InitiativeFounderProfile extends AppCompatActivity {
             editTextInitiativeSocialMediaAccount.requestFocus();
         } else {
 
-            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textInitiativeDescription,textInitiativeSocialMediaAccount, initiativeImage );
+            String userId = firebaseUser.getUid();
+
+            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone,
+                    textInitiativeLocation, textInitiativeDescription,textInitiativeSocialMediaAccount, initiativeImage, userId );
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
 
             String userID = firebaseUser.getUid();

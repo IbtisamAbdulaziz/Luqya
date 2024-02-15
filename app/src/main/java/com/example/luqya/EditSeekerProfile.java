@@ -131,8 +131,9 @@ public class EditSeekerProfile extends AppCompatActivity {
             textFullName = editTextUpdateName.getText().toString();
             textDoB = editTextUpdateDoB.getText().toString();
             textPhone = editTextUpdatePhone.getText().toString();
+            String userId = firebaseUser.getUid();
 
-            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textDoB, textPhone, points);
+            ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textDoB, textPhone, points,userId);
             DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
 
             String userID = firebaseUser.getUid();

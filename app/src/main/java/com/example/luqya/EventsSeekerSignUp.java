@@ -188,9 +188,9 @@ public class EventsSeekerSignUp extends AppCompatActivity {
                     FirebaseUser firebaseUser = auth.getCurrentUser();
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(textFullName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
+                    String userId = firebaseUser.getUid();
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textDoB, textPhone, points);
-
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textFullName, textDoB, textPhone, points, userId);
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered users");
 
                     referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {

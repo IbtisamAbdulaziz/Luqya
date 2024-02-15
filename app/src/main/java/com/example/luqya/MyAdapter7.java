@@ -59,7 +59,7 @@ public class MyAdapter7 extends RecyclerView.Adapter<MyAdapter7.MyViewHolder> {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
-                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Registered users").child(dataList.get(holder.getAbsoluteAdapterPosition()).getFullName());
+                        DatabaseReference databaseRef = FirebaseDatabase.getInstance().getReference("Registered users").child(dataList.get(holder.getAbsoluteAdapterPosition()).getUserId());
                         databaseRef.removeValue();
                         Toast.makeText(context, "user has been deleted successfully.", Toast.LENGTH_SHORT).show();
                     }
