@@ -203,6 +203,7 @@ public class View_InitiativeFounderProfile extends AppCompatActivity {
                     textViewInitiativeFounder.setText(initiativeFounder);
                     textViewInitiativePhone.setText(initiativePhone);
                     textViewInitiativeAddress.setText(initiativeAddress);
+
                     instgramPic.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
