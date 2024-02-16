@@ -13,7 +13,7 @@ public class ReadWriteUserDetails {
     public Uri initativeImageUri;
 
 
-    public ReadWriteUserDetails(){
+    public ReadWriteUserDetails(String textInitiativeName, String textInitiativeFounderName, String textInitiativePhone, String textInitiativeLocation, String textDescription, String textInitiativeSocialMediaAccount, Uri initiativeImage){
 
     }
 

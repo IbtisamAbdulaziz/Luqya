@@ -196,9 +196,8 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                     FirebaseUser firebaseUser = auth.getCurrentUser();
                     UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder().setDisplayName(textInitiativeName).build();
                     firebaseUser.updateProfile(profileChangeRequest);
-                    String userId = firebaseUser.getUid();
 
-                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textDescription,textInitiativeSocialMediaAccount,initiativeImage, userId);
+                    ReadWriteUserDetails writeUserDetails = new ReadWriteUserDetails(textInitiativeName, textInitiativeFounderName, textInitiativePhone, textInitiativeLocation, textDescription,textInitiativeSocialMediaAccount,initiativeImage);
                     DatabaseReference referenceProfile = FirebaseDatabase.getInstance().getReference("Registered initiatives");
 
                     referenceProfile.child(firebaseUser.getUid()).setValue(writeUserDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -259,7 +258,7 @@ public class InitiativeFounderSignUp extends AppCompatActivity {
                     }
                 }
             }
-        });
+    });
 
-    }
+}
 }
