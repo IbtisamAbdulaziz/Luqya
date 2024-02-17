@@ -26,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,8 +35,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
+import java.util.Objects;
 
 public class AddEvent extends AppCompatActivity {
 
@@ -289,8 +294,31 @@ public class AddEvent extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Toast.makeText(AddEvent.this, "Saved", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(AddEvent.this, FounderMainActivity.class);
-                    startActivity(intent);
+                    authProfile = FirebaseAuth.getInstance();
+                    FirebaseUser firebaseUser = authProfile.getCurrentUser();
+                    FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+                    assert firebaseUser != null;
+                    String userId = firebaseUser.getUid();
+                    DocumentReference df  = fStore.collection("Users").document(userId);
+
+                    df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                            if (Objects.equals(documentSnapshot.getString("UserType"), "2")) {
+                                Intent intent = new Intent(AddEvent.this, FounderMainActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Intent intent = new Intent(AddEvent.this, ViewEvents.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                finish();
+                            }
+
+                        }
+                    });
                 }
             }
         }) .addOnFailureListener(new OnFailureListener() {
