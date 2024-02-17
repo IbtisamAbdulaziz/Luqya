@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.UserRecord;
+//import com.google.firebase.auth.UserRecord;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -66,13 +66,13 @@ public class MyAdapter7 extends RecyclerView.Adapter<MyAdapter7.MyViewHolder> {
                         databaseRef.removeValue(new DatabaseReference.CompletionListener() {
                             @Override
                             public void onComplete(DatabaseError error, DatabaseReference ref) {
-                                String uid = dataList.get(holder.getAbsoluteAdapterPosition()).getUserId();
+                                Toast.makeText(context, "user has been deleted successfully.", Toast.LENGTH_SHORT).show();
+                               /* String uid = dataList.get(holder.getAbsoluteAdapterPosition()).getUserId();
                                 try {
                                     FirebaseAuth.getInstance().deleteUser(uid);
-                                    Toast.makeText(context, "user has been deleted successfully.", Toast.LENGTH_SHORT).show();
                                 } catch (FirebaseAuthException e) {
                                     throw new RuntimeException(e);
-                                }
+                                }*/
                             }
                         });
                     }
