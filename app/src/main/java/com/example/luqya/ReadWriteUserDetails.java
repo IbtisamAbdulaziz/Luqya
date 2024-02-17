@@ -17,6 +17,10 @@ public class ReadWriteUserDetails {
 
     }
 
+    public ReadWriteUserDetails(){
+
+    }
+
 
     public ReadWriteUserDetails(String textFullName, String textDoB, String textPhone, int points, String userId ){
 
